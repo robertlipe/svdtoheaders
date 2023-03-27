@@ -1,0 +1,11 @@
+# Regenerate our .h files. Verify compilation.
+set -e
+./svdtoheaders $* -o -p CH32V003_ -s demo/svd/ch32v003.svd \
+	-m demo/h/ch32v003_map.h -r demo/h/ch32v003_reg.h
+./svdtoheaders $* -o -p CH32V103_ -s demo/svd/ch32v103.svd \
+	-m demo/h/ch32v103_map.h -r demo/h/ch32v103_reg.h
+./svdtoheaders $* -o -p CH32V203_ -s demo/svd/ch32v20x.svd \
+	-m demo/h/ch32v20x_map.h -r demo/h/ch32v20x_reg.h
+./svdtoheaders $* -o              -s demo/svd/ch32v30x.svd \
+	-m demo/h/ch32v307_map.h -r demo/h/ch32v307_reg.h
+cc -Wall -c demo/testdupes/testdupes.c
