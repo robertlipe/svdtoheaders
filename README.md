@@ -30,7 +30,7 @@ FILES
 BUGS
 ====
 
-Almost certainly. After you fix them, please submit a [pull request](https://github.com/robertlipe/svdtoheaders) to repair them. :-)
+Almost certainly. After you fix them, please submit a [pull request](https://github.com/robertlipe/svdtoheaders) to repair them. 😉
 
 More seriously, there are many opportunities for progrmas like this to jump
 the rails when facing different input. This program was created to parse
