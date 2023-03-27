@@ -92,8 +92,8 @@ def registers(doc):
     if isinstance(registers, dict):
       registers = [registers]
     p_name = cleanse(peripheral['name'])
-    # TODO: Column 25 isn't perfect, but it's reasoanble, IMO
-    column = 25
+    # You could be clever and dynamically size this. This isn't a bad default.
+    column = 33
     if registers:
         p_name = cleanse(peripheral['name'])
         p_descr = cleanse(peripheral['description'])
