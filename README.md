@@ -41,7 +41,7 @@ Almost certainly. After you fix them, please submit a [pull request](https://git
 More seriously, there are many opportunities for progrmas like this to jump
 the rails when facing different input. This program was created to parse
 three specific SVD files from one company and has not been exposed to all
-the potential opportuntties for creative expression within the SVD vocabulary.
+the potential opportunities for creative expression within the SVD vocabulary.
 
 I'll also confess to not being a very good Python developer, so I'm sure to have
 violated some community conventions. I'm teachable, so please just send a
