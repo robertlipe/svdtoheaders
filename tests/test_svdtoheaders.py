@@ -251,24 +251,25 @@ def test_clobber_integration_error():
         assert f"Error: ClobberError: Unable to overwrite existing file \"{reg_file}\"" in result_clobber.stderr
 
 def test_baseline_comparison():
-    # List of (svd_file, prefix, output_type, output_filename_base) tuples
-    # output_type can be 'reg' or 'map'
+    # List of (svd_file_path_relative_to_root, prefix, output_type, output_filename_base) tuples
     test_cases = [
-        ('simple.svd', 'TEST_', 'reg', 'simple_reg.h'),
-        ('simple.svd', 'TEST_', 'map', 'simple_map.h'),
-        ('simple.svd', 'DERIVED_', 'reg', 'derived_reg.h'),
-        ('array.svd', 'TEST_', 'reg', 'array_reg.h'),
-        ('cluster.svd', 'TEST_', 'reg', 'cluster_reg.h'),
-        ('enum.svd', 'TEST_', 'reg', 'enum_reg.h'),
-        ('access.svd', 'TEST_', 'reg', 'access_reg.h'),
+        ('tests/simple.svd', 'TEST_', 'reg', 'simple_reg.h'),
+        ('tests/simple.svd', 'TEST_', 'map', 'simple_map.h'),
+        ('tests/simple.svd', 'DERIVED_', 'reg', 'derived_reg.h'),
+        ('tests/array.svd', 'TEST_', 'reg', 'array_reg.h'),
+        ('tests/cluster.svd', 'TEST_', 'reg', 'cluster_reg.h'),
+        ('tests/enum.svd', 'TEST_', 'reg', 'enum_reg.h'),
+        ('tests/access.svd', 'TEST_', 'reg', 'access_reg.h'),
+        ('demo/svd/ch32v30x.svd', 'CH32V_', 'reg', 'ch32v30x_reg.h'),
+        ('demo/svd/ch32v30x.svd', 'CH32V_', 'map', 'ch32v30x_map.h'),
     ]
 
-    for svd_file, prefix, output_type, output_filename_base in test_cases:
+    for svd_file_path, prefix, output_type, output_filename_base in test_cases:
         with tempfile.TemporaryDirectory() as tmpdir:
             generated_file_path = os.path.join(tmpdir, output_filename_base)
             baseline_file_path = os.path.join('tests', 'baseline_output', output_filename_base)
 
-            args = ['-s', os.path.join('tests', svd_file), '-p', prefix]
+            args = ['-s', svd_file_path, '-p', prefix]
             if output_type == 'reg':
                 args.extend(['-r', generated_file_path])
             elif output_type == 'map':
@@ -276,10 +277,9 @@ def test_baseline_comparison():
             args.append('-o') # Allow overwrite in temp directory
 
             result = run_svdtoheaders(args)
-            assert result.returncode == 0, f"svdtoheaders failed for {svd_file} with prefix {prefix}: {result.stderr}"
+            assert result.returncode == 0, f"svdtoheaders failed for {svd_file_path} with prefix {prefix}: {result.stderr}"
 
             with open(generated_file_path, 'r') as f_gen, open(baseline_file_path, 'r') as f_base:
                 generated_content = f_gen.read()
                 baseline_content = f_base.read()
-                assert generated_content == baseline_content, f"Output mismatch for {output_filename_base} from {svd_file} with prefix {prefix}"
-
+                assert generated_content == baseline_content, f"Output mismatch for {output_filename_base} from {svd_file_path} with prefix {prefix}"
