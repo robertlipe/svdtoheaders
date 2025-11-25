@@ -172,7 +172,11 @@ def registers(doc, prefix):
                         offsetname = f"{regname}_OFFSET"
                         
                         rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
-                        rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+                        access = register.get('access')
+                        define_line = f'#define {regname:<{column}} ({reg_base} + {offsetname})'
+                        if access:
+                            define_line += f' /* {access} */'
+                        rv.append(define_line)
 
                         fields = (register.get('fields') or {}).get('field', [])
                         _process_fields(rv, prefix, p_name_clean, f"{c_name}_{r_name}", fields, column)
@@ -190,7 +194,11 @@ def registers(doc, prefix):
                     offsetname = f"{regname}_OFFSET"
 
                     rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
-                    rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+                    access = register.get('access')
+                    define_line = f'#define {regname:<{column}} ({reg_base} + {offsetname})'
+                    if access:
+                        define_line += f' /* {access} */'
+                    rv.append(define_line)
 
                     fields = (register.get('fields') or {}).get('field', [])
                     _process_fields(rv, prefix, p_name_clean, f"{c_name}_{r_name}", fields, column)
@@ -209,7 +217,11 @@ def registers(doc, prefix):
               offsetname = f"{regname}_OFFSET"
 
               rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
-              rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+              access = register.get('access')
+              define_line = f'#define {regname:<{column}} ({reg_base} + {offsetname})'
+              if access:
+                define_line += f' /* {access} */'
+              rv.append(define_line)
 
               fields = (register.get('fields') or {}).get('field', [])
               _process_fields(rv, prefix, p_name_clean, r_name, fields, column)
@@ -221,7 +233,11 @@ def registers(doc, prefix):
             offsetname = f"{regname}_OFFSET"
 
             rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
-            rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+            access = register.get('access')
+            define_line = f'#define {regname:<{column}} ({reg_base} + {offsetname})'
+            if access:
+                define_line += f' /* {access} */'
+            rv.append(define_line)
 
             fields = (register.get('fields') or {}).get('field', [])
             _process_fields(rv, prefix, p_name_clean, r_name, fields, column)
@@ -277,7 +293,11 @@ def registers(doc, prefix):
                     offsetname = f"{regname}_OFFSET"
                     
                     rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
-                    rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+                    access = register.get('access')
+                    define_line = f'#define {regname:<{column}} ({reg_base} + {offsetname})'
+                    if access:
+                        define_line += f' /* {access} */'
+                    rv.append(define_line)
                     fields = (register.get('fields') or {}).get('field', [])
                     _process_fields(rv, prefix, p_name_clean, f"{c_name}_{r_name}", fields, column)
         else:
@@ -294,7 +314,11 @@ def registers(doc, prefix):
                 offsetname = f"{regname}_OFFSET"
 
                 rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
-                rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+                access = register.get('access')
+                define_line = f'#define {regname:<{column}} ({reg_base} + {offsetname})'
+                if access:
+                    define_line += f' /* {access} */'
+                rv.append(define_line)
                 fields = (register.get('fields') or {}).get('field', [])
                 _process_fields(rv, prefix, p_name_clean, f"{c_name}_{r_name}", fields, column)
 

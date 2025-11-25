@@ -137,3 +137,28 @@ def test_enum_generation():
 
             assert check_define('#define TEST_ENUM_PERIPH_CONFIG_MODE_DISABLED', '0')
             assert check_define('#define TEST_ENUM_PERIPH_CONFIG_MODE_ENABLED', '1')
+
+def test_access_generation():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        reg_file = os.path.join(tmpdir, 'access_reg.h')
+
+        args = ['-s', 'tests/access.svd', '-p', 'TEST_', '-r', reg_file, '-o']
+        result = run_svdtoheaders(args)
+
+        assert result.returncode == 0
+
+        with open(reg_file, 'r') as f:
+            content = f.read()
+            lines = content.splitlines()
+            print(lines)
+            
+            # Helper to check for defines, ignoring whitespace
+            def check_define(name, value):
+                for line in lines:
+                    if name in line and value in line:
+                        return True
+                return False
+
+            assert check_define('#define TEST_ACCESS_PERIPH_RO_REG', '/* read-only */')
+            assert check_define('#define TEST_ACCESS_PERIPH_WO_REG', '/* write-only */')
+            assert check_define('#define TEST_ACCESS_PERIPH_RW_REG', '/* read-write */')
