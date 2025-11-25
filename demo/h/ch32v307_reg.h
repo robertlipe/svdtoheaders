@@ -2,7 +2,7 @@
 /* RNG - Random number generator */
 #define CH32V_RNG_BASE                    0x40023c00
 #define CH32V_RNG_CR_OFFSET               0x0000
-#define CH32V_RNG_CR                      (CH32V_RNG_BASE + CH32V_RNG_CR_OFFSET)
+#define CH32V_RNG_CR                      (CH32V_RNG_BASE + CH32V_RNG_CR_OFFSET) /* read-write */
 #define CH32V_RNG_CR_IE                   (1 <<  3) /* 00000008: Interrupt enable */
 #define CH32V_RNG_CR_RNGEN                (1 <<  2) /* 00000004: Random number generator enable */
 #define CH32V_RNG_SR_OFFSET               0x0004
@@ -13,14 +13,14 @@
 #define CH32V_RNG_SR_CECS                 (1 <<  1) /* 00000002: Clock error current status */
 #define CH32V_RNG_SR_DRDY                 (1 <<  0) /* 00000001: Data ready */
 #define CH32V_RNG_DR_OFFSET               0x0008
-#define CH32V_RNG_DR                      (CH32V_RNG_BASE + CH32V_RNG_DR_OFFSET)
+#define CH32V_RNG_DR                      (CH32V_RNG_BASE + CH32V_RNG_DR_OFFSET) /* read-only */
 #define CH32V_RNG_DR_RNDATA               (0xffffffff << 0) /* ffffffff: Random data */
 #define CH32V_RNG_DR_RNDATA_MASK          (0xffffffff << 0)
 
 /* USB - Universal serial bus full-speed device interface */
 #define CH32V_USB_BASE                    0x40005c00
 #define CH32V_USB_EP0R_OFFSET             0x0000
-#define CH32V_USB_EP0R                    (CH32V_USB_BASE + CH32V_USB_EP0R_OFFSET)
+#define CH32V_USB_EP0R                    (CH32V_USB_BASE + CH32V_USB_EP0R_OFFSET) /* read-write */
 #define CH32V_USB_EP0R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP0R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP0R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -36,7 +36,7 @@
 #define CH32V_USB_EP0R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP0R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_EP1R_OFFSET             0x0004
-#define CH32V_USB_EP1R                    (CH32V_USB_BASE + CH32V_USB_EP1R_OFFSET)
+#define CH32V_USB_EP1R                    (CH32V_USB_BASE + CH32V_USB_EP1R_OFFSET) /* read-write */
 #define CH32V_USB_EP1R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP1R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP1R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -52,7 +52,7 @@
 #define CH32V_USB_EP1R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP1R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_EP2R_OFFSET             0x0008
-#define CH32V_USB_EP2R                    (CH32V_USB_BASE + CH32V_USB_EP2R_OFFSET)
+#define CH32V_USB_EP2R                    (CH32V_USB_BASE + CH32V_USB_EP2R_OFFSET) /* read-write */
 #define CH32V_USB_EP2R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP2R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP2R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -68,7 +68,7 @@
 #define CH32V_USB_EP2R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP2R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_EP3R_OFFSET             0x000c
-#define CH32V_USB_EP3R                    (CH32V_USB_BASE + CH32V_USB_EP3R_OFFSET)
+#define CH32V_USB_EP3R                    (CH32V_USB_BASE + CH32V_USB_EP3R_OFFSET) /* read-write */
 #define CH32V_USB_EP3R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP3R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP3R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -84,7 +84,7 @@
 #define CH32V_USB_EP3R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP3R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_EP4R_OFFSET             0x0010
-#define CH32V_USB_EP4R                    (CH32V_USB_BASE + CH32V_USB_EP4R_OFFSET)
+#define CH32V_USB_EP4R                    (CH32V_USB_BASE + CH32V_USB_EP4R_OFFSET) /* read-write */
 #define CH32V_USB_EP4R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP4R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP4R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -100,7 +100,7 @@
 #define CH32V_USB_EP4R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP4R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_EP5R_OFFSET             0x0014
-#define CH32V_USB_EP5R                    (CH32V_USB_BASE + CH32V_USB_EP5R_OFFSET)
+#define CH32V_USB_EP5R                    (CH32V_USB_BASE + CH32V_USB_EP5R_OFFSET) /* read-write */
 #define CH32V_USB_EP5R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP5R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP5R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -116,7 +116,7 @@
 #define CH32V_USB_EP5R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP5R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_EP6R_OFFSET             0x0018
-#define CH32V_USB_EP6R                    (CH32V_USB_BASE + CH32V_USB_EP6R_OFFSET)
+#define CH32V_USB_EP6R                    (CH32V_USB_BASE + CH32V_USB_EP6R_OFFSET) /* read-write */
 #define CH32V_USB_EP6R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP6R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP6R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -132,7 +132,7 @@
 #define CH32V_USB_EP6R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP6R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_EP7R_OFFSET             0x001c
-#define CH32V_USB_EP7R                    (CH32V_USB_BASE + CH32V_USB_EP7R_OFFSET)
+#define CH32V_USB_EP7R                    (CH32V_USB_BASE + CH32V_USB_EP7R_OFFSET) /* read-write */
 #define CH32V_USB_EP7R_EA                 (0xf << 0) /* 0000000f: Endpoint address */
 #define CH32V_USB_EP7R_EA_MASK            (0xf << 0)
 #define CH32V_USB_EP7R_STAT_TX            (0x3 << 4) /* 00000030: Status bits, for transmission transfers */
@@ -148,7 +148,7 @@
 #define CH32V_USB_EP7R_DTOG_RX            (1 << 14) /* 00004000: Data Toggle, for reception transfers */
 #define CH32V_USB_EP7R_CTR_RX             (1 << 15) /* 00008000: Correct transfer for reception */
 #define CH32V_USB_CNTR_OFFSET             0x0040
-#define CH32V_USB_CNTR                    (CH32V_USB_BASE + CH32V_USB_CNTR_OFFSET)
+#define CH32V_USB_CNTR                    (CH32V_USB_BASE + CH32V_USB_CNTR_OFFSET) /* read-write */
 #define CH32V_USB_CNTR_FRES               (1 <<  0) /* 00000001: Force USB Reset */
 #define CH32V_USB_CNTR_PDWN               (1 <<  1) /* 00000002: Power down */
 #define CH32V_USB_CNTR_LPMODE             (1 <<  2) /* 00000004: Low-power mode */
@@ -163,7 +163,7 @@
 #define CH32V_USB_CNTR_PMAOVRM            (1 << 14) /* 00004000: Packet memory area over / underrun interrupt mask */
 #define CH32V_USB_CNTR_CTRM               (1 << 15) /* 00008000: Correct transfer interrupt mask */
 #define CH32V_USB_ISTR_OFFSET             0x0044
-#define CH32V_USB_ISTR                    (CH32V_USB_BASE + CH32V_USB_ISTR_OFFSET)
+#define CH32V_USB_ISTR                    (CH32V_USB_BASE + CH32V_USB_ISTR_OFFSET) /* read-write */
 #define CH32V_USB_ISTR_EP_ID              (0xf << 0) /* 0000000f: Endpoint Identifier */
 #define CH32V_USB_ISTR_EP_ID_MASK         (0xf << 0)
 #define CH32V_USB_ISTR_DIR                (1 <<  4) /* 00000010: Direction of transaction */
@@ -176,7 +176,7 @@
 #define CH32V_USB_ISTR_PMAOVR             (1 << 14) /* 00004000: Packet memory area over / underrun */
 #define CH32V_USB_ISTR_CTR                (1 << 15) /* 00008000: Correct transfer */
 #define CH32V_USB_FNR_OFFSET              0x0048
-#define CH32V_USB_FNR                     (CH32V_USB_BASE + CH32V_USB_FNR_OFFSET)
+#define CH32V_USB_FNR                     (CH32V_USB_BASE + CH32V_USB_FNR_OFFSET) /* read-only */
 #define CH32V_USB_FNR_FN                  (0x7ff << 0) /* 000007ff: Frame number */
 #define CH32V_USB_FNR_FN_MASK             (0x7ff << 0)
 #define CH32V_USB_FNR_LSOF                (0x3 << 11) /* 00001800: Lost SOF */
@@ -185,19 +185,19 @@
 #define CH32V_USB_FNR_RXDM                (1 << 14) /* 00004000: Receive data - line status */
 #define CH32V_USB_FNR_RXDP                (1 << 15) /* 00008000: Receive data + line status */
 #define CH32V_USB_DADDR_OFFSET            0x004c
-#define CH32V_USB_DADDR                   (CH32V_USB_BASE + CH32V_USB_DADDR_OFFSET)
+#define CH32V_USB_DADDR                   (CH32V_USB_BASE + CH32V_USB_DADDR_OFFSET) /* read-write */
 #define CH32V_USB_DADDR_ADD               (0x7f << 0) /* 0000007f: Device address */
 #define CH32V_USB_DADDR_ADD_MASK          (0x7f << 0)
 #define CH32V_USB_DADDR_EF                (1 <<  7) /* 00000080: Enable function */
 #define CH32V_USB_BTABLE_OFFSET           0x0050
-#define CH32V_USB_BTABLE                  (CH32V_USB_BASE + CH32V_USB_BTABLE_OFFSET)
+#define CH32V_USB_BTABLE                  (CH32V_USB_BASE + CH32V_USB_BTABLE_OFFSET) /* read-write */
 #define CH32V_USB_BTABLE_BTABLE           (0x1fff << 3) /* 0000fff8: Buffer table */
 #define CH32V_USB_BTABLE_BTABLE_MASK      (0x1fff << 3)
 
 /* CAN1 - Controller area network */
 #define CH32V_CAN1_BASE                   0x40006400
 #define CH32V_CAN1_CTLR_OFFSET            0x0000
-#define CH32V_CAN1_CTLR                   (CH32V_CAN1_BASE + CH32V_CAN1_CTLR_OFFSET)
+#define CH32V_CAN1_CTLR                   (CH32V_CAN1_BASE + CH32V_CAN1_CTLR_OFFSET) /* read-write */
 #define CH32V_CAN1_CTLR_DBF               (1 << 16) /* 00010000: Debug freeze */
 #define CH32V_CAN1_CTLR_RESET             (1 << 15) /* 00008000: Software master reset */
 #define CH32V_CAN1_CTLR_TTCM              (1 <<  7) /* 00000080: Time triggered communication mode */
@@ -259,7 +259,7 @@
 #define CH32V_CAN1_RFIFO1_FMP1            (0x3 << 0) /* 00000003: FIFO 1 message pending */
 #define CH32V_CAN1_RFIFO1_FMP1_MASK       (0x3 << 0)
 #define CH32V_CAN1_INTENR_OFFSET          0x0014
-#define CH32V_CAN1_INTENR                 (CH32V_CAN1_BASE + CH32V_CAN1_INTENR_OFFSET)
+#define CH32V_CAN1_INTENR                 (CH32V_CAN1_BASE + CH32V_CAN1_INTENR_OFFSET) /* read-write */
 #define CH32V_CAN1_INTENR_SLKIE           (1 << 17) /* 00020000: Sleep interrupt enable */
 #define CH32V_CAN1_INTENR_WKUIE           (1 << 16) /* 00010000: Wakeup interrupt enable */
 #define CH32V_CAN1_INTENR_ERRIE           (1 << 15) /* 00008000: Error interrupt enable */
@@ -286,7 +286,7 @@
 #define CH32V_CAN1_ERRSR_EPVF             (1 <<  1) /* 00000002: Error passive flag */
 #define CH32V_CAN1_ERRSR_EWGF             (1 <<  0) /* 00000001: Error warning flag */
 #define CH32V_CAN1_BTIMR_OFFSET           0x001c
-#define CH32V_CAN1_BTIMR                  (CH32V_CAN1_BASE + CH32V_CAN1_BTIMR_OFFSET)
+#define CH32V_CAN1_BTIMR                  (CH32V_CAN1_BASE + CH32V_CAN1_BTIMR_OFFSET) /* read-write */
 #define CH32V_CAN1_BTIMR_SILM             (1 << 31) /* 80000000: Silent mode (debug) */
 #define CH32V_CAN1_BTIMR_LBKM             (1 << 30) /* 40000000: Loop back mode (debug) */
 #define CH32V_CAN1_BTIMR_SJW              (0x3 << 24) /* 03000000: Resynchronization jump width */
@@ -298,7 +298,7 @@
 #define CH32V_CAN1_BTIMR_BRP              (0x3ff << 0) /* 000003ff: Baud rate prescaler */
 #define CH32V_CAN1_BTIMR_BRP_MASK         (0x3ff << 0)
 #define CH32V_CAN1_TXMIR0_OFFSET          0x0180
-#define CH32V_CAN1_TXMIR0                 (CH32V_CAN1_BASE + CH32V_CAN1_TXMIR0_OFFSET)
+#define CH32V_CAN1_TXMIR0                 (CH32V_CAN1_BASE + CH32V_CAN1_TXMIR0_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMIR0_STID            (0x7ff << 21) /* ffe00000: Standard identifier */
 #define CH32V_CAN1_TXMIR0_STID_MASK       (0x7ff << 21)
 #define CH32V_CAN1_TXMIR0_EXID            (0x3ffff << 3) /* 001ffff8: extended identifier */
@@ -307,14 +307,14 @@
 #define CH32V_CAN1_TXMIR0_RTR             (1 <<  1) /* 00000002: Remote transmission request */
 #define CH32V_CAN1_TXMIR0_TXRQ            (1 <<  0) /* 00000001: Transmit mailbox request */
 #define CH32V_CAN1_TXMDTR0_OFFSET         0x0184
-#define CH32V_CAN1_TXMDTR0                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDTR0_OFFSET)
+#define CH32V_CAN1_TXMDTR0                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDTR0_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDTR0_TIME           (0xffff << 16) /* ffff0000: Message time stamp */
 #define CH32V_CAN1_TXMDTR0_TIME_MASK      (0xffff << 16)
 #define CH32V_CAN1_TXMDTR0_TGT            (1 <<  8) /* 00000100: Transmit global time */
 #define CH32V_CAN1_TXMDTR0_DLC            (0xf << 0) /* 0000000f: Data length code */
 #define CH32V_CAN1_TXMDTR0_DLC_MASK       (0xf << 0)
 #define CH32V_CAN1_TXMDLR0_OFFSET         0x0188
-#define CH32V_CAN1_TXMDLR0                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDLR0_OFFSET)
+#define CH32V_CAN1_TXMDLR0                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDLR0_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDLR0_DATA3          (0xff << 24) /* ff000000: Data byte 3 */
 #define CH32V_CAN1_TXMDLR0_DATA3_MASK     (0xff << 24)
 #define CH32V_CAN1_TXMDLR0_DATA2          (0xff << 16) /* 00ff0000: Data byte 2 */
@@ -324,7 +324,7 @@
 #define CH32V_CAN1_TXMDLR0_DATA0          (0xff << 0) /* 000000ff: Data byte 0 */
 #define CH32V_CAN1_TXMDLR0_DATA0_MASK     (0xff << 0)
 #define CH32V_CAN1_TXMDHR0_OFFSET         0x018c
-#define CH32V_CAN1_TXMDHR0                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDHR0_OFFSET)
+#define CH32V_CAN1_TXMDHR0                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDHR0_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDHR0_DATA7          (0xff << 24) /* ff000000: Data byte 7 */
 #define CH32V_CAN1_TXMDHR0_DATA7_MASK     (0xff << 24)
 #define CH32V_CAN1_TXMDHR0_DATA6          (0xff << 16) /* 00ff0000: Data byte 6 */
@@ -334,7 +334,7 @@
 #define CH32V_CAN1_TXMDHR0_DATA4          (0xff << 0) /* 000000ff: Data byte 4 */
 #define CH32V_CAN1_TXMDHR0_DATA4_MASK     (0xff << 0)
 #define CH32V_CAN1_TXMIR1_OFFSET          0x0190
-#define CH32V_CAN1_TXMIR1                 (CH32V_CAN1_BASE + CH32V_CAN1_TXMIR1_OFFSET)
+#define CH32V_CAN1_TXMIR1                 (CH32V_CAN1_BASE + CH32V_CAN1_TXMIR1_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMIR1_STID            (0x7ff << 21) /* ffe00000: Standard identifier */
 #define CH32V_CAN1_TXMIR1_STID_MASK       (0x7ff << 21)
 #define CH32V_CAN1_TXMIR1_EXID            (0x3ffff << 3) /* 001ffff8: extended identifier */
@@ -343,14 +343,14 @@
 #define CH32V_CAN1_TXMIR1_RTR             (1 <<  1) /* 00000002: Remote transmission request */
 #define CH32V_CAN1_TXMIR1_TXRQ            (1 <<  0) /* 00000001: Transmit mailbox request */
 #define CH32V_CAN1_TXMDTR1_OFFSET         0x0194
-#define CH32V_CAN1_TXMDTR1                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDTR1_OFFSET)
+#define CH32V_CAN1_TXMDTR1                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDTR1_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDTR1_TIME           (0xffff << 16) /* ffff0000: Message time stamp */
 #define CH32V_CAN1_TXMDTR1_TIME_MASK      (0xffff << 16)
 #define CH32V_CAN1_TXMDTR1_TGT            (1 <<  8) /* 00000100: Transmit global time */
 #define CH32V_CAN1_TXMDTR1_DLC            (0xf << 0) /* 0000000f: Data length code */
 #define CH32V_CAN1_TXMDTR1_DLC_MASK       (0xf << 0)
 #define CH32V_CAN1_TXMDLR1_OFFSET         0x0198
-#define CH32V_CAN1_TXMDLR1                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDLR1_OFFSET)
+#define CH32V_CAN1_TXMDLR1                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDLR1_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDLR1_DATA3          (0xff << 24) /* ff000000: Data byte 3 */
 #define CH32V_CAN1_TXMDLR1_DATA3_MASK     (0xff << 24)
 #define CH32V_CAN1_TXMDLR1_DATA2          (0xff << 16) /* 00ff0000: Data byte 2 */
@@ -360,7 +360,7 @@
 #define CH32V_CAN1_TXMDLR1_DATA0          (0xff << 0) /* 000000ff: Data byte 0 */
 #define CH32V_CAN1_TXMDLR1_DATA0_MASK     (0xff << 0)
 #define CH32V_CAN1_TXMDHR1_OFFSET         0x019c
-#define CH32V_CAN1_TXMDHR1                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDHR1_OFFSET)
+#define CH32V_CAN1_TXMDHR1                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDHR1_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDHR1_DATA7          (0xff << 24) /* ff000000: Data byte 7 */
 #define CH32V_CAN1_TXMDHR1_DATA7_MASK     (0xff << 24)
 #define CH32V_CAN1_TXMDHR1_DATA6          (0xff << 16) /* 00ff0000: Data byte 6 */
@@ -370,7 +370,7 @@
 #define CH32V_CAN1_TXMDHR1_DATA4          (0xff << 0) /* 000000ff: Data byte 4 */
 #define CH32V_CAN1_TXMDHR1_DATA4_MASK     (0xff << 0)
 #define CH32V_CAN1_TXMIR2_OFFSET          0x01a0
-#define CH32V_CAN1_TXMIR2                 (CH32V_CAN1_BASE + CH32V_CAN1_TXMIR2_OFFSET)
+#define CH32V_CAN1_TXMIR2                 (CH32V_CAN1_BASE + CH32V_CAN1_TXMIR2_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMIR2_STID            (0x7ff << 21) /* ffe00000: Standard identifier */
 #define CH32V_CAN1_TXMIR2_STID_MASK       (0x7ff << 21)
 #define CH32V_CAN1_TXMIR2_EXID            (0x3ffff << 3) /* 001ffff8: extended identifier */
@@ -379,14 +379,14 @@
 #define CH32V_CAN1_TXMIR2_RTR             (1 <<  1) /* 00000002: Remote transmission request */
 #define CH32V_CAN1_TXMIR2_TXRQ            (1 <<  0) /* 00000001: Transmit mailbox request */
 #define CH32V_CAN1_TXMDTR2_OFFSET         0x01a4
-#define CH32V_CAN1_TXMDTR2                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDTR2_OFFSET)
+#define CH32V_CAN1_TXMDTR2                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDTR2_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDTR2_TIME           (0xffff << 16) /* ffff0000: Message time stamp */
 #define CH32V_CAN1_TXMDTR2_TIME_MASK      (0xffff << 16)
 #define CH32V_CAN1_TXMDTR2_TGT            (1 <<  8) /* 00000100: Transmit global time */
 #define CH32V_CAN1_TXMDTR2_DLC            (0xf << 0) /* 0000000f: Data length code */
 #define CH32V_CAN1_TXMDTR2_DLC_MASK       (0xf << 0)
 #define CH32V_CAN1_TXMDLR2_OFFSET         0x01a8
-#define CH32V_CAN1_TXMDLR2                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDLR2_OFFSET)
+#define CH32V_CAN1_TXMDLR2                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDLR2_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDLR2_DATA3          (0xff << 24) /* ff000000: Data byte 3 */
 #define CH32V_CAN1_TXMDLR2_DATA3_MASK     (0xff << 24)
 #define CH32V_CAN1_TXMDLR2_DATA2          (0xff << 16) /* 00ff0000: Data byte 2 */
@@ -396,7 +396,7 @@
 #define CH32V_CAN1_TXMDLR2_DATA0          (0xff << 0) /* 000000ff: Data byte 0 */
 #define CH32V_CAN1_TXMDLR2_DATA0_MASK     (0xff << 0)
 #define CH32V_CAN1_TXMDHR2_OFFSET         0x01ac
-#define CH32V_CAN1_TXMDHR2                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDHR2_OFFSET)
+#define CH32V_CAN1_TXMDHR2                (CH32V_CAN1_BASE + CH32V_CAN1_TXMDHR2_OFFSET) /* read-write */
 #define CH32V_CAN1_TXMDHR2_DATA7          (0xff << 24) /* ff000000: Data byte 7 */
 #define CH32V_CAN1_TXMDHR2_DATA7_MASK     (0xff << 24)
 #define CH32V_CAN1_TXMDHR2_DATA6          (0xff << 16) /* 00ff0000: Data byte 6 */
@@ -406,7 +406,7 @@
 #define CH32V_CAN1_TXMDHR2_DATA4          (0xff << 0) /* 000000ff: Data byte 4 */
 #define CH32V_CAN1_TXMDHR2_DATA4_MASK     (0xff << 0)
 #define CH32V_CAN1_RXMIR0_OFFSET          0x01b0
-#define CH32V_CAN1_RXMIR0                 (CH32V_CAN1_BASE + CH32V_CAN1_RXMIR0_OFFSET)
+#define CH32V_CAN1_RXMIR0                 (CH32V_CAN1_BASE + CH32V_CAN1_RXMIR0_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMIR0_STID            (0x7ff << 21) /* ffe00000: Standard identifier */
 #define CH32V_CAN1_RXMIR0_STID_MASK       (0x7ff << 21)
 #define CH32V_CAN1_RXMIR0_EXID            (0x3ffff << 3) /* 001ffff8: extended identifier */
@@ -414,7 +414,7 @@
 #define CH32V_CAN1_RXMIR0_IDE             (1 <<  2) /* 00000004: Identifier extension */
 #define CH32V_CAN1_RXMIR0_RTR             (1 <<  1) /* 00000002: Remote transmission request */
 #define CH32V_CAN1_RXMDTR0_OFFSET         0x01b4
-#define CH32V_CAN1_RXMDTR0                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDTR0_OFFSET)
+#define CH32V_CAN1_RXMDTR0                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDTR0_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMDTR0_TIME           (0xffff << 16) /* ffff0000: Message time stamp */
 #define CH32V_CAN1_RXMDTR0_TIME_MASK      (0xffff << 16)
 #define CH32V_CAN1_RXMDTR0_FMI            (0xff << 8) /* 0000ff00: Filter match index */
@@ -422,7 +422,7 @@
 #define CH32V_CAN1_RXMDTR0_DLC            (0xf << 0) /* 0000000f: Data length code */
 #define CH32V_CAN1_RXMDTR0_DLC_MASK       (0xf << 0)
 #define CH32V_CAN1_RXMDLR0_OFFSET         0x01b8
-#define CH32V_CAN1_RXMDLR0                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDLR0_OFFSET)
+#define CH32V_CAN1_RXMDLR0                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDLR0_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMDLR0_DATA3          (0xff << 24) /* ff000000: Data Byte 3 */
 #define CH32V_CAN1_RXMDLR0_DATA3_MASK     (0xff << 24)
 #define CH32V_CAN1_RXMDLR0_DATA2          (0xff << 16) /* 00ff0000: Data Byte 2 */
@@ -432,7 +432,7 @@
 #define CH32V_CAN1_RXMDLR0_DATA0          (0xff << 0) /* 000000ff: Data Byte 0 */
 #define CH32V_CAN1_RXMDLR0_DATA0_MASK     (0xff << 0)
 #define CH32V_CAN1_RXMDHR0_OFFSET         0x01bc
-#define CH32V_CAN1_RXMDHR0                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDHR0_OFFSET)
+#define CH32V_CAN1_RXMDHR0                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDHR0_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMDHR0_DATA7          (0xff << 24) /* ff000000: DATA7 */
 #define CH32V_CAN1_RXMDHR0_DATA7_MASK     (0xff << 24)
 #define CH32V_CAN1_RXMDHR0_DATA6          (0xff << 16) /* 00ff0000: DATA6 */
@@ -442,7 +442,7 @@
 #define CH32V_CAN1_RXMDHR0_DATA4          (0xff << 0) /* 000000ff: DATA4 */
 #define CH32V_CAN1_RXMDHR0_DATA4_MASK     (0xff << 0)
 #define CH32V_CAN1_RXMIR1_OFFSET          0x01c0
-#define CH32V_CAN1_RXMIR1                 (CH32V_CAN1_BASE + CH32V_CAN1_RXMIR1_OFFSET)
+#define CH32V_CAN1_RXMIR1                 (CH32V_CAN1_BASE + CH32V_CAN1_RXMIR1_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMIR1_STID            (0x7ff << 21) /* ffe00000: Standard identifier */
 #define CH32V_CAN1_RXMIR1_STID_MASK       (0x7ff << 21)
 #define CH32V_CAN1_RXMIR1_EXID            (0x3ffff << 3) /* 001ffff8: extended identifier */
@@ -450,7 +450,7 @@
 #define CH32V_CAN1_RXMIR1_IDE             (1 <<  2) /* 00000004: Identifier extension */
 #define CH32V_CAN1_RXMIR1_RTR             (1 <<  1) /* 00000002: Remote transmission request */
 #define CH32V_CAN1_RXMDTR1_OFFSET         0x01c4
-#define CH32V_CAN1_RXMDTR1                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDTR1_OFFSET)
+#define CH32V_CAN1_RXMDTR1                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDTR1_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMDTR1_TIME           (0xffff << 16) /* ffff0000: Message time stamp */
 #define CH32V_CAN1_RXMDTR1_TIME_MASK      (0xffff << 16)
 #define CH32V_CAN1_RXMDTR1_FMI            (0xff << 8) /* 0000ff00: Filter match index */
@@ -458,7 +458,7 @@
 #define CH32V_CAN1_RXMDTR1_DLC            (0xf << 0) /* 0000000f: Data length code */
 #define CH32V_CAN1_RXMDTR1_DLC_MASK       (0xf << 0)
 #define CH32V_CAN1_RXMDLR1_OFFSET         0x01c8
-#define CH32V_CAN1_RXMDLR1                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDLR1_OFFSET)
+#define CH32V_CAN1_RXMDLR1                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDLR1_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMDLR1_DATA3          (0xff << 24) /* ff000000: Data Byte 3 */
 #define CH32V_CAN1_RXMDLR1_DATA3_MASK     (0xff << 24)
 #define CH32V_CAN1_RXMDLR1_DATA2          (0xff << 16) /* 00ff0000: Data Byte 2 */
@@ -468,7 +468,7 @@
 #define CH32V_CAN1_RXMDLR1_DATA0          (0xff << 0) /* 000000ff: Data Byte 0 */
 #define CH32V_CAN1_RXMDLR1_DATA0_MASK     (0xff << 0)
 #define CH32V_CAN1_RXMDHR1_OFFSET         0x01cc
-#define CH32V_CAN1_RXMDHR1                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDHR1_OFFSET)
+#define CH32V_CAN1_RXMDHR1                (CH32V_CAN1_BASE + CH32V_CAN1_RXMDHR1_OFFSET) /* read-only */
 #define CH32V_CAN1_RXMDHR1_DATA7          (0xff << 24) /* ff000000: DATA7 */
 #define CH32V_CAN1_RXMDHR1_DATA7_MASK     (0xff << 24)
 #define CH32V_CAN1_RXMDHR1_DATA6          (0xff << 16) /* 00ff0000: DATA6 */
@@ -478,12 +478,12 @@
 #define CH32V_CAN1_RXMDHR1_DATA4          (0xff << 0) /* 000000ff: DATA4 */
 #define CH32V_CAN1_RXMDHR1_DATA4_MASK     (0xff << 0)
 #define CH32V_CAN1_FCTLR_OFFSET           0x0200
-#define CH32V_CAN1_FCTLR                  (CH32V_CAN1_BASE + CH32V_CAN1_FCTLR_OFFSET)
+#define CH32V_CAN1_FCTLR                  (CH32V_CAN1_BASE + CH32V_CAN1_FCTLR_OFFSET) /* read-write */
 #define CH32V_CAN1_FCTLR_FINIT            (1 <<  0) /* 00000001: Filter init mode */
 #define CH32V_CAN1_FCTLR_CAN2SB           (0x3f << 8) /* 00003f00: CAN2 start bank */
 #define CH32V_CAN1_FCTLR_CAN2SB_MASK      (0x3f << 8)
 #define CH32V_CAN1_FMCFGR_OFFSET          0x0204
-#define CH32V_CAN1_FMCFGR                 (CH32V_CAN1_BASE + CH32V_CAN1_FMCFGR_OFFSET)
+#define CH32V_CAN1_FMCFGR                 (CH32V_CAN1_BASE + CH32V_CAN1_FMCFGR_OFFSET) /* read-write */
 #define CH32V_CAN1_FMCFGR_FBM0            (1 <<  0) /* 00000001: Filter mode */
 #define CH32V_CAN1_FMCFGR_FBM1            (1 <<  1) /* 00000002: Filter mode */
 #define CH32V_CAN1_FMCFGR_FBM2            (1 <<  2) /* 00000004: Filter mode */
@@ -499,7 +499,7 @@
 #define CH32V_CAN1_FMCFGR_FBM12           (1 << 12) /* 00001000: Filter mode */
 #define CH32V_CAN1_FMCFGR_FBM13           (1 << 13) /* 00002000: Filter mode */
 #define CH32V_CAN1_FSCFGR_OFFSET          0x020c
-#define CH32V_CAN1_FSCFGR                 (CH32V_CAN1_BASE + CH32V_CAN1_FSCFGR_OFFSET)
+#define CH32V_CAN1_FSCFGR                 (CH32V_CAN1_BASE + CH32V_CAN1_FSCFGR_OFFSET) /* read-write */
 #define CH32V_CAN1_FSCFGR_FSC0            (1 <<  0) /* 00000001: Filter scale configuration */
 #define CH32V_CAN1_FSCFGR_FSC1            (1 <<  1) /* 00000002: Filter scale configuration */
 #define CH32V_CAN1_FSCFGR_FSC2            (1 <<  2) /* 00000004: Filter scale configuration */
@@ -515,7 +515,7 @@
 #define CH32V_CAN1_FSCFGR_FSC12           (1 << 12) /* 00001000: Filter scale configuration */
 #define CH32V_CAN1_FSCFGR_FSC13           (1 << 13) /* 00002000: Filter scale configuration */
 #define CH32V_CAN1_FAFIFOR_OFFSET         0x0214
-#define CH32V_CAN1_FAFIFOR                (CH32V_CAN1_BASE + CH32V_CAN1_FAFIFOR_OFFSET)
+#define CH32V_CAN1_FAFIFOR                (CH32V_CAN1_BASE + CH32V_CAN1_FAFIFOR_OFFSET) /* read-write */
 #define CH32V_CAN1_FAFIFOR_FFA0           (1 <<  0) /* 00000001: Filter FIFO assignment for filter 0 */
 #define CH32V_CAN1_FAFIFOR_FFA1           (1 <<  1) /* 00000002: Filter FIFO assignment for filter 1 */
 #define CH32V_CAN1_FAFIFOR_FFA2           (1 <<  2) /* 00000004: Filter FIFO assignment for filter 2 */
@@ -531,7 +531,7 @@
 #define CH32V_CAN1_FAFIFOR_FFA12          (1 << 12) /* 00001000: Filter FIFO assignment for filter 12 */
 #define CH32V_CAN1_FAFIFOR_FFA13          (1 << 13) /* 00002000: Filter FIFO assignment for filter 13 */
 #define CH32V_CAN1_FWR_OFFSET             0x021c
-#define CH32V_CAN1_FWR                    (CH32V_CAN1_BASE + CH32V_CAN1_FWR_OFFSET)
+#define CH32V_CAN1_FWR                    (CH32V_CAN1_BASE + CH32V_CAN1_FWR_OFFSET) /* read-write */
 #define CH32V_CAN1_FWR_FACT0              (1 <<  0) /* 00000001: Filter active */
 #define CH32V_CAN1_FWR_FACT1              (1 <<  1) /* 00000002: Filter active */
 #define CH32V_CAN1_FWR_FACT2              (1 <<  2) /* 00000004: Filter active */
@@ -547,7 +547,7 @@
 #define CH32V_CAN1_FWR_FACT12             (1 << 12) /* 00001000: Filter active */
 #define CH32V_CAN1_FWR_FACT13             (1 << 13) /* 00002000: Filter active */
 #define CH32V_CAN1_F0R1_OFFSET            0x0240
-#define CH32V_CAN1_F0R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F0R1_OFFSET)
+#define CH32V_CAN1_F0R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F0R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F0R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F0R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F0R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -581,7 +581,7 @@
 #define CH32V_CAN1_F0R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F0R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F0R2_OFFSET            0x0244
-#define CH32V_CAN1_F0R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F0R2_OFFSET)
+#define CH32V_CAN1_F0R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F0R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F0R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F0R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F0R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -615,7 +615,7 @@
 #define CH32V_CAN1_F0R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F0R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F1R1_OFFSET            0x0248
-#define CH32V_CAN1_F1R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F1R1_OFFSET)
+#define CH32V_CAN1_F1R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F1R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F1R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F1R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F1R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -649,7 +649,7 @@
 #define CH32V_CAN1_F1R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F1R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F1R2_OFFSET            0x024c
-#define CH32V_CAN1_F1R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F1R2_OFFSET)
+#define CH32V_CAN1_F1R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F1R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F1R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F1R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F1R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -683,7 +683,7 @@
 #define CH32V_CAN1_F1R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F1R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F2R1_OFFSET            0x0250
-#define CH32V_CAN1_F2R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F2R1_OFFSET)
+#define CH32V_CAN1_F2R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F2R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F2R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F2R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F2R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -717,7 +717,7 @@
 #define CH32V_CAN1_F2R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F2R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F2R2_OFFSET            0x0254
-#define CH32V_CAN1_F2R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F2R2_OFFSET)
+#define CH32V_CAN1_F2R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F2R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F2R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F2R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F2R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -751,7 +751,7 @@
 #define CH32V_CAN1_F2R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F2R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F3R1_OFFSET            0x0258
-#define CH32V_CAN1_F3R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F3R1_OFFSET)
+#define CH32V_CAN1_F3R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F3R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F3R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F3R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F3R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -785,7 +785,7 @@
 #define CH32V_CAN1_F3R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F3R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F3R2_OFFSET            0x025c
-#define CH32V_CAN1_F3R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F3R2_OFFSET)
+#define CH32V_CAN1_F3R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F3R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F3R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F3R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F3R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -819,7 +819,7 @@
 #define CH32V_CAN1_F3R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F3R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F4R1_OFFSET            0x0260
-#define CH32V_CAN1_F4R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F4R1_OFFSET)
+#define CH32V_CAN1_F4R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F4R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F4R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F4R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F4R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -853,7 +853,7 @@
 #define CH32V_CAN1_F4R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F4R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F4R2_OFFSET            0x0264
-#define CH32V_CAN1_F4R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F4R2_OFFSET)
+#define CH32V_CAN1_F4R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F4R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F4R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F4R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F4R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -887,7 +887,7 @@
 #define CH32V_CAN1_F4R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F4R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F5R1_OFFSET            0x0268
-#define CH32V_CAN1_F5R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F5R1_OFFSET)
+#define CH32V_CAN1_F5R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F5R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F5R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F5R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F5R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -921,7 +921,7 @@
 #define CH32V_CAN1_F5R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F5R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F5R2_OFFSET            0x026c
-#define CH32V_CAN1_F5R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F5R2_OFFSET)
+#define CH32V_CAN1_F5R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F5R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F5R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F5R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F5R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -955,7 +955,7 @@
 #define CH32V_CAN1_F5R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F5R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F6R1_OFFSET            0x0270
-#define CH32V_CAN1_F6R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F6R1_OFFSET)
+#define CH32V_CAN1_F6R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F6R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F6R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F6R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F6R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -989,7 +989,7 @@
 #define CH32V_CAN1_F6R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F6R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F6R2_OFFSET            0x0274
-#define CH32V_CAN1_F6R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F6R2_OFFSET)
+#define CH32V_CAN1_F6R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F6R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F6R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F6R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F6R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -1023,7 +1023,7 @@
 #define CH32V_CAN1_F6R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F6R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F7R1_OFFSET            0x0278
-#define CH32V_CAN1_F7R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F7R1_OFFSET)
+#define CH32V_CAN1_F7R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F7R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F7R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F7R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F7R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -1057,7 +1057,7 @@
 #define CH32V_CAN1_F7R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F7R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F7R2_OFFSET            0x027c
-#define CH32V_CAN1_F7R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F7R2_OFFSET)
+#define CH32V_CAN1_F7R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F7R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F7R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F7R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F7R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -1091,7 +1091,7 @@
 #define CH32V_CAN1_F7R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F7R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F8R1_OFFSET            0x0280
-#define CH32V_CAN1_F8R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F8R1_OFFSET)
+#define CH32V_CAN1_F8R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F8R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F8R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F8R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F8R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -1125,7 +1125,7 @@
 #define CH32V_CAN1_F8R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F8R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F8R2_OFFSET            0x0284
-#define CH32V_CAN1_F8R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F8R2_OFFSET)
+#define CH32V_CAN1_F8R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F8R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F8R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F8R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F8R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -1159,7 +1159,7 @@
 #define CH32V_CAN1_F8R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F8R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F9R1_OFFSET            0x0288
-#define CH32V_CAN1_F9R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F9R1_OFFSET)
+#define CH32V_CAN1_F9R1                   (CH32V_CAN1_BASE + CH32V_CAN1_F9R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F9R1_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F9R1_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F9R1_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -1193,7 +1193,7 @@
 #define CH32V_CAN1_F9R1_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F9R1_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F9R2_OFFSET            0x028c
-#define CH32V_CAN1_F9R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F9R2_OFFSET)
+#define CH32V_CAN1_F9R2                   (CH32V_CAN1_BASE + CH32V_CAN1_F9R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F9R2_FB0               (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F9R2_FB1               (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F9R2_FB2               (1 <<  2) /* 00000004: Filter bits */
@@ -1227,7 +1227,7 @@
 #define CH32V_CAN1_F9R2_FB30              (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F9R2_FB31              (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F10R1_OFFSET           0x0290
-#define CH32V_CAN1_F10R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F10R1_OFFSET)
+#define CH32V_CAN1_F10R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F10R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F10R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F10R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F10R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1261,7 +1261,7 @@
 #define CH32V_CAN1_F10R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F10R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F10R2_OFFSET           0x0294
-#define CH32V_CAN1_F10R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F10R2_OFFSET)
+#define CH32V_CAN1_F10R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F10R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F10R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F10R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F10R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1295,7 +1295,7 @@
 #define CH32V_CAN1_F10R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F10R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F11R1_OFFSET           0x0298
-#define CH32V_CAN1_F11R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F11R1_OFFSET)
+#define CH32V_CAN1_F11R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F11R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F11R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F11R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F11R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1329,7 +1329,7 @@
 #define CH32V_CAN1_F11R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F11R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F11R2_OFFSET           0x029c
-#define CH32V_CAN1_F11R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F11R2_OFFSET)
+#define CH32V_CAN1_F11R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F11R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F11R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F11R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F11R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1363,7 +1363,7 @@
 #define CH32V_CAN1_F11R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F11R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F12R1_OFFSET           0x02a0
-#define CH32V_CAN1_F12R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F12R1_OFFSET)
+#define CH32V_CAN1_F12R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F12R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F12R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F12R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F12R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1397,7 +1397,7 @@
 #define CH32V_CAN1_F12R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F12R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F12R2_OFFSET           0x02a4
-#define CH32V_CAN1_F12R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F12R2_OFFSET)
+#define CH32V_CAN1_F12R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F12R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F12R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F12R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F12R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1431,7 +1431,7 @@
 #define CH32V_CAN1_F12R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F12R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F13R1_OFFSET           0x02a8
-#define CH32V_CAN1_F13R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F13R1_OFFSET)
+#define CH32V_CAN1_F13R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F13R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F13R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F13R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F13R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1465,7 +1465,7 @@
 #define CH32V_CAN1_F13R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F13R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F13R2_OFFSET           0x02ac
-#define CH32V_CAN1_F13R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F13R2_OFFSET)
+#define CH32V_CAN1_F13R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F13R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F13R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F13R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F13R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1499,7 +1499,7 @@
 #define CH32V_CAN1_F13R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F13R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F14R1_OFFSET           0x02b0
-#define CH32V_CAN1_F14R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F14R1_OFFSET)
+#define CH32V_CAN1_F14R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F14R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F14R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F14R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F14R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1533,7 +1533,7 @@
 #define CH32V_CAN1_F14R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F14R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F14R2_OFFSET           0x02b4
-#define CH32V_CAN1_F14R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F14R2_OFFSET)
+#define CH32V_CAN1_F14R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F14R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F14R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F14R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F14R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1567,7 +1567,7 @@
 #define CH32V_CAN1_F14R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F14R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F15R1_OFFSET           0x02b8
-#define CH32V_CAN1_F15R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F15R1_OFFSET)
+#define CH32V_CAN1_F15R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F15R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F15R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F15R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F15R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1601,7 +1601,7 @@
 #define CH32V_CAN1_F15R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F15R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F15R2_OFFSET           0x02bc
-#define CH32V_CAN1_F15R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F15R2_OFFSET)
+#define CH32V_CAN1_F15R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F15R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F15R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F15R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F15R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1635,7 +1635,7 @@
 #define CH32V_CAN1_F15R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F15R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F16R1_OFFSET           0x02c0
-#define CH32V_CAN1_F16R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F16R1_OFFSET)
+#define CH32V_CAN1_F16R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F16R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F16R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F16R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F16R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1669,7 +1669,7 @@
 #define CH32V_CAN1_F16R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F16R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F16R2_OFFSET           0x02c4
-#define CH32V_CAN1_F16R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F16R2_OFFSET)
+#define CH32V_CAN1_F16R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F16R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F16R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F16R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F16R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1703,7 +1703,7 @@
 #define CH32V_CAN1_F16R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F16R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F17R1_OFFSET           0x02c8
-#define CH32V_CAN1_F17R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F17R1_OFFSET)
+#define CH32V_CAN1_F17R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F17R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F17R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F17R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F17R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1737,7 +1737,7 @@
 #define CH32V_CAN1_F17R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F17R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F17R2_OFFSET           0x02cc
-#define CH32V_CAN1_F17R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F17R2_OFFSET)
+#define CH32V_CAN1_F17R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F17R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F17R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F17R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F17R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1771,7 +1771,7 @@
 #define CH32V_CAN1_F17R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F17R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F18R1_OFFSET           0x02d0
-#define CH32V_CAN1_F18R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F18R1_OFFSET)
+#define CH32V_CAN1_F18R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F18R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F18R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F18R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F18R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1805,7 +1805,7 @@
 #define CH32V_CAN1_F18R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F18R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F18R2_OFFSET           0x02d4
-#define CH32V_CAN1_F18R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F18R2_OFFSET)
+#define CH32V_CAN1_F18R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F18R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F18R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F18R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F18R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1839,7 +1839,7 @@
 #define CH32V_CAN1_F18R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F18R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F19R1_OFFSET           0x02d8
-#define CH32V_CAN1_F19R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F19R1_OFFSET)
+#define CH32V_CAN1_F19R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F19R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F19R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F19R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F19R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1873,7 +1873,7 @@
 #define CH32V_CAN1_F19R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F19R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F19R2_OFFSET           0x02dc
-#define CH32V_CAN1_F19R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F19R2_OFFSET)
+#define CH32V_CAN1_F19R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F19R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F19R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F19R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F19R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1907,7 +1907,7 @@
 #define CH32V_CAN1_F19R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F19R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F20R1_OFFSET           0x02e0
-#define CH32V_CAN1_F20R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F20R1_OFFSET)
+#define CH32V_CAN1_F20R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F20R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F20R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F20R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F20R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1941,7 +1941,7 @@
 #define CH32V_CAN1_F20R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F20R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F20R2_OFFSET           0x02e4
-#define CH32V_CAN1_F20R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F20R2_OFFSET)
+#define CH32V_CAN1_F20R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F20R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F20R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F20R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F20R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -1975,7 +1975,7 @@
 #define CH32V_CAN1_F20R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F20R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F21R1_OFFSET           0x02e8
-#define CH32V_CAN1_F21R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F21R1_OFFSET)
+#define CH32V_CAN1_F21R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F21R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F21R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F21R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F21R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2009,7 +2009,7 @@
 #define CH32V_CAN1_F21R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F21R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F21R2_OFFSET           0x02ec
-#define CH32V_CAN1_F21R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F21R2_OFFSET)
+#define CH32V_CAN1_F21R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F21R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F21R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F21R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F21R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2043,7 +2043,7 @@
 #define CH32V_CAN1_F21R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F21R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F22R1_OFFSET           0x02f0
-#define CH32V_CAN1_F22R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F22R1_OFFSET)
+#define CH32V_CAN1_F22R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F22R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F22R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F22R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F22R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2077,7 +2077,7 @@
 #define CH32V_CAN1_F22R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F22R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F22R2_OFFSET           0x02f4
-#define CH32V_CAN1_F22R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F22R2_OFFSET)
+#define CH32V_CAN1_F22R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F22R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F22R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F22R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F22R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2111,7 +2111,7 @@
 #define CH32V_CAN1_F22R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F22R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F23R1_OFFSET           0x02f8
-#define CH32V_CAN1_F23R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F23R1_OFFSET)
+#define CH32V_CAN1_F23R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F23R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F23R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F23R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F23R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2145,7 +2145,7 @@
 #define CH32V_CAN1_F23R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F23R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F23R2_OFFSET           0x02fc
-#define CH32V_CAN1_F23R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F23R2_OFFSET)
+#define CH32V_CAN1_F23R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F23R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F23R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F23R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F23R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2179,7 +2179,7 @@
 #define CH32V_CAN1_F23R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F23R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F24R1_OFFSET           0x0300
-#define CH32V_CAN1_F24R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F24R1_OFFSET)
+#define CH32V_CAN1_F24R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F24R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F24R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F24R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F24R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2213,7 +2213,7 @@
 #define CH32V_CAN1_F24R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F24R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F24R2_OFFSET           0x0304
-#define CH32V_CAN1_F24R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F24R2_OFFSET)
+#define CH32V_CAN1_F24R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F24R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F24R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F24R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F24R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2247,7 +2247,7 @@
 #define CH32V_CAN1_F24R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F24R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F25R1_OFFSET           0x0308
-#define CH32V_CAN1_F25R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F25R1_OFFSET)
+#define CH32V_CAN1_F25R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F25R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F25R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F25R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F25R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2281,7 +2281,7 @@
 #define CH32V_CAN1_F25R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F25R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F25R2_OFFSET           0x030c
-#define CH32V_CAN1_F25R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F25R2_OFFSET)
+#define CH32V_CAN1_F25R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F25R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F25R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F25R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F25R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2315,7 +2315,7 @@
 #define CH32V_CAN1_F25R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F25R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F26R1_OFFSET           0x0310
-#define CH32V_CAN1_F26R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F26R1_OFFSET)
+#define CH32V_CAN1_F26R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F26R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F26R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F26R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F26R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2349,7 +2349,7 @@
 #define CH32V_CAN1_F26R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F26R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F26R2_OFFSET           0x0314
-#define CH32V_CAN1_F26R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F26R2_OFFSET)
+#define CH32V_CAN1_F26R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F26R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F26R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F26R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F26R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2383,7 +2383,7 @@
 #define CH32V_CAN1_F26R2_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F26R2_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F27R1_OFFSET           0x0318
-#define CH32V_CAN1_F27R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F27R1_OFFSET)
+#define CH32V_CAN1_F27R1                  (CH32V_CAN1_BASE + CH32V_CAN1_F27R1_OFFSET) /* read-write */
 #define CH32V_CAN1_F27R1_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F27R1_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F27R1_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2417,7 +2417,7 @@
 #define CH32V_CAN1_F27R1_FB30             (1 << 30) /* 40000000: Filter bits */
 #define CH32V_CAN1_F27R1_FB31             (1 << 31) /* 80000000: Filter bits */
 #define CH32V_CAN1_F27R2_OFFSET           0x031c
-#define CH32V_CAN1_F27R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F27R2_OFFSET)
+#define CH32V_CAN1_F27R2                  (CH32V_CAN1_BASE + CH32V_CAN1_F27R2_OFFSET) /* read-write */
 #define CH32V_CAN1_F27R2_FB0              (1 <<  0) /* 00000001: Filter bits */
 #define CH32V_CAN1_F27R2_FB1              (1 <<  1) /* 00000002: Filter bits */
 #define CH32V_CAN1_F27R2_FB2              (1 <<  2) /* 00000004: Filter bits */
@@ -2454,7 +2454,7 @@
 /* ETHERNET_MAC - Ethernet: media access control */
 #define CH32V_ETHERNET_MAC_BASE           0x40028000
 #define CH32V_ETHERNET_MAC_MACCR_OFFSET   0x0000
-#define CH32V_ETHERNET_MAC_MACCR          (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACCR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACCR          (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACCR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACCR_TCES     (1 <<  0) /* 00000001: Send clock selection bit */
 #define CH32V_ETHERNET_MAC_MACCR_TCF      (1 <<  1) /* 00000002: Send clock reversal */
 #define CH32V_ETHERNET_MAC_MACCR_RE       (1 <<  2) /* 00000004: Receiver enable */
@@ -2479,7 +2479,7 @@
 #define CH32V_ETHERNET_MAC_MACCR_TCD      (0x7 << 29) /* e0000000: SEND clock delay */
 #define CH32V_ETHERNET_MAC_MACCR_TCD_MASK (0x7 << 29)
 #define CH32V_ETHERNET_MAC_MACFFR_OFFSET  0x0004
-#define CH32V_ETHERNET_MAC_MACFFR         (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACFFR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACFFR         (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACFFR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACFFR_PM      (1 <<  0) /* 00000001: Promiscuous mode */
 #define CH32V_ETHERNET_MAC_MACFFR_HU      (1 <<  1) /* 00000002: Hash unicast */
 #define CH32V_ETHERNET_MAC_MACFFR_HM      (1 <<  2) /* 00000004: Hash multicast */
@@ -2493,15 +2493,15 @@
 #define CH32V_ETHERNET_MAC_MACFFR_HPF     (1 << 10) /* 00000400: Hash or perfect filter */
 #define CH32V_ETHERNET_MAC_MACFFR_RA      (1 << 31) /* 80000000: Receive all */
 #define CH32V_ETHERNET_MAC_MACHTHR_OFFSET 0x0008
-#define CH32V_ETHERNET_MAC_MACHTHR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACHTHR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACHTHR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACHTHR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACHTHR_HTH    (0xffffffff << 0) /* ffffffff: Hash table high */
 #define CH32V_ETHERNET_MAC_MACHTHR_HTH_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MAC_MACHTLR_OFFSET 0x000c
-#define CH32V_ETHERNET_MAC_MACHTLR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACHTLR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACHTLR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACHTLR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACHTLR_HTL    (0xffffffff << 0) /* ffffffff: Hash table low */
 #define CH32V_ETHERNET_MAC_MACHTLR_HTL_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MAC_MACMIIAR_OFFSET 0x0010
-#define CH32V_ETHERNET_MAC_MACMIIAR       (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACMIIAR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACMIIAR       (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACMIIAR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACMIIAR_MB    (1 <<  0) /* 00000001: MII busy */
 #define CH32V_ETHERNET_MAC_MACMIIAR_MW    (1 <<  1) /* 00000002: MII write */
 #define CH32V_ETHERNET_MAC_MACMIIAR_CR    (0x7 << 2) /* 0000001c: Clock range */
@@ -2511,11 +2511,11 @@
 #define CH32V_ETHERNET_MAC_MACMIIAR_PA    (0x1f << 11) /* 0000f800: PHY address */
 #define CH32V_ETHERNET_MAC_MACMIIAR_PA_MASK (0x1f << 11)
 #define CH32V_ETHERNET_MAC_MACMIIDR_OFFSET 0x0014
-#define CH32V_ETHERNET_MAC_MACMIIDR       (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACMIIDR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACMIIDR       (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACMIIDR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACMIIDR_MD    (0xffff << 0) /* 0000ffff: MII data */
 #define CH32V_ETHERNET_MAC_MACMIIDR_MD_MASK (0xffff << 0)
 #define CH32V_ETHERNET_MAC_MACFCR_OFFSET  0x0018
-#define CH32V_ETHERNET_MAC_MACFCR         (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACFCR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACFCR         (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACFCR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACFCR_FCB_BPA (1 <<  0) /* 00000001: Flow control busy/back pressure activate */
 #define CH32V_ETHERNET_MAC_MACFCR_TFCE    (1 <<  1) /* 00000002: Transmit flow control enable */
 #define CH32V_ETHERNET_MAC_MACFCR_RFCE    (1 <<  2) /* 00000004: Receive flow control enable */
@@ -2526,14 +2526,14 @@
 #define CH32V_ETHERNET_MAC_MACFCR_PT      (0xffff << 16) /* ffff0000: Pass control frames */
 #define CH32V_ETHERNET_MAC_MACFCR_PT_MASK (0xffff << 16)
 #define CH32V_ETHERNET_MAC_MACVLANTR_OFFSET 0x001c
-#define CH32V_ETHERNET_MAC_MACVLANTR      (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACVLANTR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACVLANTR      (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACVLANTR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACVLANTR_VLANTI (0xffff << 0) /* 0000ffff: VLAN tag identifier (for receive frames) */
 #define CH32V_ETHERNET_MAC_MACVLANTR_VLANTI_MASK (0xffff << 0)
 #define CH32V_ETHERNET_MAC_MACVLANTR_VLANTC (1 << 16) /* 00010000: 12-bit VLAN tag comparison */
 #define CH32V_ETHERNET_MAC_MACRWUFFR_OFFSET 0x0028
-#define CH32V_ETHERNET_MAC_MACRWUFFR      (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACRWUFFR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACRWUFFR      (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACRWUFFR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACPMTCSR_OFFSET 0x002c
-#define CH32V_ETHERNET_MAC_MACPMTCSR      (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACPMTCSR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACPMTCSR      (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACPMTCSR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACPMTCSR_PD   (1 <<  0) /* 00000001: Power down */
 #define CH32V_ETHERNET_MAC_MACPMTCSR_MPE  (1 <<  1) /* 00000002: Magic Packet enable */
 #define CH32V_ETHERNET_MAC_MACPMTCSR_WFE  (1 <<  2) /* 00000004: Wakeup frame enable */
@@ -2542,14 +2542,14 @@
 #define CH32V_ETHERNET_MAC_MACPMTCSR_GU   (1 <<  9) /* 00000200: Global unicast */
 #define CH32V_ETHERNET_MAC_MACPMTCSR_WFFRPR (1 << 31) /* 80000000: Wakeup frame filter register pointer reset */
 #define CH32V_ETHERNET_MAC_MACSR_OFFSET   0x0038
-#define CH32V_ETHERNET_MAC_MACSR          (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACSR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACSR          (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACSR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACSR_PMTS     (1 <<  3) /* 00000008: PMT status */
 #define CH32V_ETHERNET_MAC_MACSR_MMCS     (1 <<  4) /* 00000010: MMC status */
 #define CH32V_ETHERNET_MAC_MACSR_MMCRS    (1 <<  5) /* 00000020: MMC receive status */
 #define CH32V_ETHERNET_MAC_MACSR_MMCTS    (1 <<  6) /* 00000040: MMC transmit status */
 #define CH32V_ETHERNET_MAC_MACSR_TSTS     (1 <<  9) /* 00000200: Time stamp trigger status */
 #define CH32V_ETHERNET_MAC_MACIMR_OFFSET  0x003c
-#define CH32V_ETHERNET_MAC_MACIMR         (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACIMR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACIMR         (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACIMR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACIMR_PMTIM   (1 <<  3) /* 00000008: PMT interrupt mask */
 #define CH32V_ETHERNET_MAC_MACIMR_TSTIM   (1 <<  9) /* 00000200: Time stamp trigger interrupt mask */
 #define CH32V_ETHERNET_MAC_MACA0HR_OFFSET 0x0040
@@ -2558,11 +2558,11 @@
 #define CH32V_ETHERNET_MAC_MACA0HR_MACA0H_MASK (0xffff << 0)
 #define CH32V_ETHERNET_MAC_MACA0HR_MO     (1 << 31) /* 80000000: Always 1 */
 #define CH32V_ETHERNET_MAC_MACA0LR_OFFSET 0x0044
-#define CH32V_ETHERNET_MAC_MACA0LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA0LR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACA0LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA0LR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACA0LR_MACA0L (0xffffffff << 0) /* ffffffff: MAC address0 low */
 #define CH32V_ETHERNET_MAC_MACA0LR_MACA0L_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MAC_MACA1HR_OFFSET 0x0048
-#define CH32V_ETHERNET_MAC_MACA1HR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA1HR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACA1HR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA1HR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACA1HR_MACA1H (0xffff << 0) /* 0000ffff: MAC address1 high */
 #define CH32V_ETHERNET_MAC_MACA1HR_MACA1H_MASK (0xffff << 0)
 #define CH32V_ETHERNET_MAC_MACA1HR_MBC    (0x3f << 24) /* 3f000000: Mask byte control */
@@ -2570,11 +2570,11 @@
 #define CH32V_ETHERNET_MAC_MACA1HR_SA     (1 << 30) /* 40000000: Source address */
 #define CH32V_ETHERNET_MAC_MACA1HR_AE     (1 << 31) /* 80000000: Address enable */
 #define CH32V_ETHERNET_MAC_MACA1LR_OFFSET 0x004c
-#define CH32V_ETHERNET_MAC_MACA1LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA1LR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACA1LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA1LR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACA1LR_MACA1L (0xffffffff << 0) /* ffffffff: MAC address1 low */
 #define CH32V_ETHERNET_MAC_MACA1LR_MACA1L_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MAC_MACA2HR_OFFSET 0x0050
-#define CH32V_ETHERNET_MAC_MACA2HR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA2HR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACA2HR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA2HR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACA2HR_ETH_MACA2HR (0xffff << 0) /* 0000ffff: Ethernet MAC address 2 high register */
 #define CH32V_ETHERNET_MAC_MACA2HR_ETH_MACA2HR_MASK (0xffff << 0)
 #define CH32V_ETHERNET_MAC_MACA2HR_MBC    (0x3f << 24) /* 3f000000: Mask byte control */
@@ -2582,11 +2582,11 @@
 #define CH32V_ETHERNET_MAC_MACA2HR_SA     (1 << 30) /* 40000000: Source address */
 #define CH32V_ETHERNET_MAC_MACA2HR_AE     (1 << 31) /* 80000000: Address enable */
 #define CH32V_ETHERNET_MAC_MACA2LR_OFFSET 0x0054
-#define CH32V_ETHERNET_MAC_MACA2LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA2LR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACA2LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA2LR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACA2LR_MACA2L (0x7fffffff << 0) /* 7fffffff: MAC address2 low */
 #define CH32V_ETHERNET_MAC_MACA2LR_MACA2L_MASK (0x7fffffff << 0)
 #define CH32V_ETHERNET_MAC_MACA3HR_OFFSET 0x0058
-#define CH32V_ETHERNET_MAC_MACA3HR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA3HR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACA3HR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA3HR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACA3HR_MACA3H (0xffff << 0) /* 0000ffff: MAC address3 high */
 #define CH32V_ETHERNET_MAC_MACA3HR_MACA3H_MASK (0xffff << 0)
 #define CH32V_ETHERNET_MAC_MACA3HR_MBC    (0x3f << 24) /* 3f000000: Mask byte control */
@@ -2594,67 +2594,67 @@
 #define CH32V_ETHERNET_MAC_MACA3HR_SA     (1 << 30) /* 40000000: Source address */
 #define CH32V_ETHERNET_MAC_MACA3HR_AE     (1 << 31) /* 80000000: Address enable */
 #define CH32V_ETHERNET_MAC_MACA3LR_OFFSET 0x005c
-#define CH32V_ETHERNET_MAC_MACA3LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA3LR_OFFSET)
+#define CH32V_ETHERNET_MAC_MACA3LR        (CH32V_ETHERNET_MAC_BASE + CH32V_ETHERNET_MAC_MACA3LR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MAC_MACA3LR_MBCA3L (0xffffffff << 0) /* ffffffff: MAC address3 low */
 #define CH32V_ETHERNET_MAC_MACA3LR_MBCA3L_MASK (0xffffffff << 0)
 
 /* ETHERNET_MMC - Ethernet: MAC management counters */
 #define CH32V_ETHERNET_MMC_BASE           0x40028100
 #define CH32V_ETHERNET_MMC_MMCCR_OFFSET   0x0000
-#define CH32V_ETHERNET_MMC_MMCCR          (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCCR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCCR          (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCCR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MMC_MMCCR_CR       (1 <<  0) /* 00000001: Counter reset */
 #define CH32V_ETHERNET_MMC_MMCCR_CSR      (1 <<  1) /* 00000002: Counter stop rollover */
 #define CH32V_ETHERNET_MMC_MMCCR_ROR      (1 <<  2) /* 00000004: Reset on read */
 #define CH32V_ETHERNET_MMC_MMCCR_MCF      (1 << 31) /* 80000000: MMC counter freeze */
 #define CH32V_ETHERNET_MMC_MMCRIR_OFFSET  0x0004
-#define CH32V_ETHERNET_MMC_MMCRIR         (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRIR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCRIR         (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRIR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MMC_MMCRIR_RFCES   (1 <<  5) /* 00000020: Received frames CRC error status */
 #define CH32V_ETHERNET_MMC_MMCRIR_RFAES   (1 <<  6) /* 00000040: Received frames alignment error status */
 #define CH32V_ETHERNET_MMC_MMCRIR_RGUFS   (1 << 17) /* 00020000: Received Good Unicast Frames Status */
 #define CH32V_ETHERNET_MMC_MMCTIR_OFFSET  0x0008
-#define CH32V_ETHERNET_MMC_MMCTIR         (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTIR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCTIR         (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTIR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MMC_MMCTIR_TGFSCS  (1 << 14) /* 00004000: Transmitted good frames single collision status */
 #define CH32V_ETHERNET_MMC_MMCTIR_TGFMSCS (1 << 15) /* 00008000: Transmitted good frames more single collision status */
 #define CH32V_ETHERNET_MMC_MMCTIR_TGFS    (1 << 21) /* 00200000: Transmitted good frames status */
 #define CH32V_ETHERNET_MMC_MMCRIMR_OFFSET 0x000c
-#define CH32V_ETHERNET_MMC_MMCRIMR        (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRIMR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCRIMR        (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRIMR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MMC_MMCRIMR_RFCEM  (1 <<  5) /* 00000020: Received frame CRC error mask */
 #define CH32V_ETHERNET_MMC_MMCRIMR_RFAEM  (1 <<  6) /* 00000040: Received frames alignment error mask */
 #define CH32V_ETHERNET_MMC_MMCRIMR_RGUFM  (1 << 17) /* 00020000: Received good unicast frames mask */
 #define CH32V_ETHERNET_MMC_MMCTIMR_OFFSET 0x0010
-#define CH32V_ETHERNET_MMC_MMCTIMR        (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTIMR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCTIMR        (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTIMR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_MMC_MMCTIMR_TGFSCM (1 << 14) /* 00004000: Transmitted good frames single collision mask */
 #define CH32V_ETHERNET_MMC_MMCTIMR_TGFMSCM (1 << 15) /* 00008000: Transmitted good frames more single collision mask */
 #define CH32V_ETHERNET_MMC_MMCTIMR_TGFM   (1 << 21) /* 00200000: Transmitted good frames mask */
 #define CH32V_ETHERNET_MMC_MMCTGFSCCR_OFFSET 0x004c
-#define CH32V_ETHERNET_MMC_MMCTGFSCCR     (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTGFSCCR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCTGFSCCR     (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTGFSCCR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_MMC_MMCTGFSCCR_TGFSCC (0xffffffff << 0) /* ffffffff: Transmitted good frames after a single collision counter */
 #define CH32V_ETHERNET_MMC_MMCTGFSCCR_TGFSCC_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MMC_MMCTGFMSCCR_OFFSET 0x0050
-#define CH32V_ETHERNET_MMC_MMCTGFMSCCR    (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTGFMSCCR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCTGFMSCCR    (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTGFMSCCR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_MMC_MMCTGFMSCCR_TGFMSCC (0xffffffff << 0) /* ffffffff: Transmitted good frames after more than a single collision counter */
 #define CH32V_ETHERNET_MMC_MMCTGFMSCCR_TGFMSCC_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MMC_MMCTGFCR_OFFSET 0x0068
-#define CH32V_ETHERNET_MMC_MMCTGFCR       (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTGFCR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCTGFCR       (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCTGFCR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_MMC_MMCTGFCR_TGFC  (0xffffffff << 0) /* ffffffff: Transmitted good frames counter */
 #define CH32V_ETHERNET_MMC_MMCTGFCR_TGFC_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MMC_MMCRFCECR_OFFSET 0x0094
-#define CH32V_ETHERNET_MMC_MMCRFCECR      (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRFCECR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCRFCECR      (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRFCECR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_MMC_MMCRFCECR_RFCFC (0xffffffff << 0) /* ffffffff: Received frames with CRC error counter */
 #define CH32V_ETHERNET_MMC_MMCRFCECR_RFCFC_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MMC_MMCRFAECR_OFFSET 0x0098
-#define CH32V_ETHERNET_MMC_MMCRFAECR      (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRFAECR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCRFAECR      (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRFAECR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_MMC_MMCRFAECR_RFAEC (0xffffffff << 0) /* ffffffff: Received frames with alignment error counter */
 #define CH32V_ETHERNET_MMC_MMCRFAECR_RFAEC_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_MMC_MMCRGUFCR_OFFSET 0x00c4
-#define CH32V_ETHERNET_MMC_MMCRGUFCR      (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRGUFCR_OFFSET)
+#define CH32V_ETHERNET_MMC_MMCRGUFCR      (CH32V_ETHERNET_MMC_BASE + CH32V_ETHERNET_MMC_MMCRGUFCR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_MMC_MMCRGUFCR_RGUFC (0xffffffff << 0) /* ffffffff: Received good unicast frames counter */
 #define CH32V_ETHERNET_MMC_MMCRGUFCR_RGUFC_MASK (0xffffffff << 0)
 
 /* ETHERNET_PTP - Ethernet: Precision time protocol */
 #define CH32V_ETHERNET_PTP_BASE           0x40028700
 #define CH32V_ETHERNET_PTP_PTPTSCR_OFFSET 0x0000
-#define CH32V_ETHERNET_PTP_PTPTSCR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSCR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTSCR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSCR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_PTP_PTPTSCR_TSE    (1 <<  0) /* 00000001: Time stamp enable */
 #define CH32V_ETHERNET_PTP_PTPTSCR_TSFCU  (1 <<  1) /* 00000002: Time stamp fine or coarse update */
 #define CH32V_ETHERNET_PTP_PTPTSCR_TSSTI  (1 <<  2) /* 00000004: Time stamp system time initialize */
@@ -2662,44 +2662,44 @@
 #define CH32V_ETHERNET_PTP_PTPTSCR_TSITE  (1 <<  4) /* 00000010: Time stamp interrupt trigger enable */
 #define CH32V_ETHERNET_PTP_PTPTSCR_TSARU  (1 <<  5) /* 00000020: Time stamp addend register update */
 #define CH32V_ETHERNET_PTP_PTPSSIR_OFFSET 0x0004
-#define CH32V_ETHERNET_PTP_PTPSSIR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPSSIR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPSSIR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPSSIR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_PTP_PTPSSIR_STSSI  (0xff << 0) /* 000000ff: System time subsecond increment */
 #define CH32V_ETHERNET_PTP_PTPSSIR_STSSI_MASK (0xff << 0)
 #define CH32V_ETHERNET_PTP_PTPTSHR_OFFSET 0x0008
-#define CH32V_ETHERNET_PTP_PTPTSHR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSHR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTSHR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSHR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_PTP_PTPTSHR_STS    (0xffffffff << 0) /* ffffffff: System time second */
 #define CH32V_ETHERNET_PTP_PTPTSHR_STS_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_PTP_PTPTSLR_OFFSET 0x000c
-#define CH32V_ETHERNET_PTP_PTPTSLR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSLR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTSLR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSLR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_PTP_PTPTSLR_STSS   (0x7fffffff << 0) /* 7fffffff: System time subseconds */
 #define CH32V_ETHERNET_PTP_PTPTSLR_STSS_MASK (0x7fffffff << 0)
 #define CH32V_ETHERNET_PTP_PTPTSLR_STPNS  (1 << 31) /* 80000000: System time positive or negative sign */
 #define CH32V_ETHERNET_PTP_PTPTSHUR_OFFSET 0x0010
-#define CH32V_ETHERNET_PTP_PTPTSHUR       (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSHUR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTSHUR       (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSHUR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_PTP_PTPTSHUR_TSUS  (0xffffffff << 0) /* ffffffff: Time stamp update second */
 #define CH32V_ETHERNET_PTP_PTPTSHUR_TSUS_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_PTP_PTPTSLUR_OFFSET 0x0014
-#define CH32V_ETHERNET_PTP_PTPTSLUR       (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSLUR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTSLUR       (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSLUR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_PTP_PTPTSLUR_TSUSS (0x7fffffff << 0) /* 7fffffff: Time stamp update subseconds */
 #define CH32V_ETHERNET_PTP_PTPTSLUR_TSUSS_MASK (0x7fffffff << 0)
 #define CH32V_ETHERNET_PTP_PTPTSLUR_TSUPNS (1 << 31) /* 80000000: Time stamp update positive or negative sign */
 #define CH32V_ETHERNET_PTP_PTPTSAR_OFFSET 0x0018
-#define CH32V_ETHERNET_PTP_PTPTSAR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSAR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTSAR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTSAR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_PTP_PTPTSAR_TSA    (0xffffffff << 0) /* ffffffff: Time stamp addend */
 #define CH32V_ETHERNET_PTP_PTPTSAR_TSA_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_PTP_PTPTTHR_OFFSET 0x001c
-#define CH32V_ETHERNET_PTP_PTPTTHR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTTHR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTTHR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTTHR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_PTP_PTPTTHR_TTSH   (0xffffffff << 0) /* ffffffff: Target time stamp high */
 #define CH32V_ETHERNET_PTP_PTPTTHR_TTSH_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_PTP_PTPTTLR_OFFSET 0x0020
-#define CH32V_ETHERNET_PTP_PTPTTLR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTTLR_OFFSET)
+#define CH32V_ETHERNET_PTP_PTPTTLR        (CH32V_ETHERNET_PTP_BASE + CH32V_ETHERNET_PTP_PTPTTLR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_PTP_PTPTTLR_TTSL   (0xffffffff << 0) /* ffffffff: Target time stamp low */
 #define CH32V_ETHERNET_PTP_PTPTTLR_TTSL_MASK (0xffffffff << 0)
 
 /* ETHERNET_DMA - Ethernet: DMA controller operation */
 #define CH32V_ETHERNET_DMA_BASE           0x40029000
 #define CH32V_ETHERNET_DMA_DMABMR_OFFSET  0x0000
-#define CH32V_ETHERNET_DMA_DMABMR         (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMABMR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMABMR         (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMABMR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_DMA_DMABMR_SR      (1 <<  0) /* 00000001: Software reset */
 #define CH32V_ETHERNET_DMA_DMABMR_DA      (1 <<  1) /* 00000002: DMA Arbitration */
 #define CH32V_ETHERNET_DMA_DMABMR_DSL     (0x1f << 2) /* 0000007c: Descriptor skip length */
@@ -2715,19 +2715,19 @@
 #define CH32V_ETHERNET_DMA_DMABMR_FPM     (1 << 24) /* 01000000: 4xPBL mode */
 #define CH32V_ETHERNET_DMA_DMABMR_AAB     (1 << 25) /* 02000000: Address-aligned beats */
 #define CH32V_ETHERNET_DMA_DMATPDR_OFFSET 0x0004
-#define CH32V_ETHERNET_DMA_DMATPDR        (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMATPDR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMATPDR        (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMATPDR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_DMA_DMATPDR_TPD    (0xffffffff << 0) /* ffffffff: Transmit poll demand */
 #define CH32V_ETHERNET_DMA_DMATPDR_TPD_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_DMA_DMARPDR_OFFSET 0x0008
-#define CH32V_ETHERNET_DMA_DMARPDR        (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMARPDR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMARPDR        (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMARPDR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_DMA_DMARPDR_RPD    (0xffffffff << 0) /* ffffffff: Receive poll demand */
 #define CH32V_ETHERNET_DMA_DMARPDR_RPD_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_DMA_DMARDLAR_OFFSET 0x000c
-#define CH32V_ETHERNET_DMA_DMARDLAR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMARDLAR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMARDLAR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMARDLAR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_DMA_DMARDLAR_SRL   (0xffffffff << 0) /* ffffffff: Start of receive list */
 #define CH32V_ETHERNET_DMA_DMARDLAR_SRL_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_DMA_DMATDLAR_OFFSET 0x0010
-#define CH32V_ETHERNET_DMA_DMATDLAR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMATDLAR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMATDLAR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMATDLAR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_DMA_DMATDLAR_STL   (0xffffffff << 0) /* ffffffff: Start of transmit list */
 #define CH32V_ETHERNET_DMA_DMATDLAR_STL_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_DMA_DMASR_OFFSET   0x0014
@@ -2758,7 +2758,7 @@
 #define CH32V_ETHERNET_DMA_DMASR_TSTS     (1 << 29) /* 20000000: Time stamp trigger status */
 #define CH32V_ETHERNET_DMA_DMASR_IPLS     (1 << 31) /* 80000000: 10MPHY Physical layer variation */
 #define CH32V_ETHERNET_DMA_DMAOMR_OFFSET  0x0018
-#define CH32V_ETHERNET_DMA_DMAOMR         (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMAOMR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMAOMR         (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMAOMR_OFFSET) /* read-write */
 #define CH32V_ETHERNET_DMA_DMAOMR_SR      (1 <<  1) /* 00000002: SR */
 #define CH32V_ETHERNET_DMA_DMAOMR_OSF     (1 <<  2) /* 00000004: OSF */
 #define CH32V_ETHERNET_DMA_DMAOMR_RTC     (0x3 << 3) /* 00000018: RTC */
@@ -2774,7 +2774,7 @@
 #define CH32V_ETHERNET_DMA_DMAOMR_RSF     (1 << 25) /* 02000000: RSF */
 #define CH32V_ETHERNET_DMA_DMAOMR_DTCEFD  (1 << 26) /* 04000000: DTCEFD */
 #define CH32V_ETHERNET_DMA_DMAIER_OFFSET  0x001c
-#define CH32V_ETHERNET_DMA_DMAIER         (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMAIER_OFFSET)
+#define CH32V_ETHERNET_DMA_DMAIER         (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMAIER_OFFSET) /* read-write */
 #define CH32V_ETHERNET_DMA_DMAIER_TIE     (1 <<  0) /* 00000001: Transmit interrupt enable */
 #define CH32V_ETHERNET_DMA_DMAIER_TPSIE   (1 <<  1) /* 00000002: Transmit process stopped interrupt enable */
 #define CH32V_ETHERNET_DMA_DMAIER_TBUIE   (1 <<  2) /* 00000004: Transmit buffer unavailable interrupt enable */
@@ -2792,7 +2792,7 @@
 #define CH32V_ETHERNET_DMA_DMAIER_NISE    (1 << 16) /* 00010000: Normal interrupt summary enable */
 #define CH32V_ETHERNET_DMA_DMAIER_IPLE    (1 << 31) /* 80000000: 10M Physical layer connection */
 #define CH32V_ETHERNET_DMA_DMAMFBOCR_OFFSET 0x0020
-#define CH32V_ETHERNET_DMA_DMAMFBOCR      (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMAMFBOCR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMAMFBOCR      (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMAMFBOCR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_DMA_DMAMFBOCR_MFC  (0xffff << 0) /* 0000ffff: Missed frames by the controller */
 #define CH32V_ETHERNET_DMA_DMAMFBOCR_MFC_MASK (0xffff << 0)
 #define CH32V_ETHERNET_DMA_DMAMFBOCR_OMFC (1 << 16) /* 00010000: Overflow bit for missed frame counter */
@@ -2800,30 +2800,30 @@
 #define CH32V_ETHERNET_DMA_DMAMFBOCR_MFA_MASK (0x7ff << 17)
 #define CH32V_ETHERNET_DMA_DMAMFBOCR_OFOC (1 << 28) /* 10000000: Overflow bit for FIFO overflow counter */
 #define CH32V_ETHERNET_DMA_DMACHTDR_OFFSET 0x0048
-#define CH32V_ETHERNET_DMA_DMACHTDR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHTDR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMACHTDR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHTDR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_DMA_DMACHTDR_HTDAP (0xffffffff << 0) /* ffffffff: Host transmit descriptor address pointer */
 #define CH32V_ETHERNET_DMA_DMACHTDR_HTDAP_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_DMA_DMACHRDR_OFFSET 0x004c
-#define CH32V_ETHERNET_DMA_DMACHRDR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHRDR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMACHRDR       (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHRDR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_DMA_DMACHRDR_HRDAP (0xffffffff << 0) /* ffffffff: Host receive descriptor address pointer */
 #define CH32V_ETHERNET_DMA_DMACHRDR_HRDAP_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_DMA_DMACHTBAR_OFFSET 0x0050
-#define CH32V_ETHERNET_DMA_DMACHTBAR      (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHTBAR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMACHTBAR      (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHTBAR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_DMA_DMACHTBAR_HTBAP (0xffffffff << 0) /* ffffffff: Host transmit buffer address pointer */
 #define CH32V_ETHERNET_DMA_DMACHTBAR_HTBAP_MASK (0xffffffff << 0)
 #define CH32V_ETHERNET_DMA_DMACHRBAR_OFFSET 0x0054
-#define CH32V_ETHERNET_DMA_DMACHRBAR      (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHRBAR_OFFSET)
+#define CH32V_ETHERNET_DMA_DMACHRBAR      (CH32V_ETHERNET_DMA_BASE + CH32V_ETHERNET_DMA_DMACHRBAR_OFFSET) /* read-only */
 #define CH32V_ETHERNET_DMA_DMACHRBAR_HRBAP (0xffffffff << 0) /* ffffffff: Host receive buffer address pointer */
 #define CH32V_ETHERNET_DMA_DMACHRBAR_HRBAP_MASK (0xffffffff << 0)
 
 /* SDIO - Secure digital input/output interface */
 #define CH32V_SDIO_BASE                   0x40018000
 #define CH32V_SDIO_POWER_OFFSET           0x0000
-#define CH32V_SDIO_POWER                  (CH32V_SDIO_BASE + CH32V_SDIO_POWER_OFFSET)
+#define CH32V_SDIO_POWER                  (CH32V_SDIO_BASE + CH32V_SDIO_POWER_OFFSET) /* read-write */
 #define CH32V_SDIO_POWER_PWRCTRL          (0x3 << 0) /* 00000003: Power supply control bits */
 #define CH32V_SDIO_POWER_PWRCTRL_MASK     (0x3 << 0)
 #define CH32V_SDIO_CLKCR_OFFSET           0x0004
-#define CH32V_SDIO_CLKCR                  (CH32V_SDIO_BASE + CH32V_SDIO_CLKCR_OFFSET)
+#define CH32V_SDIO_CLKCR                  (CH32V_SDIO_BASE + CH32V_SDIO_CLKCR_OFFSET) /* read-write */
 #define CH32V_SDIO_CLKCR_CLKDIV           (0xff << 0) /* 000000ff: Clock divide factor */
 #define CH32V_SDIO_CLKCR_CLKDIV_MASK      (0xff << 0)
 #define CH32V_SDIO_CLKCR_CLKEN            (1 <<  8) /* 00000100: Clock enable bit */
@@ -2834,11 +2834,11 @@
 #define CH32V_SDIO_CLKCR_NEGEDGE          (1 << 13) /* 00002000: SDIO_CK dephasing selection bit */
 #define CH32V_SDIO_CLKCR_HWFC_EN          (1 << 14) /* 00004000: HW Flow Control enable */
 #define CH32V_SDIO_ARG_OFFSET             0x0008
-#define CH32V_SDIO_ARG                    (CH32V_SDIO_BASE + CH32V_SDIO_ARG_OFFSET)
+#define CH32V_SDIO_ARG                    (CH32V_SDIO_BASE + CH32V_SDIO_ARG_OFFSET) /* read-write */
 #define CH32V_SDIO_ARG_CMDARG             (0xffffffff << 0) /* ffffffff: Command argument */
 #define CH32V_SDIO_ARG_CMDARG_MASK        (0xffffffff << 0)
 #define CH32V_SDIO_CMD_OFFSET             0x000c
-#define CH32V_SDIO_CMD                    (CH32V_SDIO_BASE + CH32V_SDIO_CMD_OFFSET)
+#define CH32V_SDIO_CMD                    (CH32V_SDIO_BASE + CH32V_SDIO_CMD_OFFSET) /* read-write */
 #define CH32V_SDIO_CMD_CMDINDEX           (0x3f << 0) /* 0000003f: Command index */
 #define CH32V_SDIO_CMD_CMDINDEX_MASK      (0x3f << 0)
 #define CH32V_SDIO_CMD_WAITRESP           (0x3 << 6) /* 000000c0: Wait for response bits */
@@ -2851,35 +2851,35 @@
 #define CH32V_SDIO_CMD_nIEN               (1 << 13) /* 00002000: not Interrupt Enable */
 #define CH32V_SDIO_CMD_CE_ATACMD          (1 << 14) /* 00004000: CE-ATA command */
 #define CH32V_SDIO_RESPCMD_OFFSET         0x0010
-#define CH32V_SDIO_RESPCMD                (CH32V_SDIO_BASE + CH32V_SDIO_RESPCMD_OFFSET)
+#define CH32V_SDIO_RESPCMD                (CH32V_SDIO_BASE + CH32V_SDIO_RESPCMD_OFFSET) /* read-only */
 #define CH32V_SDIO_RESPCMD_RESPCMD        (0x3f << 0) /* 0000003f: Response command index */
 #define CH32V_SDIO_RESPCMD_RESPCMD_MASK   (0x3f << 0)
 #define CH32V_SDIO_RESP1_OFFSET           0x0014
-#define CH32V_SDIO_RESP1                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP1_OFFSET)
+#define CH32V_SDIO_RESP1                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP1_OFFSET) /* read-only */
 #define CH32V_SDIO_RESP1_CARDSTATUS1      (0xffffffff << 0) /* ffffffff: Card status 1 */
 #define CH32V_SDIO_RESP1_CARDSTATUS1_MASK (0xffffffff << 0)
 #define CH32V_SDIO_RESP2_OFFSET           0x0018
-#define CH32V_SDIO_RESP2                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP2_OFFSET)
+#define CH32V_SDIO_RESP2                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP2_OFFSET) /* read-only */
 #define CH32V_SDIO_RESP2_CARDSTATUS2      (0xffffffff << 0) /* ffffffff: Card status 2 */
 #define CH32V_SDIO_RESP2_CARDSTATUS2_MASK (0xffffffff << 0)
 #define CH32V_SDIO_RESP3_OFFSET           0x001c
-#define CH32V_SDIO_RESP3                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP3_OFFSET)
+#define CH32V_SDIO_RESP3                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP3_OFFSET) /* read-only */
 #define CH32V_SDIO_RESP3_CARDSTATUS3      (0xffffffff << 0) /* ffffffff: Card status 3 */
 #define CH32V_SDIO_RESP3_CARDSTATUS3_MASK (0xffffffff << 0)
 #define CH32V_SDIO_RESP4_OFFSET           0x0020
-#define CH32V_SDIO_RESP4                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP4_OFFSET)
+#define CH32V_SDIO_RESP4                  (CH32V_SDIO_BASE + CH32V_SDIO_RESP4_OFFSET) /* read-only */
 #define CH32V_SDIO_RESP4_CARDSTATUS4      (0xffffffff << 0) /* ffffffff: Card status 4 */
 #define CH32V_SDIO_RESP4_CARDSTATUS4_MASK (0xffffffff << 0)
 #define CH32V_SDIO_DTIMER_OFFSET          0x0024
-#define CH32V_SDIO_DTIMER                 (CH32V_SDIO_BASE + CH32V_SDIO_DTIMER_OFFSET)
+#define CH32V_SDIO_DTIMER                 (CH32V_SDIO_BASE + CH32V_SDIO_DTIMER_OFFSET) /* read-write */
 #define CH32V_SDIO_DTIMER_DATATIME        (0xffffffff << 0) /* ffffffff: Data timeout period */
 #define CH32V_SDIO_DTIMER_DATATIME_MASK   (0xffffffff << 0)
 #define CH32V_SDIO_DLEN_OFFSET            0x0028
-#define CH32V_SDIO_DLEN                   (CH32V_SDIO_BASE + CH32V_SDIO_DLEN_OFFSET)
+#define CH32V_SDIO_DLEN                   (CH32V_SDIO_BASE + CH32V_SDIO_DLEN_OFFSET) /* read-write */
 #define CH32V_SDIO_DLEN_DATALENGTH        (0x1ffffff << 0) /* 01ffffff: Data length value */
 #define CH32V_SDIO_DLEN_DATALENGTH_MASK   (0x1ffffff << 0)
 #define CH32V_SDIO_DCTRL_OFFSET           0x002c
-#define CH32V_SDIO_DCTRL                  (CH32V_SDIO_BASE + CH32V_SDIO_DCTRL_OFFSET)
+#define CH32V_SDIO_DCTRL                  (CH32V_SDIO_BASE + CH32V_SDIO_DCTRL_OFFSET) /* read-write */
 #define CH32V_SDIO_DCTRL_DTEN             (1 <<  0) /* 00000001: Data transfer enabled bit */
 #define CH32V_SDIO_DCTRL_DTDIR            (1 <<  1) /* 00000002: Data transfer direction selection */
 #define CH32V_SDIO_DCTRL_DTMODE           (1 <<  2) /* 00000004: Data transfer mode selection 1: Stream or SDIO multibyte data transfer */
@@ -2891,11 +2891,11 @@
 #define CH32V_SDIO_DCTRL_RWMOD            (1 << 10) /* 00000400: Read wait mode */
 #define CH32V_SDIO_DCTRL_SDIOEN           (1 << 11) /* 00000800: SD I/O enable functions */
 #define CH32V_SDIO_DCOUNT_OFFSET          0x0030
-#define CH32V_SDIO_DCOUNT                 (CH32V_SDIO_BASE + CH32V_SDIO_DCOUNT_OFFSET)
+#define CH32V_SDIO_DCOUNT                 (CH32V_SDIO_BASE + CH32V_SDIO_DCOUNT_OFFSET) /* read-only */
 #define CH32V_SDIO_DCOUNT_DATACOUNT       (0x1ffffff << 0) /* 01ffffff: Data count value */
 #define CH32V_SDIO_DCOUNT_DATACOUNT_MASK  (0x1ffffff << 0)
 #define CH32V_SDIO_STA_OFFSET             0x0034
-#define CH32V_SDIO_STA                    (CH32V_SDIO_BASE + CH32V_SDIO_STA_OFFSET)
+#define CH32V_SDIO_STA                    (CH32V_SDIO_BASE + CH32V_SDIO_STA_OFFSET) /* read-only */
 #define CH32V_SDIO_STA_CCRCFAIL           (1 <<  0) /* 00000001: Command response received (CRC check failed) */
 #define CH32V_SDIO_STA_DCRCFAIL           (1 <<  1) /* 00000002: Data block sent/received (CRC check failed) */
 #define CH32V_SDIO_STA_CTIMEOUT           (1 <<  2) /* 00000004: Command response timeout */
@@ -2921,7 +2921,7 @@
 #define CH32V_SDIO_STA_SDIOIT             (1 << 22) /* 00400000: SDIO interrupt received */
 #define CH32V_SDIO_STA_CEATAEND           (1 << 23) /* 00800000: CE-ATA command completion signal received for CMD61 */
 #define CH32V_SDIO_ICR_OFFSET             0x0038
-#define CH32V_SDIO_ICR                    (CH32V_SDIO_BASE + CH32V_SDIO_ICR_OFFSET)
+#define CH32V_SDIO_ICR                    (CH32V_SDIO_BASE + CH32V_SDIO_ICR_OFFSET) /* read-write */
 #define CH32V_SDIO_ICR_CCRCFAILC          (1 <<  0) /* 00000001: CCRCFAIL flag clear bit */
 #define CH32V_SDIO_ICR_DCRCFAILC          (1 <<  1) /* 00000002: DCRCFAIL flag clear bit */
 #define CH32V_SDIO_ICR_CTIMEOUTC          (1 <<  2) /* 00000004: CTIMEOUT flag clear bit */
@@ -2936,7 +2936,7 @@
 #define CH32V_SDIO_ICR_SDIOITC            (1 << 22) /* 00400000: SDIOIT flag clear bit */
 #define CH32V_SDIO_ICR_CEATAENDC          (1 << 23) /* 00800000: CEATAEND flag clear bit */
 #define CH32V_SDIO_MASK_OFFSET            0x003c
-#define CH32V_SDIO_MASK                   (CH32V_SDIO_BASE + CH32V_SDIO_MASK_OFFSET)
+#define CH32V_SDIO_MASK                   (CH32V_SDIO_BASE + CH32V_SDIO_MASK_OFFSET) /* read-write */
 #define CH32V_SDIO_MASK_CCRCFAILIE        (1 <<  0) /* 00000001: Command CRC fail interrupt enable */
 #define CH32V_SDIO_MASK_DCRCFAILIE        (1 <<  1) /* 00000002: Data CRC fail interrupt enable */
 #define CH32V_SDIO_MASK_CTIMEOUTIE        (1 <<  2) /* 00000004: Command timeout interrupt enable */
@@ -2962,18 +2962,18 @@
 #define CH32V_SDIO_MASK_SDIOITIE          (1 << 22) /* 00400000: SDIO mode interrupt received interrupt enable */
 #define CH32V_SDIO_MASK_CEATENDIE         (1 << 23) /* 00800000: CE-ATA command completion signal received interrupt enable */
 #define CH32V_SDIO_FIFOCNT_OFFSET         0x0048
-#define CH32V_SDIO_FIFOCNT                (CH32V_SDIO_BASE + CH32V_SDIO_FIFOCNT_OFFSET)
+#define CH32V_SDIO_FIFOCNT                (CH32V_SDIO_BASE + CH32V_SDIO_FIFOCNT_OFFSET) /* read-only */
 #define CH32V_SDIO_FIFOCNT_FIF0COUNT      (0xffffffff << 0) /* ffffffff: Remaining number of words to be written to or read from the FIFO */
 #define CH32V_SDIO_FIFOCNT_FIF0COUNT_MASK (0xffffffff << 0)
 #define CH32V_SDIO_FIFO_OFFSET            0x0080
-#define CH32V_SDIO_FIFO                   (CH32V_SDIO_BASE + CH32V_SDIO_FIFO_OFFSET)
+#define CH32V_SDIO_FIFO                   (CH32V_SDIO_BASE + CH32V_SDIO_FIFO_OFFSET) /* read-write */
 #define CH32V_SDIO_FIFO_FIFOData          (0xffffffff << 0) /* ffffffff: Receive and transmit FIFO data */
 #define CH32V_SDIO_FIFO_FIFOData_MASK     (0xffffffff << 0)
 
 /* FSMC - Flexible static memory controller */
 #define CH32V_FSMC_BASE                   0xa0000000
 #define CH32V_FSMC_BCR1_OFFSET            0x0000
-#define CH32V_FSMC_BCR1                   (CH32V_FSMC_BASE + CH32V_FSMC_BCR1_OFFSET)
+#define CH32V_FSMC_BCR1                   (CH32V_FSMC_BASE + CH32V_FSMC_BCR1_OFFSET) /* read-write */
 #define CH32V_FSMC_BCR1_CBURSTRW          (1 << 19) /* 00080000: Write burst enable */
 #define CH32V_FSMC_BCR1_ASYNCWAIT         (1 << 15) /* 00008000: Wait signal during asynchronous transfers */
 #define CH32V_FSMC_BCR1_EXTMOD            (1 << 14) /* 00004000: Extended mode enable */
@@ -2991,7 +2991,7 @@
 #define CH32V_FSMC_BCR1_MUXEN             (1 <<  1) /* 00000002: Address/data multiplexing enable bit */
 #define CH32V_FSMC_BCR1_MBKEN             (1 <<  0) /* 00000001: Memory bank enable bit */
 #define CH32V_FSMC_BTR1_OFFSET            0x0004
-#define CH32V_FSMC_BTR1                   (CH32V_FSMC_BASE + CH32V_FSMC_BTR1_OFFSET)
+#define CH32V_FSMC_BTR1                   (CH32V_FSMC_BASE + CH32V_FSMC_BTR1_OFFSET) /* read-write */
 #define CH32V_FSMC_BTR1_ACCMOD            (0x3 << 28) /* 30000000: Access mode */
 #define CH32V_FSMC_BTR1_ACCMOD_MASK       (0x3 << 28)
 #define CH32V_FSMC_BTR1_DATLAT            (0xf << 24) /* 0f000000: Data latency for synchronous NOR Flash memory */
@@ -3007,7 +3007,7 @@
 #define CH32V_FSMC_BTR1_ADDSET            (0xf << 0) /* 0000000f: Address setup phase duration */
 #define CH32V_FSMC_BTR1_ADDSET_MASK       (0xf << 0)
 #define CH32V_FSMC_PCR2_OFFSET            0x0060
-#define CH32V_FSMC_PCR2                   (CH32V_FSMC_BASE + CH32V_FSMC_PCR2_OFFSET)
+#define CH32V_FSMC_PCR2                   (CH32V_FSMC_BASE + CH32V_FSMC_PCR2_OFFSET) /* read-write */
 #define CH32V_FSMC_PCR2_ECCPS             (0x7 << 17) /* 000e0000: ECC page size */
 #define CH32V_FSMC_PCR2_ECCPS_MASK        (0x7 << 17)
 #define CH32V_FSMC_PCR2_TAR               (0xf << 13) /* 0001e000: ALE to RE delay */
@@ -3030,7 +3030,7 @@
 #define CH32V_FSMC_SR2_ILS                (1 <<  1) /* 00000002: Interrupt high-level status */
 #define CH32V_FSMC_SR2_IRS                (1 <<  0) /* 00000001: Interrupt rising edge status */
 #define CH32V_FSMC_PMEM2_OFFSET           0x0068
-#define CH32V_FSMC_PMEM2                  (CH32V_FSMC_BASE + CH32V_FSMC_PMEM2_OFFSET)
+#define CH32V_FSMC_PMEM2                  (CH32V_FSMC_BASE + CH32V_FSMC_PMEM2_OFFSET) /* read-write */
 #define CH32V_FSMC_PMEM2_MEMHIZx          (0xff << 24) /* ff000000: Common memory x databus HiZ time */
 #define CH32V_FSMC_PMEM2_MEMHIZx_MASK     (0xff << 24)
 #define CH32V_FSMC_PMEM2_MEMHOLDx         (0xff << 16) /* 00ff0000: Common memory x hold time */
@@ -3040,7 +3040,7 @@
 #define CH32V_FSMC_PMEM2_MEMSETx          (0xff << 0) /* 000000ff: Common memory x setup time */
 #define CH32V_FSMC_PMEM2_MEMSETx_MASK     (0xff << 0)
 #define CH32V_FSMC_PATT2_OFFSET           0x006c
-#define CH32V_FSMC_PATT2                  (CH32V_FSMC_BASE + CH32V_FSMC_PATT2_OFFSET)
+#define CH32V_FSMC_PATT2                  (CH32V_FSMC_BASE + CH32V_FSMC_PATT2_OFFSET) /* read-write */
 #define CH32V_FSMC_PATT2_ATTHIZx          (0xff << 24) /* ff000000: Attribute memory x databus HiZ time */
 #define CH32V_FSMC_PATT2_ATTHIZx_MASK     (0xff << 24)
 #define CH32V_FSMC_PATT2_ATTHOLDx         (0xff << 16) /* 00ff0000: Attribute memory x hold time */
@@ -3050,11 +3050,11 @@
 #define CH32V_FSMC_PATT2_ATTSETx          (0xff << 0) /* 000000ff: Attribute memory x setup time */
 #define CH32V_FSMC_PATT2_ATTSETx_MASK     (0xff << 0)
 #define CH32V_FSMC_ECCR2_OFFSET           0x0074
-#define CH32V_FSMC_ECCR2                  (CH32V_FSMC_BASE + CH32V_FSMC_ECCR2_OFFSET)
+#define CH32V_FSMC_ECCR2                  (CH32V_FSMC_BASE + CH32V_FSMC_ECCR2_OFFSET) /* read-only */
 #define CH32V_FSMC_ECCR2_ECCx             (0xffffffff << 0) /* ffffffff: ECC result */
 #define CH32V_FSMC_ECCR2_ECCx_MASK        (0xffffffff << 0)
 #define CH32V_FSMC_BWTR1_OFFSET           0x0104
-#define CH32V_FSMC_BWTR1                  (CH32V_FSMC_BASE + CH32V_FSMC_BWTR1_OFFSET)
+#define CH32V_FSMC_BWTR1                  (CH32V_FSMC_BASE + CH32V_FSMC_BWTR1_OFFSET) /* read-write */
 #define CH32V_FSMC_BWTR1_ACCMOD           (0x3 << 28) /* 30000000: Access mode */
 #define CH32V_FSMC_BWTR1_ACCMOD_MASK      (0x3 << 28)
 #define CH32V_FSMC_BWTR1_DATLAT           (0xf << 24) /* 0f000000: Data latency for synchronous NOR Flash memory */
@@ -3071,7 +3071,7 @@
 /* DVP - Digital Video Port */
 #define CH32V_DVP_BASE                    0x50050000
 #define CH32V_DVP_CR0_OFFSET              0x0000
-#define CH32V_DVP_CR0                     (CH32V_DVP_BASE + CH32V_DVP_CR0_OFFSET)
+#define CH32V_DVP_CR0                     (CH32V_DVP_BASE + CH32V_DVP_CR0_OFFSET) /* read-write */
 #define CH32V_DVP_CR0_RB_DVP_ENABLE       (1 <<  0) /* 00000001: DVP enable */
 #define CH32V_DVP_CR0_RB_DVP_V_POLAR      (1 <<  1) /* 00000002: DVP VSYNC polarity control */
 #define CH32V_DVP_CR0_RB_DVP_H_POLAR      (1 <<  2) /* 00000004: DVP HSYNC polarity control */
@@ -3080,7 +3080,7 @@
 #define CH32V_DVP_CR0_RB_DVP_MSK_DAT_MOD_MASK (0x3 << 4)
 #define CH32V_DVP_CR0_RB_DVP_JPEG         (1 <<  6) /* 00000040: DVP JPEG mode */
 #define CH32V_DVP_CR1_OFFSET              0x0001
-#define CH32V_DVP_CR1                     (CH32V_DVP_BASE + CH32V_DVP_CR1_OFFSET)
+#define CH32V_DVP_CR1                     (CH32V_DVP_BASE + CH32V_DVP_CR1_OFFSET) /* read-write */
 #define CH32V_DVP_CR1_RB_DVP_DMA_EN       (1 <<  0) /* 00000001: DVP dma enable */
 #define CH32V_DVP_CR1_RB_DVP_ALL_CLR      (1 <<  1) /* 00000002: DVP all clear */
 #define CH32V_DVP_CR1_RB_DVP_RCV_CLR      (1 <<  2) /* 00000004: DVP receive logic clear */
@@ -3090,71 +3090,71 @@
 #define CH32V_DVP_CR1_RB_DVP_FCRC         (0x3 << 6) /* 000000c0: DVP frame capture rate control */
 #define CH32V_DVP_CR1_RB_DVP_FCRC_MASK    (0x3 << 6)
 #define CH32V_DVP_IER_OFFSET              0x0002
-#define CH32V_DVP_IER                     (CH32V_DVP_BASE + CH32V_DVP_IER_OFFSET)
+#define CH32V_DVP_IER                     (CH32V_DVP_BASE + CH32V_DVP_IER_OFFSET) /* read-write */
 #define CH32V_DVP_IER_RB_DVP_IE_STR_FRM   (1 <<  0) /* 00000001: DVP frame start interrupt enable */
 #define CH32V_DVP_IER_RB_DVP_IE_ROW_DONE  (1 <<  1) /* 00000002: DVP row received done interrupt enable */
 #define CH32V_DVP_IER_RB_DVP_IE_FRM_DONE  (1 <<  2) /* 00000004: DVP frame received done interrupt enable */
 #define CH32V_DVP_IER_RB_DVP_IE_FIFO_OV   (1 <<  3) /* 00000008: DVP receive fifo overflow interrupt enable */
 #define CH32V_DVP_IER_RB_DVP_IE_STP_FRM   (1 <<  4) /* 00000010: DVP frame stop interrupt enable */
 #define CH32V_DVP_ROW_NUM_OFFSET          0x0004
-#define CH32V_DVP_ROW_NUM                 (CH32V_DVP_BASE + CH32V_DVP_ROW_NUM_OFFSET)
+#define CH32V_DVP_ROW_NUM                 (CH32V_DVP_BASE + CH32V_DVP_ROW_NUM_OFFSET) /* read-write */
 #define CH32V_DVP_ROW_NUM_RB_DVP_ROW_NUM  (0xffff << 0) /* 0000ffff: The number of rows of frame image data */
 #define CH32V_DVP_ROW_NUM_RB_DVP_ROW_NUM_MASK (0xffff << 0)
 #define CH32V_DVP_COL_NUM_OFFSET          0x0006
-#define CH32V_DVP_COL_NUM                 (CH32V_DVP_BASE + CH32V_DVP_COL_NUM_OFFSET)
+#define CH32V_DVP_COL_NUM                 (CH32V_DVP_BASE + CH32V_DVP_COL_NUM_OFFSET) /* read-write */
 #define CH32V_DVP_COL_NUM_RB_DVP_COL_NUM  (0xffff << 0) /* 0000ffff: Number of PCLK cycles for row data */
 #define CH32V_DVP_COL_NUM_RB_DVP_COL_NUM_MASK (0xffff << 0)
 #define CH32V_DVP_DMA_BUF0_OFFSET         0x0008
-#define CH32V_DVP_DMA_BUF0                (CH32V_DVP_BASE + CH32V_DVP_DMA_BUF0_OFFSET)
+#define CH32V_DVP_DMA_BUF0                (CH32V_DVP_BASE + CH32V_DVP_DMA_BUF0_OFFSET) /* read-write */
 #define CH32V_DVP_DMA_BUF0_RB_DVP_DMA_BUF0 (0x1ffff << 0) /* 0001ffff: DMA receive address 0 */
 #define CH32V_DVP_DMA_BUF0_RB_DVP_DMA_BUF0_MASK (0x1ffff << 0)
 #define CH32V_DVP_DMA_BUF1_OFFSET         0x000c
-#define CH32V_DVP_DMA_BUF1                (CH32V_DVP_BASE + CH32V_DVP_DMA_BUF1_OFFSET)
+#define CH32V_DVP_DMA_BUF1                (CH32V_DVP_BASE + CH32V_DVP_DMA_BUF1_OFFSET) /* read-write */
 #define CH32V_DVP_DMA_BUF1_RB_DVP_DMA_BUF1 (0x1ffff << 0) /* 0001ffff: DMA receive address 1 */
 #define CH32V_DVP_DMA_BUF1_RB_DVP_DMA_BUF1_MASK (0x1ffff << 0)
 #define CH32V_DVP_IFR_OFFSET              0x0010
-#define CH32V_DVP_IFR                     (CH32V_DVP_BASE + CH32V_DVP_IFR_OFFSET)
+#define CH32V_DVP_IFR                     (CH32V_DVP_BASE + CH32V_DVP_IFR_OFFSET) /* read-write */
 #define CH32V_DVP_IFR_RB_DVP_IF_STR_FRM   (1 <<  0) /* 00000001: DVP frame start interrupt enable */
 #define CH32V_DVP_IFR_RB_DVP_IF_ROW_DONE  (1 <<  1) /* 00000002: DVP row received done interrupt enable */
 #define CH32V_DVP_IFR_RB_DVP_IF_FRM_DONE  (1 <<  2) /* 00000004: DVP frame received done interrupt enable */
 #define CH32V_DVP_IFR_RB_DVP_IF_FIFO_OV   (1 <<  3) /* 00000008: DVP receive fifo overflow interrupt enable */
 #define CH32V_DVP_IFR_RB_DVP_IF_STP_FRM   (1 <<  4) /* 00000010: DVP frame stop interrupt enable */
 #define CH32V_DVP_STATUS_OFFSET           0x0011
-#define CH32V_DVP_STATUS                  (CH32V_DVP_BASE + CH32V_DVP_STATUS_OFFSET)
+#define CH32V_DVP_STATUS                  (CH32V_DVP_BASE + CH32V_DVP_STATUS_OFFSET) /* read-only */
 #define CH32V_DVP_STATUS_RB_DVP_FIFO_RDY  (1 <<  0) /* 00000001: DVP frame start interrupt enable */
 #define CH32V_DVP_STATUS_RB_DVP_FIFO_FULL (1 <<  1) /* 00000002: DVP row received done interrupt enable */
 #define CH32V_DVP_STATUS_RB_DVP_FIFO_OV   (1 <<  2) /* 00000004: DVP frame received done interrupt enable */
 #define CH32V_DVP_STATUS_RB_DVP_MSK_FIFO_CNT (0x7 << 4) /* 00000070: DVP receive fifo overflow interrupt enable */
 #define CH32V_DVP_STATUS_RB_DVP_MSK_FIFO_CNT_MASK (0x7 << 4)
 #define CH32V_DVP_ROW_CNT_OFFSET          0x0014
-#define CH32V_DVP_ROW_CNT                 (CH32V_DVP_BASE + CH32V_DVP_ROW_CNT_OFFSET)
+#define CH32V_DVP_ROW_CNT                 (CH32V_DVP_BASE + CH32V_DVP_ROW_CNT_OFFSET) /* read-only */
 #define CH32V_DVP_ROW_CNT_RB_DVP_ROW_CNT  (0xffff << 0) /* 0000ffff: The number of rows of frame image data */
 #define CH32V_DVP_ROW_CNT_RB_DVP_ROW_CNT_MASK (0xffff << 0)
 #define CH32V_DVP_HOFFCNT_OFFSET          0x0018
-#define CH32V_DVP_HOFFCNT                 (CH32V_DVP_BASE + CH32V_DVP_HOFFCNT_OFFSET)
+#define CH32V_DVP_HOFFCNT                 (CH32V_DVP_BASE + CH32V_DVP_HOFFCNT_OFFSET) /* read-write */
 #define CH32V_DVP_HOFFCNT_RB_DVP_HOFFCNT  (0xffff << 0) /* 0000ffff: Number of PCLK cycles for row data */
 #define CH32V_DVP_HOFFCNT_RB_DVP_HOFFCNT_MASK (0xffff << 0)
 #define CH32V_DVP_VST_OFFSET              0x001a
-#define CH32V_DVP_VST                     (CH32V_DVP_BASE + CH32V_DVP_VST_OFFSET)
+#define CH32V_DVP_VST                     (CH32V_DVP_BASE + CH32V_DVP_VST_OFFSET) /* read-write */
 #define CH32V_DVP_VST_RB_DVP_VST          (0xffff << 0) /* 0000ffff: The number of lines captured by the image */
 #define CH32V_DVP_VST_RB_DVP_VST_MASK     (0xffff << 0)
 #define CH32V_DVP_CAPCNT_OFFSET           0x001c
-#define CH32V_DVP_CAPCNT                  (CH32V_DVP_BASE + CH32V_DVP_CAPCNT_OFFSET)
+#define CH32V_DVP_CAPCNT                  (CH32V_DVP_BASE + CH32V_DVP_CAPCNT_OFFSET) /* read-write */
 #define CH32V_DVP_CAPCNT_RB_DVP_CAPCNT    (0xffff << 0) /* 0000ffff: Number of PCLK cycles captured by clipping window */
 #define CH32V_DVP_CAPCNT_RB_DVP_CAPCNT_MASK (0xffff << 0)
 #define CH32V_DVP_VLINE_OFFSET            0x001e
-#define CH32V_DVP_VLINE                   (CH32V_DVP_BASE + CH32V_DVP_VLINE_OFFSET)
+#define CH32V_DVP_VLINE                   (CH32V_DVP_BASE + CH32V_DVP_VLINE_OFFSET) /* read-write */
 #define CH32V_DVP_VLINE_RB_DVP_VLINE      (0xffff << 0) /* 0000ffff: Crop the number of rows captured by window */
 #define CH32V_DVP_VLINE_RB_DVP_VLINE_MASK (0xffff << 0)
 #define CH32V_DVP_DR_OFFSET               0x0020
-#define CH32V_DVP_DR                      (CH32V_DVP_BASE + CH32V_DVP_DR_OFFSET)
+#define CH32V_DVP_DR                      (CH32V_DVP_BASE + CH32V_DVP_DR_OFFSET) /* read-only */
 #define CH32V_DVP_DR_RB_DVP_DR            (0xffffffff << 0) /* ffffffff: Prevent DMA overflow */
 #define CH32V_DVP_DR_RB_DVP_DR_MASK       (0xffffffff << 0)
 
 /* DAC - Digital to analog converter */
 #define CH32V_DAC_BASE                    0x40007400
 #define CH32V_DAC_CTLR_OFFSET             0x0000
-#define CH32V_DAC_CTLR                    (CH32V_DAC_BASE + CH32V_DAC_CTLR_OFFSET)
+#define CH32V_DAC_CTLR                    (CH32V_DAC_BASE + CH32V_DAC_CTLR_OFFSET) /* read-write */
 #define CH32V_DAC_CTLR_EN1                (1 <<  0) /* 00000001: DAC channel1 enable */
 #define CH32V_DAC_CTLR_BOFF1              (1 <<  1) /* 00000002: DAC channel1 output buffer disable */
 #define CH32V_DAC_CTLR_TEN1               (1 <<  2) /* 00000004: DAC channel1 trigger enable */
@@ -3176,64 +3176,64 @@
 #define CH32V_DAC_CTLR_MAMP2_MASK         (0xf << 24)
 #define CH32V_DAC_CTLR_DMAEN2             (1 << 28) /* 10000000: DAC channel2 DMA enable */
 #define CH32V_DAC_SWTR_OFFSET             0x0004
-#define CH32V_DAC_SWTR                    (CH32V_DAC_BASE + CH32V_DAC_SWTR_OFFSET)
+#define CH32V_DAC_SWTR                    (CH32V_DAC_BASE + CH32V_DAC_SWTR_OFFSET) /* write-only */
 #define CH32V_DAC_SWTR_SWTRIG1            (1 <<  0) /* 00000001: DAC channel1 software trigger */
 #define CH32V_DAC_SWTR_SWTRIG2            (1 <<  1) /* 00000002: DAC channel2 software trigger */
 #define CH32V_DAC_R12BDHR1_OFFSET         0x0008
-#define CH32V_DAC_R12BDHR1                (CH32V_DAC_BASE + CH32V_DAC_R12BDHR1_OFFSET)
+#define CH32V_DAC_R12BDHR1                (CH32V_DAC_BASE + CH32V_DAC_R12BDHR1_OFFSET) /* read-write */
 #define CH32V_DAC_R12BDHR1_DACC1DHR       (0xfff << 0) /* 00000fff: DAC channel1 12-bit right-aligned data */
 #define CH32V_DAC_R12BDHR1_DACC1DHR_MASK  (0xfff << 0)
 #define CH32V_DAC_L12BDHR1_OFFSET         0x000c
-#define CH32V_DAC_L12BDHR1                (CH32V_DAC_BASE + CH32V_DAC_L12BDHR1_OFFSET)
+#define CH32V_DAC_L12BDHR1                (CH32V_DAC_BASE + CH32V_DAC_L12BDHR1_OFFSET) /* read-write */
 #define CH32V_DAC_L12BDHR1_DACC1DHR       (0xfff << 4) /* 0000fff0: DAC channel1 12-bit left-aligned data */
 #define CH32V_DAC_L12BDHR1_DACC1DHR_MASK  (0xfff << 4)
 #define CH32V_DAC_R8BDHR1_OFFSET          0x0010
-#define CH32V_DAC_R8BDHR1                 (CH32V_DAC_BASE + CH32V_DAC_R8BDHR1_OFFSET)
+#define CH32V_DAC_R8BDHR1                 (CH32V_DAC_BASE + CH32V_DAC_R8BDHR1_OFFSET) /* read-write */
 #define CH32V_DAC_R8BDHR1_DACC1DHR        (0xff << 0) /* 000000ff: DAC channel1 8-bit right-aligned data */
 #define CH32V_DAC_R8BDHR1_DACC1DHR_MASK   (0xff << 0)
 #define CH32V_DAC_R12BDHR2_OFFSET         0x0014
-#define CH32V_DAC_R12BDHR2                (CH32V_DAC_BASE + CH32V_DAC_R12BDHR2_OFFSET)
+#define CH32V_DAC_R12BDHR2                (CH32V_DAC_BASE + CH32V_DAC_R12BDHR2_OFFSET) /* read-write */
 #define CH32V_DAC_R12BDHR2_DACC2DHR       (0xfff << 0) /* 00000fff: DAC channel2 12-bit right-aligned data */
 #define CH32V_DAC_R12BDHR2_DACC2DHR_MASK  (0xfff << 0)
 #define CH32V_DAC_L12BDHR2_OFFSET         0x0018
-#define CH32V_DAC_L12BDHR2                (CH32V_DAC_BASE + CH32V_DAC_L12BDHR2_OFFSET)
+#define CH32V_DAC_L12BDHR2                (CH32V_DAC_BASE + CH32V_DAC_L12BDHR2_OFFSET) /* read-write */
 #define CH32V_DAC_L12BDHR2_DACC2DHR       (0xfff << 4) /* 0000fff0: DAC channel2 12-bit left-aligned data */
 #define CH32V_DAC_L12BDHR2_DACC2DHR_MASK  (0xfff << 4)
 #define CH32V_DAC_R8BDHR2_OFFSET          0x001c
-#define CH32V_DAC_R8BDHR2                 (CH32V_DAC_BASE + CH32V_DAC_R8BDHR2_OFFSET)
+#define CH32V_DAC_R8BDHR2                 (CH32V_DAC_BASE + CH32V_DAC_R8BDHR2_OFFSET) /* read-write */
 #define CH32V_DAC_R8BDHR2_DACC2DHR        (0xff << 0) /* 000000ff: DAC channel2 8-bit right-aligned data */
 #define CH32V_DAC_R8BDHR2_DACC2DHR_MASK   (0xff << 0)
 #define CH32V_DAC_RD12BDHR_OFFSET         0x0020
-#define CH32V_DAC_RD12BDHR                (CH32V_DAC_BASE + CH32V_DAC_RD12BDHR_OFFSET)
+#define CH32V_DAC_RD12BDHR                (CH32V_DAC_BASE + CH32V_DAC_RD12BDHR_OFFSET) /* read-write */
 #define CH32V_DAC_RD12BDHR_DACC1DHR       (0xfff << 0) /* 00000fff: DAC channel1 12-bit right-aligned data */
 #define CH32V_DAC_RD12BDHR_DACC1DHR_MASK  (0xfff << 0)
 #define CH32V_DAC_RD12BDHR_DACC2DHR       (0xfff << 16) /* 0fff0000: DAC channel2 12-bit right-aligned data */
 #define CH32V_DAC_RD12BDHR_DACC2DHR_MASK  (0xfff << 16)
 #define CH32V_DAC_LD12BDHR_OFFSET         0x0024
-#define CH32V_DAC_LD12BDHR                (CH32V_DAC_BASE + CH32V_DAC_LD12BDHR_OFFSET)
+#define CH32V_DAC_LD12BDHR                (CH32V_DAC_BASE + CH32V_DAC_LD12BDHR_OFFSET) /* read-write */
 #define CH32V_DAC_LD12BDHR_DACC1DHR       (0xfff << 4) /* 0000fff0: DAC channel1 12-bit left-aligned data */
 #define CH32V_DAC_LD12BDHR_DACC1DHR_MASK  (0xfff << 4)
 #define CH32V_DAC_LD12BDHR_DACC2DHR       (0xfff << 20) /* fff00000: DAC channel2 12-bit right-aligned data */
 #define CH32V_DAC_LD12BDHR_DACC2DHR_MASK  (0xfff << 20)
 #define CH32V_DAC_RD8BDHR_OFFSET          0x0028
-#define CH32V_DAC_RD8BDHR                 (CH32V_DAC_BASE + CH32V_DAC_RD8BDHR_OFFSET)
+#define CH32V_DAC_RD8BDHR                 (CH32V_DAC_BASE + CH32V_DAC_RD8BDHR_OFFSET) /* read-write */
 #define CH32V_DAC_RD8BDHR_DACC1DHR        (0xff << 0) /* 000000ff: DAC channel1 8-bit right-aligned data */
 #define CH32V_DAC_RD8BDHR_DACC1DHR_MASK   (0xff << 0)
 #define CH32V_DAC_RD8BDHR_DACC2DHR        (0xff << 8) /* 0000ff00: DAC channel2 8-bit right-aligned data */
 #define CH32V_DAC_RD8BDHR_DACC2DHR_MASK   (0xff << 8)
 #define CH32V_DAC_DOR1_OFFSET             0x002c
-#define CH32V_DAC_DOR1                    (CH32V_DAC_BASE + CH32V_DAC_DOR1_OFFSET)
+#define CH32V_DAC_DOR1                    (CH32V_DAC_BASE + CH32V_DAC_DOR1_OFFSET) /* read-only */
 #define CH32V_DAC_DOR1_DACC1DOR           (0xfff << 0) /* 00000fff: DAC channel1 data output */
 #define CH32V_DAC_DOR1_DACC1DOR_MASK      (0xfff << 0)
 #define CH32V_DAC_DOR2_OFFSET             0x0030
-#define CH32V_DAC_DOR2                    (CH32V_DAC_BASE + CH32V_DAC_DOR2_OFFSET)
+#define CH32V_DAC_DOR2                    (CH32V_DAC_BASE + CH32V_DAC_DOR2_OFFSET) /* read-only */
 #define CH32V_DAC_DOR2_DACC2DOR           (0xfff << 0) /* 00000fff: DAC channel2 data output */
 #define CH32V_DAC_DOR2_DACC2DOR_MASK      (0xfff << 0)
 
 /* PWR - Power control */
 #define CH32V_PWR_BASE                    0x40007000
 #define CH32V_PWR_CTLR_OFFSET             0x0000
-#define CH32V_PWR_CTLR                    (CH32V_PWR_BASE + CH32V_PWR_CTLR_OFFSET)
+#define CH32V_PWR_CTLR                    (CH32V_PWR_BASE + CH32V_PWR_CTLR_OFFSET) /* read-write */
 #define CH32V_PWR_CTLR_LPDS               (1 <<  0) /* 00000001: Low Power Deep Sleep */
 #define CH32V_PWR_CTLR_PDDS               (1 <<  1) /* 00000002: Power Down Deep Sleep */
 #define CH32V_PWR_CTLR_CWUF               (1 <<  2) /* 00000004: Clear Wake-up Flag */
@@ -3323,7 +3323,7 @@
 #define CH32V_RCC_INTR_PLL3RDYC           (1 << 22) /* 00400000: PLL3 Ready Interrupt Clear */
 #define CH32V_RCC_INTR_CSSC               (1 << 23) /* 00800000: Clock security system interrupt clear */
 #define CH32V_RCC_APB2PRSTR_OFFSET        0x000c
-#define CH32V_RCC_APB2PRSTR               (CH32V_RCC_BASE + CH32V_RCC_APB2PRSTR_OFFSET)
+#define CH32V_RCC_APB2PRSTR               (CH32V_RCC_BASE + CH32V_RCC_APB2PRSTR_OFFSET) /* read-write */
 #define CH32V_RCC_APB2PRSTR_AFIORST       (1 <<  0) /* 00000001: Alternate function I/O reset */
 #define CH32V_RCC_APB2PRSTR_IOPARST       (1 <<  2) /* 00000004: IO port A reset */
 #define CH32V_RCC_APB2PRSTR_IOPBRST       (1 <<  3) /* 00000008: IO port B reset */
@@ -3339,7 +3339,7 @@
 #define CH32V_RCC_APB2PRSTR_TIM9RST       (1 << 19) /* 00080000: TIM9 timer reset */
 #define CH32V_RCC_APB2PRSTR_TIM10RST      (1 << 20) /* 00100000: TIM10 timer reset */
 #define CH32V_RCC_APB1PRSTR_OFFSET        0x0010
-#define CH32V_RCC_APB1PRSTR               (CH32V_RCC_BASE + CH32V_RCC_APB1PRSTR_OFFSET)
+#define CH32V_RCC_APB1PRSTR               (CH32V_RCC_BASE + CH32V_RCC_APB1PRSTR_OFFSET) /* read-write */
 #define CH32V_RCC_APB1PRSTR_TIM2RST       (1 <<  0) /* 00000001: Timer 2 reset */
 #define CH32V_RCC_APB1PRSTR_TIM3RST       (1 <<  1) /* 00000002: Timer 3 reset */
 #define CH32V_RCC_APB1PRSTR_TIM4RST       (1 <<  2) /* 00000004: Timer 4 reset */
@@ -3365,7 +3365,7 @@
 #define CH32V_RCC_APB1PRSTR_PWRRST        (1 << 28) /* 10000000: Power interface reset */
 #define CH32V_RCC_APB1PRSTR_DACRST        (1 << 29) /* 20000000: DAC interface reset */
 #define CH32V_RCC_AHBPCENR_OFFSET         0x0014
-#define CH32V_RCC_AHBPCENR                (CH32V_RCC_BASE + CH32V_RCC_AHBPCENR_OFFSET)
+#define CH32V_RCC_AHBPCENR                (CH32V_RCC_BASE + CH32V_RCC_AHBPCENR_OFFSET) /* read-write */
 #define CH32V_RCC_AHBPCENR_DMA1EN         (1 <<  0) /* 00000001: DMA clock enable */
 #define CH32V_RCC_AHBPCENR_DMA2EN         (1 <<  1) /* 00000002: DMA2 clock enable */
 #define CH32V_RCC_AHBPCENR_SRAMEN         (1 <<  2) /* 00000004: SRAM interface clock enable */
@@ -3381,7 +3381,7 @@
 #define CH32V_RCC_AHBPCENR_ETHMACTXEN     (1 << 15) /* 00008000: Ethernet MAC TX clock enable */
 #define CH32V_RCC_AHBPCENR_ETHMACRXEN     (1 << 16) /* 00010000: Ethernet MAC RX clock enable */
 #define CH32V_RCC_APB2PCENR_OFFSET        0x0018
-#define CH32V_RCC_APB2PCENR               (CH32V_RCC_BASE + CH32V_RCC_APB2PCENR_OFFSET)
+#define CH32V_RCC_APB2PCENR               (CH32V_RCC_BASE + CH32V_RCC_APB2PCENR_OFFSET) /* read-write */
 #define CH32V_RCC_APB2PCENR_AFIOEN        (1 <<  0) /* 00000001: Alternate function I/O clock enable */
 #define CH32V_RCC_APB2PCENR_IOPAEN        (1 <<  2) /* 00000004: I/O port A clock enable */
 #define CH32V_RCC_APB2PCENR_IOPBEN        (1 <<  3) /* 00000008: I/O port B clock enable */
@@ -3397,7 +3397,7 @@
 #define CH32V_RCC_APB2PCENR_TIM9_EN       (1 << 19) /* 00080000: TIM9 Timer clock enable */
 #define CH32V_RCC_APB2PCENR_TIM10_EN      (1 << 20) /* 00100000: TIM10 Timer clock enable */
 #define CH32V_RCC_APB1PCENR_OFFSET        0x001c
-#define CH32V_RCC_APB1PCENR               (CH32V_RCC_BASE + CH32V_RCC_APB1PCENR_OFFSET)
+#define CH32V_RCC_APB1PCENR               (CH32V_RCC_BASE + CH32V_RCC_APB1PCENR_OFFSET) /* read-write */
 #define CH32V_RCC_APB1PCENR_TIM2EN        (1 <<  0) /* 00000001: Timer 2 clock enable */
 #define CH32V_RCC_APB1PCENR_TIM3EN        (1 <<  1) /* 00000002: Timer 3 clock enable */
 #define CH32V_RCC_APB1PCENR_TIM4EN        (1 <<  2) /* 00000004: Timer 4 clock enable */
@@ -3448,7 +3448,7 @@
 #define CH32V_RCC_AHBRSTR_DVPRST          (1 << 13) /* 00002000: DVP reset */
 #define CH32V_RCC_AHBRSTR_ETHMACRST       (1 << 14) /* 00004000: Ethernet MAC reset */
 #define CH32V_RCC_CFGR2_OFFSET            0x002c
-#define CH32V_RCC_CFGR2                   (CH32V_RCC_BASE + CH32V_RCC_CFGR2_OFFSET)
+#define CH32V_RCC_CFGR2                   (CH32V_RCC_BASE + CH32V_RCC_CFGR2_OFFSET) /* read-write */
 #define CH32V_RCC_CFGR2_PREDIV1           (0xf << 0) /* 0000000f: PREDIV1 division factor */
 #define CH32V_RCC_CFGR2_PREDIV1_MASK      (0xf << 0)
 #define CH32V_RCC_CFGR2_PREDIV2           (0xf << 4) /* 000000f0: PREDIV2 division factor */
@@ -3513,7 +3513,7 @@
 /* GPIOA - General purpose I/O */
 #define CH32V_GPIOA_BASE                  0x40010800
 #define CH32V_GPIOA_CFGLR_OFFSET          0x0000
-#define CH32V_GPIOA_CFGLR                 (CH32V_GPIOA_BASE + CH32V_GPIOA_CFGLR_OFFSET)
+#define CH32V_GPIOA_CFGLR                 (CH32V_GPIOA_BASE + CH32V_GPIOA_CFGLR_OFFSET) /* read-write */
 #define CH32V_GPIOA_CFGLR_MODE0           (0x3 << 0) /* 00000003: Port n.0 mode bits */
 #define CH32V_GPIOA_CFGLR_MODE0_MASK      (0x3 << 0)
 #define CH32V_GPIOA_CFGLR_CNF0            (0x3 << 2) /* 0000000c: Port n.0 configuration bits */
@@ -3547,7 +3547,7 @@
 #define CH32V_GPIOA_CFGLR_CNF7            (0x3 << 30) /* c0000000: Port n.7 configuration bits */
 #define CH32V_GPIOA_CFGLR_CNF7_MASK       (0x3 << 30)
 #define CH32V_GPIOA_CFGHR_OFFSET          0x0004
-#define CH32V_GPIOA_CFGHR                 (CH32V_GPIOA_BASE + CH32V_GPIOA_CFGHR_OFFSET)
+#define CH32V_GPIOA_CFGHR                 (CH32V_GPIOA_BASE + CH32V_GPIOA_CFGHR_OFFSET) /* read-write */
 #define CH32V_GPIOA_CFGHR_MODE8           (0x3 << 0) /* 00000003: Port n.8 mode bits */
 #define CH32V_GPIOA_CFGHR_MODE8_MASK      (0x3 << 0)
 #define CH32V_GPIOA_CFGHR_CNF8            (0x3 << 2) /* 0000000c: Port n.8 configuration bits */
@@ -3581,7 +3581,7 @@
 #define CH32V_GPIOA_CFGHR_CNF15           (0x3 << 30) /* c0000000: Port n.15 configuration bits */
 #define CH32V_GPIOA_CFGHR_CNF15_MASK      (0x3 << 30)
 #define CH32V_GPIOA_INDR_OFFSET           0x0008
-#define CH32V_GPIOA_INDR                  (CH32V_GPIOA_BASE + CH32V_GPIOA_INDR_OFFSET)
+#define CH32V_GPIOA_INDR                  (CH32V_GPIOA_BASE + CH32V_GPIOA_INDR_OFFSET) /* read-only */
 #define CH32V_GPIOA_INDR_IDR0             (1 <<  0) /* 00000001: Port input data */
 #define CH32V_GPIOA_INDR_IDR1             (1 <<  1) /* 00000002: Port input data */
 #define CH32V_GPIOA_INDR_IDR2             (1 <<  2) /* 00000004: Port input data */
@@ -3599,7 +3599,7 @@
 #define CH32V_GPIOA_INDR_IDR14            (1 << 14) /* 00004000: Port input data */
 #define CH32V_GPIOA_INDR_IDR15            (1 << 15) /* 00008000: Port input data */
 #define CH32V_GPIOA_OUTDR_OFFSET          0x000c
-#define CH32V_GPIOA_OUTDR                 (CH32V_GPIOA_BASE + CH32V_GPIOA_OUTDR_OFFSET)
+#define CH32V_GPIOA_OUTDR                 (CH32V_GPIOA_BASE + CH32V_GPIOA_OUTDR_OFFSET) /* read-write */
 #define CH32V_GPIOA_OUTDR_ODR0            (1 <<  0) /* 00000001: Port output data */
 #define CH32V_GPIOA_OUTDR_ODR1            (1 <<  1) /* 00000002: Port output data */
 #define CH32V_GPIOA_OUTDR_ODR2            (1 <<  2) /* 00000004: Port output data */
@@ -3617,7 +3617,7 @@
 #define CH32V_GPIOA_OUTDR_ODR14           (1 << 14) /* 00004000: Port output data */
 #define CH32V_GPIOA_OUTDR_ODR15           (1 << 15) /* 00008000: Port output data */
 #define CH32V_GPIOA_BSHR_OFFSET           0x0010
-#define CH32V_GPIOA_BSHR                  (CH32V_GPIOA_BASE + CH32V_GPIOA_BSHR_OFFSET)
+#define CH32V_GPIOA_BSHR                  (CH32V_GPIOA_BASE + CH32V_GPIOA_BSHR_OFFSET) /* write-only */
 #define CH32V_GPIOA_BSHR_BS0              (1 <<  0) /* 00000001: Set bit 0 */
 #define CH32V_GPIOA_BSHR_BS1              (1 <<  1) /* 00000002: Set bit 1 */
 #define CH32V_GPIOA_BSHR_BS2              (1 <<  2) /* 00000004: Set bit 1 */
@@ -3651,7 +3651,7 @@
 #define CH32V_GPIOA_BSHR_BR14             (1 << 30) /* 40000000: Reset bit 14 */
 #define CH32V_GPIOA_BSHR_BR15             (1 << 31) /* 80000000: Reset bit 15 */
 #define CH32V_GPIOA_BCR_OFFSET            0x0014
-#define CH32V_GPIOA_BCR                   (CH32V_GPIOA_BASE + CH32V_GPIOA_BCR_OFFSET)
+#define CH32V_GPIOA_BCR                   (CH32V_GPIOA_BASE + CH32V_GPIOA_BCR_OFFSET) /* write-only */
 #define CH32V_GPIOA_BCR_BR0               (1 <<  0) /* 00000001: Reset bit 0 */
 #define CH32V_GPIOA_BCR_BR1               (1 <<  1) /* 00000002: Reset bit 1 */
 #define CH32V_GPIOA_BCR_BR2               (1 <<  2) /* 00000004: Reset bit 1 */
@@ -3669,7 +3669,7 @@
 #define CH32V_GPIOA_BCR_BR14              (1 << 14) /* 00004000: Reset bit 14 */
 #define CH32V_GPIOA_BCR_BR15              (1 << 15) /* 00008000: Reset bit 15 */
 #define CH32V_GPIOA_LCKR_OFFSET           0x0018
-#define CH32V_GPIOA_LCKR                  (CH32V_GPIOA_BASE + CH32V_GPIOA_LCKR_OFFSET)
+#define CH32V_GPIOA_LCKR                  (CH32V_GPIOA_BASE + CH32V_GPIOA_LCKR_OFFSET) /* read-write */
 #define CH32V_GPIOA_LCKR_LCK0             (1 <<  0) /* 00000001: Port A Lock bit 0 */
 #define CH32V_GPIOA_LCKR_LCK1             (1 <<  1) /* 00000002: Port A Lock bit 1 */
 #define CH32V_GPIOA_LCKR_LCK2             (1 <<  2) /* 00000004: Port A Lock bit 2 */
@@ -3691,7 +3691,7 @@
 /* AFIO - Alternate function I/O */
 #define CH32V_AFIO_BASE                   0x40010000
 #define CH32V_AFIO_ECR_OFFSET             0x0000
-#define CH32V_AFIO_ECR                    (CH32V_AFIO_BASE + CH32V_AFIO_ECR_OFFSET)
+#define CH32V_AFIO_ECR                    (CH32V_AFIO_BASE + CH32V_AFIO_ECR_OFFSET) /* read-write */
 #define CH32V_AFIO_ECR_PIN                (0xf << 0) /* 0000000f: Pin selection */
 #define CH32V_AFIO_ECR_PIN_MASK           (0xf << 0)
 #define CH32V_AFIO_ECR_PORT               (0x7 << 4) /* 00000070: Port selection */
@@ -3729,7 +3729,7 @@
 #define CH32V_AFIO_PCFR_TIM2ITRA_RM       (1 << 29) /* 20000000: TIM2 internally triggers 1 remapping */
 #define CH32V_AFIO_PCFR_PTP_PPSP_RM       (1 << 30) /* 40000000: Ethernet PTP_PPS remapping */
 #define CH32V_AFIO_EXTICR1_OFFSET         0x0008
-#define CH32V_AFIO_EXTICR1                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR1_OFFSET)
+#define CH32V_AFIO_EXTICR1                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR1_OFFSET) /* read-write */
 #define CH32V_AFIO_EXTICR1_EXTI0          (0xf << 0) /* 0000000f: EXTI0 configuration */
 #define CH32V_AFIO_EXTICR1_EXTI0_MASK     (0xf << 0)
 #define CH32V_AFIO_EXTICR1_EXTI1          (0xf << 4) /* 000000f0: EXTI1 configuration */
@@ -3739,7 +3739,7 @@
 #define CH32V_AFIO_EXTICR1_EXTI3          (0xf << 12) /* 0000f000: EXTI3 configuration */
 #define CH32V_AFIO_EXTICR1_EXTI3_MASK     (0xf << 12)
 #define CH32V_AFIO_EXTICR2_OFFSET         0x000c
-#define CH32V_AFIO_EXTICR2                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR2_OFFSET)
+#define CH32V_AFIO_EXTICR2                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR2_OFFSET) /* read-write */
 #define CH32V_AFIO_EXTICR2_EXTI4          (0xf << 0) /* 0000000f: EXTI4 configuration */
 #define CH32V_AFIO_EXTICR2_EXTI4_MASK     (0xf << 0)
 #define CH32V_AFIO_EXTICR2_EXTI5          (0xf << 4) /* 000000f0: EXTI5 configuration */
@@ -3749,7 +3749,7 @@
 #define CH32V_AFIO_EXTICR2_EXTI7          (0xf << 12) /* 0000f000: EXTI7 configuration */
 #define CH32V_AFIO_EXTICR2_EXTI7_MASK     (0xf << 12)
 #define CH32V_AFIO_EXTICR3_OFFSET         0x0010
-#define CH32V_AFIO_EXTICR3                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR3_OFFSET)
+#define CH32V_AFIO_EXTICR3                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR3_OFFSET) /* read-write */
 #define CH32V_AFIO_EXTICR3_EXTI8          (0xf << 0) /* 0000000f: EXTI8 configuration */
 #define CH32V_AFIO_EXTICR3_EXTI8_MASK     (0xf << 0)
 #define CH32V_AFIO_EXTICR3_EXTI9          (0xf << 4) /* 000000f0: EXTI9 configuration */
@@ -3759,7 +3759,7 @@
 #define CH32V_AFIO_EXTICR3_EXTI11         (0xf << 12) /* 0000f000: EXTI11 configuration */
 #define CH32V_AFIO_EXTICR3_EXTI11_MASK    (0xf << 12)
 #define CH32V_AFIO_EXTICR4_OFFSET         0x0014
-#define CH32V_AFIO_EXTICR4                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR4_OFFSET)
+#define CH32V_AFIO_EXTICR4                (CH32V_AFIO_BASE + CH32V_AFIO_EXTICR4_OFFSET) /* read-write */
 #define CH32V_AFIO_EXTICR4_EXTI12         (0xf << 0) /* 0000000f: EXTI12 configuration */
 #define CH32V_AFIO_EXTICR4_EXTI12_MASK    (0xf << 0)
 #define CH32V_AFIO_EXTICR4_EXTI13         (0xf << 4) /* 000000f0: EXTI13 configuration */
@@ -3791,7 +3791,7 @@
 /* EXTI - EXTI */
 #define CH32V_EXTI_BASE                   0x40010400
 #define CH32V_EXTI_INTENR_OFFSET          0x0000
-#define CH32V_EXTI_INTENR                 (CH32V_EXTI_BASE + CH32V_EXTI_INTENR_OFFSET)
+#define CH32V_EXTI_INTENR                 (CH32V_EXTI_BASE + CH32V_EXTI_INTENR_OFFSET) /* read-write */
 #define CH32V_EXTI_INTENR_MR0             (1 <<  0) /* 00000001: Interrupt Mask on line 0 */
 #define CH32V_EXTI_INTENR_MR1             (1 <<  1) /* 00000002: Interrupt Mask on line 1 */
 #define CH32V_EXTI_INTENR_MR2             (1 <<  2) /* 00000004: Interrupt Mask on line 2 */
@@ -3813,7 +3813,7 @@
 #define CH32V_EXTI_INTENR_MR18            (1 << 18) /* 00040000: Interrupt Mask on line 18 */
 #define CH32V_EXTI_INTENR_MR19            (1 << 19) /* 00080000: Interrupt Mask on line 19 */
 #define CH32V_EXTI_EVENR_OFFSET           0x0004
-#define CH32V_EXTI_EVENR                  (CH32V_EXTI_BASE + CH32V_EXTI_EVENR_OFFSET)
+#define CH32V_EXTI_EVENR                  (CH32V_EXTI_BASE + CH32V_EXTI_EVENR_OFFSET) /* read-write */
 #define CH32V_EXTI_EVENR_MR0              (1 <<  0) /* 00000001: Event Mask on line 0 */
 #define CH32V_EXTI_EVENR_MR1              (1 <<  1) /* 00000002: Event Mask on line 1 */
 #define CH32V_EXTI_EVENR_MR2              (1 <<  2) /* 00000004: Event Mask on line 2 */
@@ -3835,7 +3835,7 @@
 #define CH32V_EXTI_EVENR_MR18             (1 << 18) /* 00040000: Event Mask on line 18 */
 #define CH32V_EXTI_EVENR_MR19             (1 << 19) /* 00080000: Event Mask on line 19 */
 #define CH32V_EXTI_RTENR_OFFSET           0x0008
-#define CH32V_EXTI_RTENR                  (CH32V_EXTI_BASE + CH32V_EXTI_RTENR_OFFSET)
+#define CH32V_EXTI_RTENR                  (CH32V_EXTI_BASE + CH32V_EXTI_RTENR_OFFSET) /* read-write */
 #define CH32V_EXTI_RTENR_TR0              (1 <<  0) /* 00000001: Rising trigger event configuration of line 0 */
 #define CH32V_EXTI_RTENR_TR1              (1 <<  1) /* 00000002: Rising trigger event configuration of line 1 */
 #define CH32V_EXTI_RTENR_TR2              (1 <<  2) /* 00000004: Rising trigger event configuration of line 2 */
@@ -3857,7 +3857,7 @@
 #define CH32V_EXTI_RTENR_TR18             (1 << 18) /* 00040000: Rising trigger event configuration of line 18 */
 #define CH32V_EXTI_RTENR_TR19             (1 << 19) /* 00080000: Rising trigger event configuration of line 19 */
 #define CH32V_EXTI_FTENR_OFFSET           0x000c
-#define CH32V_EXTI_FTENR                  (CH32V_EXTI_BASE + CH32V_EXTI_FTENR_OFFSET)
+#define CH32V_EXTI_FTENR                  (CH32V_EXTI_BASE + CH32V_EXTI_FTENR_OFFSET) /* read-write */
 #define CH32V_EXTI_FTENR_TR0              (1 <<  0) /* 00000001: Falling trigger event configuration of line 0 */
 #define CH32V_EXTI_FTENR_TR1              (1 <<  1) /* 00000002: Falling trigger event configuration of line 1 */
 #define CH32V_EXTI_FTENR_TR2              (1 <<  2) /* 00000004: Falling trigger event configuration of line 2 */
@@ -3879,7 +3879,7 @@
 #define CH32V_EXTI_FTENR_TR18             (1 << 18) /* 00040000: Falling trigger event configuration of line 18 */
 #define CH32V_EXTI_FTENR_TR19             (1 << 19) /* 00080000: Falling trigger event configuration of line 19 */
 #define CH32V_EXTI_SWIEVR_OFFSET          0x0010
-#define CH32V_EXTI_SWIEVR                 (CH32V_EXTI_BASE + CH32V_EXTI_SWIEVR_OFFSET)
+#define CH32V_EXTI_SWIEVR                 (CH32V_EXTI_BASE + CH32V_EXTI_SWIEVR_OFFSET) /* read-write */
 #define CH32V_EXTI_SWIEVR_SWIER0          (1 <<  0) /* 00000001: Software Interrupt on line 0 */
 #define CH32V_EXTI_SWIEVR_SWIER1          (1 <<  1) /* 00000002: Software Interrupt on line 1 */
 #define CH32V_EXTI_SWIEVR_SWIER2          (1 <<  2) /* 00000004: Software Interrupt on line 2 */
@@ -3901,7 +3901,7 @@
 #define CH32V_EXTI_SWIEVR_SWIER18         (1 << 18) /* 00040000: Software Interrupt on line 18 */
 #define CH32V_EXTI_SWIEVR_SWIER19         (1 << 19) /* 00080000: Software Interrupt on line 19 */
 #define CH32V_EXTI_INTFR_OFFSET           0x0014
-#define CH32V_EXTI_INTFR                  (CH32V_EXTI_BASE + CH32V_EXTI_INTFR_OFFSET)
+#define CH32V_EXTI_INTFR                  (CH32V_EXTI_BASE + CH32V_EXTI_INTFR_OFFSET) /* read-write */
 #define CH32V_EXTI_INTFR_PR0              (1 <<  0) /* 00000001: Pending bit 0 */
 #define CH32V_EXTI_INTFR_PR1              (1 <<  1) /* 00000002: Pending bit 1 */
 #define CH32V_EXTI_INTFR_PR2              (1 <<  2) /* 00000004: Pending bit 2 */
@@ -3926,7 +3926,7 @@
 /* DMA1 - DMA1 controller */
 #define CH32V_DMA1_BASE                   0x40020000
 #define CH32V_DMA1_INTFR_OFFSET           0x0000
-#define CH32V_DMA1_INTFR                  (CH32V_DMA1_BASE + CH32V_DMA1_INTFR_OFFSET)
+#define CH32V_DMA1_INTFR                  (CH32V_DMA1_BASE + CH32V_DMA1_INTFR_OFFSET) /* read-only */
 #define CH32V_DMA1_INTFR_GIF1             (1 <<  0) /* 00000001: Channel 1 Global interrupt flag */
 #define CH32V_DMA1_INTFR_TCIF1            (1 <<  1) /* 00000002: Channel 1 Transfer Complete flag */
 #define CH32V_DMA1_INTFR_HTIF1            (1 <<  2) /* 00000004: Channel 1 Half Transfer Complete flag */
@@ -3956,7 +3956,7 @@
 #define CH32V_DMA1_INTFR_HTIF7            (1 << 26) /* 04000000: Channel 7 Half Transfer Complete flag */
 #define CH32V_DMA1_INTFR_TEIF7            (1 << 27) /* 08000000: Channel 7 Transfer Error flag */
 #define CH32V_DMA1_INTFCR_OFFSET          0x0004
-#define CH32V_DMA1_INTFCR                 (CH32V_DMA1_BASE + CH32V_DMA1_INTFCR_OFFSET)
+#define CH32V_DMA1_INTFCR                 (CH32V_DMA1_BASE + CH32V_DMA1_INTFCR_OFFSET) /* write-only */
 #define CH32V_DMA1_INTFCR_CGIF1           (1 <<  0) /* 00000001: Channel 1 Global interrupt clear */
 #define CH32V_DMA1_INTFCR_CGIF2           (1 <<  4) /* 00000010: Channel 2 Global interrupt clear */
 #define CH32V_DMA1_INTFCR_CGIF3           (1 <<  8) /* 00000100: Channel 3 Global interrupt clear */
@@ -3986,7 +3986,7 @@
 #define CH32V_DMA1_INTFCR_CTEIF6          (1 << 23) /* 00800000: Channel 6 Transfer Error clear */
 #define CH32V_DMA1_INTFCR_CTEIF7          (1 << 27) /* 08000000: Channel 7 Transfer Error clear */
 #define CH32V_DMA1_CFGR1_OFFSET           0x0008
-#define CH32V_DMA1_CFGR1                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR1_OFFSET)
+#define CH32V_DMA1_CFGR1                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR1_OFFSET) /* read-write */
 #define CH32V_DMA1_CFGR1_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA1_CFGR1_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA1_CFGR1_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4003,19 +4003,19 @@
 #define CH32V_DMA1_CFGR1_PL_MASK          (0x3 << 12)
 #define CH32V_DMA1_CFGR1_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA1_CNTR1_OFFSET           0x000c
-#define CH32V_DMA1_CNTR1                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR1_OFFSET)
+#define CH32V_DMA1_CNTR1                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR1_OFFSET) /* read-write */
 #define CH32V_DMA1_CNTR1_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA1_CNTR1_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA1_PADDR1_OFFSET          0x0010
-#define CH32V_DMA1_PADDR1                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR1_OFFSET)
+#define CH32V_DMA1_PADDR1                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR1_OFFSET) /* read-write */
 #define CH32V_DMA1_PADDR1_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA1_PADDR1_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_MADDR1_OFFSET          0x0014
-#define CH32V_DMA1_MADDR1                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR1_OFFSET)
+#define CH32V_DMA1_MADDR1                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR1_OFFSET) /* read-write */
 #define CH32V_DMA1_MADDR1_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA1_MADDR1_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_CFGR2_OFFSET           0x001c
-#define CH32V_DMA1_CFGR2                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR2_OFFSET)
+#define CH32V_DMA1_CFGR2                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR2_OFFSET) /* read-write */
 #define CH32V_DMA1_CFGR2_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA1_CFGR2_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA1_CFGR2_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4032,19 +4032,19 @@
 #define CH32V_DMA1_CFGR2_PL_MASK          (0x3 << 12)
 #define CH32V_DMA1_CFGR2_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA1_CNTR2_OFFSET           0x0020
-#define CH32V_DMA1_CNTR2                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR2_OFFSET)
+#define CH32V_DMA1_CNTR2                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR2_OFFSET) /* read-write */
 #define CH32V_DMA1_CNTR2_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA1_CNTR2_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA1_PADDR2_OFFSET          0x0024
-#define CH32V_DMA1_PADDR2                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR2_OFFSET)
+#define CH32V_DMA1_PADDR2                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR2_OFFSET) /* read-write */
 #define CH32V_DMA1_PADDR2_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA1_PADDR2_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_MADDR2_OFFSET          0x0028
-#define CH32V_DMA1_MADDR2                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR2_OFFSET)
+#define CH32V_DMA1_MADDR2                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR2_OFFSET) /* read-write */
 #define CH32V_DMA1_MADDR2_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA1_MADDR2_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_CFGR3_OFFSET           0x0030
-#define CH32V_DMA1_CFGR3                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR3_OFFSET)
+#define CH32V_DMA1_CFGR3                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR3_OFFSET) /* read-write */
 #define CH32V_DMA1_CFGR3_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA1_CFGR3_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA1_CFGR3_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4061,19 +4061,19 @@
 #define CH32V_DMA1_CFGR3_PL_MASK          (0x3 << 12)
 #define CH32V_DMA1_CFGR3_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA1_CNTR3_OFFSET           0x0034
-#define CH32V_DMA1_CNTR3                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR3_OFFSET)
+#define CH32V_DMA1_CNTR3                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR3_OFFSET) /* read-write */
 #define CH32V_DMA1_CNTR3_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA1_CNTR3_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA1_PADDR3_OFFSET          0x0038
-#define CH32V_DMA1_PADDR3                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR3_OFFSET)
+#define CH32V_DMA1_PADDR3                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR3_OFFSET) /* read-write */
 #define CH32V_DMA1_PADDR3_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA1_PADDR3_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_MADDR3_OFFSET          0x003c
-#define CH32V_DMA1_MADDR3                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR3_OFFSET)
+#define CH32V_DMA1_MADDR3                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR3_OFFSET) /* read-write */
 #define CH32V_DMA1_MADDR3_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA1_MADDR3_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_CFGR4_OFFSET           0x0044
-#define CH32V_DMA1_CFGR4                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR4_OFFSET)
+#define CH32V_DMA1_CFGR4                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR4_OFFSET) /* read-write */
 #define CH32V_DMA1_CFGR4_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA1_CFGR4_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA1_CFGR4_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4090,19 +4090,19 @@
 #define CH32V_DMA1_CFGR4_PL_MASK          (0x3 << 12)
 #define CH32V_DMA1_CFGR4_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA1_CNTR4_OFFSET           0x0048
-#define CH32V_DMA1_CNTR4                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR4_OFFSET)
+#define CH32V_DMA1_CNTR4                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR4_OFFSET) /* read-write */
 #define CH32V_DMA1_CNTR4_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA1_CNTR4_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA1_PADDR4_OFFSET          0x004c
-#define CH32V_DMA1_PADDR4                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR4_OFFSET)
+#define CH32V_DMA1_PADDR4                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR4_OFFSET) /* read-write */
 #define CH32V_DMA1_PADDR4_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA1_PADDR4_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_MADDR4_OFFSET          0x0050
-#define CH32V_DMA1_MADDR4                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR4_OFFSET)
+#define CH32V_DMA1_MADDR4                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR4_OFFSET) /* read-write */
 #define CH32V_DMA1_MADDR4_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA1_MADDR4_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_CFGR5_OFFSET           0x0058
-#define CH32V_DMA1_CFGR5                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR5_OFFSET)
+#define CH32V_DMA1_CFGR5                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR5_OFFSET) /* read-write */
 #define CH32V_DMA1_CFGR5_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA1_CFGR5_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA1_CFGR5_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4119,19 +4119,19 @@
 #define CH32V_DMA1_CFGR5_PL_MASK          (0x3 << 12)
 #define CH32V_DMA1_CFGR5_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA1_CNTR5_OFFSET           0x005c
-#define CH32V_DMA1_CNTR5                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR5_OFFSET)
+#define CH32V_DMA1_CNTR5                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR5_OFFSET) /* read-write */
 #define CH32V_DMA1_CNTR5_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA1_CNTR5_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA1_PADDR5_OFFSET          0x0060
-#define CH32V_DMA1_PADDR5                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR5_OFFSET)
+#define CH32V_DMA1_PADDR5                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR5_OFFSET) /* read-write */
 #define CH32V_DMA1_PADDR5_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA1_PADDR5_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_MADDR5_OFFSET          0x0064
-#define CH32V_DMA1_MADDR5                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR5_OFFSET)
+#define CH32V_DMA1_MADDR5                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR5_OFFSET) /* read-write */
 #define CH32V_DMA1_MADDR5_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA1_MADDR5_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_CFGR6_OFFSET           0x006c
-#define CH32V_DMA1_CFGR6                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR6_OFFSET)
+#define CH32V_DMA1_CFGR6                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR6_OFFSET) /* read-write */
 #define CH32V_DMA1_CFGR6_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA1_CFGR6_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA1_CFGR6_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4148,19 +4148,19 @@
 #define CH32V_DMA1_CFGR6_PL_MASK          (0x3 << 12)
 #define CH32V_DMA1_CFGR6_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA1_CNTR6_OFFSET           0x0070
-#define CH32V_DMA1_CNTR6                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR6_OFFSET)
+#define CH32V_DMA1_CNTR6                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR6_OFFSET) /* read-write */
 #define CH32V_DMA1_CNTR6_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA1_CNTR6_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA1_PADDR6_OFFSET          0x0074
-#define CH32V_DMA1_PADDR6                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR6_OFFSET)
+#define CH32V_DMA1_PADDR6                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR6_OFFSET) /* read-write */
 #define CH32V_DMA1_PADDR6_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA1_PADDR6_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_MADDR6_OFFSET          0x0078
-#define CH32V_DMA1_MADDR6                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR6_OFFSET)
+#define CH32V_DMA1_MADDR6                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR6_OFFSET) /* read-write */
 #define CH32V_DMA1_MADDR6_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA1_MADDR6_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_CFGR7_OFFSET           0x0080
-#define CH32V_DMA1_CFGR7                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR7_OFFSET)
+#define CH32V_DMA1_CFGR7                  (CH32V_DMA1_BASE + CH32V_DMA1_CFGR7_OFFSET) /* read-write */
 #define CH32V_DMA1_CFGR7_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA1_CFGR7_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA1_CFGR7_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4177,22 +4177,22 @@
 #define CH32V_DMA1_CFGR7_PL_MASK          (0x3 << 12)
 #define CH32V_DMA1_CFGR7_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA1_CNTR7_OFFSET           0x0084
-#define CH32V_DMA1_CNTR7                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR7_OFFSET)
+#define CH32V_DMA1_CNTR7                  (CH32V_DMA1_BASE + CH32V_DMA1_CNTR7_OFFSET) /* read-write */
 #define CH32V_DMA1_CNTR7_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA1_CNTR7_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA1_PADDR7_OFFSET          0x0088
-#define CH32V_DMA1_PADDR7                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR7_OFFSET)
+#define CH32V_DMA1_PADDR7                 (CH32V_DMA1_BASE + CH32V_DMA1_PADDR7_OFFSET) /* read-write */
 #define CH32V_DMA1_PADDR7_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA1_PADDR7_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA1_MADDR7_OFFSET          0x008c
-#define CH32V_DMA1_MADDR7                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR7_OFFSET)
+#define CH32V_DMA1_MADDR7                 (CH32V_DMA1_BASE + CH32V_DMA1_MADDR7_OFFSET) /* read-write */
 #define CH32V_DMA1_MADDR7_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA1_MADDR7_MA_MASK         (0xffffffff << 0)
 
 /* DMA2 - DMA2 controller */
 #define CH32V_DMA2_BASE                   0x40020400
 #define CH32V_DMA2_INTFR_OFFSET           0x0000
-#define CH32V_DMA2_INTFR                  (CH32V_DMA2_BASE + CH32V_DMA2_INTFR_OFFSET)
+#define CH32V_DMA2_INTFR                  (CH32V_DMA2_BASE + CH32V_DMA2_INTFR_OFFSET) /* read-only */
 #define CH32V_DMA2_INTFR_GIF1             (1 <<  0) /* 00000001: Channel 1 Global interrupt flag */
 #define CH32V_DMA2_INTFR_TCIF1            (1 <<  1) /* 00000002: Channel 1 Transfer Complete flag */
 #define CH32V_DMA2_INTFR_HTIF1            (1 <<  2) /* 00000004: Channel 1 Half Transfer Complete flag */
@@ -4222,7 +4222,7 @@
 #define CH32V_DMA2_INTFR_HTIF7            (1 << 26) /* 04000000: Channel 7 Half Transfer Complete flag */
 #define CH32V_DMA2_INTFR_TEIF7            (1 << 27) /* 08000000: Channel 7 Transfer Error flag */
 #define CH32V_DMA2_INTFCR_OFFSET          0x0004
-#define CH32V_DMA2_INTFCR                 (CH32V_DMA2_BASE + CH32V_DMA2_INTFCR_OFFSET)
+#define CH32V_DMA2_INTFCR                 (CH32V_DMA2_BASE + CH32V_DMA2_INTFCR_OFFSET) /* write-only */
 #define CH32V_DMA2_INTFCR_CGIF1           (1 <<  0) /* 00000001: Channel 1 Global interrupt clear */
 #define CH32V_DMA2_INTFCR_CGIF2           (1 <<  4) /* 00000010: Channel 2 Global interrupt clear */
 #define CH32V_DMA2_INTFCR_CGIF3           (1 <<  8) /* 00000100: Channel 3 Global interrupt clear */
@@ -4252,7 +4252,7 @@
 #define CH32V_DMA2_INTFCR_CTEIF6          (1 << 23) /* 00800000: Channel 6 Transfer Error clear */
 #define CH32V_DMA2_INTFCR_CTEIF7          (1 << 27) /* 08000000: Channel 7 Transfer Error clear */
 #define CH32V_DMA2_CFGR1_OFFSET           0x0008
-#define CH32V_DMA2_CFGR1                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR1_OFFSET)
+#define CH32V_DMA2_CFGR1                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR1_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR1_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR1_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR1_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4269,19 +4269,19 @@
 #define CH32V_DMA2_CFGR1_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR1_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR1_OFFSET           0x000c
-#define CH32V_DMA2_CNTR1                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR1_OFFSET)
+#define CH32V_DMA2_CNTR1                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR1_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR1_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR1_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR1_OFFSET          0x0010
-#define CH32V_DMA2_PADDR1                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR1_OFFSET)
+#define CH32V_DMA2_PADDR1                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR1_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR1_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR1_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR1_OFFSET          0x0014
-#define CH32V_DMA2_MADDR1                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR1_OFFSET)
+#define CH32V_DMA2_MADDR1                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR1_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR1_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR1_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR2_OFFSET           0x001c
-#define CH32V_DMA2_CFGR2                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR2_OFFSET)
+#define CH32V_DMA2_CFGR2                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR2_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR2_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR2_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR2_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4298,19 +4298,19 @@
 #define CH32V_DMA2_CFGR2_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR2_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR2_OFFSET           0x0020
-#define CH32V_DMA2_CNTR2                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR2_OFFSET)
+#define CH32V_DMA2_CNTR2                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR2_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR2_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR2_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR2_OFFSET          0x0024
-#define CH32V_DMA2_PADDR2                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR2_OFFSET)
+#define CH32V_DMA2_PADDR2                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR2_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR2_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR2_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR2_OFFSET          0x0028
-#define CH32V_DMA2_MADDR2                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR2_OFFSET)
+#define CH32V_DMA2_MADDR2                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR2_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR2_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR2_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR3_OFFSET           0x0030
-#define CH32V_DMA2_CFGR3                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR3_OFFSET)
+#define CH32V_DMA2_CFGR3                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR3_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR3_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR3_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR3_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4327,19 +4327,19 @@
 #define CH32V_DMA2_CFGR3_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR3_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR3_OFFSET           0x0034
-#define CH32V_DMA2_CNTR3                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR3_OFFSET)
+#define CH32V_DMA2_CNTR3                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR3_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR3_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR3_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR3_OFFSET          0x0038
-#define CH32V_DMA2_PADDR3                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR3_OFFSET)
+#define CH32V_DMA2_PADDR3                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR3_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR3_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR3_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR3_OFFSET          0x003c
-#define CH32V_DMA2_MADDR3                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR3_OFFSET)
+#define CH32V_DMA2_MADDR3                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR3_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR3_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR3_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR4_OFFSET           0x0044
-#define CH32V_DMA2_CFGR4                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR4_OFFSET)
+#define CH32V_DMA2_CFGR4                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR4_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR4_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR4_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR4_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4356,19 +4356,19 @@
 #define CH32V_DMA2_CFGR4_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR4_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR4_OFFSET           0x0048
-#define CH32V_DMA2_CNTR4                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR4_OFFSET)
+#define CH32V_DMA2_CNTR4                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR4_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR4_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR4_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR4_OFFSET          0x004c
-#define CH32V_DMA2_PADDR4                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR4_OFFSET)
+#define CH32V_DMA2_PADDR4                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR4_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR4_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR4_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR4_OFFSET          0x0050
-#define CH32V_DMA2_MADDR4                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR4_OFFSET)
+#define CH32V_DMA2_MADDR4                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR4_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR4_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR4_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR5_OFFSET           0x0058
-#define CH32V_DMA2_CFGR5                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR5_OFFSET)
+#define CH32V_DMA2_CFGR5                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR5_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR5_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR5_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR5_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4385,19 +4385,19 @@
 #define CH32V_DMA2_CFGR5_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR5_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR5_OFFSET           0x005c
-#define CH32V_DMA2_CNTR5                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR5_OFFSET)
+#define CH32V_DMA2_CNTR5                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR5_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR5_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR5_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR5_OFFSET          0x0060
-#define CH32V_DMA2_PADDR5                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR5_OFFSET)
+#define CH32V_DMA2_PADDR5                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR5_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR5_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR5_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR5_OFFSET          0x0064
-#define CH32V_DMA2_MADDR5                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR5_OFFSET)
+#define CH32V_DMA2_MADDR5                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR5_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR5_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR5_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR6_OFFSET           0x006c
-#define CH32V_DMA2_CFGR6                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR6_OFFSET)
+#define CH32V_DMA2_CFGR6                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR6_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR6_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR6_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR6_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4414,19 +4414,19 @@
 #define CH32V_DMA2_CFGR6_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR6_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR6_OFFSET           0x0070
-#define CH32V_DMA2_CNTR6                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR6_OFFSET)
+#define CH32V_DMA2_CNTR6                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR6_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR6_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR6_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR6_OFFSET          0x0074
-#define CH32V_DMA2_PADDR6                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR6_OFFSET)
+#define CH32V_DMA2_PADDR6                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR6_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR6_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR6_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR6_OFFSET          0x0078
-#define CH32V_DMA2_MADDR6                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR6_OFFSET)
+#define CH32V_DMA2_MADDR6                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR6_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR6_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR6_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR7_OFFSET           0x0080
-#define CH32V_DMA2_CFGR7                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR7_OFFSET)
+#define CH32V_DMA2_CFGR7                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR7_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR7_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR7_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR7_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4443,19 +4443,19 @@
 #define CH32V_DMA2_CFGR7_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR7_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR7_OFFSET           0x0084
-#define CH32V_DMA2_CNTR7                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR7_OFFSET)
+#define CH32V_DMA2_CNTR7                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR7_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR7_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR7_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR7_OFFSET          0x0088
-#define CH32V_DMA2_PADDR7                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR7_OFFSET)
+#define CH32V_DMA2_PADDR7                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR7_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR7_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR7_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR7_OFFSET          0x008c
-#define CH32V_DMA2_MADDR7                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR7_OFFSET)
+#define CH32V_DMA2_MADDR7                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR7_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR7_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR7_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR8_OFFSET           0x0090
-#define CH32V_DMA2_CFGR8                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR8_OFFSET)
+#define CH32V_DMA2_CFGR8                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR8_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR8_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR8_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR8_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4472,19 +4472,19 @@
 #define CH32V_DMA2_CFGR8_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR8_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR8_OFFSET           0x0094
-#define CH32V_DMA2_CNTR8                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR8_OFFSET)
+#define CH32V_DMA2_CNTR8                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR8_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR8_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR8_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR8_OFFSET          0x0098
-#define CH32V_DMA2_PADDR8                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR8_OFFSET)
+#define CH32V_DMA2_PADDR8                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR8_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR8_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR8_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR8_OFFSET          0x009c
-#define CH32V_DMA2_MADDR8                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR8_OFFSET)
+#define CH32V_DMA2_MADDR8                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR8_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR8_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR8_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR9_OFFSET           0x00a0
-#define CH32V_DMA2_CFGR9                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR9_OFFSET)
+#define CH32V_DMA2_CFGR9                  (CH32V_DMA2_BASE + CH32V_DMA2_CFGR9_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR9_EN               (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR9_TCIE             (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR9_HTIE             (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4501,19 +4501,19 @@
 #define CH32V_DMA2_CFGR9_PL_MASK          (0x3 << 12)
 #define CH32V_DMA2_CFGR9_MEM2MEM          (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR9_OFFSET           0x00a4
-#define CH32V_DMA2_CNTR9                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR9_OFFSET)
+#define CH32V_DMA2_CNTR9                  (CH32V_DMA2_BASE + CH32V_DMA2_CNTR9_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR9_NDT              (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR9_NDT_MASK         (0xffff << 0)
 #define CH32V_DMA2_PADDR9_OFFSET          0x00a8
-#define CH32V_DMA2_PADDR9                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR9_OFFSET)
+#define CH32V_DMA2_PADDR9                 (CH32V_DMA2_BASE + CH32V_DMA2_PADDR9_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR9_PA              (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR9_PA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_MADDR9_OFFSET          0x00ac
-#define CH32V_DMA2_MADDR9                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR9_OFFSET)
+#define CH32V_DMA2_MADDR9                 (CH32V_DMA2_BASE + CH32V_DMA2_MADDR9_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR9_MA              (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR9_MA_MASK         (0xffffffff << 0)
 #define CH32V_DMA2_CFGR10_OFFSET          0x00b0
-#define CH32V_DMA2_CFGR10                 (CH32V_DMA2_BASE + CH32V_DMA2_CFGR10_OFFSET)
+#define CH32V_DMA2_CFGR10                 (CH32V_DMA2_BASE + CH32V_DMA2_CFGR10_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR10_EN              (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR10_TCIE            (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR10_HTIE            (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4530,19 +4530,19 @@
 #define CH32V_DMA2_CFGR10_PL_MASK         (0x3 << 12)
 #define CH32V_DMA2_CFGR10_MEM2MEM         (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR10_OFFSET          0x00b4
-#define CH32V_DMA2_CNTR10                 (CH32V_DMA2_BASE + CH32V_DMA2_CNTR10_OFFSET)
+#define CH32V_DMA2_CNTR10                 (CH32V_DMA2_BASE + CH32V_DMA2_CNTR10_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR10_NDT             (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR10_NDT_MASK        (0xffff << 0)
 #define CH32V_DMA2_PADDR10_OFFSET         0x00b8
-#define CH32V_DMA2_PADDR10                (CH32V_DMA2_BASE + CH32V_DMA2_PADDR10_OFFSET)
+#define CH32V_DMA2_PADDR10                (CH32V_DMA2_BASE + CH32V_DMA2_PADDR10_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR10_PA             (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR10_PA_MASK        (0xffffffff << 0)
 #define CH32V_DMA2_MADDR10_OFFSET         0x00bc
-#define CH32V_DMA2_MADDR10                (CH32V_DMA2_BASE + CH32V_DMA2_MADDR10_OFFSET)
+#define CH32V_DMA2_MADDR10                (CH32V_DMA2_BASE + CH32V_DMA2_MADDR10_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR10_MA             (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR10_MA_MASK        (0xffffffff << 0)
 #define CH32V_DMA2_CFGR11_OFFSET          0x00c0
-#define CH32V_DMA2_CFGR11                 (CH32V_DMA2_BASE + CH32V_DMA2_CFGR11_OFFSET)
+#define CH32V_DMA2_CFGR11                 (CH32V_DMA2_BASE + CH32V_DMA2_CFGR11_OFFSET) /* read-write */
 #define CH32V_DMA2_CFGR11_EN              (1 <<  0) /* 00000001: Channel enable */
 #define CH32V_DMA2_CFGR11_TCIE            (1 <<  1) /* 00000002: Transfer complete interrupt enable */
 #define CH32V_DMA2_CFGR11_HTIE            (1 <<  2) /* 00000004: Half Transfer interrupt enable */
@@ -4559,19 +4559,19 @@
 #define CH32V_DMA2_CFGR11_PL_MASK         (0x3 << 12)
 #define CH32V_DMA2_CFGR11_MEM2MEM         (1 << 14) /* 00004000: Memory to memory mode */
 #define CH32V_DMA2_CNTR11_OFFSET          0x00c4
-#define CH32V_DMA2_CNTR11                 (CH32V_DMA2_BASE + CH32V_DMA2_CNTR11_OFFSET)
+#define CH32V_DMA2_CNTR11                 (CH32V_DMA2_BASE + CH32V_DMA2_CNTR11_OFFSET) /* read-write */
 #define CH32V_DMA2_CNTR11_NDT             (0xffff << 0) /* 0000ffff: Number of data to transfer */
 #define CH32V_DMA2_CNTR11_NDT_MASK        (0xffff << 0)
 #define CH32V_DMA2_PADDR11_OFFSET         0x00c8
-#define CH32V_DMA2_PADDR11                (CH32V_DMA2_BASE + CH32V_DMA2_PADDR11_OFFSET)
+#define CH32V_DMA2_PADDR11                (CH32V_DMA2_BASE + CH32V_DMA2_PADDR11_OFFSET) /* read-write */
 #define CH32V_DMA2_PADDR11_PA             (0xffffffff << 0) /* ffffffff: Peripheral address */
 #define CH32V_DMA2_PADDR11_PA_MASK        (0xffffffff << 0)
 #define CH32V_DMA2_MADDR11_OFFSET         0x00cc
-#define CH32V_DMA2_MADDR11                (CH32V_DMA2_BASE + CH32V_DMA2_MADDR11_OFFSET)
+#define CH32V_DMA2_MADDR11                (CH32V_DMA2_BASE + CH32V_DMA2_MADDR11_OFFSET) /* read-write */
 #define CH32V_DMA2_MADDR11_MA             (0xffffffff << 0) /* ffffffff: Memory address */
 #define CH32V_DMA2_MADDR11_MA_MASK        (0xffffffff << 0)
 #define CH32V_DMA2_EXTEN_INTFR_OFFSET     0x00d0
-#define CH32V_DMA2_EXTEN_INTFR            (CH32V_DMA2_BASE + CH32V_DMA2_EXTEN_INTFR_OFFSET)
+#define CH32V_DMA2_EXTEN_INTFR            (CH32V_DMA2_BASE + CH32V_DMA2_EXTEN_INTFR_OFFSET) /* read-only */
 #define CH32V_DMA2_EXTEN_INTFR_GIF8       (1 <<  0) /* 00000001: Channel 8 Global interrupt flag */
 #define CH32V_DMA2_EXTEN_INTFR_TCIF8      (1 <<  1) /* 00000002: Channel 8 Transfer Complete flag */
 #define CH32V_DMA2_EXTEN_INTFR_HTIF8      (1 <<  2) /* 00000004: Channel 8 Half Transfer Complete flag */
@@ -4589,7 +4589,7 @@
 #define CH32V_DMA2_EXTEN_INTFR_HTIF11     (1 << 14) /* 00004000: Channel 11 Half Transfer Complete flag */
 #define CH32V_DMA2_EXTEN_INTFR_TEIF11     (1 << 15) /* 00008000: Channel 11 Transfer Error flag */
 #define CH32V_DMA2_EXTEN_INTFCR_OFFSET    0x00d4
-#define CH32V_DMA2_EXTEN_INTFCR           (CH32V_DMA2_BASE + CH32V_DMA2_EXTEN_INTFCR_OFFSET)
+#define CH32V_DMA2_EXTEN_INTFCR           (CH32V_DMA2_BASE + CH32V_DMA2_EXTEN_INTFCR_OFFSET) /* read-write */
 #define CH32V_DMA2_EXTEN_INTFCR_CGIF8     (1 <<  0) /* 00000001: Channel 8 Global interrupt clear */
 #define CH32V_DMA2_EXTEN_INTFCR_CGIF9     (1 <<  4) /* 00000010: Channel 9 Global interrupt clear */
 #define CH32V_DMA2_EXTEN_INTFCR_CGIF10    (1 <<  8) /* 00000100: Channel 10 Global interrupt clear */
@@ -4610,7 +4610,7 @@
 /* RTC - Real time clock */
 #define CH32V_RTC_BASE                    0x40002800
 #define CH32V_RTC_CTLRH_OFFSET            0x0000
-#define CH32V_RTC_CTLRH                   (CH32V_RTC_BASE + CH32V_RTC_CTLRH_OFFSET)
+#define CH32V_RTC_CTLRH                   (CH32V_RTC_BASE + CH32V_RTC_CTLRH_OFFSET) /* read-write */
 #define CH32V_RTC_CTLRH_SECIE             (1 <<  0) /* 00000001: Second interrupt Enable */
 #define CH32V_RTC_CTLRH_ALRIE             (1 <<  1) /* 00000002: Alarm interrupt Enable */
 #define CH32V_RTC_CTLRH_OWIE              (1 <<  2) /* 00000004: Overflow interrupt Enable */
@@ -4623,217 +4623,217 @@
 #define CH32V_RTC_CTLRL_CNF               (1 <<  4) /* 00000010: Configuration Flag */
 #define CH32V_RTC_CTLRL_RTOFF             (1 <<  5) /* 00000020: RTC operation OFF */
 #define CH32V_RTC_PSCRH_OFFSET            0x0008
-#define CH32V_RTC_PSCRH                   (CH32V_RTC_BASE + CH32V_RTC_PSCRH_OFFSET)
+#define CH32V_RTC_PSCRH                   (CH32V_RTC_BASE + CH32V_RTC_PSCRH_OFFSET) /* write-only */
 #define CH32V_RTC_PSCRH_PRLH              (0xf << 0) /* 0000000f: RTC Prescaler Load Register High */
 #define CH32V_RTC_PSCRH_PRLH_MASK         (0xf << 0)
 #define CH32V_RTC_PSCRL_OFFSET            0x000c
-#define CH32V_RTC_PSCRL                   (CH32V_RTC_BASE + CH32V_RTC_PSCRL_OFFSET)
+#define CH32V_RTC_PSCRL                   (CH32V_RTC_BASE + CH32V_RTC_PSCRL_OFFSET) /* write-only */
 #define CH32V_RTC_PSCRL_PRLL              (0xffff << 0) /* 0000ffff: RTC Prescaler Divider Register Low */
 #define CH32V_RTC_PSCRL_PRLL_MASK         (0xffff << 0)
 #define CH32V_RTC_DIVH_OFFSET             0x0010
-#define CH32V_RTC_DIVH                    (CH32V_RTC_BASE + CH32V_RTC_DIVH_OFFSET)
+#define CH32V_RTC_DIVH                    (CH32V_RTC_BASE + CH32V_RTC_DIVH_OFFSET) /* read-only */
 #define CH32V_RTC_DIVH_DIVH               (0xf << 0) /* 0000000f: RTC prescaler divider register high */
 #define CH32V_RTC_DIVH_DIVH_MASK          (0xf << 0)
 #define CH32V_RTC_DIVL_OFFSET             0x0014
-#define CH32V_RTC_DIVL                    (CH32V_RTC_BASE + CH32V_RTC_DIVL_OFFSET)
+#define CH32V_RTC_DIVL                    (CH32V_RTC_BASE + CH32V_RTC_DIVL_OFFSET) /* read-only */
 #define CH32V_RTC_DIVL_DIVL               (0xffff << 0) /* 0000ffff: RTC prescaler divider register Low */
 #define CH32V_RTC_DIVL_DIVL_MASK          (0xffff << 0)
 #define CH32V_RTC_CNTH_OFFSET             0x0018
-#define CH32V_RTC_CNTH                    (CH32V_RTC_BASE + CH32V_RTC_CNTH_OFFSET)
+#define CH32V_RTC_CNTH                    (CH32V_RTC_BASE + CH32V_RTC_CNTH_OFFSET) /* read-write */
 #define CH32V_RTC_CNTH_CNTH               (0xffff << 0) /* 0000ffff: RTC counter register high */
 #define CH32V_RTC_CNTH_CNTH_MASK          (0xffff << 0)
 #define CH32V_RTC_CNTL_OFFSET             0x001c
-#define CH32V_RTC_CNTL                    (CH32V_RTC_BASE + CH32V_RTC_CNTL_OFFSET)
+#define CH32V_RTC_CNTL                    (CH32V_RTC_BASE + CH32V_RTC_CNTL_OFFSET) /* read-write */
 #define CH32V_RTC_CNTL_CNTL               (0xffff << 0) /* 0000ffff: RTC counter register Low */
 #define CH32V_RTC_CNTL_CNTL_MASK          (0xffff << 0)
 #define CH32V_RTC_ALRMH_OFFSET            0x0020
-#define CH32V_RTC_ALRMH                   (CH32V_RTC_BASE + CH32V_RTC_ALRMH_OFFSET)
+#define CH32V_RTC_ALRMH                   (CH32V_RTC_BASE + CH32V_RTC_ALRMH_OFFSET) /* write-only */
 #define CH32V_RTC_ALRMH_ALRH              (0xffff << 0) /* 0000ffff: RTC alarm register high */
 #define CH32V_RTC_ALRMH_ALRH_MASK         (0xffff << 0)
 #define CH32V_RTC_ALRML_OFFSET            0x0024
-#define CH32V_RTC_ALRML                   (CH32V_RTC_BASE + CH32V_RTC_ALRML_OFFSET)
+#define CH32V_RTC_ALRML                   (CH32V_RTC_BASE + CH32V_RTC_ALRML_OFFSET) /* write-only */
 #define CH32V_RTC_ALRML_ALRL              (0xffff << 0) /* 0000ffff: RTC alarm register low */
 #define CH32V_RTC_ALRML_ALRL_MASK         (0xffff << 0)
 
 /* BKP - Backup registers */
 #define CH32V_BKP_BASE                    0x40006c00
 #define CH32V_BKP_DATAR1_OFFSET           0x0004
-#define CH32V_BKP_DATAR1                  (CH32V_BKP_BASE + CH32V_BKP_DATAR1_OFFSET)
+#define CH32V_BKP_DATAR1                  (CH32V_BKP_BASE + CH32V_BKP_DATAR1_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR1_D1               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR1_D1_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR2_OFFSET           0x0008
-#define CH32V_BKP_DATAR2                  (CH32V_BKP_BASE + CH32V_BKP_DATAR2_OFFSET)
+#define CH32V_BKP_DATAR2                  (CH32V_BKP_BASE + CH32V_BKP_DATAR2_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR2_D2               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR2_D2_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR3_OFFSET           0x000c
-#define CH32V_BKP_DATAR3                  (CH32V_BKP_BASE + CH32V_BKP_DATAR3_OFFSET)
+#define CH32V_BKP_DATAR3                  (CH32V_BKP_BASE + CH32V_BKP_DATAR3_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR3_D3               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR3_D3_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR4_OFFSET           0x0010
-#define CH32V_BKP_DATAR4                  (CH32V_BKP_BASE + CH32V_BKP_DATAR4_OFFSET)
+#define CH32V_BKP_DATAR4                  (CH32V_BKP_BASE + CH32V_BKP_DATAR4_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR4_D4               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR4_D4_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR5_OFFSET           0x0014
-#define CH32V_BKP_DATAR5                  (CH32V_BKP_BASE + CH32V_BKP_DATAR5_OFFSET)
+#define CH32V_BKP_DATAR5                  (CH32V_BKP_BASE + CH32V_BKP_DATAR5_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR5_D5               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR5_D5_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR6_OFFSET           0x0018
-#define CH32V_BKP_DATAR6                  (CH32V_BKP_BASE + CH32V_BKP_DATAR6_OFFSET)
+#define CH32V_BKP_DATAR6                  (CH32V_BKP_BASE + CH32V_BKP_DATAR6_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR6_D6               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR6_D6_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR7_OFFSET           0x001c
-#define CH32V_BKP_DATAR7                  (CH32V_BKP_BASE + CH32V_BKP_DATAR7_OFFSET)
+#define CH32V_BKP_DATAR7                  (CH32V_BKP_BASE + CH32V_BKP_DATAR7_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR7_D7               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR7_D7_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR8_OFFSET           0x0020
-#define CH32V_BKP_DATAR8                  (CH32V_BKP_BASE + CH32V_BKP_DATAR8_OFFSET)
+#define CH32V_BKP_DATAR8                  (CH32V_BKP_BASE + CH32V_BKP_DATAR8_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR8_D8               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR8_D8_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR9_OFFSET           0x0024
-#define CH32V_BKP_DATAR9                  (CH32V_BKP_BASE + CH32V_BKP_DATAR9_OFFSET)
+#define CH32V_BKP_DATAR9                  (CH32V_BKP_BASE + CH32V_BKP_DATAR9_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR9_D9               (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR9_D9_MASK          (0xffff << 0)
 #define CH32V_BKP_DATAR10_OFFSET          0x0028
-#define CH32V_BKP_DATAR10                 (CH32V_BKP_BASE + CH32V_BKP_DATAR10_OFFSET)
+#define CH32V_BKP_DATAR10                 (CH32V_BKP_BASE + CH32V_BKP_DATAR10_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR10_D10             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR10_D10_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR11_OFFSET          0x0040
-#define CH32V_BKP_DATAR11                 (CH32V_BKP_BASE + CH32V_BKP_DATAR11_OFFSET)
+#define CH32V_BKP_DATAR11                 (CH32V_BKP_BASE + CH32V_BKP_DATAR11_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR11_DR11            (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR11_DR11_MASK       (0xffff << 0)
 #define CH32V_BKP_DATAR12_OFFSET          0x0044
-#define CH32V_BKP_DATAR12                 (CH32V_BKP_BASE + CH32V_BKP_DATAR12_OFFSET)
+#define CH32V_BKP_DATAR12                 (CH32V_BKP_BASE + CH32V_BKP_DATAR12_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR12_DR12            (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR12_DR12_MASK       (0xffff << 0)
 #define CH32V_BKP_DATAR13_OFFSET          0x0048
-#define CH32V_BKP_DATAR13                 (CH32V_BKP_BASE + CH32V_BKP_DATAR13_OFFSET)
+#define CH32V_BKP_DATAR13                 (CH32V_BKP_BASE + CH32V_BKP_DATAR13_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR13_DR13            (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR13_DR13_MASK       (0xffff << 0)
 #define CH32V_BKP_DATAR14_OFFSET          0x004c
-#define CH32V_BKP_DATAR14                 (CH32V_BKP_BASE + CH32V_BKP_DATAR14_OFFSET)
+#define CH32V_BKP_DATAR14                 (CH32V_BKP_BASE + CH32V_BKP_DATAR14_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR14_D14             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR14_D14_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR15_OFFSET          0x0050
-#define CH32V_BKP_DATAR15                 (CH32V_BKP_BASE + CH32V_BKP_DATAR15_OFFSET)
+#define CH32V_BKP_DATAR15                 (CH32V_BKP_BASE + CH32V_BKP_DATAR15_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR15_D15             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR15_D15_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR16_OFFSET          0x0054
-#define CH32V_BKP_DATAR16                 (CH32V_BKP_BASE + CH32V_BKP_DATAR16_OFFSET)
+#define CH32V_BKP_DATAR16                 (CH32V_BKP_BASE + CH32V_BKP_DATAR16_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR16_D16             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR16_D16_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR17_OFFSET          0x0058
-#define CH32V_BKP_DATAR17                 (CH32V_BKP_BASE + CH32V_BKP_DATAR17_OFFSET)
+#define CH32V_BKP_DATAR17                 (CH32V_BKP_BASE + CH32V_BKP_DATAR17_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR17_D17             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR17_D17_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR18_OFFSET          0x005c
-#define CH32V_BKP_DATAR18                 (CH32V_BKP_BASE + CH32V_BKP_DATAR18_OFFSET)
+#define CH32V_BKP_DATAR18                 (CH32V_BKP_BASE + CH32V_BKP_DATAR18_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR18_D18             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR18_D18_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR19_OFFSET          0x0060
-#define CH32V_BKP_DATAR19                 (CH32V_BKP_BASE + CH32V_BKP_DATAR19_OFFSET)
+#define CH32V_BKP_DATAR19                 (CH32V_BKP_BASE + CH32V_BKP_DATAR19_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR19_D19             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR19_D19_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR20_OFFSET          0x0064
-#define CH32V_BKP_DATAR20                 (CH32V_BKP_BASE + CH32V_BKP_DATAR20_OFFSET)
+#define CH32V_BKP_DATAR20                 (CH32V_BKP_BASE + CH32V_BKP_DATAR20_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR20_D20             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR20_D20_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR21_OFFSET          0x0068
-#define CH32V_BKP_DATAR21                 (CH32V_BKP_BASE + CH32V_BKP_DATAR21_OFFSET)
+#define CH32V_BKP_DATAR21                 (CH32V_BKP_BASE + CH32V_BKP_DATAR21_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR21_D21             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR21_D21_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR22_OFFSET          0x006c
-#define CH32V_BKP_DATAR22                 (CH32V_BKP_BASE + CH32V_BKP_DATAR22_OFFSET)
+#define CH32V_BKP_DATAR22                 (CH32V_BKP_BASE + CH32V_BKP_DATAR22_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR22_D22             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR22_D22_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR23_OFFSET          0x0070
-#define CH32V_BKP_DATAR23                 (CH32V_BKP_BASE + CH32V_BKP_DATAR23_OFFSET)
+#define CH32V_BKP_DATAR23                 (CH32V_BKP_BASE + CH32V_BKP_DATAR23_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR23_D23             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR23_D23_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR24_OFFSET          0x0074
-#define CH32V_BKP_DATAR24                 (CH32V_BKP_BASE + CH32V_BKP_DATAR24_OFFSET)
+#define CH32V_BKP_DATAR24                 (CH32V_BKP_BASE + CH32V_BKP_DATAR24_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR24_D24             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR24_D24_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR25_OFFSET          0x0078
-#define CH32V_BKP_DATAR25                 (CH32V_BKP_BASE + CH32V_BKP_DATAR25_OFFSET)
+#define CH32V_BKP_DATAR25                 (CH32V_BKP_BASE + CH32V_BKP_DATAR25_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR25_D25             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR25_D25_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR26_OFFSET          0x007c
-#define CH32V_BKP_DATAR26                 (CH32V_BKP_BASE + CH32V_BKP_DATAR26_OFFSET)
+#define CH32V_BKP_DATAR26                 (CH32V_BKP_BASE + CH32V_BKP_DATAR26_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR26_D26             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR26_D26_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR27_OFFSET          0x0080
-#define CH32V_BKP_DATAR27                 (CH32V_BKP_BASE + CH32V_BKP_DATAR27_OFFSET)
+#define CH32V_BKP_DATAR27                 (CH32V_BKP_BASE + CH32V_BKP_DATAR27_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR27_D27             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR27_D27_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR28_OFFSET          0x0084
-#define CH32V_BKP_DATAR28                 (CH32V_BKP_BASE + CH32V_BKP_DATAR28_OFFSET)
+#define CH32V_BKP_DATAR28                 (CH32V_BKP_BASE + CH32V_BKP_DATAR28_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR28_D28             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR28_D28_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR29_OFFSET          0x0088
-#define CH32V_BKP_DATAR29                 (CH32V_BKP_BASE + CH32V_BKP_DATAR29_OFFSET)
+#define CH32V_BKP_DATAR29                 (CH32V_BKP_BASE + CH32V_BKP_DATAR29_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR29_D29             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR29_D29_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR30_OFFSET          0x008c
-#define CH32V_BKP_DATAR30                 (CH32V_BKP_BASE + CH32V_BKP_DATAR30_OFFSET)
+#define CH32V_BKP_DATAR30                 (CH32V_BKP_BASE + CH32V_BKP_DATAR30_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR30_D30             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR30_D30_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR31_OFFSET          0x0090
-#define CH32V_BKP_DATAR31                 (CH32V_BKP_BASE + CH32V_BKP_DATAR31_OFFSET)
+#define CH32V_BKP_DATAR31                 (CH32V_BKP_BASE + CH32V_BKP_DATAR31_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR31_D31             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR31_D31_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR32_OFFSET          0x0094
-#define CH32V_BKP_DATAR32                 (CH32V_BKP_BASE + CH32V_BKP_DATAR32_OFFSET)
+#define CH32V_BKP_DATAR32                 (CH32V_BKP_BASE + CH32V_BKP_DATAR32_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR32_D32             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR32_D32_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR33_OFFSET          0x0098
-#define CH32V_BKP_DATAR33                 (CH32V_BKP_BASE + CH32V_BKP_DATAR33_OFFSET)
+#define CH32V_BKP_DATAR33                 (CH32V_BKP_BASE + CH32V_BKP_DATAR33_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR33_D33             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR33_D33_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR34_OFFSET          0x009c
-#define CH32V_BKP_DATAR34                 (CH32V_BKP_BASE + CH32V_BKP_DATAR34_OFFSET)
+#define CH32V_BKP_DATAR34                 (CH32V_BKP_BASE + CH32V_BKP_DATAR34_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR34_D34             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR34_D34_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR35_OFFSET          0x00a0
-#define CH32V_BKP_DATAR35                 (CH32V_BKP_BASE + CH32V_BKP_DATAR35_OFFSET)
+#define CH32V_BKP_DATAR35                 (CH32V_BKP_BASE + CH32V_BKP_DATAR35_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR35_D35             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR35_D35_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR36_OFFSET          0x00a4
-#define CH32V_BKP_DATAR36                 (CH32V_BKP_BASE + CH32V_BKP_DATAR36_OFFSET)
+#define CH32V_BKP_DATAR36                 (CH32V_BKP_BASE + CH32V_BKP_DATAR36_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR36_D36             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR36_D36_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR37_OFFSET          0x00a8
-#define CH32V_BKP_DATAR37                 (CH32V_BKP_BASE + CH32V_BKP_DATAR37_OFFSET)
+#define CH32V_BKP_DATAR37                 (CH32V_BKP_BASE + CH32V_BKP_DATAR37_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR37_D37             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR37_D37_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR38_OFFSET          0x00ac
-#define CH32V_BKP_DATAR38                 (CH32V_BKP_BASE + CH32V_BKP_DATAR38_OFFSET)
+#define CH32V_BKP_DATAR38                 (CH32V_BKP_BASE + CH32V_BKP_DATAR38_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR38_D38             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR38_D38_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR39_OFFSET          0x00b0
-#define CH32V_BKP_DATAR39                 (CH32V_BKP_BASE + CH32V_BKP_DATAR39_OFFSET)
+#define CH32V_BKP_DATAR39                 (CH32V_BKP_BASE + CH32V_BKP_DATAR39_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR39_D39             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR39_D39_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR40_OFFSET          0x00b4
-#define CH32V_BKP_DATAR40                 (CH32V_BKP_BASE + CH32V_BKP_DATAR40_OFFSET)
+#define CH32V_BKP_DATAR40                 (CH32V_BKP_BASE + CH32V_BKP_DATAR40_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR40_D40             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR40_D40_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR41_OFFSET          0x00b8
-#define CH32V_BKP_DATAR41                 (CH32V_BKP_BASE + CH32V_BKP_DATAR41_OFFSET)
+#define CH32V_BKP_DATAR41                 (CH32V_BKP_BASE + CH32V_BKP_DATAR41_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR41_D41             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR41_D41_MASK        (0xffff << 0)
 #define CH32V_BKP_DATAR42_OFFSET          0x00bc
-#define CH32V_BKP_DATAR42                 (CH32V_BKP_BASE + CH32V_BKP_DATAR42_OFFSET)
+#define CH32V_BKP_DATAR42                 (CH32V_BKP_BASE + CH32V_BKP_DATAR42_OFFSET) /* read-write */
 #define CH32V_BKP_DATAR42_D42             (0xffff << 0) /* 0000ffff: Backup data */
 #define CH32V_BKP_DATAR42_D42_MASK        (0xffff << 0)
 #define CH32V_BKP_OCTLR_OFFSET            0x002c
-#define CH32V_BKP_OCTLR                   (CH32V_BKP_BASE + CH32V_BKP_OCTLR_OFFSET)
+#define CH32V_BKP_OCTLR                   (CH32V_BKP_BASE + CH32V_BKP_OCTLR_OFFSET) /* read-write */
 #define CH32V_BKP_OCTLR_CAL               (0x7f << 0) /* 0000007f: Calibration value */
 #define CH32V_BKP_OCTLR_CAL_MASK          (0x7f << 0)
 #define CH32V_BKP_OCTLR_CCO               (1 <<  7) /* 00000080: Calibration Clock Output */
 #define CH32V_BKP_OCTLR_ASOE              (1 <<  8) /* 00000100: Alarm or second output enable */
 #define CH32V_BKP_OCTLR_ASOS              (1 <<  9) /* 00000200: Alarm or second output selection */
 #define CH32V_BKP_TPCTLR_OFFSET           0x0030
-#define CH32V_BKP_TPCTLR                  (CH32V_BKP_BASE + CH32V_BKP_TPCTLR_OFFSET)
+#define CH32V_BKP_TPCTLR                  (CH32V_BKP_BASE + CH32V_BKP_TPCTLR_OFFSET) /* read-write */
 #define CH32V_BKP_TPCTLR_TPE              (1 <<  0) /* 00000001: Tamper pin enable */
 #define CH32V_BKP_TPCTLR_TPAL             (1 <<  1) /* 00000002: Tamper pin active level */
 #define CH32V_BKP_TPCSR_OFFSET            0x0034
@@ -4847,44 +4847,44 @@
 /* IWDG - Independent watchdog */
 #define CH32V_IWDG_BASE                   0x40003000
 #define CH32V_IWDG_CTLR_OFFSET            0x0000
-#define CH32V_IWDG_CTLR                   (CH32V_IWDG_BASE + CH32V_IWDG_CTLR_OFFSET)
+#define CH32V_IWDG_CTLR                   (CH32V_IWDG_BASE + CH32V_IWDG_CTLR_OFFSET) /* write-only */
 #define CH32V_IWDG_CTLR_KEY               (0xffff << 0) /* 0000ffff: Key value */
 #define CH32V_IWDG_CTLR_KEY_MASK          (0xffff << 0)
 #define CH32V_IWDG_PSCR_OFFSET            0x0004
-#define CH32V_IWDG_PSCR                   (CH32V_IWDG_BASE + CH32V_IWDG_PSCR_OFFSET)
+#define CH32V_IWDG_PSCR                   (CH32V_IWDG_BASE + CH32V_IWDG_PSCR_OFFSET) /* read-write */
 #define CH32V_IWDG_PSCR_PR                (0x7 << 0) /* 00000007: Prescaler divider */
 #define CH32V_IWDG_PSCR_PR_MASK           (0x7 << 0)
 #define CH32V_IWDG_RLDR_OFFSET            0x0008
-#define CH32V_IWDG_RLDR                   (CH32V_IWDG_BASE + CH32V_IWDG_RLDR_OFFSET)
+#define CH32V_IWDG_RLDR                   (CH32V_IWDG_BASE + CH32V_IWDG_RLDR_OFFSET) /* read-write */
 #define CH32V_IWDG_RLDR_RL                (0xfff << 0) /* 00000fff: Watchdog counter reload value */
 #define CH32V_IWDG_RLDR_RL_MASK           (0xfff << 0)
 #define CH32V_IWDG_STATR_OFFSET           0x000c
-#define CH32V_IWDG_STATR                  (CH32V_IWDG_BASE + CH32V_IWDG_STATR_OFFSET)
+#define CH32V_IWDG_STATR                  (CH32V_IWDG_BASE + CH32V_IWDG_STATR_OFFSET) /* read-only */
 #define CH32V_IWDG_STATR_PVU              (1 <<  0) /* 00000001: Watchdog prescaler value update */
 #define CH32V_IWDG_STATR_RVU              (1 <<  1) /* 00000002: Watchdog counter reload value update */
 
 /* WWDG - Window watchdog */
 #define CH32V_WWDG_BASE                   0x40002c00
 #define CH32V_WWDG_CTLR_OFFSET            0x0000
-#define CH32V_WWDG_CTLR                   (CH32V_WWDG_BASE + CH32V_WWDG_CTLR_OFFSET)
+#define CH32V_WWDG_CTLR                   (CH32V_WWDG_BASE + CH32V_WWDG_CTLR_OFFSET) /* read-write */
 #define CH32V_WWDG_CTLR_T                 (0x7f << 0) /* 0000007f: 7-bit counter (MSB to LSB) */
 #define CH32V_WWDG_CTLR_T_MASK            (0x7f << 0)
 #define CH32V_WWDG_CTLR_WDGA              (1 <<  7) /* 00000080: Activation bit */
 #define CH32V_WWDG_CFGR_OFFSET            0x0004
-#define CH32V_WWDG_CFGR                   (CH32V_WWDG_BASE + CH32V_WWDG_CFGR_OFFSET)
+#define CH32V_WWDG_CFGR                   (CH32V_WWDG_BASE + CH32V_WWDG_CFGR_OFFSET) /* read-write */
 #define CH32V_WWDG_CFGR_W                 (0x7f << 0) /* 0000007f: 7-bit window value */
 #define CH32V_WWDG_CFGR_W_MASK            (0x7f << 0)
 #define CH32V_WWDG_CFGR_WDGTB             (0x3 << 7) /* 00000180: Timer Base */
 #define CH32V_WWDG_CFGR_WDGTB_MASK        (0x3 << 7)
 #define CH32V_WWDG_CFGR_EWI               (1 <<  9) /* 00000200: Early Wakeup Interrupt */
 #define CH32V_WWDG_STATR_OFFSET           0x0008
-#define CH32V_WWDG_STATR                  (CH32V_WWDG_BASE + CH32V_WWDG_STATR_OFFSET)
+#define CH32V_WWDG_STATR                  (CH32V_WWDG_BASE + CH32V_WWDG_STATR_OFFSET) /* read-write */
 #define CH32V_WWDG_STATR_WEIF             (1 <<  0) /* 00000001: Early Wakeup Interrupt Flag */
 
 /* TIM1 - Advanced timer */
 #define CH32V_TIM1_BASE                   0x40012c00
 #define CH32V_TIM1_CTLR1_OFFSET           0x0000
-#define CH32V_TIM1_CTLR1                  (CH32V_TIM1_BASE + CH32V_TIM1_CTLR1_OFFSET)
+#define CH32V_TIM1_CTLR1                  (CH32V_TIM1_BASE + CH32V_TIM1_CTLR1_OFFSET) /* read-write */
 #define CH32V_TIM1_CTLR1_CKD              (0x3 << 8) /* 00000300: Clock division */
 #define CH32V_TIM1_CTLR1_CKD_MASK         (0x3 << 8)
 #define CH32V_TIM1_CTLR1_ARPE             (1 <<  7) /* 00000080: Auto-reload preload enable */
@@ -4896,7 +4896,7 @@
 #define CH32V_TIM1_CTLR1_UDIS             (1 <<  1) /* 00000002: Update disable */
 #define CH32V_TIM1_CTLR1_CEN              (1 <<  0) /* 00000001: Counter enable */
 #define CH32V_TIM1_CTLR2_OFFSET           0x0004
-#define CH32V_TIM1_CTLR2                  (CH32V_TIM1_BASE + CH32V_TIM1_CTLR2_OFFSET)
+#define CH32V_TIM1_CTLR2                  (CH32V_TIM1_BASE + CH32V_TIM1_CTLR2_OFFSET) /* read-write */
 #define CH32V_TIM1_CTLR2_OIS4             (1 << 14) /* 00004000: Output Idle state 4 */
 #define CH32V_TIM1_CTLR2_OIS3N            (1 << 13) /* 00002000: Output Idle state 3 */
 #define CH32V_TIM1_CTLR2_OIS3             (1 << 12) /* 00001000: Output Idle state 3 */
@@ -4911,7 +4911,7 @@
 #define CH32V_TIM1_CTLR2_CCUS             (1 <<  2) /* 00000004: Capture/compare control update selection */
 #define CH32V_TIM1_CTLR2_CCPC             (1 <<  0) /* 00000001: Capture/compare preloaded control */
 #define CH32V_TIM1_SMCFGR_OFFSET          0x0008
-#define CH32V_TIM1_SMCFGR                 (CH32V_TIM1_BASE + CH32V_TIM1_SMCFGR_OFFSET)
+#define CH32V_TIM1_SMCFGR                 (CH32V_TIM1_BASE + CH32V_TIM1_SMCFGR_OFFSET) /* read-write */
 #define CH32V_TIM1_SMCFGR_ETP             (1 << 15) /* 00008000: External trigger polarity */
 #define CH32V_TIM1_SMCFGR_ECE             (1 << 14) /* 00004000: External clock enable */
 #define CH32V_TIM1_SMCFGR_ETPS            (0x3 << 12) /* 00003000: External trigger prescaler */
@@ -4924,7 +4924,7 @@
 #define CH32V_TIM1_SMCFGR_SMS             (0x7 << 0) /* 00000007: Slave mode selection */
 #define CH32V_TIM1_SMCFGR_SMS_MASK        (0x7 << 0)
 #define CH32V_TIM1_DMAINTENR_OFFSET       0x000c
-#define CH32V_TIM1_DMAINTENR              (CH32V_TIM1_BASE + CH32V_TIM1_DMAINTENR_OFFSET)
+#define CH32V_TIM1_DMAINTENR              (CH32V_TIM1_BASE + CH32V_TIM1_DMAINTENR_OFFSET) /* read-write */
 #define CH32V_TIM1_DMAINTENR_TDE          (1 << 14) /* 00004000: Trigger DMA request enable */
 #define CH32V_TIM1_DMAINTENR_COMDE        (1 << 13) /* 00002000: COM DMA request enable */
 #define CH32V_TIM1_DMAINTENR_CC4DE        (1 << 12) /* 00001000: Capture/Compare 4 DMA request enable */
@@ -4941,7 +4941,7 @@
 #define CH32V_TIM1_DMAINTENR_CC1IE        (1 <<  1) /* 00000002: Capture/Compare 1 interrupt enable */
 #define CH32V_TIM1_DMAINTENR_UIE          (1 <<  0) /* 00000001: Update interrupt enable */
 #define CH32V_TIM1_INTFR_OFFSET           0x0010
-#define CH32V_TIM1_INTFR                  (CH32V_TIM1_BASE + CH32V_TIM1_INTFR_OFFSET)
+#define CH32V_TIM1_INTFR                  (CH32V_TIM1_BASE + CH32V_TIM1_INTFR_OFFSET) /* read-write */
 #define CH32V_TIM1_INTFR_CC4OF            (1 << 12) /* 00001000: Capture/Compare 4 overcapture flag */
 #define CH32V_TIM1_INTFR_CC3OF            (1 << 11) /* 00000800: Capture/Compare 3 overcapture flag */
 #define CH32V_TIM1_INTFR_CC2OF            (1 << 10) /* 00000400: Capture/compare 2 overcapture flag */
@@ -4955,7 +4955,7 @@
 #define CH32V_TIM1_INTFR_CC1IF            (1 <<  1) /* 00000002: Capture/compare 1 interrupt flag */
 #define CH32V_TIM1_INTFR_UIF              (1 <<  0) /* 00000001: Update interrupt flag */
 #define CH32V_TIM1_SWEVGR_OFFSET          0x0014
-#define CH32V_TIM1_SWEVGR                 (CH32V_TIM1_BASE + CH32V_TIM1_SWEVGR_OFFSET)
+#define CH32V_TIM1_SWEVGR                 (CH32V_TIM1_BASE + CH32V_TIM1_SWEVGR_OFFSET) /* write-only */
 #define CH32V_TIM1_SWEVGR_BG              (1 <<  7) /* 00000080: Break generation */
 #define CH32V_TIM1_SWEVGR_TG              (1 <<  6) /* 00000040: Trigger generation */
 #define CH32V_TIM1_SWEVGR_COMG            (1 <<  5) /* 00000020: Capture/Compare control update generation */
@@ -4965,7 +4965,7 @@
 #define CH32V_TIM1_SWEVGR_CC1G            (1 <<  1) /* 00000002: Capture/compare 1 generation */
 #define CH32V_TIM1_SWEVGR_UG              (1 <<  0) /* 00000001: Update generation */
 #define CH32V_TIM1_CHCTLR1_Output_OFFSET  0x0018
-#define CH32V_TIM1_CHCTLR1_Output         (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR1_Output_OFFSET)
+#define CH32V_TIM1_CHCTLR1_Output         (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR1_Output_OFFSET) /* read-write */
 #define CH32V_TIM1_CHCTLR1_Output_OC2CE   (1 << 15) /* 00008000: Output Compare 2 clear enable */
 #define CH32V_TIM1_CHCTLR1_Output_OC2M    (0x7 << 12) /* 00007000: Output Compare 2 mode */
 #define CH32V_TIM1_CHCTLR1_Output_OC2M_MASK (0x7 << 12)
@@ -4981,7 +4981,7 @@
 #define CH32V_TIM1_CHCTLR1_Output_CC1S    (0x3 << 0) /* 00000003: Capture/Compare 1 selection */
 #define CH32V_TIM1_CHCTLR1_Output_CC1S_MASK (0x3 << 0)
 #define CH32V_TIM1_CHCTLR1_Input_OFFSET   0x0018
-#define CH32V_TIM1_CHCTLR1_Input          (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR1_Input_OFFSET)
+#define CH32V_TIM1_CHCTLR1_Input          (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR1_Input_OFFSET) /* read-write */
 #define CH32V_TIM1_CHCTLR1_Input_IC2F     (0xf << 12) /* 0000f000: Input capture 2 filter */
 #define CH32V_TIM1_CHCTLR1_Input_IC2F_MASK (0xf << 12)
 #define CH32V_TIM1_CHCTLR1_Input_IC2PCS   (0x3 << 10) /* 00000c00: Input capture 2 prescaler */
@@ -4995,7 +4995,7 @@
 #define CH32V_TIM1_CHCTLR1_Input_CC1S     (0x3 << 0) /* 00000003: Capture/Compare 1 selection */
 #define CH32V_TIM1_CHCTLR1_Input_CC1S_MASK (0x3 << 0)
 #define CH32V_TIM1_CHCTLR2_Output_OFFSET  0x001c
-#define CH32V_TIM1_CHCTLR2_Output         (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR2_Output_OFFSET)
+#define CH32V_TIM1_CHCTLR2_Output         (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR2_Output_OFFSET) /* read-write */
 #define CH32V_TIM1_CHCTLR2_Output_OC4CE   (1 << 15) /* 00008000: Output compare 4 clear enable */
 #define CH32V_TIM1_CHCTLR2_Output_OC4M    (0x7 << 12) /* 00007000: Output compare 4 mode */
 #define CH32V_TIM1_CHCTLR2_Output_OC4M_MASK (0x7 << 12)
@@ -5011,7 +5011,7 @@
 #define CH32V_TIM1_CHCTLR2_Output_CC3S    (0x3 << 0) /* 00000003: Capture/Compare 3 selection */
 #define CH32V_TIM1_CHCTLR2_Output_CC3S_MASK (0x3 << 0)
 #define CH32V_TIM1_CHCTLR2_Input_OFFSET   0x001c
-#define CH32V_TIM1_CHCTLR2_Input          (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR2_Input_OFFSET)
+#define CH32V_TIM1_CHCTLR2_Input          (CH32V_TIM1_BASE + CH32V_TIM1_CHCTLR2_Input_OFFSET) /* read-write */
 #define CH32V_TIM1_CHCTLR2_Input_IC4F     (0xf << 12) /* 0000f000: Input capture 4 filter */
 #define CH32V_TIM1_CHCTLR2_Input_IC4F_MASK (0xf << 12)
 #define CH32V_TIM1_CHCTLR2_Input_IC4PSC   (0x3 << 10) /* 00000c00: Input capture 4 prescaler */
@@ -5025,7 +5025,7 @@
 #define CH32V_TIM1_CHCTLR2_Input_CC3S     (0x3 << 0) /* 00000003: Capture/compare 3 selection */
 #define CH32V_TIM1_CHCTLR2_Input_CC3S_MASK (0x3 << 0)
 #define CH32V_TIM1_CCER_OFFSET            0x0020
-#define CH32V_TIM1_CCER                   (CH32V_TIM1_BASE + CH32V_TIM1_CCER_OFFSET)
+#define CH32V_TIM1_CCER                   (CH32V_TIM1_BASE + CH32V_TIM1_CCER_OFFSET) /* read-write */
 #define CH32V_TIM1_CCER_CC4P              (1 << 13) /* 00002000: Capture/Compare 3 output Polarity */
 #define CH32V_TIM1_CCER_CC4E              (1 << 12) /* 00001000: Capture/Compare 4 output enable */
 #define CH32V_TIM1_CCER_CC3NP             (1 << 11) /* 00000800: Capture/Compare 3 output Polarity */
@@ -5041,39 +5041,39 @@
 #define CH32V_TIM1_CCER_CC1P              (1 <<  1) /* 00000002: Capture/Compare 1 output Polarity */
 #define CH32V_TIM1_CCER_CC1E              (1 <<  0) /* 00000001: Capture/Compare 1 output enable */
 #define CH32V_TIM1_CNT_OFFSET             0x0024
-#define CH32V_TIM1_CNT                    (CH32V_TIM1_BASE + CH32V_TIM1_CNT_OFFSET)
+#define CH32V_TIM1_CNT                    (CH32V_TIM1_BASE + CH32V_TIM1_CNT_OFFSET) /* read-write */
 #define CH32V_TIM1_CNT_CNT                (0xffff << 0) /* 0000ffff: counter value */
 #define CH32V_TIM1_CNT_CNT_MASK           (0xffff << 0)
 #define CH32V_TIM1_PSC_OFFSET             0x0028
-#define CH32V_TIM1_PSC                    (CH32V_TIM1_BASE + CH32V_TIM1_PSC_OFFSET)
+#define CH32V_TIM1_PSC                    (CH32V_TIM1_BASE + CH32V_TIM1_PSC_OFFSET) /* read-write */
 #define CH32V_TIM1_PSC_PSC                (0xffff << 0) /* 0000ffff: Prescaler value */
 #define CH32V_TIM1_PSC_PSC_MASK           (0xffff << 0)
 #define CH32V_TIM1_ATRLR_OFFSET           0x002c
-#define CH32V_TIM1_ATRLR                  (CH32V_TIM1_BASE + CH32V_TIM1_ATRLR_OFFSET)
+#define CH32V_TIM1_ATRLR                  (CH32V_TIM1_BASE + CH32V_TIM1_ATRLR_OFFSET) /* read-write */
 #define CH32V_TIM1_ATRLR_ATRLR            (0xffff << 0) /* 0000ffff: Auto-reload value */
 #define CH32V_TIM1_ATRLR_ATRLR_MASK       (0xffff << 0)
 #define CH32V_TIM1_RPTCR_OFFSET           0x0030
-#define CH32V_TIM1_RPTCR                  (CH32V_TIM1_BASE + CH32V_TIM1_RPTCR_OFFSET)
+#define CH32V_TIM1_RPTCR                  (CH32V_TIM1_BASE + CH32V_TIM1_RPTCR_OFFSET) /* read-write */
 #define CH32V_TIM1_RPTCR_RPTCR            (0xff << 0) /* 000000ff: Repetition counter value */
 #define CH32V_TIM1_RPTCR_RPTCR_MASK       (0xff << 0)
 #define CH32V_TIM1_CH1CVR_OFFSET          0x0034
-#define CH32V_TIM1_CH1CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH1CVR_OFFSET)
+#define CH32V_TIM1_CH1CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH1CVR_OFFSET) /* read-write */
 #define CH32V_TIM1_CH1CVR_CH1CVR          (0xffff << 0) /* 0000ffff: Capture/Compare 1 value */
 #define CH32V_TIM1_CH1CVR_CH1CVR_MASK     (0xffff << 0)
 #define CH32V_TIM1_CH2CVR_OFFSET          0x0038
-#define CH32V_TIM1_CH2CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH2CVR_OFFSET)
+#define CH32V_TIM1_CH2CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH2CVR_OFFSET) /* read-write */
 #define CH32V_TIM1_CH2CVR_CH2CVR          (0xffff << 0) /* 0000ffff: Capture/Compare 2 value */
 #define CH32V_TIM1_CH2CVR_CH2CVR_MASK     (0xffff << 0)
 #define CH32V_TIM1_CH3CVR_OFFSET          0x003c
-#define CH32V_TIM1_CH3CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH3CVR_OFFSET)
+#define CH32V_TIM1_CH3CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH3CVR_OFFSET) /* read-write */
 #define CH32V_TIM1_CH3CVR_CH3CVR          (0xffff << 0) /* 0000ffff: Capture/Compare value */
 #define CH32V_TIM1_CH3CVR_CH3CVR_MASK     (0xffff << 0)
 #define CH32V_TIM1_CH4CVR_OFFSET          0x0040
-#define CH32V_TIM1_CH4CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH4CVR_OFFSET)
+#define CH32V_TIM1_CH4CVR                 (CH32V_TIM1_BASE + CH32V_TIM1_CH4CVR_OFFSET) /* read-write */
 #define CH32V_TIM1_CH4CVR_CH4CVR          (0xffff << 0) /* 0000ffff: Capture/Compare value */
 #define CH32V_TIM1_CH4CVR_CH4CVR_MASK     (0xffff << 0)
 #define CH32V_TIM1_BDTR_OFFSET            0x0044
-#define CH32V_TIM1_BDTR                   (CH32V_TIM1_BASE + CH32V_TIM1_BDTR_OFFSET)
+#define CH32V_TIM1_BDTR                   (CH32V_TIM1_BASE + CH32V_TIM1_BDTR_OFFSET) /* read-write */
 #define CH32V_TIM1_BDTR_MOE               (1 << 15) /* 00008000: Main output enable */
 #define CH32V_TIM1_BDTR_AOE               (1 << 14) /* 00004000: Automatic output enable */
 #define CH32V_TIM1_BDTR_BKP               (1 << 13) /* 00002000: Break polarity */
@@ -5085,20 +5085,20 @@
 #define CH32V_TIM1_BDTR_DTG               (0xff << 0) /* 000000ff: Dead-time generator setup */
 #define CH32V_TIM1_BDTR_DTG_MASK          (0xff << 0)
 #define CH32V_TIM1_DMACFGR_OFFSET         0x0048
-#define CH32V_TIM1_DMACFGR                (CH32V_TIM1_BASE + CH32V_TIM1_DMACFGR_OFFSET)
+#define CH32V_TIM1_DMACFGR                (CH32V_TIM1_BASE + CH32V_TIM1_DMACFGR_OFFSET) /* read-write */
 #define CH32V_TIM1_DMACFGR_DBL            (0x1f << 8) /* 00001f00: DMA burst length */
 #define CH32V_TIM1_DMACFGR_DBL_MASK       (0x1f << 8)
 #define CH32V_TIM1_DMACFGR_DBA            (0x1f << 0) /* 0000001f: DMA base address */
 #define CH32V_TIM1_DMACFGR_DBA_MASK       (0x1f << 0)
 #define CH32V_TIM1_DMAADR_OFFSET          0x004c
-#define CH32V_TIM1_DMAADR                 (CH32V_TIM1_BASE + CH32V_TIM1_DMAADR_OFFSET)
+#define CH32V_TIM1_DMAADR                 (CH32V_TIM1_BASE + CH32V_TIM1_DMAADR_OFFSET) /* read-write */
 #define CH32V_TIM1_DMAADR_DMAADR          (0xffff << 0) /* 0000ffff: DMA register for burst accesses */
 #define CH32V_TIM1_DMAADR_DMAADR_MASK     (0xffff << 0)
 
 /* TIM2 - General purpose timer */
 #define CH32V_TIM2_BASE                   0x40000000
 #define CH32V_TIM2_CTLR1_OFFSET           0x0000
-#define CH32V_TIM2_CTLR1                  (CH32V_TIM2_BASE + CH32V_TIM2_CTLR1_OFFSET)
+#define CH32V_TIM2_CTLR1                  (CH32V_TIM2_BASE + CH32V_TIM2_CTLR1_OFFSET) /* read-write */
 #define CH32V_TIM2_CTLR1_CKD              (0x3 << 8) /* 00000300: Clock division */
 #define CH32V_TIM2_CTLR1_CKD_MASK         (0x3 << 8)
 #define CH32V_TIM2_CTLR1_ARPE             (1 <<  7) /* 00000080: Auto-reload preload enable */
@@ -5110,7 +5110,7 @@
 #define CH32V_TIM2_CTLR1_UDIS             (1 <<  1) /* 00000002: Update disable */
 #define CH32V_TIM2_CTLR1_CEN              (1 <<  0) /* 00000001: Counter enable */
 #define CH32V_TIM2_CTLR2_OFFSET           0x0004
-#define CH32V_TIM2_CTLR2                  (CH32V_TIM2_BASE + CH32V_TIM2_CTLR2_OFFSET)
+#define CH32V_TIM2_CTLR2                  (CH32V_TIM2_BASE + CH32V_TIM2_CTLR2_OFFSET) /* read-write */
 #define CH32V_TIM2_CTLR2_TI1S             (1 <<  7) /* 00000080: TI1 selection */
 #define CH32V_TIM2_CTLR2_MMS              (0x7 << 4) /* 00000070: Master mode selection */
 #define CH32V_TIM2_CTLR2_MMS_MASK         (0x7 << 4)
@@ -5118,7 +5118,7 @@
 #define CH32V_TIM2_CTLR2_CCUS             (1 <<  2) /* 00000004: Update selection */
 #define CH32V_TIM2_CTLR2_CCPC             (1 <<  0) /* 00000001: Compare selection */
 #define CH32V_TIM2_SMCFGR_OFFSET          0x0008
-#define CH32V_TIM2_SMCFGR                 (CH32V_TIM2_BASE + CH32V_TIM2_SMCFGR_OFFSET)
+#define CH32V_TIM2_SMCFGR                 (CH32V_TIM2_BASE + CH32V_TIM2_SMCFGR_OFFSET) /* read-write */
 #define CH32V_TIM2_SMCFGR_ETP             (1 << 15) /* 00008000: External trigger polarity */
 #define CH32V_TIM2_SMCFGR_ECE             (1 << 14) /* 00004000: External clock enable */
 #define CH32V_TIM2_SMCFGR_ETPS            (0x3 << 12) /* 00003000: External trigger prescaler */
@@ -5131,7 +5131,7 @@
 #define CH32V_TIM2_SMCFGR_SMS             (0x7 << 0) /* 00000007: Slave mode selection */
 #define CH32V_TIM2_SMCFGR_SMS_MASK        (0x7 << 0)
 #define CH32V_TIM2_DMAINTENR_OFFSET       0x000c
-#define CH32V_TIM2_DMAINTENR              (CH32V_TIM2_BASE + CH32V_TIM2_DMAINTENR_OFFSET)
+#define CH32V_TIM2_DMAINTENR              (CH32V_TIM2_BASE + CH32V_TIM2_DMAINTENR_OFFSET) /* read-write */
 #define CH32V_TIM2_DMAINTENR_TDE          (1 << 14) /* 00004000: Trigger DMA request enable */
 #define CH32V_TIM2_DMAINTENR_COMDE        (1 << 13) /* 00002000: COM DMA request enable */
 #define CH32V_TIM2_DMAINTENR_CC4DE        (1 << 12) /* 00001000: Capture/Compare 4 DMA request enable */
@@ -5146,7 +5146,7 @@
 #define CH32V_TIM2_DMAINTENR_CC1IE        (1 <<  1) /* 00000002: Capture/Compare 1 interrupt enable */
 #define CH32V_TIM2_DMAINTENR_UIE          (1 <<  0) /* 00000001: Update interrupt enable */
 #define CH32V_TIM2_INTFR_OFFSET           0x0010
-#define CH32V_TIM2_INTFR                  (CH32V_TIM2_BASE + CH32V_TIM2_INTFR_OFFSET)
+#define CH32V_TIM2_INTFR                  (CH32V_TIM2_BASE + CH32V_TIM2_INTFR_OFFSET) /* read-write */
 #define CH32V_TIM2_INTFR_CC4OF            (1 << 12) /* 00001000: Capture/Compare 4 overcapture flag */
 #define CH32V_TIM2_INTFR_CC3OF            (1 << 11) /* 00000800: Capture/Compare 3 overcapture flag */
 #define CH32V_TIM2_INTFR_CC2OF            (1 << 10) /* 00000400: Capture/compare 2 overcapture flag */
@@ -5158,7 +5158,7 @@
 #define CH32V_TIM2_INTFR_CC1IF            (1 <<  1) /* 00000002: Capture/compare 1 interrupt flag */
 #define CH32V_TIM2_INTFR_UIF              (1 <<  0) /* 00000001: Update interrupt flag */
 #define CH32V_TIM2_SWEVGR_OFFSET          0x0014
-#define CH32V_TIM2_SWEVGR                 (CH32V_TIM2_BASE + CH32V_TIM2_SWEVGR_OFFSET)
+#define CH32V_TIM2_SWEVGR                 (CH32V_TIM2_BASE + CH32V_TIM2_SWEVGR_OFFSET) /* write-only */
 #define CH32V_TIM2_SWEVGR_BG              (1 <<  7) /* 00000080: Brake generation */
 #define CH32V_TIM2_SWEVGR_TG              (1 <<  6) /* 00000040: Trigger generation */
 #define CH32V_TIM2_SWEVGR_COMG            (1 <<  5) /* 00000020: Capture/compare generation */
@@ -5168,7 +5168,7 @@
 #define CH32V_TIM2_SWEVGR_CC1G            (1 <<  1) /* 00000002: Capture/compare 1 generation */
 #define CH32V_TIM2_SWEVGR_UG              (1 <<  0) /* 00000001: Update generation */
 #define CH32V_TIM2_CHCTLR1_Output_OFFSET  0x0018
-#define CH32V_TIM2_CHCTLR1_Output         (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR1_Output_OFFSET)
+#define CH32V_TIM2_CHCTLR1_Output         (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR1_Output_OFFSET) /* read-write */
 #define CH32V_TIM2_CHCTLR1_Output_OC2CE   (1 << 15) /* 00008000: Output compare 2 clear enable */
 #define CH32V_TIM2_CHCTLR1_Output_OC2M    (0x7 << 12) /* 00007000: Output compare 2 mode */
 #define CH32V_TIM2_CHCTLR1_Output_OC2M_MASK (0x7 << 12)
@@ -5184,7 +5184,7 @@
 #define CH32V_TIM2_CHCTLR1_Output_CC1S    (0x3 << 0) /* 00000003: Capture/Compare 1 selection */
 #define CH32V_TIM2_CHCTLR1_Output_CC1S_MASK (0x3 << 0)
 #define CH32V_TIM2_CHCTLR1_Input_OFFSET   0x0018
-#define CH32V_TIM2_CHCTLR1_Input          (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR1_Input_OFFSET)
+#define CH32V_TIM2_CHCTLR1_Input          (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR1_Input_OFFSET) /* read-write */
 #define CH32V_TIM2_CHCTLR1_Input_IC2F     (0xf << 12) /* 0000f000: Input capture 2 filter */
 #define CH32V_TIM2_CHCTLR1_Input_IC2F_MASK (0xf << 12)
 #define CH32V_TIM2_CHCTLR1_Input_IC2PSC   (0x3 << 10) /* 00000c00: Input capture 2 prescaler */
@@ -5198,7 +5198,7 @@
 #define CH32V_TIM2_CHCTLR1_Input_CC1S     (0x3 << 0) /* 00000003: Capture/Compare 1 selection */
 #define CH32V_TIM2_CHCTLR1_Input_CC1S_MASK (0x3 << 0)
 #define CH32V_TIM2_CHCTLR2_Output_OFFSET  0x001c
-#define CH32V_TIM2_CHCTLR2_Output         (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR2_Output_OFFSET)
+#define CH32V_TIM2_CHCTLR2_Output         (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR2_Output_OFFSET) /* read-write */
 #define CH32V_TIM2_CHCTLR2_Output_OC4CE   (1 << 15) /* 00008000: Output compare 4 clear enable */
 #define CH32V_TIM2_CHCTLR2_Output_OC4M    (0x7 << 12) /* 00007000: Output compare 4 mode */
 #define CH32V_TIM2_CHCTLR2_Output_OC4M_MASK (0x7 << 12)
@@ -5214,7 +5214,7 @@
 #define CH32V_TIM2_CHCTLR2_Output_CC3S    (0x3 << 0) /* 00000003: Capture/Compare 3 selection */
 #define CH32V_TIM2_CHCTLR2_Output_CC3S_MASK (0x3 << 0)
 #define CH32V_TIM2_CHCTLR2_Input_OFFSET   0x001c
-#define CH32V_TIM2_CHCTLR2_Input          (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR2_Input_OFFSET)
+#define CH32V_TIM2_CHCTLR2_Input          (CH32V_TIM2_BASE + CH32V_TIM2_CHCTLR2_Input_OFFSET) /* read-write */
 #define CH32V_TIM2_CHCTLR2_Input_IC4F     (0xf << 12) /* 0000f000: Input capture 4 filter */
 #define CH32V_TIM2_CHCTLR2_Input_IC4F_MASK (0xf << 12)
 #define CH32V_TIM2_CHCTLR2_Input_IC4PSC   (0x3 << 10) /* 00000c00: Input capture 4 prescaler */
@@ -5228,7 +5228,7 @@
 #define CH32V_TIM2_CHCTLR2_Input_CC3S     (0x3 << 0) /* 00000003: Capture/Compare 3 selection */
 #define CH32V_TIM2_CHCTLR2_Input_CC3S_MASK (0x3 << 0)
 #define CH32V_TIM2_CCER_OFFSET            0x0020
-#define CH32V_TIM2_CCER                   (CH32V_TIM2_BASE + CH32V_TIM2_CCER_OFFSET)
+#define CH32V_TIM2_CCER                   (CH32V_TIM2_BASE + CH32V_TIM2_CCER_OFFSET) /* read-write */
 #define CH32V_TIM2_CCER_CC4P              (1 << 13) /* 00002000: Capture/Compare 3 output Polarity */
 #define CH32V_TIM2_CCER_CC4E              (1 << 12) /* 00001000: Capture/Compare 4 output enable */
 #define CH32V_TIM2_CCER_CC3P              (1 <<  9) /* 00000200: Capture/Compare 3 output Polarity */
@@ -5238,84 +5238,84 @@
 #define CH32V_TIM2_CCER_CC1P              (1 <<  1) /* 00000002: Capture/Compare 1 output Polarity */
 #define CH32V_TIM2_CCER_CC1E              (1 <<  0) /* 00000001: Capture/Compare 1 output enable */
 #define CH32V_TIM2_CNT_OFFSET             0x0024
-#define CH32V_TIM2_CNT                    (CH32V_TIM2_BASE + CH32V_TIM2_CNT_OFFSET)
+#define CH32V_TIM2_CNT                    (CH32V_TIM2_BASE + CH32V_TIM2_CNT_OFFSET) /* read-write */
 #define CH32V_TIM2_CNT_CNT                (0xffff << 0) /* 0000ffff: counter value */
 #define CH32V_TIM2_CNT_CNT_MASK           (0xffff << 0)
 #define CH32V_TIM2_PSC_OFFSET             0x0028
-#define CH32V_TIM2_PSC                    (CH32V_TIM2_BASE + CH32V_TIM2_PSC_OFFSET)
+#define CH32V_TIM2_PSC                    (CH32V_TIM2_BASE + CH32V_TIM2_PSC_OFFSET) /* read-write */
 #define CH32V_TIM2_PSC_PSC                (0xffff << 0) /* 0000ffff: Prescaler value */
 #define CH32V_TIM2_PSC_PSC_MASK           (0xffff << 0)
 #define CH32V_TIM2_ATRLR_OFFSET           0x002c
-#define CH32V_TIM2_ATRLR                  (CH32V_TIM2_BASE + CH32V_TIM2_ATRLR_OFFSET)
+#define CH32V_TIM2_ATRLR                  (CH32V_TIM2_BASE + CH32V_TIM2_ATRLR_OFFSET) /* read-write */
 #define CH32V_TIM2_ATRLR_ATRLR            (0xffff << 0) /* 0000ffff: Auto-reload value */
 #define CH32V_TIM2_ATRLR_ATRLR_MASK       (0xffff << 0)
 #define CH32V_TIM2_CH1CVR_OFFSET          0x0034
-#define CH32V_TIM2_CH1CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH1CVR_OFFSET)
+#define CH32V_TIM2_CH1CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH1CVR_OFFSET) /* read-write */
 #define CH32V_TIM2_CH1CVR_CH1CVR          (0xffff << 0) /* 0000ffff: Capture/Compare 1 value */
 #define CH32V_TIM2_CH1CVR_CH1CVR_MASK     (0xffff << 0)
 #define CH32V_TIM2_CH2CVR_OFFSET          0x0038
-#define CH32V_TIM2_CH2CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH2CVR_OFFSET)
+#define CH32V_TIM2_CH2CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH2CVR_OFFSET) /* read-write */
 #define CH32V_TIM2_CH2CVR_CH2CVR          (0xffff << 0) /* 0000ffff: Capture/Compare 2 value */
 #define CH32V_TIM2_CH2CVR_CH2CVR_MASK     (0xffff << 0)
 #define CH32V_TIM2_CH3CVR_OFFSET          0x003c
-#define CH32V_TIM2_CH3CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH3CVR_OFFSET)
+#define CH32V_TIM2_CH3CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH3CVR_OFFSET) /* read-write */
 #define CH32V_TIM2_CH3CVR_CH3CVR          (0xffff << 0) /* 0000ffff: Capture/Compare value */
 #define CH32V_TIM2_CH3CVR_CH3CVR_MASK     (0xffff << 0)
 #define CH32V_TIM2_CH4CVR_OFFSET          0x0040
-#define CH32V_TIM2_CH4CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH4CVR_OFFSET)
+#define CH32V_TIM2_CH4CVR                 (CH32V_TIM2_BASE + CH32V_TIM2_CH4CVR_OFFSET) /* read-write */
 #define CH32V_TIM2_CH4CVR_CH4CVR          (0xffff << 0) /* 0000ffff: Capture/Compare value */
 #define CH32V_TIM2_CH4CVR_CH4CVR_MASK     (0xffff << 0)
 #define CH32V_TIM2_DMACFGR_OFFSET         0x0048
-#define CH32V_TIM2_DMACFGR                (CH32V_TIM2_BASE + CH32V_TIM2_DMACFGR_OFFSET)
+#define CH32V_TIM2_DMACFGR                (CH32V_TIM2_BASE + CH32V_TIM2_DMACFGR_OFFSET) /* read-write */
 #define CH32V_TIM2_DMACFGR_DBL            (0x1f << 8) /* 00001f00: DMA burst length */
 #define CH32V_TIM2_DMACFGR_DBL_MASK       (0x1f << 8)
 #define CH32V_TIM2_DMACFGR_DBA            (0x1f << 0) /* 0000001f: DMA base address */
 #define CH32V_TIM2_DMACFGR_DBA_MASK       (0x1f << 0)
 #define CH32V_TIM2_DMAADR_OFFSET          0x004c
-#define CH32V_TIM2_DMAADR                 (CH32V_TIM2_BASE + CH32V_TIM2_DMAADR_OFFSET)
+#define CH32V_TIM2_DMAADR                 (CH32V_TIM2_BASE + CH32V_TIM2_DMAADR_OFFSET) /* read-write */
 #define CH32V_TIM2_DMAADR_DMAADR          (0xffff << 0) /* 0000ffff: DMA register for burst accesses */
 #define CH32V_TIM2_DMAADR_DMAADR_MASK     (0xffff << 0)
 
 /* TIM6 - Basic timer */
 #define CH32V_TIM6_BASE                   0x40001000
 #define CH32V_TIM6_CTLR1_OFFSET           0x0000
-#define CH32V_TIM6_CTLR1                  (CH32V_TIM6_BASE + CH32V_TIM6_CTLR1_OFFSET)
+#define CH32V_TIM6_CTLR1                  (CH32V_TIM6_BASE + CH32V_TIM6_CTLR1_OFFSET) /* read-write */
 #define CH32V_TIM6_CTLR1_ARPE             (1 <<  7) /* 00000080: Auto-reload preload enable */
 #define CH32V_TIM6_CTLR1_OPM              (1 <<  3) /* 00000008: One-pulse mode */
 #define CH32V_TIM6_CTLR1_URS              (1 <<  2) /* 00000004: Update request source */
 #define CH32V_TIM6_CTLR1_UDIS             (1 <<  1) /* 00000002: Update disable */
 #define CH32V_TIM6_CTLR1_CEN              (1 <<  0) /* 00000001: Counter enable */
 #define CH32V_TIM6_CTLR2_OFFSET           0x0004
-#define CH32V_TIM6_CTLR2                  (CH32V_TIM6_BASE + CH32V_TIM6_CTLR2_OFFSET)
+#define CH32V_TIM6_CTLR2                  (CH32V_TIM6_BASE + CH32V_TIM6_CTLR2_OFFSET) /* read-write */
 #define CH32V_TIM6_CTLR2_MMS              (0x7 << 4) /* 00000070: Master mode selection */
 #define CH32V_TIM6_CTLR2_MMS_MASK         (0x7 << 4)
 #define CH32V_TIM6_DMAINTENR_OFFSET       0x000c
-#define CH32V_TIM6_DMAINTENR              (CH32V_TIM6_BASE + CH32V_TIM6_DMAINTENR_OFFSET)
+#define CH32V_TIM6_DMAINTENR              (CH32V_TIM6_BASE + CH32V_TIM6_DMAINTENR_OFFSET) /* read-write */
 #define CH32V_TIM6_DMAINTENR_UDE          (1 <<  8) /* 00000100: Update DMA request enable */
 #define CH32V_TIM6_DMAINTENR_UIE          (1 <<  0) /* 00000001: Update interrupt enable */
 #define CH32V_TIM6_INTFR_OFFSET           0x0010
-#define CH32V_TIM6_INTFR                  (CH32V_TIM6_BASE + CH32V_TIM6_INTFR_OFFSET)
+#define CH32V_TIM6_INTFR                  (CH32V_TIM6_BASE + CH32V_TIM6_INTFR_OFFSET) /* read-write */
 #define CH32V_TIM6_INTFR_UIF              (1 <<  0) /* 00000001: Update interrupt flag */
 #define CH32V_TIM6_SWEVGR_OFFSET          0x0014
-#define CH32V_TIM6_SWEVGR                 (CH32V_TIM6_BASE + CH32V_TIM6_SWEVGR_OFFSET)
+#define CH32V_TIM6_SWEVGR                 (CH32V_TIM6_BASE + CH32V_TIM6_SWEVGR_OFFSET) /* write-only */
 #define CH32V_TIM6_SWEVGR_UG              (1 <<  0) /* 00000001: Update generation */
 #define CH32V_TIM6_CNT_OFFSET             0x0024
-#define CH32V_TIM6_CNT                    (CH32V_TIM6_BASE + CH32V_TIM6_CNT_OFFSET)
+#define CH32V_TIM6_CNT                    (CH32V_TIM6_BASE + CH32V_TIM6_CNT_OFFSET) /* read-write */
 #define CH32V_TIM6_CNT_CNT                (0xffff << 0) /* 0000ffff: counter value */
 #define CH32V_TIM6_CNT_CNT_MASK           (0xffff << 0)
 #define CH32V_TIM6_PSC_OFFSET             0x0028
-#define CH32V_TIM6_PSC                    (CH32V_TIM6_BASE + CH32V_TIM6_PSC_OFFSET)
+#define CH32V_TIM6_PSC                    (CH32V_TIM6_BASE + CH32V_TIM6_PSC_OFFSET) /* read-write */
 #define CH32V_TIM6_PSC_PSC                (0xffff << 0) /* 0000ffff: Prescaler value */
 #define CH32V_TIM6_PSC_PSC_MASK           (0xffff << 0)
 #define CH32V_TIM6_ATRLR_OFFSET           0x002c
-#define CH32V_TIM6_ATRLR                  (CH32V_TIM6_BASE + CH32V_TIM6_ATRLR_OFFSET)
+#define CH32V_TIM6_ATRLR                  (CH32V_TIM6_BASE + CH32V_TIM6_ATRLR_OFFSET) /* read-write */
 #define CH32V_TIM6_ATRLR_ATRLR            (0xffff << 0) /* 0000ffff: Auto-reload value */
 #define CH32V_TIM6_ATRLR_ATRLR_MASK       (0xffff << 0)
 
 /* I2C1 - Inter integrated circuit */
 #define CH32V_I2C1_BASE                   0x40005400
 #define CH32V_I2C1_CTLR1_OFFSET           0x0000
-#define CH32V_I2C1_CTLR1                  (CH32V_I2C1_BASE + CH32V_I2C1_CTLR1_OFFSET)
+#define CH32V_I2C1_CTLR1                  (CH32V_I2C1_BASE + CH32V_I2C1_CTLR1_OFFSET) /* read-write */
 #define CH32V_I2C1_CTLR1_SWRST            (1 << 15) /* 00008000: Software reset */
 #define CH32V_I2C1_CTLR1_ALERT            (1 << 13) /* 00002000: SMBus alert */
 #define CH32V_I2C1_CTLR1_PEC              (1 << 12) /* 00001000: Packet error checking */
@@ -5331,7 +5331,7 @@
 #define CH32V_I2C1_CTLR1_SMBUS            (1 <<  1) /* 00000002: SMBus mode */
 #define CH32V_I2C1_CTLR1_PE               (1 <<  0) /* 00000001: Peripheral enable */
 #define CH32V_I2C1_CTLR2_OFFSET           0x0004
-#define CH32V_I2C1_CTLR2                  (CH32V_I2C1_BASE + CH32V_I2C1_CTLR2_OFFSET)
+#define CH32V_I2C1_CTLR2                  (CH32V_I2C1_BASE + CH32V_I2C1_CTLR2_OFFSET) /* read-write */
 #define CH32V_I2C1_CTLR2_LAST             (1 << 12) /* 00001000: DMA last transfer */
 #define CH32V_I2C1_CTLR2_DMAEN            (1 << 11) /* 00000800: DMA requests enable */
 #define CH32V_I2C1_CTLR2_ITBUFEN          (1 << 10) /* 00000400: Buffer interrupt enable */
@@ -5340,7 +5340,7 @@
 #define CH32V_I2C1_CTLR2_FREQ             (0x3f << 0) /* 0000003f: Peripheral clock frequency */
 #define CH32V_I2C1_CTLR2_FREQ_MASK        (0x3f << 0)
 #define CH32V_I2C1_OADDR1_OFFSET          0x0008
-#define CH32V_I2C1_OADDR1                 (CH32V_I2C1_BASE + CH32V_I2C1_OADDR1_OFFSET)
+#define CH32V_I2C1_OADDR1                 (CH32V_I2C1_BASE + CH32V_I2C1_OADDR1_OFFSET) /* read-write */
 #define CH32V_I2C1_OADDR1_ADDMODE         (1 << 15) /* 00008000: Addressing mode (slave mode) */
 #define CH32V_I2C1_OADDR1_MUST1           (1 << 14) /* 00004000: Must be 1 */
 #define CH32V_I2C1_OADDR1_ADD9_8          (0x3 << 8) /* 00000300: Interface address */
@@ -5349,12 +5349,12 @@
 #define CH32V_I2C1_OADDR1_ADD7_1_MASK     (0x7f << 1)
 #define CH32V_I2C1_OADDR1_ADD0            (1 <<  0) /* 00000001: Interface address */
 #define CH32V_I2C1_OADDR2_OFFSET          0x000c
-#define CH32V_I2C1_OADDR2                 (CH32V_I2C1_BASE + CH32V_I2C1_OADDR2_OFFSET)
+#define CH32V_I2C1_OADDR2                 (CH32V_I2C1_BASE + CH32V_I2C1_OADDR2_OFFSET) /* read-write */
 #define CH32V_I2C1_OADDR2_ADD2            (0x7f << 1) /* 000000fe: Interface address */
 #define CH32V_I2C1_OADDR2_ADD2_MASK       (0x7f << 1)
 #define CH32V_I2C1_OADDR2_ENDUAL          (1 <<  0) /* 00000001: Dual addressing mode enable */
 #define CH32V_I2C1_DATAR_OFFSET           0x0010
-#define CH32V_I2C1_DATAR                  (CH32V_I2C1_BASE + CH32V_I2C1_DATAR_OFFSET)
+#define CH32V_I2C1_DATAR                  (CH32V_I2C1_BASE + CH32V_I2C1_DATAR_OFFSET) /* read-write */
 #define CH32V_I2C1_DATAR_DATAR            (0xff << 0) /* 000000ff: 8-bit data register */
 #define CH32V_I2C1_DATAR_DATAR_MASK       (0xff << 0)
 #define CH32V_I2C1_STAR1_OFFSET           0x0014
@@ -5374,7 +5374,7 @@
 #define CH32V_I2C1_STAR1_ADDR             (1 <<  1) /* 00000002: Address sent (master mode)/matched (slave mode) */
 #define CH32V_I2C1_STAR1_SB               (1 <<  0) /* 00000001: Start bit (Master mode) */
 #define CH32V_I2C1_STAR2_OFFSET           0x0018
-#define CH32V_I2C1_STAR2                  (CH32V_I2C1_BASE + CH32V_I2C1_STAR2_OFFSET)
+#define CH32V_I2C1_STAR2                  (CH32V_I2C1_BASE + CH32V_I2C1_STAR2_OFFSET) /* read-only */
 #define CH32V_I2C1_STAR2_PEC              (0xff << 8) /* 0000ff00: acket error checking register */
 #define CH32V_I2C1_STAR2_PEC_MASK         (0xff << 8)
 #define CH32V_I2C1_STAR2_DUALF            (1 <<  7) /* 00000080: Dual flag (Slave mode) */
@@ -5385,20 +5385,20 @@
 #define CH32V_I2C1_STAR2_BUSY             (1 <<  1) /* 00000002: Bus busy */
 #define CH32V_I2C1_STAR2_MSL              (1 <<  0) /* 00000001: Master/slave */
 #define CH32V_I2C1_CKCFGR_OFFSET          0x001c
-#define CH32V_I2C1_CKCFGR                 (CH32V_I2C1_BASE + CH32V_I2C1_CKCFGR_OFFSET)
+#define CH32V_I2C1_CKCFGR                 (CH32V_I2C1_BASE + CH32V_I2C1_CKCFGR_OFFSET) /* read-write */
 #define CH32V_I2C1_CKCFGR_F_S             (1 << 15) /* 00008000: I2C master mode selection */
 #define CH32V_I2C1_CKCFGR_DUTY            (1 << 14) /* 00004000: Fast mode duty cycle */
 #define CH32V_I2C1_CKCFGR_CCR             (0xfff << 0) /* 00000fff: Clock control register in Fast/Standard mode (Master mode) */
 #define CH32V_I2C1_CKCFGR_CCR_MASK        (0xfff << 0)
 #define CH32V_I2C1_RTR_OFFSET             0x0020
-#define CH32V_I2C1_RTR                    (CH32V_I2C1_BASE + CH32V_I2C1_RTR_OFFSET)
+#define CH32V_I2C1_RTR                    (CH32V_I2C1_BASE + CH32V_I2C1_RTR_OFFSET) /* read-write */
 #define CH32V_I2C1_RTR_TRISE              (0x3f << 0) /* 0000003f: Maximum rise time in Fast/Standard mode (Master mode) */
 #define CH32V_I2C1_RTR_TRISE_MASK         (0x3f << 0)
 
 /* SPI1 - Serial peripheral interface */
 #define CH32V_SPI1_BASE                   0x40013000
 #define CH32V_SPI1_CTLR1_OFFSET           0x0000
-#define CH32V_SPI1_CTLR1                  (CH32V_SPI1_BASE + CH32V_SPI1_CTLR1_OFFSET)
+#define CH32V_SPI1_CTLR1                  (CH32V_SPI1_BASE + CH32V_SPI1_CTLR1_OFFSET) /* read-write */
 #define CH32V_SPI1_CTLR1_BIDIMODE         (1 << 15) /* 00008000: Bidirectional data mode enable */
 #define CH32V_SPI1_CTLR1_BIDIOE           (1 << 14) /* 00004000: Output enable in bidirectional mode */
 #define CH32V_SPI1_CTLR1_CRCEN            (1 << 13) /* 00002000: Hardware CRC calculation enable */
@@ -5415,7 +5415,7 @@
 #define CH32V_SPI1_CTLR1_CPOL             (1 <<  1) /* 00000002: Clock polarity */
 #define CH32V_SPI1_CTLR1_CPHA             (1 <<  0) /* 00000001: Clock phase */
 #define CH32V_SPI1_CTLR2_OFFSET           0x0004
-#define CH32V_SPI1_CTLR2                  (CH32V_SPI1_BASE + CH32V_SPI1_CTLR2_OFFSET)
+#define CH32V_SPI1_CTLR2                  (CH32V_SPI1_BASE + CH32V_SPI1_CTLR2_OFFSET) /* read-write */
 #define CH32V_SPI1_CTLR2_TXEIE            (1 <<  7) /* 00000080: Tx buffer empty interrupt enable */
 #define CH32V_SPI1_CTLR2_RXNEIE           (1 <<  6) /* 00000040: RX buffer not empty interrupt enable */
 #define CH32V_SPI1_CTLR2_ERRIE            (1 <<  5) /* 00000020: Error interrupt enable */
@@ -5433,23 +5433,23 @@
 #define CH32V_SPI1_STATR_TXE              (1 <<  1) /* 00000002: Transmit buffer empty */
 #define CH32V_SPI1_STATR_RXNE             (1 <<  0) /* 00000001: Receive buffer not empty */
 #define CH32V_SPI1_DATAR_OFFSET           0x000c
-#define CH32V_SPI1_DATAR                  (CH32V_SPI1_BASE + CH32V_SPI1_DATAR_OFFSET)
+#define CH32V_SPI1_DATAR                  (CH32V_SPI1_BASE + CH32V_SPI1_DATAR_OFFSET) /* read-write */
 #define CH32V_SPI1_DATAR_DATAR            (0xffff << 0) /* 0000ffff: Data register */
 #define CH32V_SPI1_DATAR_DATAR_MASK       (0xffff << 0)
 #define CH32V_SPI1_CRCR_OFFSET            0x0010
-#define CH32V_SPI1_CRCR                   (CH32V_SPI1_BASE + CH32V_SPI1_CRCR_OFFSET)
+#define CH32V_SPI1_CRCR                   (CH32V_SPI1_BASE + CH32V_SPI1_CRCR_OFFSET) /* read-write */
 #define CH32V_SPI1_CRCR_CRCPOLY           (0xffff << 0) /* 0000ffff: CRC polynomial register */
 #define CH32V_SPI1_CRCR_CRCPOLY_MASK      (0xffff << 0)
 #define CH32V_SPI1_RCRCR_OFFSET           0x0014
-#define CH32V_SPI1_RCRCR                  (CH32V_SPI1_BASE + CH32V_SPI1_RCRCR_OFFSET)
+#define CH32V_SPI1_RCRCR                  (CH32V_SPI1_BASE + CH32V_SPI1_RCRCR_OFFSET) /* read-only */
 #define CH32V_SPI1_RCRCR_RXCRC            (0xffff << 0) /* 0000ffff: Rx CRC register */
 #define CH32V_SPI1_RCRCR_RXCRC_MASK       (0xffff << 0)
 #define CH32V_SPI1_TCRCR_OFFSET           0x0018
-#define CH32V_SPI1_TCRCR                  (CH32V_SPI1_BASE + CH32V_SPI1_TCRCR_OFFSET)
+#define CH32V_SPI1_TCRCR                  (CH32V_SPI1_BASE + CH32V_SPI1_TCRCR_OFFSET) /* read-only */
 #define CH32V_SPI1_TCRCR_TXCRC            (0xffff << 0) /* 0000ffff: Tx CRC register */
 #define CH32V_SPI1_TCRCR_TXCRC_MASK       (0xffff << 0)
 #define CH32V_SPI1_SPI_I2S_CFGR_OFFSET    0x001c
-#define CH32V_SPI1_SPI_I2S_CFGR           (CH32V_SPI1_BASE + CH32V_SPI1_SPI_I2S_CFGR_OFFSET)
+#define CH32V_SPI1_SPI_I2S_CFGR           (CH32V_SPI1_BASE + CH32V_SPI1_SPI_I2S_CFGR_OFFSET) /* read-write */
 #define CH32V_SPI1_SPI_I2S_CFGR_CHLEN     (1 <<  0) /* 00000001: Channel length (number of bits per audio channel) */
 #define CH32V_SPI1_SPI_I2S_CFGR_DATLEN    (0x3 << 1) /* 00000006: DATLEN[1:0] bits (Data length to be transferred) */
 #define CH32V_SPI1_SPI_I2S_CFGR_DATLEN_MASK (0x3 << 1)
@@ -5462,13 +5462,13 @@
 #define CH32V_SPI1_SPI_I2S_CFGR_I2SE      (1 << 10) /* 00000400: I2S Enable */
 #define CH32V_SPI1_SPI_I2S_CFGR_I2SMOD    (1 << 11) /* 00000800: I2S mode selection */
 #define CH32V_SPI1_HSCR_OFFSET            0x0024
-#define CH32V_SPI1_HSCR                   (CH32V_SPI1_BASE + CH32V_SPI1_HSCR_OFFSET)
+#define CH32V_SPI1_HSCR                   (CH32V_SPI1_BASE + CH32V_SPI1_HSCR_OFFSET) /* read-write */
 #define CH32V_SPI1_HSCR_HSRXEN            (1 <<  0) /* 00000001: High speed mode read enable */
 
 /* SPI2 - Serial peripheral interface */
 #define CH32V_SPI2_BASE                   0x40003800
 #define CH32V_SPI2_CTLR1_OFFSET           0x0000
-#define CH32V_SPI2_CTLR1                  (CH32V_SPI2_BASE + CH32V_SPI2_CTLR1_OFFSET)
+#define CH32V_SPI2_CTLR1                  (CH32V_SPI2_BASE + CH32V_SPI2_CTLR1_OFFSET) /* read-write */
 #define CH32V_SPI2_CTLR1_BIDIMODE         (1 << 15) /* 00008000: Bidirectional data mode enable */
 #define CH32V_SPI2_CTLR1_BIDIOE           (1 << 14) /* 00004000: Output enable in bidirectional mode */
 #define CH32V_SPI2_CTLR1_CRCEN            (1 << 13) /* 00002000: Hardware CRC calculation enable */
@@ -5485,7 +5485,7 @@
 #define CH32V_SPI2_CTLR1_CPOL             (1 <<  1) /* 00000002: Clock polarity */
 #define CH32V_SPI2_CTLR1_CPHA             (1 <<  0) /* 00000001: Clock phase */
 #define CH32V_SPI2_CTLR2_OFFSET           0x0004
-#define CH32V_SPI2_CTLR2                  (CH32V_SPI2_BASE + CH32V_SPI2_CTLR2_OFFSET)
+#define CH32V_SPI2_CTLR2                  (CH32V_SPI2_BASE + CH32V_SPI2_CTLR2_OFFSET) /* read-write */
 #define CH32V_SPI2_CTLR2_TXEIE            (1 <<  7) /* 00000080: Tx buffer empty interrupt enable */
 #define CH32V_SPI2_CTLR2_RXNEIE           (1 <<  6) /* 00000040: RX buffer not empty interrupt enable */
 #define CH32V_SPI2_CTLR2_ERRIE            (1 <<  5) /* 00000020: Error interrupt enable */
@@ -5501,23 +5501,23 @@
 #define CH32V_SPI2_STATR_TXE              (1 <<  1) /* 00000002: Transmit buffer empty */
 #define CH32V_SPI2_STATR_RXNE             (1 <<  0) /* 00000001: Receive buffer not empty */
 #define CH32V_SPI2_DATAR_OFFSET           0x000c
-#define CH32V_SPI2_DATAR                  (CH32V_SPI2_BASE + CH32V_SPI2_DATAR_OFFSET)
+#define CH32V_SPI2_DATAR                  (CH32V_SPI2_BASE + CH32V_SPI2_DATAR_OFFSET) /* read-write */
 #define CH32V_SPI2_DATAR_DATAR            (0xffff << 0) /* 0000ffff: Data register */
 #define CH32V_SPI2_DATAR_DATAR_MASK       (0xffff << 0)
 #define CH32V_SPI2_CRCR_OFFSET            0x0010
-#define CH32V_SPI2_CRCR                   (CH32V_SPI2_BASE + CH32V_SPI2_CRCR_OFFSET)
+#define CH32V_SPI2_CRCR                   (CH32V_SPI2_BASE + CH32V_SPI2_CRCR_OFFSET) /* read-write */
 #define CH32V_SPI2_CRCR_CRCPOLY           (0xffff << 0) /* 0000ffff: CRC polynomial register */
 #define CH32V_SPI2_CRCR_CRCPOLY_MASK      (0xffff << 0)
 #define CH32V_SPI2_RCRCR_OFFSET           0x0014
-#define CH32V_SPI2_RCRCR                  (CH32V_SPI2_BASE + CH32V_SPI2_RCRCR_OFFSET)
+#define CH32V_SPI2_RCRCR                  (CH32V_SPI2_BASE + CH32V_SPI2_RCRCR_OFFSET) /* read-only */
 #define CH32V_SPI2_RCRCR_RXCRC            (0xffff << 0) /* 0000ffff: Rx CRC register */
 #define CH32V_SPI2_RCRCR_RXCRC_MASK       (0xffff << 0)
 #define CH32V_SPI2_TCRCR_OFFSET           0x0018
-#define CH32V_SPI2_TCRCR                  (CH32V_SPI2_BASE + CH32V_SPI2_TCRCR_OFFSET)
+#define CH32V_SPI2_TCRCR                  (CH32V_SPI2_BASE + CH32V_SPI2_TCRCR_OFFSET) /* read-only */
 #define CH32V_SPI2_TCRCR_TXCRC            (0xffff << 0) /* 0000ffff: Tx CRC register */
 #define CH32V_SPI2_TCRCR_TXCRC_MASK       (0xffff << 0)
 #define CH32V_SPI2_I2SCFGR_OFFSET         0x001c
-#define CH32V_SPI2_I2SCFGR                (CH32V_SPI2_BASE + CH32V_SPI2_I2SCFGR_OFFSET)
+#define CH32V_SPI2_I2SCFGR                (CH32V_SPI2_BASE + CH32V_SPI2_I2SCFGR_OFFSET) /* read-write */
 #define CH32V_SPI2_I2SCFGR_I2SMOD         (1 << 11) /* 00000800: I2S mode selection */
 #define CH32V_SPI2_I2SCFGR_I2SE           (1 << 10) /* 00000400: I2S Enable */
 #define CH32V_SPI2_I2SCFGR_I2SCFG         (0x3 << 8) /* 00000300: I2S configuration mode */
@@ -5530,13 +5530,13 @@
 #define CH32V_SPI2_I2SCFGR_DATLEN_MASK    (0x3 << 1)
 #define CH32V_SPI2_I2SCFGR_CHLEN          (1 <<  0) /* 00000001: Channel length (number of bits per audio channel) */
 #define CH32V_SPI2_I2SPR_OFFSET           0x0020
-#define CH32V_SPI2_I2SPR                  (CH32V_SPI2_BASE + CH32V_SPI2_I2SPR_OFFSET)
+#define CH32V_SPI2_I2SPR                  (CH32V_SPI2_BASE + CH32V_SPI2_I2SPR_OFFSET) /* read-write */
 #define CH32V_SPI2_I2SPR_MCKOE            (1 <<  9) /* 00000200: Master clock output enable */
 #define CH32V_SPI2_I2SPR_ODD              (1 <<  8) /* 00000100: Odd factor for the prescaler */
 #define CH32V_SPI2_I2SPR_I2SDIV           (0xff << 0) /* 000000ff: I2S Linear prescaler */
 #define CH32V_SPI2_I2SPR_I2SDIV_MASK      (0xff << 0)
 #define CH32V_SPI2_HSCR_OFFSET            0x0024
-#define CH32V_SPI2_HSCR                   (CH32V_SPI2_BASE + CH32V_SPI2_HSCR_OFFSET)
+#define CH32V_SPI2_HSCR                   (CH32V_SPI2_BASE + CH32V_SPI2_HSCR_OFFSET) /* read-write */
 #define CH32V_SPI2_HSCR_HSRXEN            (1 <<  0) /* 00000001: High speed mode read enable */
 
 /* USART1 - Universal synchronous asynchronous receiver transmitter */
@@ -5554,17 +5554,17 @@
 #define CH32V_USART1_STATR_FE             (1 <<  1) /* 00000002: Framing error */
 #define CH32V_USART1_STATR_PE             (1 <<  0) /* 00000001: Parity error */
 #define CH32V_USART1_DATAR_OFFSET         0x0004
-#define CH32V_USART1_DATAR                (CH32V_USART1_BASE + CH32V_USART1_DATAR_OFFSET)
+#define CH32V_USART1_DATAR                (CH32V_USART1_BASE + CH32V_USART1_DATAR_OFFSET) /* read-write */
 #define CH32V_USART1_DATAR_DR             (0x1ff << 0) /* 000001ff: Data value */
 #define CH32V_USART1_DATAR_DR_MASK        (0x1ff << 0)
 #define CH32V_USART1_BRR_OFFSET           0x0008
-#define CH32V_USART1_BRR                  (CH32V_USART1_BASE + CH32V_USART1_BRR_OFFSET)
+#define CH32V_USART1_BRR                  (CH32V_USART1_BASE + CH32V_USART1_BRR_OFFSET) /* read-write */
 #define CH32V_USART1_BRR_DIV_Mantissa     (0xfff << 4) /* 0000fff0: mantissa of USARTDIV */
 #define CH32V_USART1_BRR_DIV_Mantissa_MASK (0xfff << 4)
 #define CH32V_USART1_BRR_DIV_Fraction     (0xf << 0) /* 0000000f: fraction of USARTDIV */
 #define CH32V_USART1_BRR_DIV_Fraction_MASK (0xf << 0)
 #define CH32V_USART1_CTLR1_OFFSET         0x000c
-#define CH32V_USART1_CTLR1                (CH32V_USART1_BASE + CH32V_USART1_CTLR1_OFFSET)
+#define CH32V_USART1_CTLR1                (CH32V_USART1_BASE + CH32V_USART1_CTLR1_OFFSET) /* read-write */
 #define CH32V_USART1_CTLR1_UE             (1 << 13) /* 00002000: USART enable */
 #define CH32V_USART1_CTLR1_M              (1 << 12) /* 00001000: Word length */
 #define CH32V_USART1_CTLR1_WAKE           (1 << 11) /* 00000800: Wakeup method */
@@ -5580,7 +5580,7 @@
 #define CH32V_USART1_CTLR1_RWU            (1 <<  1) /* 00000002: Receiver wakeup */
 #define CH32V_USART1_CTLR1_SBK            (1 <<  0) /* 00000001: Send break */
 #define CH32V_USART1_CTLR2_OFFSET         0x0010
-#define CH32V_USART1_CTLR2                (CH32V_USART1_BASE + CH32V_USART1_CTLR2_OFFSET)
+#define CH32V_USART1_CTLR2                (CH32V_USART1_BASE + CH32V_USART1_CTLR2_OFFSET) /* read-write */
 #define CH32V_USART1_CTLR2_LINEN          (1 << 14) /* 00004000: LIN mode enable */
 #define CH32V_USART1_CTLR2_STOP           (0x3 << 12) /* 00003000: STOP bits */
 #define CH32V_USART1_CTLR2_STOP_MASK      (0x3 << 12)
@@ -5593,7 +5593,7 @@
 #define CH32V_USART1_CTLR2_ADD            (0xf << 0) /* 0000000f: Address of the USART node */
 #define CH32V_USART1_CTLR2_ADD_MASK       (0xf << 0)
 #define CH32V_USART1_CTLR3_OFFSET         0x0014
-#define CH32V_USART1_CTLR3                (CH32V_USART1_BASE + CH32V_USART1_CTLR3_OFFSET)
+#define CH32V_USART1_CTLR3                (CH32V_USART1_BASE + CH32V_USART1_CTLR3_OFFSET) /* read-write */
 #define CH32V_USART1_CTLR3_CTSIE          (1 << 10) /* 00000400: CTS interrupt enable */
 #define CH32V_USART1_CTLR3_CTSE           (1 <<  9) /* 00000200: CTS enable */
 #define CH32V_USART1_CTLR3_RTSE           (1 <<  8) /* 00000100: RTS enable */
@@ -5606,7 +5606,7 @@
 #define CH32V_USART1_CTLR3_IREN           (1 <<  1) /* 00000002: IrDA mode enable */
 #define CH32V_USART1_CTLR3_EIE            (1 <<  0) /* 00000001: Error interrupt enable */
 #define CH32V_USART1_GPR_OFFSET           0x0018
-#define CH32V_USART1_GPR                  (CH32V_USART1_BASE + CH32V_USART1_GPR_OFFSET)
+#define CH32V_USART1_GPR                  (CH32V_USART1_BASE + CH32V_USART1_GPR_OFFSET) /* read-write */
 #define CH32V_USART1_GPR_GT               (0xff << 8) /* 0000ff00: Guard time value */
 #define CH32V_USART1_GPR_GT_MASK          (0xff << 8)
 #define CH32V_USART1_GPR_PSC              (0xff << 0) /* 000000ff: Prescaler value */
@@ -5615,14 +5615,14 @@
 /* ADC1 - Analog to digital converter */
 #define CH32V_ADC1_BASE                   0x40012400
 #define CH32V_ADC1_STATR_OFFSET           0x0000
-#define CH32V_ADC1_STATR                  (CH32V_ADC1_BASE + CH32V_ADC1_STATR_OFFSET)
+#define CH32V_ADC1_STATR                  (CH32V_ADC1_BASE + CH32V_ADC1_STATR_OFFSET) /* read-write */
 #define CH32V_ADC1_STATR_STRT             (1 <<  4) /* 00000010: Regular channel start flag */
 #define CH32V_ADC1_STATR_JSTRT            (1 <<  3) /* 00000008: Injected channel start flag */
 #define CH32V_ADC1_STATR_JEOC             (1 <<  2) /* 00000004: Injected channel end of conversion */
 #define CH32V_ADC1_STATR_EOC              (1 <<  1) /* 00000002: Regular channel end of conversion */
 #define CH32V_ADC1_STATR_AWD              (1 <<  0) /* 00000001: Analog watchdog flag */
 #define CH32V_ADC1_CTLR1_OFFSET           0x0004
-#define CH32V_ADC1_CTLR1                  (CH32V_ADC1_BASE + CH32V_ADC1_CTLR1_OFFSET)
+#define CH32V_ADC1_CTLR1                  (CH32V_ADC1_BASE + CH32V_ADC1_CTLR1_OFFSET) /* read-write */
 #define CH32V_ADC1_CTLR1_PGA              (0x3 << 27) /* 18000000: ADC_PGA */
 #define CH32V_ADC1_CTLR1_PGA_MASK         (0x3 << 27)
 #define CH32V_ADC1_CTLR1_BUFEN            (1 << 26) /* 04000000: TKEY_BUF_Enable */
@@ -5645,7 +5645,7 @@
 #define CH32V_ADC1_CTLR1_AWDCH            (0x1f << 0) /* 0000001f: Analog watchdog channel select bits */
 #define CH32V_ADC1_CTLR1_AWDCH_MASK       (0x1f << 0)
 #define CH32V_ADC1_CTLR2_OFFSET           0x0008
-#define CH32V_ADC1_CTLR2                  (CH32V_ADC1_BASE + CH32V_ADC1_CTLR2_OFFSET)
+#define CH32V_ADC1_CTLR2                  (CH32V_ADC1_BASE + CH32V_ADC1_CTLR2_OFFSET) /* read-write */
 #define CH32V_ADC1_CTLR2_TSVREFE          (1 << 23) /* 00800000: Temperature sensor and VREFINT enable */
 #define CH32V_ADC1_CTLR2_SWSTART          (1 << 22) /* 00400000: Start conversion of regular channels */
 #define CH32V_ADC1_CTLR2_JSWSTART         (1 << 21) /* 00200000: Start conversion of injected channels */
@@ -5662,7 +5662,7 @@
 #define CH32V_ADC1_CTLR2_CONT             (1 <<  1) /* 00000002: Continuous conversion */
 #define CH32V_ADC1_CTLR2_ADON             (1 <<  0) /* 00000001: A/D converter ON / OFF */
 #define CH32V_ADC1_SAMPTR1_CHARGE1_OFFSET 0x000c
-#define CH32V_ADC1_SAMPTR1_CHARGE1        (CH32V_ADC1_BASE + CH32V_ADC1_SAMPTR1_CHARGE1_OFFSET)
+#define CH32V_ADC1_SAMPTR1_CHARGE1        (CH32V_ADC1_BASE + CH32V_ADC1_SAMPTR1_CHARGE1_OFFSET) /* read-write */
 #define CH32V_ADC1_SAMPTR1_CHARGE1_SMP10_TKCG10 (0x7 << 0) /* 00000007: Channel 10 sample time selection */
 #define CH32V_ADC1_SAMPTR1_CHARGE1_SMP10_TKCG10_MASK (0x7 << 0)
 #define CH32V_ADC1_SAMPTR1_CHARGE1_SMP11_TKCG11 (0x7 << 3) /* 00000038: Channel 11 sample time selection */
@@ -5680,7 +5680,7 @@
 #define CH32V_ADC1_SAMPTR1_CHARGE1_SMP17_TKCG17 (0x7 << 21) /* 00e00000: Channel 17 sample time selection */
 #define CH32V_ADC1_SAMPTR1_CHARGE1_SMP17_TKCG17_MASK (0x7 << 21)
 #define CH32V_ADC1_SAMPTR2_CHARGE2_OFFSET 0x0010
-#define CH32V_ADC1_SAMPTR2_CHARGE2        (CH32V_ADC1_BASE + CH32V_ADC1_SAMPTR2_CHARGE2_OFFSET)
+#define CH32V_ADC1_SAMPTR2_CHARGE2        (CH32V_ADC1_BASE + CH32V_ADC1_SAMPTR2_CHARGE2_OFFSET) /* read-write */
 #define CH32V_ADC1_SAMPTR2_CHARGE2_SMP0_TKCG0 (0x7 << 0) /* 00000007: Channel 0 sample time selection */
 #define CH32V_ADC1_SAMPTR2_CHARGE2_SMP0_TKCG0_MASK (0x7 << 0)
 #define CH32V_ADC1_SAMPTR2_CHARGE2_SMP1_TKCG1 (0x7 << 3) /* 00000038: Channel 1 sample time selection */
@@ -5702,31 +5702,31 @@
 #define CH32V_ADC1_SAMPTR2_CHARGE2_SMP9_TKCG9 (0x7 << 27) /* 38000000: Channel 9 sample time selection */
 #define CH32V_ADC1_SAMPTR2_CHARGE2_SMP9_TKCG9_MASK (0x7 << 27)
 #define CH32V_ADC1_IOFR1_OFFSET           0x0014
-#define CH32V_ADC1_IOFR1                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR1_OFFSET)
+#define CH32V_ADC1_IOFR1                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR1_OFFSET) /* read-write */
 #define CH32V_ADC1_IOFR1_JOFFSET1         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC1_IOFR1_JOFFSET1_MASK    (0xfff << 0)
 #define CH32V_ADC1_IOFR2_OFFSET           0x0018
-#define CH32V_ADC1_IOFR2                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR2_OFFSET)
+#define CH32V_ADC1_IOFR2                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR2_OFFSET) /* read-write */
 #define CH32V_ADC1_IOFR2_JOFFSET2         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC1_IOFR2_JOFFSET2_MASK    (0xfff << 0)
 #define CH32V_ADC1_IOFR3_OFFSET           0x001c
-#define CH32V_ADC1_IOFR3                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR3_OFFSET)
+#define CH32V_ADC1_IOFR3                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR3_OFFSET) /* read-write */
 #define CH32V_ADC1_IOFR3_JOFFSET3         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC1_IOFR3_JOFFSET3_MASK    (0xfff << 0)
 #define CH32V_ADC1_IOFR4_OFFSET           0x0020
-#define CH32V_ADC1_IOFR4                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR4_OFFSET)
+#define CH32V_ADC1_IOFR4                  (CH32V_ADC1_BASE + CH32V_ADC1_IOFR4_OFFSET) /* read-write */
 #define CH32V_ADC1_IOFR4_JOFFSET4         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC1_IOFR4_JOFFSET4_MASK    (0xfff << 0)
 #define CH32V_ADC1_WDHTR_OFFSET           0x0024
-#define CH32V_ADC1_WDHTR                  (CH32V_ADC1_BASE + CH32V_ADC1_WDHTR_OFFSET)
+#define CH32V_ADC1_WDHTR                  (CH32V_ADC1_BASE + CH32V_ADC1_WDHTR_OFFSET) /* read-write */
 #define CH32V_ADC1_WDHTR_HT               (0xfff << 0) /* 00000fff: Analog watchdog higher threshold */
 #define CH32V_ADC1_WDHTR_HT_MASK          (0xfff << 0)
 #define CH32V_ADC1_WDLTR_OFFSET           0x0028
-#define CH32V_ADC1_WDLTR                  (CH32V_ADC1_BASE + CH32V_ADC1_WDLTR_OFFSET)
+#define CH32V_ADC1_WDLTR                  (CH32V_ADC1_BASE + CH32V_ADC1_WDLTR_OFFSET) /* read-write */
 #define CH32V_ADC1_WDLTR_LT               (0xfff << 0) /* 00000fff: Analog watchdog lower threshold */
 #define CH32V_ADC1_WDLTR_LT_MASK          (0xfff << 0)
 #define CH32V_ADC1_RSQR1_OFFSET           0x002c
-#define CH32V_ADC1_RSQR1                  (CH32V_ADC1_BASE + CH32V_ADC1_RSQR1_OFFSET)
+#define CH32V_ADC1_RSQR1                  (CH32V_ADC1_BASE + CH32V_ADC1_RSQR1_OFFSET) /* read-write */
 #define CH32V_ADC1_RSQR1_L                (0xf << 20) /* 00f00000: Regular channel sequence length */
 #define CH32V_ADC1_RSQR1_L_MASK           (0xf << 20)
 #define CH32V_ADC1_RSQR1_SQ16             (0x1f << 15) /* 000f8000: 16th conversion in regular sequence */
@@ -5738,7 +5738,7 @@
 #define CH32V_ADC1_RSQR1_SQ13             (0x1f << 0) /* 0000001f: 13th conversion in regular sequence */
 #define CH32V_ADC1_RSQR1_SQ13_MASK        (0x1f << 0)
 #define CH32V_ADC1_RSQR2_OFFSET           0x0030
-#define CH32V_ADC1_RSQR2                  (CH32V_ADC1_BASE + CH32V_ADC1_RSQR2_OFFSET)
+#define CH32V_ADC1_RSQR2                  (CH32V_ADC1_BASE + CH32V_ADC1_RSQR2_OFFSET) /* read-write */
 #define CH32V_ADC1_RSQR2_SQ12             (0x1f << 25) /* 3e000000: 12th conversion in regular sequence */
 #define CH32V_ADC1_RSQR2_SQ12_MASK        (0x1f << 25)
 #define CH32V_ADC1_RSQR2_SQ11             (0x1f << 20) /* 01f00000: 11th conversion in regular sequence */
@@ -5752,7 +5752,7 @@
 #define CH32V_ADC1_RSQR2_SQ7              (0x1f << 0) /* 0000001f: 7th conversion in regular sequence */
 #define CH32V_ADC1_RSQR2_SQ7_MASK         (0x1f << 0)
 #define CH32V_ADC1_RSQR3__CHANNEL_OFFSET  0x0034
-#define CH32V_ADC1_RSQR3__CHANNEL         (CH32V_ADC1_BASE + CH32V_ADC1_RSQR3__CHANNEL_OFFSET)
+#define CH32V_ADC1_RSQR3__CHANNEL         (CH32V_ADC1_BASE + CH32V_ADC1_RSQR3__CHANNEL_OFFSET) /* read-write */
 #define CH32V_ADC1_RSQR3__CHANNEL_SQ6     (0x1f << 25) /* 3e000000: 6th conversion in regular sequence */
 #define CH32V_ADC1_RSQR3__CHANNEL_SQ6_MASK (0x1f << 25)
 #define CH32V_ADC1_RSQR3__CHANNEL_SQ5     (0x1f << 20) /* 01f00000: 5th conversion in regular sequence */
@@ -5766,7 +5766,7 @@
 #define CH32V_ADC1_RSQR3__CHANNEL_SQ1__CHSEL (0x1f << 0) /* 0000001f: 1st conversion in regular sequence;TKDY_V channel select */
 #define CH32V_ADC1_RSQR3__CHANNEL_SQ1__CHSEL_MASK (0x1f << 0)
 #define CH32V_ADC1_ISQR_OFFSET            0x0038
-#define CH32V_ADC1_ISQR                   (CH32V_ADC1_BASE + CH32V_ADC1_ISQR_OFFSET)
+#define CH32V_ADC1_ISQR                   (CH32V_ADC1_BASE + CH32V_ADC1_ISQR_OFFSET) /* read-write */
 #define CH32V_ADC1_ISQR_JL                (0x3 << 20) /* 00300000: Injected sequence length */
 #define CH32V_ADC1_ISQR_JL_MASK           (0x3 << 20)
 #define CH32V_ADC1_ISQR_JSQ4              (0x1f << 15) /* 000f8000: 4th conversion in injected sequence */
@@ -5778,25 +5778,25 @@
 #define CH32V_ADC1_ISQR_JSQ1              (0x1f << 0) /* 0000001f: 1st conversion in injected sequence */
 #define CH32V_ADC1_ISQR_JSQ1_MASK         (0x1f << 0)
 #define CH32V_ADC1_IDATAR1_CHGOFFSET_OFFSET 0x003c
-#define CH32V_ADC1_IDATAR1_CHGOFFSET      (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR1_CHGOFFSET_OFFSET)
+#define CH32V_ADC1_IDATAR1_CHGOFFSET      (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR1_CHGOFFSET_OFFSET) /* read-only */
 #define CH32V_ADC1_IDATAR1_CHGOFFSET_IDATA0_7_TKCGOFFSET (0xff << 0) /* 000000ff: Injected data_Touch key charge data offset for injected channel x */
 #define CH32V_ADC1_IDATAR1_CHGOFFSET_IDATA0_7_TKCGOFFSET_MASK (0xff << 0)
 #define CH32V_ADC1_IDATAR1_CHGOFFSET_IDATA8_15 (0xff << 8) /* 0000ff00: Injected data */
 #define CH32V_ADC1_IDATAR1_CHGOFFSET_IDATA8_15_MASK (0xff << 8)
 #define CH32V_ADC1_IDATAR2_OFFSET         0x0040
-#define CH32V_ADC1_IDATAR2                (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR2_OFFSET)
+#define CH32V_ADC1_IDATAR2                (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR2_OFFSET) /* read-only */
 #define CH32V_ADC1_IDATAR2_JDATA          (0xffff << 0) /* 0000ffff: Injected data */
 #define CH32V_ADC1_IDATAR2_JDATA_MASK     (0xffff << 0)
 #define CH32V_ADC1_IDATAR3_OFFSET         0x0044
-#define CH32V_ADC1_IDATAR3                (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR3_OFFSET)
+#define CH32V_ADC1_IDATAR3                (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR3_OFFSET) /* read-only */
 #define CH32V_ADC1_IDATAR3_JDATA          (0xffff << 0) /* 0000ffff: Injected data */
 #define CH32V_ADC1_IDATAR3_JDATA_MASK     (0xffff << 0)
 #define CH32V_ADC1_IDATAR4_OFFSET         0x0048
-#define CH32V_ADC1_IDATAR4                (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR4_OFFSET)
+#define CH32V_ADC1_IDATAR4                (CH32V_ADC1_BASE + CH32V_ADC1_IDATAR4_OFFSET) /* read-only */
 #define CH32V_ADC1_IDATAR4_JDATA          (0xffff << 0) /* 0000ffff: Injected data */
 #define CH32V_ADC1_IDATAR4_JDATA_MASK     (0xffff << 0)
 #define CH32V_ADC1_RDATAR_DR_ACT_DCG_OFFSET 0x004c
-#define CH32V_ADC1_RDATAR_DR_ACT_DCG      (CH32V_ADC1_BASE + CH32V_ADC1_RDATAR_DR_ACT_DCG_OFFSET)
+#define CH32V_ADC1_RDATAR_DR_ACT_DCG      (CH32V_ADC1_BASE + CH32V_ADC1_RDATAR_DR_ACT_DCG_OFFSET) /* read-write */
 #define CH32V_ADC1_RDATAR_DR_ACT_DCG_DATA0_7_TKACT_DCG (0xff << 0) /* 000000ff: Regular data_Touch key start and discharge time register */
 #define CH32V_ADC1_RDATAR_DR_ACT_DCG_DATA0_7_TKACT_DCG_MASK (0xff << 0)
 #define CH32V_ADC1_RDATAR_DR_ACT_DCG_DATA8_15 (0xff << 8) /* 0000ff00: Regular data */
@@ -5805,14 +5805,14 @@
 /* ADC2 - Analog to digital converter */
 #define CH32V_ADC2_BASE                   0x40012800
 #define CH32V_ADC2_STATR_OFFSET           0x0000
-#define CH32V_ADC2_STATR                  (CH32V_ADC2_BASE + CH32V_ADC2_STATR_OFFSET)
+#define CH32V_ADC2_STATR                  (CH32V_ADC2_BASE + CH32V_ADC2_STATR_OFFSET) /* read-write */
 #define CH32V_ADC2_STATR_STRT             (1 <<  4) /* 00000010: Regular channel start flag */
 #define CH32V_ADC2_STATR_JSTRT            (1 <<  3) /* 00000008: Injected channel start flag */
 #define CH32V_ADC2_STATR_JEOC             (1 <<  2) /* 00000004: Injected channel end of conversion */
 #define CH32V_ADC2_STATR_EOC              (1 <<  1) /* 00000002: Regular channel end of conversion */
 #define CH32V_ADC2_STATR_AWD              (1 <<  0) /* 00000001: Analog watchdog flag */
 #define CH32V_ADC2_CTLR1_OFFSET           0x0004
-#define CH32V_ADC2_CTLR1                  (CH32V_ADC2_BASE + CH32V_ADC2_CTLR1_OFFSET)
+#define CH32V_ADC2_CTLR1                  (CH32V_ADC2_BASE + CH32V_ADC2_CTLR1_OFFSET) /* read-write */
 #define CH32V_ADC2_CTLR1_PGA              (0x3 << 27) /* 18000000: ADC_PGA */
 #define CH32V_ADC2_CTLR1_PGA_MASK         (0x3 << 27)
 #define CH32V_ADC2_CTLR1_BUFEN            (1 << 26) /* 04000000: TKEY_BUF_Enable */
@@ -5835,7 +5835,7 @@
 #define CH32V_ADC2_CTLR1_AWDCH            (0x1f << 0) /* 0000001f: Analog watchdog channel select bits */
 #define CH32V_ADC2_CTLR1_AWDCH_MASK       (0x1f << 0)
 #define CH32V_ADC2_CTLR2_OFFSET           0x0008
-#define CH32V_ADC2_CTLR2                  (CH32V_ADC2_BASE + CH32V_ADC2_CTLR2_OFFSET)
+#define CH32V_ADC2_CTLR2                  (CH32V_ADC2_BASE + CH32V_ADC2_CTLR2_OFFSET) /* read-write */
 #define CH32V_ADC2_CTLR2_TSVREFE          (1 << 23) /* 00800000: Temperature sensor and VREFINT enable */
 #define CH32V_ADC2_CTLR2_SWSTART          (1 << 22) /* 00400000: Start conversion of regular channels */
 #define CH32V_ADC2_CTLR2_JSWSTART         (1 << 21) /* 00200000: Start conversion of injected channels */
@@ -5852,7 +5852,7 @@
 #define CH32V_ADC2_CTLR2_CONT             (1 <<  1) /* 00000002: Continuous conversion */
 #define CH32V_ADC2_CTLR2_ADON             (1 <<  0) /* 00000001: A/D converter ON / OFF */
 #define CH32V_ADC2_SAMPTR1_CHARGE1_OFFSET 0x000c
-#define CH32V_ADC2_SAMPTR1_CHARGE1        (CH32V_ADC2_BASE + CH32V_ADC2_SAMPTR1_CHARGE1_OFFSET)
+#define CH32V_ADC2_SAMPTR1_CHARGE1        (CH32V_ADC2_BASE + CH32V_ADC2_SAMPTR1_CHARGE1_OFFSET) /* read-write */
 #define CH32V_ADC2_SAMPTR1_CHARGE1_SMP10_TKCG10 (0x7 << 0) /* 00000007: Channel 10 sample time selection */
 #define CH32V_ADC2_SAMPTR1_CHARGE1_SMP10_TKCG10_MASK (0x7 << 0)
 #define CH32V_ADC2_SAMPTR1_CHARGE1_SMP11_TKCG11 (0x7 << 3) /* 00000038: Channel 11 sample time selection */
@@ -5870,7 +5870,7 @@
 #define CH32V_ADC2_SAMPTR1_CHARGE1_SMP17_TKCG17 (0x7 << 21) /* 00e00000: Channel 17 sample time selection */
 #define CH32V_ADC2_SAMPTR1_CHARGE1_SMP17_TKCG17_MASK (0x7 << 21)
 #define CH32V_ADC2_SAMPTR2_CHARGE2_OFFSET 0x0010
-#define CH32V_ADC2_SAMPTR2_CHARGE2        (CH32V_ADC2_BASE + CH32V_ADC2_SAMPTR2_CHARGE2_OFFSET)
+#define CH32V_ADC2_SAMPTR2_CHARGE2        (CH32V_ADC2_BASE + CH32V_ADC2_SAMPTR2_CHARGE2_OFFSET) /* read-write */
 #define CH32V_ADC2_SAMPTR2_CHARGE2_SMP0_TKCG0 (0x7 << 0) /* 00000007: Channel 0 sample time selection */
 #define CH32V_ADC2_SAMPTR2_CHARGE2_SMP0_TKCG0_MASK (0x7 << 0)
 #define CH32V_ADC2_SAMPTR2_CHARGE2_SMP1_TKCG1 (0x7 << 3) /* 00000038: Channel 1 sample time selection */
@@ -5892,31 +5892,31 @@
 #define CH32V_ADC2_SAMPTR2_CHARGE2_SMP9_TKCG9 (0x7 << 27) /* 38000000: Channel 9 sample time selection */
 #define CH32V_ADC2_SAMPTR2_CHARGE2_SMP9_TKCG9_MASK (0x7 << 27)
 #define CH32V_ADC2_IOFR1_OFFSET           0x0014
-#define CH32V_ADC2_IOFR1                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR1_OFFSET)
+#define CH32V_ADC2_IOFR1                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR1_OFFSET) /* read-write */
 #define CH32V_ADC2_IOFR1_JOFFSET1         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC2_IOFR1_JOFFSET1_MASK    (0xfff << 0)
 #define CH32V_ADC2_IOFR2_OFFSET           0x0018
-#define CH32V_ADC2_IOFR2                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR2_OFFSET)
+#define CH32V_ADC2_IOFR2                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR2_OFFSET) /* read-write */
 #define CH32V_ADC2_IOFR2_JOFFSET2         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC2_IOFR2_JOFFSET2_MASK    (0xfff << 0)
 #define CH32V_ADC2_IOFR3_OFFSET           0x001c
-#define CH32V_ADC2_IOFR3                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR3_OFFSET)
+#define CH32V_ADC2_IOFR3                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR3_OFFSET) /* read-write */
 #define CH32V_ADC2_IOFR3_JOFFSET3         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC2_IOFR3_JOFFSET3_MASK    (0xfff << 0)
 #define CH32V_ADC2_IOFR4_OFFSET           0x0020
-#define CH32V_ADC2_IOFR4                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR4_OFFSET)
+#define CH32V_ADC2_IOFR4                  (CH32V_ADC2_BASE + CH32V_ADC2_IOFR4_OFFSET) /* read-write */
 #define CH32V_ADC2_IOFR4_JOFFSET4         (0xfff << 0) /* 00000fff: Data offset for injected channel x */
 #define CH32V_ADC2_IOFR4_JOFFSET4_MASK    (0xfff << 0)
 #define CH32V_ADC2_WDHTR_OFFSET           0x0024
-#define CH32V_ADC2_WDHTR                  (CH32V_ADC2_BASE + CH32V_ADC2_WDHTR_OFFSET)
+#define CH32V_ADC2_WDHTR                  (CH32V_ADC2_BASE + CH32V_ADC2_WDHTR_OFFSET) /* read-write */
 #define CH32V_ADC2_WDHTR_HT               (0xfff << 0) /* 00000fff: Analog watchdog higher threshold */
 #define CH32V_ADC2_WDHTR_HT_MASK          (0xfff << 0)
 #define CH32V_ADC2_WDLTR_OFFSET           0x0028
-#define CH32V_ADC2_WDLTR                  (CH32V_ADC2_BASE + CH32V_ADC2_WDLTR_OFFSET)
+#define CH32V_ADC2_WDLTR                  (CH32V_ADC2_BASE + CH32V_ADC2_WDLTR_OFFSET) /* read-write */
 #define CH32V_ADC2_WDLTR_LT               (0xfff << 0) /* 00000fff: Analog watchdog lower threshold */
 #define CH32V_ADC2_WDLTR_LT_MASK          (0xfff << 0)
 #define CH32V_ADC2_RSQR1_OFFSET           0x002c
-#define CH32V_ADC2_RSQR1                  (CH32V_ADC2_BASE + CH32V_ADC2_RSQR1_OFFSET)
+#define CH32V_ADC2_RSQR1                  (CH32V_ADC2_BASE + CH32V_ADC2_RSQR1_OFFSET) /* read-write */
 #define CH32V_ADC2_RSQR1_L                (0xf << 20) /* 00f00000: Regular channel sequence length */
 #define CH32V_ADC2_RSQR1_L_MASK           (0xf << 20)
 #define CH32V_ADC2_RSQR1_SQ16             (0x1f << 15) /* 000f8000: 16th conversion in regular sequence */
@@ -5928,7 +5928,7 @@
 #define CH32V_ADC2_RSQR1_SQ13             (0x1f << 0) /* 0000001f: 13th conversion in regular sequence */
 #define CH32V_ADC2_RSQR1_SQ13_MASK        (0x1f << 0)
 #define CH32V_ADC2_RSQR2_OFFSET           0x0030
-#define CH32V_ADC2_RSQR2                  (CH32V_ADC2_BASE + CH32V_ADC2_RSQR2_OFFSET)
+#define CH32V_ADC2_RSQR2                  (CH32V_ADC2_BASE + CH32V_ADC2_RSQR2_OFFSET) /* read-write */
 #define CH32V_ADC2_RSQR2_SQ12             (0x1f << 25) /* 3e000000: 12th conversion in regular sequence */
 #define CH32V_ADC2_RSQR2_SQ12_MASK        (0x1f << 25)
 #define CH32V_ADC2_RSQR2_SQ11             (0x1f << 20) /* 01f00000: 11th conversion in regular sequence */
@@ -5942,7 +5942,7 @@
 #define CH32V_ADC2_RSQR2_SQ7              (0x1f << 0) /* 0000001f: 7th conversion in regular sequence */
 #define CH32V_ADC2_RSQR2_SQ7_MASK         (0x1f << 0)
 #define CH32V_ADC2_RSQR3__CHANNEL_OFFSET  0x0034
-#define CH32V_ADC2_RSQR3__CHANNEL         (CH32V_ADC2_BASE + CH32V_ADC2_RSQR3__CHANNEL_OFFSET)
+#define CH32V_ADC2_RSQR3__CHANNEL         (CH32V_ADC2_BASE + CH32V_ADC2_RSQR3__CHANNEL_OFFSET) /* read-write */
 #define CH32V_ADC2_RSQR3__CHANNEL_SQ6     (0x1f << 25) /* 3e000000: 6th conversion in regular sequence */
 #define CH32V_ADC2_RSQR3__CHANNEL_SQ6_MASK (0x1f << 25)
 #define CH32V_ADC2_RSQR3__CHANNEL_SQ5     (0x1f << 20) /* 01f00000: 5th conversion in regular sequence */
@@ -5956,7 +5956,7 @@
 #define CH32V_ADC2_RSQR3__CHANNEL_SQ1__CHSEL (0x1f << 0) /* 0000001f: 1st conversion in regular sequence;TKDY_V channel select */
 #define CH32V_ADC2_RSQR3__CHANNEL_SQ1__CHSEL_MASK (0x1f << 0)
 #define CH32V_ADC2_ISQR_OFFSET            0x0038
-#define CH32V_ADC2_ISQR                   (CH32V_ADC2_BASE + CH32V_ADC2_ISQR_OFFSET)
+#define CH32V_ADC2_ISQR                   (CH32V_ADC2_BASE + CH32V_ADC2_ISQR_OFFSET) /* read-write */
 #define CH32V_ADC2_ISQR_JL                (0x3 << 20) /* 00300000: Injected sequence length */
 #define CH32V_ADC2_ISQR_JL_MASK           (0x3 << 20)
 #define CH32V_ADC2_ISQR_JSQ4              (0x1f << 15) /* 000f8000: 4th conversion in injected sequence */
@@ -5968,25 +5968,25 @@
 #define CH32V_ADC2_ISQR_JSQ1              (0x1f << 0) /* 0000001f: 1st conversion in injected sequence */
 #define CH32V_ADC2_ISQR_JSQ1_MASK         (0x1f << 0)
 #define CH32V_ADC2_IDATAR1_CHGOFFSET_OFFSET 0x003c
-#define CH32V_ADC2_IDATAR1_CHGOFFSET      (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR1_CHGOFFSET_OFFSET)
+#define CH32V_ADC2_IDATAR1_CHGOFFSET      (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR1_CHGOFFSET_OFFSET) /* read-only */
 #define CH32V_ADC2_IDATAR1_CHGOFFSET_IDATA0_7_TKCGOFFSET (0xff << 0) /* 000000ff: Injected data_Touch key charge data offset for injected channel x */
 #define CH32V_ADC2_IDATAR1_CHGOFFSET_IDATA0_7_TKCGOFFSET_MASK (0xff << 0)
 #define CH32V_ADC2_IDATAR1_CHGOFFSET_IDATA8_15 (0xff << 8) /* 0000ff00: Injected data */
 #define CH32V_ADC2_IDATAR1_CHGOFFSET_IDATA8_15_MASK (0xff << 8)
 #define CH32V_ADC2_IDATAR2_OFFSET         0x0040
-#define CH32V_ADC2_IDATAR2                (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR2_OFFSET)
+#define CH32V_ADC2_IDATAR2                (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR2_OFFSET) /* read-only */
 #define CH32V_ADC2_IDATAR2_JDATA          (0xffff << 0) /* 0000ffff: Injected data */
 #define CH32V_ADC2_IDATAR2_JDATA_MASK     (0xffff << 0)
 #define CH32V_ADC2_IDATAR3_OFFSET         0x0044
-#define CH32V_ADC2_IDATAR3                (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR3_OFFSET)
+#define CH32V_ADC2_IDATAR3                (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR3_OFFSET) /* read-only */
 #define CH32V_ADC2_IDATAR3_JDATA          (0xffff << 0) /* 0000ffff: Injected data */
 #define CH32V_ADC2_IDATAR3_JDATA_MASK     (0xffff << 0)
 #define CH32V_ADC2_IDATAR4_OFFSET         0x0048
-#define CH32V_ADC2_IDATAR4                (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR4_OFFSET)
+#define CH32V_ADC2_IDATAR4                (CH32V_ADC2_BASE + CH32V_ADC2_IDATAR4_OFFSET) /* read-only */
 #define CH32V_ADC2_IDATAR4_JDATA          (0xffff << 0) /* 0000ffff: Injected data */
 #define CH32V_ADC2_IDATAR4_JDATA_MASK     (0xffff << 0)
 #define CH32V_ADC2_RDATAR_DR_ACT_DCG_OFFSET 0x004c
-#define CH32V_ADC2_RDATAR_DR_ACT_DCG      (CH32V_ADC2_BASE + CH32V_ADC2_RDATAR_DR_ACT_DCG_OFFSET)
+#define CH32V_ADC2_RDATAR_DR_ACT_DCG      (CH32V_ADC2_BASE + CH32V_ADC2_RDATAR_DR_ACT_DCG_OFFSET) /* read-write */
 #define CH32V_ADC2_RDATAR_DR_ACT_DCG_DATA0_7_TKACT_DCG (0xff << 0) /* 000000ff: Regular data_Touch key start and discharge time register */
 #define CH32V_ADC2_RDATAR_DR_ACT_DCG_DATA0_7_TKACT_DCG_MASK (0xff << 0)
 #define CH32V_ADC2_RDATAR_DR_ACT_DCG_DATA8_15 (0xff << 8) /* 0000ff00: Regular data */
@@ -5995,7 +5995,7 @@
 /* DBG - Debug support */
 #define CH32V_DBG_BASE                    0xe000d000
 #define CH32V_DBG_CFGR1_OFFSET            0x0000
-#define CH32V_DBG_CFGR1                   (CH32V_DBG_BASE + CH32V_DBG_CFGR1_OFFSET)
+#define CH32V_DBG_CFGR1                   (CH32V_DBG_BASE + CH32V_DBG_CFGR1_OFFSET) /* read-write */
 #define CH32V_DBG_CFGR1_DEG_IWDG          (1 <<  0) /* 00000001: DEG_IWDG */
 #define CH32V_DBG_CFGR1_DEG_WWDG          (1 <<  1) /* 00000002: DEG_WWDG */
 #define CH32V_DBG_CFGR1_DEG_I2C1          (1 <<  2) /* 00000004: DEG_I2C1 */
@@ -6005,7 +6005,7 @@
 #define CH32V_DBG_CFGR1_DEG_TIM3          (1 <<  6) /* 00000040: DEG_TIM3 */
 #define CH32V_DBG_CFGR1_DEG_TIM4          (1 <<  7) /* 00000080: DEG_TIM4 */
 #define CH32V_DBG_CFGR2_OFFSET            0x0004
-#define CH32V_DBG_CFGR2                   (CH32V_DBG_BASE + CH32V_DBG_CFGR2_OFFSET)
+#define CH32V_DBG_CFGR2                   (CH32V_DBG_BASE + CH32V_DBG_CFGR2_OFFSET) /* read-write */
 #define CH32V_DBG_CFGR2_DBG_SLEEP         (1 <<  0) /* 00000001: DBG_SLEEP */
 #define CH32V_DBG_CFGR2_DBG_STOP          (1 <<  1) /* 00000002: DBG_STOP */
 #define CH32V_DBG_CFGR2_DBG_STANDBY       (1 <<  2) /* 00000004: DBG_STANDBY */
@@ -6013,246 +6013,246 @@
 /* USBHD - USB register */
 #define CH32V_USBHD_BASE                  0x40023400
 #define CH32V_USBHD_USB_CTRL_OFFSET       0x0000
-#define CH32V_USBHD_USB_CTRL              (CH32V_USBHD_BASE + CH32V_USBHD_USB_CTRL_OFFSET)
+#define CH32V_USBHD_USB_CTRL              (CH32V_USBHD_BASE + CH32V_USBHD_USB_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UHOST_CTRL_OFFSET     0x0001
 #define CH32V_USBHD_UHOST_CTRL            (CH32V_USBHD_BASE + CH32V_USBHD_UHOST_CTRL_OFFSET)
 #define CH32V_USBHD_USB_INT_EN_OFFSET     0x0002
-#define CH32V_USBHD_USB_INT_EN            (CH32V_USBHD_BASE + CH32V_USBHD_USB_INT_EN_OFFSET)
+#define CH32V_USBHD_USB_INT_EN            (CH32V_USBHD_BASE + CH32V_USBHD_USB_INT_EN_OFFSET) /* read-write */
 #define CH32V_USBHD_USB_DEV_AD_OFFSET     0x0003
-#define CH32V_USBHD_USB_DEV_AD            (CH32V_USBHD_BASE + CH32V_USBHD_USB_DEV_AD_OFFSET)
+#define CH32V_USBHD_USB_DEV_AD            (CH32V_USBHD_BASE + CH32V_USBHD_USB_DEV_AD_OFFSET) /* read-write */
 #define CH32V_USBHD_USB_FRAME_NO_OFFSET   0x0004
-#define CH32V_USBHD_USB_FRAME_NO          (CH32V_USBHD_BASE + CH32V_USBHD_USB_FRAME_NO_OFFSET)
+#define CH32V_USBHD_USB_FRAME_NO          (CH32V_USBHD_BASE + CH32V_USBHD_USB_FRAME_NO_OFFSET) /* read-only */
 #define CH32V_USBHD_USB_USB_SUSPEND_OFFSET 0x0006
-#define CH32V_USBHD_USB_USB_SUSPEND       (CH32V_USBHD_BASE + CH32V_USBHD_USB_USB_SUSPEND_OFFSET)
+#define CH32V_USBHD_USB_USB_SUSPEND       (CH32V_USBHD_BASE + CH32V_USBHD_USB_USB_SUSPEND_OFFSET) /* read-write */
 #define CH32V_USBHD_USB_SPEED_TYPE_OFFSET 0x0008
-#define CH32V_USBHD_USB_SPEED_TYPE        (CH32V_USBHD_BASE + CH32V_USBHD_USB_SPEED_TYPE_OFFSET)
+#define CH32V_USBHD_USB_SPEED_TYPE        (CH32V_USBHD_BASE + CH32V_USBHD_USB_SPEED_TYPE_OFFSET) /* read-only */
 #define CH32V_USBHD_USB_MIS_ST_OFFSET     0x0009
-#define CH32V_USBHD_USB_MIS_ST            (CH32V_USBHD_BASE + CH32V_USBHD_USB_MIS_ST_OFFSET)
+#define CH32V_USBHD_USB_MIS_ST            (CH32V_USBHD_BASE + CH32V_USBHD_USB_MIS_ST_OFFSET) /* read-only */
 #define CH32V_USBHD_USB_INT_FG_OFFSET     0x000a
 #define CH32V_USBHD_USB_INT_FG            (CH32V_USBHD_BASE + CH32V_USBHD_USB_INT_FG_OFFSET)
 #define CH32V_USBHD_USB_INT_ST_OFFSET     0x000b
-#define CH32V_USBHD_USB_INT_ST            (CH32V_USBHD_BASE + CH32V_USBHD_USB_INT_ST_OFFSET)
+#define CH32V_USBHD_USB_INT_ST            (CH32V_USBHD_BASE + CH32V_USBHD_USB_INT_ST_OFFSET) /* read-only */
 #define CH32V_USBHD_USB_RX_LEN_OFFSET     0x000c
-#define CH32V_USBHD_USB_RX_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_USB_RX_LEN_OFFSET)
+#define CH32V_USBHD_USB_RX_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_USB_RX_LEN_OFFSET) /* read-only */
 #define CH32V_USBHD_UEP_CONFIG_OFFSET     0x0010
-#define CH32V_USBHD_UEP_CONFIG            (CH32V_USBHD_BASE + CH32V_USBHD_UEP_CONFIG_OFFSET)
+#define CH32V_USBHD_UEP_CONFIG            (CH32V_USBHD_BASE + CH32V_USBHD_UEP_CONFIG_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP_TYPE_OFFSET       0x0014
-#define CH32V_USBHD_UEP_TYPE              (CH32V_USBHD_BASE + CH32V_USBHD_UEP_TYPE_OFFSET)
+#define CH32V_USBHD_UEP_TYPE              (CH32V_USBHD_BASE + CH32V_USBHD_UEP_TYPE_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP_BUF_MOD_OFFSET    0x0018
-#define CH32V_USBHD_UEP_BUF_MOD           (CH32V_USBHD_BASE + CH32V_USBHD_UEP_BUF_MOD_OFFSET)
+#define CH32V_USBHD_UEP_BUF_MOD           (CH32V_USBHD_BASE + CH32V_USBHD_UEP_BUF_MOD_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP0_DMA_OFFSET       0x001c
-#define CH32V_USBHD_UEP0_DMA              (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_DMA_OFFSET)
+#define CH32V_USBHD_UEP0_DMA              (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP1_RX_DMA_OFFSET    0x0020
-#define CH32V_USBHD_UEP1_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP1_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP2_RX_DMA__UH_RX_DMA_OFFSET 0x0024
-#define CH32V_USBHD_UEP2_RX_DMA__UH_RX_DMA (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_RX_DMA__UH_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP2_RX_DMA__UH_RX_DMA (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_RX_DMA__UH_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP3_RX_DMA_OFFSET    0x0028
-#define CH32V_USBHD_UEP3_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP3_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP4_RX_DMA_OFFSET    0x002c
-#define CH32V_USBHD_UEP4_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP4_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP5_RX_DMA_OFFSET    0x0030
-#define CH32V_USBHD_UEP5_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP5_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP6_RX_DMA_OFFSET    0x0034
-#define CH32V_USBHD_UEP6_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP6_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP7_RX_DMA_OFFSET    0x0038
-#define CH32V_USBHD_UEP7_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP7_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP8_RX_DMA_OFFSET    0x003c
-#define CH32V_USBHD_UEP8_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP8_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP9_RX_DMA_OFFSET    0x0040
-#define CH32V_USBHD_UEP9_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP9_RX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP10_RX_DMA_OFFSET   0x0044
-#define CH32V_USBHD_UEP10_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP10_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP11_RX_DMA_OFFSET   0x0048
-#define CH32V_USBHD_UEP11_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP11_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP12_RX_DMA_OFFSET   0x004c
-#define CH32V_USBHD_UEP12_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP12_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP13_RX_DMA_OFFSET   0x0050
-#define CH32V_USBHD_UEP13_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP13_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP14_RX_DMA_OFFSET   0x0054
-#define CH32V_USBHD_UEP14_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP14_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP15_RX_DMA_OFFSET   0x0058
-#define CH32V_USBHD_UEP15_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_RX_DMA_OFFSET)
+#define CH32V_USBHD_UEP15_RX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP1_TX_DMA_OFFSET    0x005c
-#define CH32V_USBHD_UEP1_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP1_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP2_TX_DMA_OFFSET    0x0060
-#define CH32V_USBHD_UEP2_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP2_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP3_TX_DMA__UH_TX_DMA_OFFSET 0x0064
-#define CH32V_USBHD_UEP3_TX_DMA__UH_TX_DMA (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_TX_DMA__UH_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP3_TX_DMA__UH_TX_DMA (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_TX_DMA__UH_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP4_TX_DMA_OFFSET    0x0068
-#define CH32V_USBHD_UEP4_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP4_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP5_TX_DMA_OFFSET    0x006c
-#define CH32V_USBHD_UEP5_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP5_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP6_TX_DMA_OFFSET    0x0070
-#define CH32V_USBHD_UEP6_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP6_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP7_TX_DMA_OFFSET    0x0074
-#define CH32V_USBHD_UEP7_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP7_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP8_TX_DMA_OFFSET    0x0078
-#define CH32V_USBHD_UEP8_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP8_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP9_TX_DMA_OFFSET    0x007c
-#define CH32V_USBHD_UEP9_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP9_TX_DMA           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP10_TX_DMA_OFFSET   0x0080
-#define CH32V_USBHD_UEP10_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP10_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP11_TX_DMA_OFFSET   0x0084
-#define CH32V_USBHD_UEP11_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP11_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP12_TX_DMA____UH_SPLIT_DATA_OFFSET 0x0088
-#define CH32V_USBHD_UEP12_TX_DMA____UH_SPLIT_DATA (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_TX_DMA____UH_SPLIT_DATA_OFFSET)
+#define CH32V_USBHD_UEP12_TX_DMA____UH_SPLIT_DATA (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_TX_DMA____UH_SPLIT_DATA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP13_TX_DMA_OFFSET   0x008c
-#define CH32V_USBHD_UEP13_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP13_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP14_TX_DMA_OFFSET   0x0090
-#define CH32V_USBHD_UEP14_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP14_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP15_TX_DMA_OFFSET   0x0094
-#define CH32V_USBHD_UEP15_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_TX_DMA_OFFSET)
+#define CH32V_USBHD_UEP15_TX_DMA          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP0_MAX_LEN_OFFSET   0x0098
-#define CH32V_USBHD_UEP0_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP0_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP1_MAX_LEN_OFFSET   0x009c
-#define CH32V_USBHD_UEP1_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP1_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP2_MAX_LEN__UH_RX_MAX_LEN_OFFSET 0x00a0
-#define CH32V_USBHD_UEP2_MAX_LEN__UH_RX_MAX_LEN (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_MAX_LEN__UH_RX_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP2_MAX_LEN__UH_RX_MAX_LEN (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_MAX_LEN__UH_RX_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP3_MAX_LEN_OFFSET   0x00a4
-#define CH32V_USBHD_UEP3_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP3_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP4_MAX_LEN_OFFSET   0x00a8
-#define CH32V_USBHD_UEP4_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP4_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP5_MAX_LEN_OFFSET   0x00ac
-#define CH32V_USBHD_UEP5_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP5_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP6_MAX_LEN_OFFSET   0x00b0
-#define CH32V_USBHD_UEP6_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP6_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP7_MAX_LEN_OFFSET   0x00b4
-#define CH32V_USBHD_UEP7_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP7_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP8_MAX_LEN_OFFSET   0x00b8
-#define CH32V_USBHD_UEP8_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP8_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP9_MAX_LEN_OFFSET   0x00bc
-#define CH32V_USBHD_UEP9_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP9_MAX_LEN          (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP10_MAX_LEN_OFFSET  0x00c0
-#define CH32V_USBHD_UEP10_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP10_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP11_MAX_LEN_OFFSET  0x00c4
-#define CH32V_USBHD_UEP11_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP11_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP12_MAX_LEN_OFFSET  0x00c8
-#define CH32V_USBHD_UEP12_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP12_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP13_MAX_LEN_OFFSET  0x00cc
-#define CH32V_USBHD_UEP13_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP13_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP14_MAX_LEN_OFFSET  0x00d0
-#define CH32V_USBHD_UEP14_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP14_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP15_MAX_LEN_OFFSET  0x00d4
-#define CH32V_USBHD_UEP15_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_MAX_LEN_OFFSET)
+#define CH32V_USBHD_UEP15_MAX_LEN         (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_MAX_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP0_T_LEN_OFFSET     0x00d8
-#define CH32V_USBHD_UEP0_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP0_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP0_T_CTRL_OFFSET    0x00da
-#define CH32V_USBHD_UEP0_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP0_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP0_R_CTRL_OFFSET    0x00db
-#define CH32V_USBHD_UEP0_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP0_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP0_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP1_T_LEN_OFFSET     0x00dc
-#define CH32V_USBHD_UEP1_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP1_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP1_T_CTRL_OFFSET    0x00de
-#define CH32V_USBHD_UEP1_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP1_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP1_R_CTRL_OFFSET    0x00df
-#define CH32V_USBHD_UEP1_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP1_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP1_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP2_T_LEN__UH_EP_PID_OFFSET 0x00e0
-#define CH32V_USBHD_UEP2_T_LEN__UH_EP_PID (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_T_LEN__UH_EP_PID_OFFSET)
+#define CH32V_USBHD_UEP2_T_LEN__UH_EP_PID (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_T_LEN__UH_EP_PID_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP2_T_CTRL_OFFSET    0x00e2
-#define CH32V_USBHD_UEP2_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP2_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP2_R_CTRL__UH_RX_CTRL_OFFSET 0x00e3
-#define CH32V_USBHD_UEP2_R_CTRL__UH_RX_CTRL (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_R_CTRL__UH_RX_CTRL_OFFSET)
+#define CH32V_USBHD_UEP2_R_CTRL__UH_RX_CTRL (CH32V_USBHD_BASE + CH32V_USBHD_UEP2_R_CTRL__UH_RX_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP3_T_LEN___UH_TX_LEN_H_OFFSET 0x00e4
-#define CH32V_USBHD_UEP3_T_LEN___UH_TX_LEN_H (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_T_LEN___UH_TX_LEN_H_OFFSET)
+#define CH32V_USBHD_UEP3_T_LEN___UH_TX_LEN_H (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_T_LEN___UH_TX_LEN_H_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP3_T_CTRL___UH_TX_CTRL_OFFSET 0x00e6
-#define CH32V_USBHD_UEP3_T_CTRL___UH_TX_CTRL (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_T_CTRL___UH_TX_CTRL_OFFSET)
+#define CH32V_USBHD_UEP3_T_CTRL___UH_TX_CTRL (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_T_CTRL___UH_TX_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP3_R_CTRL_OFFSET    0x00e7
-#define CH32V_USBHD_UEP3_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP3_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP3_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP4_T_LEN_OFFSET     0x00e8
-#define CH32V_USBHD_UEP4_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP4_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP4_T_CTRL_OFFSET    0x00ea
-#define CH32V_USBHD_UEP4_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP4_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP4_R_CTRL_OFFSET    0x00eb
-#define CH32V_USBHD_UEP4_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP4_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP4_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP5_T_LEN_OFFSET     0x00ec
-#define CH32V_USBHD_UEP5_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP5_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP5_T_CTRL_OFFSET    0x00ee
-#define CH32V_USBHD_UEP5_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP5_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP5_R_CTRL_OFFSET    0x00ef
-#define CH32V_USBHD_UEP5_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP5_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP5_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP6_T_LEN_OFFSET     0x00f0
-#define CH32V_USBHD_UEP6_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP6_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP6_T_CTRL_OFFSET    0x00f2
-#define CH32V_USBHD_UEP6_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP6_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP6_R_CTRL_OFFSET    0x00f3
-#define CH32V_USBHD_UEP6_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP6_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP6_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP7_T_LEN_OFFSET     0x00f4
-#define CH32V_USBHD_UEP7_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP7_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP7_T_CTRL_OFFSET    0x00f6
-#define CH32V_USBHD_UEP7_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP7_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP7_R_CTRL_OFFSET    0x00f7
-#define CH32V_USBHD_UEP7_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP7_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP7_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP8_T_LEN_OFFSET     0x00f8
-#define CH32V_USBHD_UEP8_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP8_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP8_T_CTRL_OFFSET    0x00fa
-#define CH32V_USBHD_UEP8_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP8_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP8_R_CTRL_OFFSET    0x00fb
-#define CH32V_USBHD_UEP8_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP8_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP8_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP9_T_LEN_OFFSET     0x00fc
-#define CH32V_USBHD_UEP9_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP9_T_LEN            (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP9_T_CTRL_OFFSET    0x00fe
-#define CH32V_USBHD_UEP9_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP9_T_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP9_R_CTRL_OFFSET    0x00ff
-#define CH32V_USBHD_UEP9_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP9_R_CTRL           (CH32V_USBHD_BASE + CH32V_USBHD_UEP9_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP10_T_LEN_OFFSET    0x0100
-#define CH32V_USBHD_UEP10_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP10_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP10_T_CTRL_OFFSET   0x0102
-#define CH32V_USBHD_UEP10_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP10_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP10_R_CTRL_OFFSET   0x0103
-#define CH32V_USBHD_UEP10_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP10_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP10_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP11_T_LEN_OFFSET    0x0104
-#define CH32V_USBHD_UEP11_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP11_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP11_T_CTRL_OFFSET   0x0106
-#define CH32V_USBHD_UEP11_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP11_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP11_R_CTRL_OFFSET   0x0107
-#define CH32V_USBHD_UEP11_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP11_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP11_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP12_T_LEN_OFFSET    0x0108
-#define CH32V_USBHD_UEP12_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP12_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP12_T_CTRL_OFFSET   0x010a
-#define CH32V_USBHD_UEP12_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP12_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP12_R_CTRL_OFFSET   0x010b
-#define CH32V_USBHD_UEP12_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP12_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP12_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP13_T_LEN_OFFSET    0x010c
-#define CH32V_USBHD_UEP13_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP13_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP13_T_CTRL_OFFSET   0x010e
-#define CH32V_USBHD_UEP13_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP13_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP13_R_CTRL_OFFSET   0x010f
-#define CH32V_USBHD_UEP13_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP13_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP13_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP14_T_LEN_OFFSET    0x0110
-#define CH32V_USBHD_UEP14_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP14_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP14_T_CTRL_OFFSET   0x0112
-#define CH32V_USBHD_UEP14_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP14_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP14_R_CTRL_OFFSET   0x0113
-#define CH32V_USBHD_UEP14_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP14_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP14_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP15_T_LEN_OFFSET    0x0114
-#define CH32V_USBHD_UEP15_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_T_LEN_OFFSET)
+#define CH32V_USBHD_UEP15_T_LEN           (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_T_LEN_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP15_T_CTRL_OFFSET   0x0116
-#define CH32V_USBHD_UEP15_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_T_CTRL_OFFSET)
+#define CH32V_USBHD_UEP15_T_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USBHD_UEP15_R_CTRL_OFFSET   0x0117
-#define CH32V_USBHD_UEP15_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_R_CTRL_OFFSET)
+#define CH32V_USBHD_UEP15_R_CTRL          (CH32V_USBHD_BASE + CH32V_USBHD_UEP15_R_CTRL_OFFSET) /* read-write */
 
 /* CRC - CRC calculation unit */
 #define CH32V_CRC_BASE                    0x40023000
 #define CH32V_CRC_DATAR_OFFSET            0x0000
-#define CH32V_CRC_DATAR                   (CH32V_CRC_BASE + CH32V_CRC_DATAR_OFFSET)
+#define CH32V_CRC_DATAR                   (CH32V_CRC_BASE + CH32V_CRC_DATAR_OFFSET) /* read-write */
 #define CH32V_CRC_DATAR_DR                (0xffffffff << 0) /* ffffffff: Data Register */
 #define CH32V_CRC_DATAR_DR_MASK           (0xffffffff << 0)
 #define CH32V_CRC_IDATAR_OFFSET           0x0004
-#define CH32V_CRC_IDATAR                  (CH32V_CRC_BASE + CH32V_CRC_IDATAR_OFFSET)
+#define CH32V_CRC_IDATAR                  (CH32V_CRC_BASE + CH32V_CRC_IDATAR_OFFSET) /* read-write */
 #define CH32V_CRC_IDATAR_IDR              (0xff << 0) /* 000000ff: Independent Data register */
 #define CH32V_CRC_IDATAR_IDR_MASK         (0xff << 0)
 #define CH32V_CRC_CTLR_OFFSET             0x0008
-#define CH32V_CRC_CTLR                    (CH32V_CRC_BASE + CH32V_CRC_CTLR_OFFSET)
+#define CH32V_CRC_CTLR                    (CH32V_CRC_BASE + CH32V_CRC_CTLR_OFFSET) /* write-only */
 #define CH32V_CRC_CTLR_RESET              (1 <<  0) /* 00000001: Reset bit */
 
 /* FLASH - FLASH */
 #define CH32V_FLASH_BASE                  0x40022000
 #define CH32V_FLASH_KEYR_OFFSET           0x0004
-#define CH32V_FLASH_KEYR                  (CH32V_FLASH_BASE + CH32V_FLASH_KEYR_OFFSET)
+#define CH32V_FLASH_KEYR                  (CH32V_FLASH_BASE + CH32V_FLASH_KEYR_OFFSET) /* write-only */
 #define CH32V_FLASH_KEYR_KEYR             (0xffffffff << 0) /* ffffffff: FPEC key */
 #define CH32V_FLASH_KEYR_KEYR_MASK        (0xffffffff << 0)
 #define CH32V_FLASH_OBKEYR_OFFSET         0x0008
-#define CH32V_FLASH_OBKEYR                (CH32V_FLASH_BASE + CH32V_FLASH_OBKEYR_OFFSET)
+#define CH32V_FLASH_OBKEYR                (CH32V_FLASH_BASE + CH32V_FLASH_OBKEYR_OFFSET) /* write-only */
 #define CH32V_FLASH_OBKEYR_OPTKEY         (0xffffffff << 0) /* ffffffff: Option byte key */
 #define CH32V_FLASH_OBKEYR_OPTKEY_MASK    (0xffffffff << 0)
 #define CH32V_FLASH_STATR_OFFSET          0x000c
@@ -6263,7 +6263,7 @@
 #define CH32V_FLASH_STATR_WR_BSY          (1 <<  1) /* 00000002: Quick page programming */
 #define CH32V_FLASH_STATR_BSY             (1 <<  0) /* 00000001: Busy */
 #define CH32V_FLASH_CTLR_OFFSET           0x0010
-#define CH32V_FLASH_CTLR                  (CH32V_FLASH_BASE + CH32V_FLASH_CTLR_OFFSET)
+#define CH32V_FLASH_CTLR                  (CH32V_FLASH_BASE + CH32V_FLASH_CTLR_OFFSET) /* read-write */
 #define CH32V_FLASH_CTLR_PG               (1 <<  0) /* 00000001: Programming */
 #define CH32V_FLASH_CTLR_PER              (1 <<  1) /* 00000002: Page Erase */
 #define CH32V_FLASH_CTLR_MER              (1 <<  2) /* 00000004: Mass Erase */
@@ -6284,11 +6284,11 @@
 #define CH32V_FLASH_CTLR_ENHANCEMODE      (1 << 24) /* 01000000: Flash Enhance read mode */
 #define CH32V_FLASH_CTLR_SCKMODE          (1 << 25) /* 02000000: Flash SCK mode */
 #define CH32V_FLASH_ADDR_OFFSET           0x0014
-#define CH32V_FLASH_ADDR                  (CH32V_FLASH_BASE + CH32V_FLASH_ADDR_OFFSET)
+#define CH32V_FLASH_ADDR                  (CH32V_FLASH_BASE + CH32V_FLASH_ADDR_OFFSET) /* write-only */
 #define CH32V_FLASH_ADDR_FAR              (0xffffffff << 0) /* ffffffff: Flash Address */
 #define CH32V_FLASH_ADDR_FAR_MASK         (0xffffffff << 0)
 #define CH32V_FLASH_OBR_OFFSET            0x001c
-#define CH32V_FLASH_OBR                   (CH32V_FLASH_BASE + CH32V_FLASH_OBR_OFFSET)
+#define CH32V_FLASH_OBR                   (CH32V_FLASH_BASE + CH32V_FLASH_OBR_OFFSET) /* read-only */
 #define CH32V_FLASH_OBR_OBERR             (1 <<  0) /* 00000001: Option byte error */
 #define CH32V_FLASH_OBR_RDPRT             (1 <<  1) /* 00000002: Read protection */
 #define CH32V_FLASH_OBR_IWDG_SW           (1 <<  2) /* 00000004: IWDG_SW */
@@ -6297,149 +6297,149 @@
 #define CH32V_FLASH_OBR_SRAM_CODE_MODE    (0x3 << 8) /* 00000300: SRAM_CODE_MODE */
 #define CH32V_FLASH_OBR_SRAM_CODE_MODE_MASK (0x3 << 8)
 #define CH32V_FLASH_WPR_OFFSET            0x0020
-#define CH32V_FLASH_WPR                   (CH32V_FLASH_BASE + CH32V_FLASH_WPR_OFFSET)
+#define CH32V_FLASH_WPR                   (CH32V_FLASH_BASE + CH32V_FLASH_WPR_OFFSET) /* read-only */
 #define CH32V_FLASH_WPR_WRP               (0xffffffff << 0) /* ffffffff: Write protect */
 #define CH32V_FLASH_WPR_WRP_MASK          (0xffffffff << 0)
 #define CH32V_FLASH_MODEKEYR_OFFSET       0x0024
-#define CH32V_FLASH_MODEKEYR              (CH32V_FLASH_BASE + CH32V_FLASH_MODEKEYR_OFFSET)
+#define CH32V_FLASH_MODEKEYR              (CH32V_FLASH_BASE + CH32V_FLASH_MODEKEYR_OFFSET) /* write-only */
 #define CH32V_FLASH_MODEKEYR_MODEKEYR     (0xffffffff << 0) /* ffffffff: Mode select */
 #define CH32V_FLASH_MODEKEYR_MODEKEYR_MASK (0xffffffff << 0)
 
 /* USB_OTG_FS - USB FS OTG register */
 #define CH32V_USB_OTG_FS_BASE             0x50000000
 #define CH32V_USB_OTG_FS_USBHD_BASE_CTRL_OFFSET 0x0000
-#define CH32V_USB_OTG_FS_USBHD_BASE_CTRL  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USBHD_BASE_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_USBHD_BASE_CTRL  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USBHD_BASE_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_USBHD_UDEV_CTRL__USBHD_UHOST_CTRL_OFFSET 0x0001
-#define CH32V_USB_OTG_FS_USBHD_UDEV_CTRL__USBHD_UHOST_CTRL (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USBHD_UDEV_CTRL__USBHD_UHOST_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_USBHD_UDEV_CTRL__USBHD_UHOST_CTRL (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USBHD_UDEV_CTRL__USBHD_UHOST_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_USB_INT_EN_OFFSET 0x0002
-#define CH32V_USB_OTG_FS_R8_USB_INT_EN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_INT_EN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_USB_INT_EN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_INT_EN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_USB_DEV_AD_OFFSET 0x0003
-#define CH32V_USB_OTG_FS_R8_USB_DEV_AD    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_DEV_AD_OFFSET)
+#define CH32V_USB_OTG_FS_R8_USB_DEV_AD    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_DEV_AD_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_USB_MIS_ST_OFFSET 0x0005
-#define CH32V_USB_OTG_FS_R8_USB_MIS_ST    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_MIS_ST_OFFSET)
+#define CH32V_USB_OTG_FS_R8_USB_MIS_ST    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_MIS_ST_OFFSET) /* read-only */
 #define CH32V_USB_OTG_FS_R8_USB_INT_FG_OFFSET 0x0006
-#define CH32V_USB_OTG_FS_R8_USB_INT_FG    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_INT_FG_OFFSET)
+#define CH32V_USB_OTG_FS_R8_USB_INT_FG    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_INT_FG_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_USB_INT_ST_OFFSET 0x0007
-#define CH32V_USB_OTG_FS_R8_USB_INT_ST    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_INT_ST_OFFSET)
+#define CH32V_USB_OTG_FS_R8_USB_INT_ST    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_USB_INT_ST_OFFSET) /* read-only */
 #define CH32V_USB_OTG_FS_R16_USB_RX_LEN_OFFSET 0x0008
-#define CH32V_USB_OTG_FS_R16_USB_RX_LEN   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R16_USB_RX_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R16_USB_RX_LEN   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R16_USB_RX_LEN_OFFSET) /* read-only */
 #define CH32V_USB_OTG_FS_R8_UEP4_1_MOD_OFFSET 0x000c
-#define CH32V_USB_OTG_FS_R8_UEP4_1_MOD    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_1_MOD_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP4_1_MOD    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_1_MOD_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP2_3_MOD__R8_UH_EP_MOD_OFFSET 0x000d
-#define CH32V_USB_OTG_FS_R8_UEP2_3_MOD__R8_UH_EP_MOD (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_3_MOD__R8_UH_EP_MOD_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP2_3_MOD__R8_UH_EP_MOD (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_3_MOD__R8_UH_EP_MOD_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP5_6_MOD_OFFSET 0x000e
-#define CH32V_USB_OTG_FS_R8_UEP5_6_MOD    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_6_MOD_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP5_6_MOD    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_6_MOD_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP7_MOD_OFFSET 0x000f
-#define CH32V_USB_OTG_FS_R8_UEP7_MOD      (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_MOD_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP7_MOD      (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_MOD_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP0_DMA_OFFSET 0x0010
-#define CH32V_USB_OTG_FS_R32_UEP0_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP0_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP0_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP0_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP1_DMA_OFFSET 0x0014
-#define CH32V_USB_OTG_FS_R32_UEP1_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP1_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP1_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP1_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP2_DMA__R32_UH_RX_DMA_OFFSET 0x0018
-#define CH32V_USB_OTG_FS_R32_UEP2_DMA__R32_UH_RX_DMA (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP2_DMA__R32_UH_RX_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP2_DMA__R32_UH_RX_DMA (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP2_DMA__R32_UH_RX_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP3_DMA__R32_UH_TX_DMA_OFFSET 0x001c
-#define CH32V_USB_OTG_FS_R32_UEP3_DMA__R32_UH_TX_DMA (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP3_DMA__R32_UH_TX_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP3_DMA__R32_UH_TX_DMA (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP3_DMA__R32_UH_TX_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP4_DMA_OFFSET 0x0020
-#define CH32V_USB_OTG_FS_R32_UEP4_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP4_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP4_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP4_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP5_DMA_OFFSET 0x0024
-#define CH32V_USB_OTG_FS_R32_UEP5_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP5_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP5_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP5_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP6_DMA_OFFSET 0x0028
-#define CH32V_USB_OTG_FS_R32_UEP6_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP6_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP6_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP6_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R32_UEP7_DMA_OFFSET 0x002c
-#define CH32V_USB_OTG_FS_R32_UEP7_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP7_DMA_OFFSET)
+#define CH32V_USB_OTG_FS_R32_UEP7_DMA     (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R32_UEP7_DMA_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP0_T_LEN_OFFSET 0x0030
-#define CH32V_USB_OTG_FS_R8_UEP0_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP0_T_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP0_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP0_T_LEN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP0_T_CTRL_OFFSET 0x0032
-#define CH32V_USB_OTG_FS_R8_UEP0_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP0_T_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP0_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP0_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP0_R_CTRL_OFFSET 0x0033
-#define CH32V_USB_OTG_FS_R8_UEP0_R_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP0_R_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP0_R_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP0_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP1_T_LEN_OFFSET 0x0034
-#define CH32V_USB_OTG_FS_R8_UEP1_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP1_T_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP1_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP1_T_LEN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP1_T_CTRL___USBHD_UH_SETUP_OFFSET 0x0036
-#define CH32V_USB_OTG_FS_R8_UEP1_T_CTRL___USBHD_UH_SETUP (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP1_T_CTRL___USBHD_UH_SETUP_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP1_T_CTRL___USBHD_UH_SETUP (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP1_T_CTRL___USBHD_UH_SETUP_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP1_R_CTRL_OFFSET 0x0037
-#define CH32V_USB_OTG_FS_R8_UEP1_R_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP1_R_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP1_R_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP1_R_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP2_T_LEN__USBHD_UH_EP_PID_OFFSET 0x0038
-#define CH32V_USB_OTG_FS_R8_UEP2_T_LEN__USBHD_UH_EP_PID (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_T_LEN__USBHD_UH_EP_PID_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP2_T_LEN__USBHD_UH_EP_PID (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_T_LEN__USBHD_UH_EP_PID_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP2_T_CTRL_OFFSET 0x003a
-#define CH32V_USB_OTG_FS_R8_UEP2_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_T_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP2_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP2_R_CTRL__USBHD_UH_RX_CTRL_OFFSET 0x003b
-#define CH32V_USB_OTG_FS_R8_UEP2_R_CTRL__USBHD_UH_RX_CTRL (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_R_CTRL__USBHD_UH_RX_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP2_R_CTRL__USBHD_UH_RX_CTRL (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP2_R_CTRL__USBHD_UH_RX_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP3_T_LEN__USBHD_UH_TX_LEN_OFFSET 0x003c
-#define CH32V_USB_OTG_FS_R8_UEP3_T_LEN__USBHD_UH_TX_LEN (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP3_T_LEN__USBHD_UH_TX_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP3_T_LEN__USBHD_UH_TX_LEN (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP3_T_LEN__USBHD_UH_TX_LEN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP3_T_CTRL__USBHD_UH_TX_CTRL_OFFSET 0x003e
-#define CH32V_USB_OTG_FS_R8_UEP3_T_CTRL__USBHD_UH_TX_CTRL (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP3_T_CTRL__USBHD_UH_TX_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP3_T_CTRL__USBHD_UH_TX_CTRL (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP3_T_CTRL__USBHD_UH_TX_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP3_R_CTRL__OFFSET 0x003f
-#define CH32V_USB_OTG_FS_R8_UEP3_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP3_R_CTRL__OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP3_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP3_R_CTRL__OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP4_T_LEN_OFFSET 0x0040
-#define CH32V_USB_OTG_FS_R8_UEP4_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_T_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP4_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_T_LEN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP4_T_CTRL_OFFSET 0x0042
-#define CH32V_USB_OTG_FS_R8_UEP4_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_T_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP4_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP4_R_CTRL__OFFSET 0x0043
-#define CH32V_USB_OTG_FS_R8_UEP4_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_R_CTRL__OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP4_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP4_R_CTRL__OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP5_T_LEN_OFFSET 0x0044
-#define CH32V_USB_OTG_FS_R8_UEP5_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_T_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP5_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_T_LEN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP5_T_CTRL_OFFSET 0x0046
-#define CH32V_USB_OTG_FS_R8_UEP5_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_T_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP5_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP5_R_CTRL__OFFSET 0x0047
-#define CH32V_USB_OTG_FS_R8_UEP5_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_R_CTRL__OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP5_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP5_R_CTRL__OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP6_T_LEN_OFFSET 0x0048
-#define CH32V_USB_OTG_FS_R8_UEP6_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP6_T_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP6_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP6_T_LEN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP6_T_CTRL_OFFSET 0x004a
-#define CH32V_USB_OTG_FS_R8_UEP6_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP6_T_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP6_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP6_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP6_R_CTRL__OFFSET 0x004b
-#define CH32V_USB_OTG_FS_R8_UEP6_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP6_R_CTRL__OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP6_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP6_R_CTRL__OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP7_T_LEN_OFFSET 0x004c
-#define CH32V_USB_OTG_FS_R8_UEP7_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_T_LEN_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP7_T_LEN    (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_T_LEN_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP7_T_CTRL_OFFSET 0x004e
-#define CH32V_USB_OTG_FS_R8_UEP7_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_T_CTRL_OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP7_T_CTRL   (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_T_CTRL_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_R8_UEP7_R_CTRL__OFFSET 0x004f
-#define CH32V_USB_OTG_FS_R8_UEP7_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_R_CTRL__OFFSET)
+#define CH32V_USB_OTG_FS_R8_UEP7_R_CTRL_  (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_R8_UEP7_R_CTRL__OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_USB_OTG_CR_OFFSET 0x0054
-#define CH32V_USB_OTG_FS_USB_OTG_CR       (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USB_OTG_CR_OFFSET)
+#define CH32V_USB_OTG_FS_USB_OTG_CR       (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USB_OTG_CR_OFFSET) /* read-write */
 #define CH32V_USB_OTG_FS_USB_OTG_SR_OFFSET 0x0058
-#define CH32V_USB_OTG_FS_USB_OTG_SR       (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USB_OTG_SR_OFFSET)
+#define CH32V_USB_OTG_FS_USB_OTG_SR       (CH32V_USB_OTG_FS_BASE + CH32V_USB_OTG_FS_USB_OTG_SR_OFFSET) /* read-write */
 
 /* PFIC - Programmable Fast Interrupt Controller */
 #define CH32V_PFIC_BASE                   0xe000e000
 #define CH32V_PFIC_ISR1_OFFSET            0x0000
-#define CH32V_PFIC_ISR1                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR1_OFFSET)
+#define CH32V_PFIC_ISR1                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR1_OFFSET) /* read-only */
 #define CH32V_PFIC_ISR1_INTENSTA2_3       (0x3 << 2) /* 0000000c: Interrupt ID Status */
 #define CH32V_PFIC_ISR1_INTENSTA2_3_MASK  (0x3 << 2)
 #define CH32V_PFIC_ISR1_INTENSTA12_31     (0xfffff << 12) /* fffff000: Interrupt ID Status */
 #define CH32V_PFIC_ISR1_INTENSTA12_31_MASK (0xfffff << 12)
 #define CH32V_PFIC_ISR2_OFFSET            0x0004
-#define CH32V_PFIC_ISR2                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR2_OFFSET)
+#define CH32V_PFIC_ISR2                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR2_OFFSET) /* read-only */
 #define CH32V_PFIC_ISR2_INTENSTA          (0xffffffff << 0) /* ffffffff: Interrupt ID Status */
 #define CH32V_PFIC_ISR2_INTENSTA_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_ISR3_OFFSET            0x0008
-#define CH32V_PFIC_ISR3                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR3_OFFSET)
+#define CH32V_PFIC_ISR3                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR3_OFFSET) /* read-only */
 #define CH32V_PFIC_ISR3_INTENSTA          (0xffffffff << 0) /* ffffffff: Interrupt ID Status */
 #define CH32V_PFIC_ISR3_INTENSTA_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_ISR4_OFFSET            0x000c
-#define CH32V_PFIC_ISR4                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR4_OFFSET)
+#define CH32V_PFIC_ISR4                   (CH32V_PFIC_BASE + CH32V_PFIC_ISR4_OFFSET) /* read-only */
 #define CH32V_PFIC_ISR4_INTENSTA          (0xff << 0) /* 000000ff: Interrupt ID Status */
 #define CH32V_PFIC_ISR4_INTENSTA_MASK     (0xff << 0)
 #define CH32V_PFIC_IPR1_OFFSET            0x0020
-#define CH32V_PFIC_IPR1                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR1_OFFSET)
+#define CH32V_PFIC_IPR1                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR1_OFFSET) /* read-only */
 #define CH32V_PFIC_IPR1_PENDSTA2_3        (0x3 << 2) /* 0000000c: PENDSTA */
 #define CH32V_PFIC_IPR1_PENDSTA2_3_MASK   (0x3 << 2)
 #define CH32V_PFIC_IPR1_PENDSTA12_31      (0xfffff << 12) /* fffff000: PENDSTA */
 #define CH32V_PFIC_IPR1_PENDSTA12_31_MASK (0xfffff << 12)
 #define CH32V_PFIC_IPR2_OFFSET            0x0024
-#define CH32V_PFIC_IPR2                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR2_OFFSET)
+#define CH32V_PFIC_IPR2                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR2_OFFSET) /* read-only */
 #define CH32V_PFIC_IPR2_PENDSTA           (0xffffffff << 0) /* ffffffff: PENDSTA */
 #define CH32V_PFIC_IPR2_PENDSTA_MASK      (0xffffffff << 0)
 #define CH32V_PFIC_IPR3_OFFSET            0x0028
-#define CH32V_PFIC_IPR3                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR3_OFFSET)
+#define CH32V_PFIC_IPR3                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR3_OFFSET) /* read-only */
 #define CH32V_PFIC_IPR3_PENDSTA           (0xffffffff << 0) /* ffffffff: PENDSTA */
 #define CH32V_PFIC_IPR3_PENDSTA_MASK      (0xffffffff << 0)
 #define CH32V_PFIC_IPR4_OFFSET            0x002c
-#define CH32V_PFIC_IPR4                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR4_OFFSET)
+#define CH32V_PFIC_IPR4                   (CH32V_PFIC_BASE + CH32V_PFIC_IPR4_OFFSET) /* read-only */
 #define CH32V_PFIC_IPR4_PENDSTA           (0xff << 0) /* 000000ff: PENDSTA */
 #define CH32V_PFIC_IPR4_PENDSTA_MASK      (0xff << 0)
 #define CH32V_PFIC_ITHRESDR_OFFSET        0x0040
-#define CH32V_PFIC_ITHRESDR               (CH32V_PFIC_BASE + CH32V_PFIC_ITHRESDR_OFFSET)
+#define CH32V_PFIC_ITHRESDR               (CH32V_PFIC_BASE + CH32V_PFIC_ITHRESDR_OFFSET) /* read-write */
 #define CH32V_PFIC_ITHRESDR_THRESHOLD     (0xff << 0) /* 000000ff: THRESHOLD */
 #define CH32V_PFIC_ITHRESDR_THRESHOLD_MASK (0xff << 0)
 #define CH32V_PFIC_CFGR_OFFSET            0x0048
@@ -6448,13 +6448,13 @@
 #define CH32V_PFIC_CFGR_KEYCODE           (0xffff << 16) /* ffff0000: KEYCODE */
 #define CH32V_PFIC_CFGR_KEYCODE_MASK      (0xffff << 16)
 #define CH32V_PFIC_GISR_OFFSET            0x004c
-#define CH32V_PFIC_GISR                   (CH32V_PFIC_BASE + CH32V_PFIC_GISR_OFFSET)
+#define CH32V_PFIC_GISR                   (CH32V_PFIC_BASE + CH32V_PFIC_GISR_OFFSET) /* read-only */
 #define CH32V_PFIC_GISR_NESTSTA           (0xff << 0) /* 000000ff: NESTSTA */
 #define CH32V_PFIC_GISR_NESTSTA_MASK      (0xff << 0)
 #define CH32V_PFIC_GISR_GACTSTA           (1 <<  8) /* 00000100: GACTSTA */
 #define CH32V_PFIC_GISR_GPENDSTA          (1 <<  9) /* 00000200: GPENDSTA */
 #define CH32V_PFIC_VTFIDR_OFFSET          0x0050
-#define CH32V_PFIC_VTFIDR                 (CH32V_PFIC_BASE + CH32V_PFIC_VTFIDR_OFFSET)
+#define CH32V_PFIC_VTFIDR                 (CH32V_PFIC_BASE + CH32V_PFIC_VTFIDR_OFFSET) /* read-write */
 #define CH32V_PFIC_VTFIDR_VTFID0          (0xff << 0) /* 000000ff: VTFID0 */
 #define CH32V_PFIC_VTFIDR_VTFID0_MASK     (0xff << 0)
 #define CH32V_PFIC_VTFIDR_VTFID1          (0xff << 8) /* 0000ff00: VTFID1 */
@@ -6464,625 +6464,625 @@
 #define CH32V_PFIC_VTFIDR_VTFID3          (0xff << 24) /* ff000000: VTFID3 */
 #define CH32V_PFIC_VTFIDR_VTFID3_MASK     (0xff << 24)
 #define CH32V_PFIC_VTFADDRR0_OFFSET       0x0060
-#define CH32V_PFIC_VTFADDRR0              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR0_OFFSET)
+#define CH32V_PFIC_VTFADDRR0              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR0_OFFSET) /* read-write */
 #define CH32V_PFIC_VTFADDRR0_VTF0EN       (1 <<  0) /* 00000001: VTF0EN */
 #define CH32V_PFIC_VTFADDRR0_ADDR0        (0x7fffffff << 1) /* fffffffe: ADDR0 */
 #define CH32V_PFIC_VTFADDRR0_ADDR0_MASK   (0x7fffffff << 1)
 #define CH32V_PFIC_VTFADDRR1_OFFSET       0x0064
-#define CH32V_PFIC_VTFADDRR1              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR1_OFFSET)
+#define CH32V_PFIC_VTFADDRR1              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR1_OFFSET) /* read-write */
 #define CH32V_PFIC_VTFADDRR1_VTF1EN       (1 <<  0) /* 00000001: VTF1EN */
 #define CH32V_PFIC_VTFADDRR1_ADDR1        (0x7fffffff << 1) /* fffffffe: ADDR1 */
 #define CH32V_PFIC_VTFADDRR1_ADDR1_MASK   (0x7fffffff << 1)
 #define CH32V_PFIC_VTFADDRR2_OFFSET       0x0068
-#define CH32V_PFIC_VTFADDRR2              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR2_OFFSET)
+#define CH32V_PFIC_VTFADDRR2              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR2_OFFSET) /* read-write */
 #define CH32V_PFIC_VTFADDRR2_VTF2EN       (1 <<  0) /* 00000001: VTF2EN */
 #define CH32V_PFIC_VTFADDRR2_ADDR2        (0x7fffffff << 1) /* fffffffe: ADDR2 */
 #define CH32V_PFIC_VTFADDRR2_ADDR2_MASK   (0x7fffffff << 1)
 #define CH32V_PFIC_VTFADDRR3_OFFSET       0x006c
-#define CH32V_PFIC_VTFADDRR3              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR3_OFFSET)
+#define CH32V_PFIC_VTFADDRR3              (CH32V_PFIC_BASE + CH32V_PFIC_VTFADDRR3_OFFSET) /* read-write */
 #define CH32V_PFIC_VTFADDRR3_VTF3EN       (1 <<  0) /* 00000001: VTF3EN */
 #define CH32V_PFIC_VTFADDRR3_ADDR3        (0x7fffffff << 1) /* fffffffe: ADDR3 */
 #define CH32V_PFIC_VTFADDRR3_ADDR3_MASK   (0x7fffffff << 1)
 #define CH32V_PFIC_IENR1_OFFSET           0x0100
-#define CH32V_PFIC_IENR1                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR1_OFFSET)
+#define CH32V_PFIC_IENR1                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR1_OFFSET) /* write-only */
 #define CH32V_PFIC_IENR1_INTEN            (0xfffff << 12) /* fffff000: INTEN */
 #define CH32V_PFIC_IENR1_INTEN_MASK       (0xfffff << 12)
 #define CH32V_PFIC_IENR2_OFFSET           0x0104
-#define CH32V_PFIC_IENR2                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR2_OFFSET)
+#define CH32V_PFIC_IENR2                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR2_OFFSET) /* write-only */
 #define CH32V_PFIC_IENR2_INTEN            (0xffffffff << 0) /* ffffffff: INTEN */
 #define CH32V_PFIC_IENR2_INTEN_MASK       (0xffffffff << 0)
 #define CH32V_PFIC_IENR3_OFFSET           0x0108
-#define CH32V_PFIC_IENR3                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR3_OFFSET)
+#define CH32V_PFIC_IENR3                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR3_OFFSET) /* write-only */
 #define CH32V_PFIC_IENR3_INTEN            (0xffffffff << 0) /* ffffffff: INTEN */
 #define CH32V_PFIC_IENR3_INTEN_MASK       (0xffffffff << 0)
 #define CH32V_PFIC_IENR4_OFFSET           0x010c
-#define CH32V_PFIC_IENR4                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR4_OFFSET)
+#define CH32V_PFIC_IENR4                  (CH32V_PFIC_BASE + CH32V_PFIC_IENR4_OFFSET) /* write-only */
 #define CH32V_PFIC_IENR4_INTEN            (0xff << 0) /* 000000ff: INTEN */
 #define CH32V_PFIC_IENR4_INTEN_MASK       (0xff << 0)
 #define CH32V_PFIC_IRER1_OFFSET           0x0180
-#define CH32V_PFIC_IRER1                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER1_OFFSET)
+#define CH32V_PFIC_IRER1                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER1_OFFSET) /* write-only */
 #define CH32V_PFIC_IRER1_INTRSET          (0xfffff << 12) /* fffff000: INTRSET */
 #define CH32V_PFIC_IRER1_INTRSET_MASK     (0xfffff << 12)
 #define CH32V_PFIC_IRER2_OFFSET           0x0184
-#define CH32V_PFIC_IRER2                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER2_OFFSET)
+#define CH32V_PFIC_IRER2                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER2_OFFSET) /* write-only */
 #define CH32V_PFIC_IRER2_INTRSET          (0xffffffff << 0) /* ffffffff: INTRSET */
 #define CH32V_PFIC_IRER2_INTRSET_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_IRER3_OFFSET           0x0188
-#define CH32V_PFIC_IRER3                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER3_OFFSET)
+#define CH32V_PFIC_IRER3                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER3_OFFSET) /* write-only */
 #define CH32V_PFIC_IRER3_INTRSET          (0xffffffff << 0) /* ffffffff: INTRSET */
 #define CH32V_PFIC_IRER3_INTRSET_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_IRER4_OFFSET           0x018c
-#define CH32V_PFIC_IRER4                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER4_OFFSET)
+#define CH32V_PFIC_IRER4                  (CH32V_PFIC_BASE + CH32V_PFIC_IRER4_OFFSET) /* write-only */
 #define CH32V_PFIC_IRER4_INTRSET          (0xff << 0) /* 000000ff: INTRSET */
 #define CH32V_PFIC_IRER4_INTRSET_MASK     (0xff << 0)
 #define CH32V_PFIC_IPSR1_OFFSET           0x0200
-#define CH32V_PFIC_IPSR1                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR1_OFFSET)
+#define CH32V_PFIC_IPSR1                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR1_OFFSET) /* write-only */
 #define CH32V_PFIC_IPSR1_PENDSET2_3       (0x3 << 2) /* 0000000c: PENDSET */
 #define CH32V_PFIC_IPSR1_PENDSET2_3_MASK  (0x3 << 2)
 #define CH32V_PFIC_IPSR1_PENDSET12_31     (0xfffff << 12) /* fffff000: PENDSET */
 #define CH32V_PFIC_IPSR1_PENDSET12_31_MASK (0xfffff << 12)
 #define CH32V_PFIC_IPSR2_OFFSET           0x0204
-#define CH32V_PFIC_IPSR2                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR2_OFFSET)
+#define CH32V_PFIC_IPSR2                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR2_OFFSET) /* write-only */
 #define CH32V_PFIC_IPSR2_PENDSET          (0xffffffff << 0) /* ffffffff: PENDSET */
 #define CH32V_PFIC_IPSR2_PENDSET_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_IPSR3_OFFSET           0x0208
-#define CH32V_PFIC_IPSR3                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR3_OFFSET)
+#define CH32V_PFIC_IPSR3                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR3_OFFSET) /* write-only */
 #define CH32V_PFIC_IPSR3_PENDSET          (0xffffffff << 0) /* ffffffff: PENDSET */
 #define CH32V_PFIC_IPSR3_PENDSET_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_IPSR4_OFFSET           0x020c
-#define CH32V_PFIC_IPSR4                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR4_OFFSET)
+#define CH32V_PFIC_IPSR4                  (CH32V_PFIC_BASE + CH32V_PFIC_IPSR4_OFFSET) /* write-only */
 #define CH32V_PFIC_IPSR4_PENDSET          (0xff << 0) /* 000000ff: PENDSET */
 #define CH32V_PFIC_IPSR4_PENDSET_MASK     (0xff << 0)
 #define CH32V_PFIC_IPRR1_OFFSET           0x0280
-#define CH32V_PFIC_IPRR1                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR1_OFFSET)
+#define CH32V_PFIC_IPRR1                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR1_OFFSET) /* write-only */
 #define CH32V_PFIC_IPRR1_PENDRESET2_3     (0x3 << 2) /* 0000000c: PENDRESET */
 #define CH32V_PFIC_IPRR1_PENDRESET2_3_MASK (0x3 << 2)
 #define CH32V_PFIC_IPRR1_PENDRESET12_31   (0xfffff << 12) /* fffff000: PENDRESET */
 #define CH32V_PFIC_IPRR1_PENDRESET12_31_MASK (0xfffff << 12)
 #define CH32V_PFIC_IPRR2_OFFSET           0x0284
-#define CH32V_PFIC_IPRR2                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR2_OFFSET)
+#define CH32V_PFIC_IPRR2                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR2_OFFSET) /* write-only */
 #define CH32V_PFIC_IPRR2_PENDRESET        (0xffffffff << 0) /* ffffffff: PENDRESET */
 #define CH32V_PFIC_IPRR2_PENDRESET_MASK   (0xffffffff << 0)
 #define CH32V_PFIC_IPRR3_OFFSET           0x0288
-#define CH32V_PFIC_IPRR3                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR3_OFFSET)
+#define CH32V_PFIC_IPRR3                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR3_OFFSET) /* write-only */
 #define CH32V_PFIC_IPRR3_PENDRESET        (0xffffffff << 0) /* ffffffff: PENDRESET */
 #define CH32V_PFIC_IPRR3_PENDRESET_MASK   (0xffffffff << 0)
 #define CH32V_PFIC_IPRR4_OFFSET           0x028c
-#define CH32V_PFIC_IPRR4                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR4_OFFSET)
+#define CH32V_PFIC_IPRR4                  (CH32V_PFIC_BASE + CH32V_PFIC_IPRR4_OFFSET) /* write-only */
 #define CH32V_PFIC_IPRR4_PENDRESET        (0xff << 0) /* 000000ff: PENDRESET */
 #define CH32V_PFIC_IPRR4_PENDRESET_MASK   (0xff << 0)
 #define CH32V_PFIC_IACTR1_OFFSET          0x0300
-#define CH32V_PFIC_IACTR1                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR1_OFFSET)
+#define CH32V_PFIC_IACTR1                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR1_OFFSET) /* write-only */
 #define CH32V_PFIC_IACTR1_IACTS2_3        (0x3 << 2) /* 0000000c: IACTS */
 #define CH32V_PFIC_IACTR1_IACTS2_3_MASK   (0x3 << 2)
 #define CH32V_PFIC_IACTR1_IACTS12_31      (0xfffff << 12) /* fffff000: IACTS */
 #define CH32V_PFIC_IACTR1_IACTS12_31_MASK (0xfffff << 12)
 #define CH32V_PFIC_IACTR2_OFFSET          0x0304
-#define CH32V_PFIC_IACTR2                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR2_OFFSET)
+#define CH32V_PFIC_IACTR2                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR2_OFFSET) /* write-only */
 #define CH32V_PFIC_IACTR2_IACTS           (0xffffffff << 0) /* ffffffff: IACTS */
 #define CH32V_PFIC_IACTR2_IACTS_MASK      (0xffffffff << 0)
 #define CH32V_PFIC_IACTR3_OFFSET          0x0308
-#define CH32V_PFIC_IACTR3                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR3_OFFSET)
+#define CH32V_PFIC_IACTR3                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR3_OFFSET) /* write-only */
 #define CH32V_PFIC_IACTR3_IACTS           (0xffffffff << 0) /* ffffffff: IACTS */
 #define CH32V_PFIC_IACTR3_IACTS_MASK      (0xffffffff << 0)
 #define CH32V_PFIC_IACTR4_OFFSET          0x030c
-#define CH32V_PFIC_IACTR4                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR4_OFFSET)
+#define CH32V_PFIC_IACTR4                 (CH32V_PFIC_BASE + CH32V_PFIC_IACTR4_OFFSET) /* write-only */
 #define CH32V_PFIC_IACTR4_IACTS           (0xff << 0) /* 000000ff: IACTS */
 #define CH32V_PFIC_IACTR4_IACTS_MASK      (0xff << 0)
 #define CH32V_PFIC_IPRIOR0_OFFSET         0x0400
-#define CH32V_PFIC_IPRIOR0                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR0_OFFSET)
+#define CH32V_PFIC_IPRIOR0                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR0_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR1_OFFSET         0x0401
-#define CH32V_PFIC_IPRIOR1                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR1_OFFSET)
+#define CH32V_PFIC_IPRIOR1                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR1_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR2_OFFSET         0x0402
-#define CH32V_PFIC_IPRIOR2                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR2_OFFSET)
+#define CH32V_PFIC_IPRIOR2                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR2_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR3_OFFSET         0x0403
-#define CH32V_PFIC_IPRIOR3                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR3_OFFSET)
+#define CH32V_PFIC_IPRIOR3                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR3_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR4_OFFSET         0x0404
-#define CH32V_PFIC_IPRIOR4                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR4_OFFSET)
+#define CH32V_PFIC_IPRIOR4                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR4_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR5_OFFSET         0x0405
-#define CH32V_PFIC_IPRIOR5                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR5_OFFSET)
+#define CH32V_PFIC_IPRIOR5                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR5_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR6_OFFSET         0x0406
-#define CH32V_PFIC_IPRIOR6                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR6_OFFSET)
+#define CH32V_PFIC_IPRIOR6                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR6_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR7_OFFSET         0x0407
-#define CH32V_PFIC_IPRIOR7                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR7_OFFSET)
+#define CH32V_PFIC_IPRIOR7                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR7_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR8_OFFSET         0x0408
-#define CH32V_PFIC_IPRIOR8                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR8_OFFSET)
+#define CH32V_PFIC_IPRIOR8                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR8_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR9_OFFSET         0x0409
-#define CH32V_PFIC_IPRIOR9                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR9_OFFSET)
+#define CH32V_PFIC_IPRIOR9                (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR9_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR10_OFFSET        0x040a
-#define CH32V_PFIC_IPRIOR10               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR10_OFFSET)
+#define CH32V_PFIC_IPRIOR10               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR10_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR11_OFFSET        0x040b
-#define CH32V_PFIC_IPRIOR11               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR11_OFFSET)
+#define CH32V_PFIC_IPRIOR11               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR11_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR12_OFFSET        0x040c
-#define CH32V_PFIC_IPRIOR12               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR12_OFFSET)
+#define CH32V_PFIC_IPRIOR12               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR12_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR13_OFFSET        0x040d
-#define CH32V_PFIC_IPRIOR13               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR13_OFFSET)
+#define CH32V_PFIC_IPRIOR13               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR13_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR14_OFFSET        0x040e
-#define CH32V_PFIC_IPRIOR14               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR14_OFFSET)
+#define CH32V_PFIC_IPRIOR14               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR14_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR15_OFFSET        0x040f
-#define CH32V_PFIC_IPRIOR15               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR15_OFFSET)
+#define CH32V_PFIC_IPRIOR15               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR15_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR16_OFFSET        0x0410
-#define CH32V_PFIC_IPRIOR16               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR16_OFFSET)
+#define CH32V_PFIC_IPRIOR16               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR16_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR17_OFFSET        0x0411
-#define CH32V_PFIC_IPRIOR17               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR17_OFFSET)
+#define CH32V_PFIC_IPRIOR17               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR17_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR18_OFFSET        0x0412
-#define CH32V_PFIC_IPRIOR18               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR18_OFFSET)
+#define CH32V_PFIC_IPRIOR18               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR18_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR19_OFFSET        0x0413
-#define CH32V_PFIC_IPRIOR19               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR19_OFFSET)
+#define CH32V_PFIC_IPRIOR19               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR19_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR20_OFFSET        0x0414
-#define CH32V_PFIC_IPRIOR20               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR20_OFFSET)
+#define CH32V_PFIC_IPRIOR20               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR20_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR21_OFFSET        0x0415
-#define CH32V_PFIC_IPRIOR21               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR21_OFFSET)
+#define CH32V_PFIC_IPRIOR21               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR21_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR22_OFFSET        0x0416
-#define CH32V_PFIC_IPRIOR22               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR22_OFFSET)
+#define CH32V_PFIC_IPRIOR22               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR22_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR23_OFFSET        0x0417
-#define CH32V_PFIC_IPRIOR23               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR23_OFFSET)
+#define CH32V_PFIC_IPRIOR23               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR23_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR24_OFFSET        0x0418
-#define CH32V_PFIC_IPRIOR24               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR24_OFFSET)
+#define CH32V_PFIC_IPRIOR24               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR24_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR25_OFFSET        0x0419
-#define CH32V_PFIC_IPRIOR25               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR25_OFFSET)
+#define CH32V_PFIC_IPRIOR25               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR25_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR26_OFFSET        0x041a
-#define CH32V_PFIC_IPRIOR26               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR26_OFFSET)
+#define CH32V_PFIC_IPRIOR26               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR26_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR27_OFFSET        0x041b
-#define CH32V_PFIC_IPRIOR27               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR27_OFFSET)
+#define CH32V_PFIC_IPRIOR27               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR27_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR28_OFFSET        0x041c
-#define CH32V_PFIC_IPRIOR28               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR28_OFFSET)
+#define CH32V_PFIC_IPRIOR28               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR28_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR29_OFFSET        0x041d
-#define CH32V_PFIC_IPRIOR29               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR29_OFFSET)
+#define CH32V_PFIC_IPRIOR29               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR29_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR30_OFFSET        0x041e
-#define CH32V_PFIC_IPRIOR30               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR30_OFFSET)
+#define CH32V_PFIC_IPRIOR30               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR30_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR31_OFFSET        0x041f
-#define CH32V_PFIC_IPRIOR31               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR31_OFFSET)
+#define CH32V_PFIC_IPRIOR31               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR31_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR32_OFFSET        0x0420
-#define CH32V_PFIC_IPRIOR32               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR32_OFFSET)
+#define CH32V_PFIC_IPRIOR32               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR32_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR33_OFFSET        0x0421
-#define CH32V_PFIC_IPRIOR33               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR33_OFFSET)
+#define CH32V_PFIC_IPRIOR33               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR33_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR34_OFFSET        0x0422
-#define CH32V_PFIC_IPRIOR34               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR34_OFFSET)
+#define CH32V_PFIC_IPRIOR34               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR34_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR35_OFFSET        0x0423
-#define CH32V_PFIC_IPRIOR35               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR35_OFFSET)
+#define CH32V_PFIC_IPRIOR35               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR35_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR36_OFFSET        0x0424
-#define CH32V_PFIC_IPRIOR36               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR36_OFFSET)
+#define CH32V_PFIC_IPRIOR36               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR36_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR37_OFFSET        0x0425
-#define CH32V_PFIC_IPRIOR37               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR37_OFFSET)
+#define CH32V_PFIC_IPRIOR37               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR37_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR38_OFFSET        0x0426
-#define CH32V_PFIC_IPRIOR38               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR38_OFFSET)
+#define CH32V_PFIC_IPRIOR38               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR38_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR39_OFFSET        0x0427
-#define CH32V_PFIC_IPRIOR39               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR39_OFFSET)
+#define CH32V_PFIC_IPRIOR39               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR39_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR40_OFFSET        0x0428
-#define CH32V_PFIC_IPRIOR40               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR40_OFFSET)
+#define CH32V_PFIC_IPRIOR40               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR40_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR41_OFFSET        0x0429
-#define CH32V_PFIC_IPRIOR41               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR41_OFFSET)
+#define CH32V_PFIC_IPRIOR41               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR41_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR42_OFFSET        0x042a
-#define CH32V_PFIC_IPRIOR42               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR42_OFFSET)
+#define CH32V_PFIC_IPRIOR42               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR42_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR43_OFFSET        0x042b
-#define CH32V_PFIC_IPRIOR43               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR43_OFFSET)
+#define CH32V_PFIC_IPRIOR43               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR43_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR44_OFFSET        0x042c
-#define CH32V_PFIC_IPRIOR44               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR44_OFFSET)
+#define CH32V_PFIC_IPRIOR44               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR44_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR45_OFFSET        0x042d
-#define CH32V_PFIC_IPRIOR45               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR45_OFFSET)
+#define CH32V_PFIC_IPRIOR45               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR45_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR46_OFFSET        0x042e
-#define CH32V_PFIC_IPRIOR46               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR46_OFFSET)
+#define CH32V_PFIC_IPRIOR46               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR46_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR47_OFFSET        0x042f
-#define CH32V_PFIC_IPRIOR47               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR47_OFFSET)
+#define CH32V_PFIC_IPRIOR47               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR47_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR48_OFFSET        0x0430
-#define CH32V_PFIC_IPRIOR48               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR48_OFFSET)
+#define CH32V_PFIC_IPRIOR48               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR48_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR49_OFFSET        0x0431
-#define CH32V_PFIC_IPRIOR49               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR49_OFFSET)
+#define CH32V_PFIC_IPRIOR49               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR49_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR50_OFFSET        0x0432
-#define CH32V_PFIC_IPRIOR50               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR50_OFFSET)
+#define CH32V_PFIC_IPRIOR50               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR50_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR51_OFFSET        0x0433
-#define CH32V_PFIC_IPRIOR51               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR51_OFFSET)
+#define CH32V_PFIC_IPRIOR51               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR51_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR52_OFFSET        0x0434
-#define CH32V_PFIC_IPRIOR52               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR52_OFFSET)
+#define CH32V_PFIC_IPRIOR52               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR52_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR53_OFFSET        0x0435
-#define CH32V_PFIC_IPRIOR53               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR53_OFFSET)
+#define CH32V_PFIC_IPRIOR53               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR53_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR54_OFFSET        0x0436
-#define CH32V_PFIC_IPRIOR54               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR54_OFFSET)
+#define CH32V_PFIC_IPRIOR54               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR54_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR55_OFFSET        0x0437
-#define CH32V_PFIC_IPRIOR55               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR55_OFFSET)
+#define CH32V_PFIC_IPRIOR55               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR55_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR56_OFFSET        0x0438
-#define CH32V_PFIC_IPRIOR56               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR56_OFFSET)
+#define CH32V_PFIC_IPRIOR56               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR56_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR57_OFFSET        0x0439
-#define CH32V_PFIC_IPRIOR57               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR57_OFFSET)
+#define CH32V_PFIC_IPRIOR57               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR57_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR58_OFFSET        0x043a
-#define CH32V_PFIC_IPRIOR58               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR58_OFFSET)
+#define CH32V_PFIC_IPRIOR58               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR58_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR59_OFFSET        0x043b
-#define CH32V_PFIC_IPRIOR59               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR59_OFFSET)
+#define CH32V_PFIC_IPRIOR59               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR59_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR60_OFFSET        0x043c
-#define CH32V_PFIC_IPRIOR60               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR60_OFFSET)
+#define CH32V_PFIC_IPRIOR60               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR60_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR61_OFFSET        0x043d
-#define CH32V_PFIC_IPRIOR61               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR61_OFFSET)
+#define CH32V_PFIC_IPRIOR61               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR61_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR62_OFFSET        0x043e
-#define CH32V_PFIC_IPRIOR62               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR62_OFFSET)
+#define CH32V_PFIC_IPRIOR62               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR62_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR63_OFFSET        0x043f
-#define CH32V_PFIC_IPRIOR63               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR63_OFFSET)
+#define CH32V_PFIC_IPRIOR63               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR63_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR64_OFFSET        0x0440
-#define CH32V_PFIC_IPRIOR64               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR64_OFFSET)
+#define CH32V_PFIC_IPRIOR64               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR64_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR65_OFFSET        0x0441
-#define CH32V_PFIC_IPRIOR65               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR65_OFFSET)
+#define CH32V_PFIC_IPRIOR65               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR65_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR66_OFFSET        0x0442
-#define CH32V_PFIC_IPRIOR66               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR66_OFFSET)
+#define CH32V_PFIC_IPRIOR66               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR66_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR67_OFFSET        0x0443
-#define CH32V_PFIC_IPRIOR67               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR67_OFFSET)
+#define CH32V_PFIC_IPRIOR67               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR67_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR68_OFFSET        0x0444
-#define CH32V_PFIC_IPRIOR68               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR68_OFFSET)
+#define CH32V_PFIC_IPRIOR68               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR68_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR69_OFFSET        0x0445
-#define CH32V_PFIC_IPRIOR69               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR69_OFFSET)
+#define CH32V_PFIC_IPRIOR69               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR69_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR70_OFFSET        0x0446
-#define CH32V_PFIC_IPRIOR70               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR70_OFFSET)
+#define CH32V_PFIC_IPRIOR70               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR70_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR71_OFFSET        0x0447
-#define CH32V_PFIC_IPRIOR71               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR71_OFFSET)
+#define CH32V_PFIC_IPRIOR71               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR71_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR72_OFFSET        0x0448
-#define CH32V_PFIC_IPRIOR72               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR72_OFFSET)
+#define CH32V_PFIC_IPRIOR72               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR72_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR73_OFFSET        0x0449
-#define CH32V_PFIC_IPRIOR73               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR73_OFFSET)
+#define CH32V_PFIC_IPRIOR73               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR73_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR74_OFFSET        0x044a
-#define CH32V_PFIC_IPRIOR74               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR74_OFFSET)
+#define CH32V_PFIC_IPRIOR74               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR74_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR75_OFFSET        0x044b
-#define CH32V_PFIC_IPRIOR75               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR75_OFFSET)
+#define CH32V_PFIC_IPRIOR75               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR75_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR76_OFFSET        0x044c
-#define CH32V_PFIC_IPRIOR76               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR76_OFFSET)
+#define CH32V_PFIC_IPRIOR76               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR76_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR77_OFFSET        0x044d
-#define CH32V_PFIC_IPRIOR77               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR77_OFFSET)
+#define CH32V_PFIC_IPRIOR77               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR77_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR78_OFFSET        0x044e
-#define CH32V_PFIC_IPRIOR78               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR78_OFFSET)
+#define CH32V_PFIC_IPRIOR78               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR78_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR79_OFFSET        0x044f
-#define CH32V_PFIC_IPRIOR79               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR79_OFFSET)
+#define CH32V_PFIC_IPRIOR79               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR79_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR80_OFFSET        0x0450
-#define CH32V_PFIC_IPRIOR80               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR80_OFFSET)
+#define CH32V_PFIC_IPRIOR80               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR80_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR81_OFFSET        0x0451
-#define CH32V_PFIC_IPRIOR81               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR81_OFFSET)
+#define CH32V_PFIC_IPRIOR81               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR81_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR82_OFFSET        0x0452
-#define CH32V_PFIC_IPRIOR82               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR82_OFFSET)
+#define CH32V_PFIC_IPRIOR82               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR82_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR83_OFFSET        0x0453
-#define CH32V_PFIC_IPRIOR83               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR83_OFFSET)
+#define CH32V_PFIC_IPRIOR83               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR83_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR84_OFFSET        0x0454
-#define CH32V_PFIC_IPRIOR84               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR84_OFFSET)
+#define CH32V_PFIC_IPRIOR84               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR84_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR85_OFFSET        0x0455
-#define CH32V_PFIC_IPRIOR85               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR85_OFFSET)
+#define CH32V_PFIC_IPRIOR85               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR85_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR86_OFFSET        0x0456
-#define CH32V_PFIC_IPRIOR86               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR86_OFFSET)
+#define CH32V_PFIC_IPRIOR86               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR86_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR87_OFFSET        0x0457
-#define CH32V_PFIC_IPRIOR87               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR87_OFFSET)
+#define CH32V_PFIC_IPRIOR87               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR87_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR88_OFFSET        0x0458
-#define CH32V_PFIC_IPRIOR88               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR88_OFFSET)
+#define CH32V_PFIC_IPRIOR88               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR88_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR89_OFFSET        0x0459
-#define CH32V_PFIC_IPRIOR89               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR89_OFFSET)
+#define CH32V_PFIC_IPRIOR89               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR89_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR90_OFFSET        0x045a
-#define CH32V_PFIC_IPRIOR90               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR90_OFFSET)
+#define CH32V_PFIC_IPRIOR90               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR90_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR91_OFFSET        0x045b
-#define CH32V_PFIC_IPRIOR91               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR91_OFFSET)
+#define CH32V_PFIC_IPRIOR91               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR91_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR92_OFFSET        0x045c
-#define CH32V_PFIC_IPRIOR92               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR92_OFFSET)
+#define CH32V_PFIC_IPRIOR92               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR92_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR93_OFFSET        0x045d
-#define CH32V_PFIC_IPRIOR93               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR93_OFFSET)
+#define CH32V_PFIC_IPRIOR93               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR93_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR94_OFFSET        0x045e
-#define CH32V_PFIC_IPRIOR94               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR94_OFFSET)
+#define CH32V_PFIC_IPRIOR94               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR94_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR95_OFFSET        0x045f
-#define CH32V_PFIC_IPRIOR95               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR95_OFFSET)
+#define CH32V_PFIC_IPRIOR95               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR95_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR96_OFFSET        0x0460
-#define CH32V_PFIC_IPRIOR96               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR96_OFFSET)
+#define CH32V_PFIC_IPRIOR96               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR96_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR97_OFFSET        0x0461
-#define CH32V_PFIC_IPRIOR97               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR97_OFFSET)
+#define CH32V_PFIC_IPRIOR97               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR97_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR98_OFFSET        0x0462
-#define CH32V_PFIC_IPRIOR98               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR98_OFFSET)
+#define CH32V_PFIC_IPRIOR98               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR98_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR99_OFFSET        0x0463
-#define CH32V_PFIC_IPRIOR99               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR99_OFFSET)
+#define CH32V_PFIC_IPRIOR99               (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR99_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR100_OFFSET       0x0464
-#define CH32V_PFIC_IPRIOR100              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR100_OFFSET)
+#define CH32V_PFIC_IPRIOR100              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR100_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR101_OFFSET       0x0465
-#define CH32V_PFIC_IPRIOR101              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR101_OFFSET)
+#define CH32V_PFIC_IPRIOR101              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR101_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR102_OFFSET       0x0466
-#define CH32V_PFIC_IPRIOR102              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR102_OFFSET)
+#define CH32V_PFIC_IPRIOR102              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR102_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR103_OFFSET       0x0467
-#define CH32V_PFIC_IPRIOR103              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR103_OFFSET)
+#define CH32V_PFIC_IPRIOR103              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR103_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR104_OFFSET       0x0468
-#define CH32V_PFIC_IPRIOR104              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR104_OFFSET)
+#define CH32V_PFIC_IPRIOR104              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR104_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR105_OFFSET       0x0469
-#define CH32V_PFIC_IPRIOR105              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR105_OFFSET)
+#define CH32V_PFIC_IPRIOR105              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR105_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR106_OFFSET       0x046a
-#define CH32V_PFIC_IPRIOR106              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR106_OFFSET)
+#define CH32V_PFIC_IPRIOR106              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR106_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR107_OFFSET       0x046b
-#define CH32V_PFIC_IPRIOR107              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR107_OFFSET)
+#define CH32V_PFIC_IPRIOR107              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR107_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR108_OFFSET       0x046c
-#define CH32V_PFIC_IPRIOR108              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR108_OFFSET)
+#define CH32V_PFIC_IPRIOR108              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR108_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR109_OFFSET       0x046d
-#define CH32V_PFIC_IPRIOR109              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR109_OFFSET)
+#define CH32V_PFIC_IPRIOR109              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR109_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR110_OFFSET       0x046e
-#define CH32V_PFIC_IPRIOR110              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR110_OFFSET)
+#define CH32V_PFIC_IPRIOR110              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR110_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR111_OFFSET       0x046f
-#define CH32V_PFIC_IPRIOR111              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR111_OFFSET)
+#define CH32V_PFIC_IPRIOR111              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR111_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR112_OFFSET       0x0470
-#define CH32V_PFIC_IPRIOR112              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR112_OFFSET)
+#define CH32V_PFIC_IPRIOR112              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR112_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR113_OFFSET       0x0471
-#define CH32V_PFIC_IPRIOR113              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR113_OFFSET)
+#define CH32V_PFIC_IPRIOR113              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR113_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR114_OFFSET       0x0472
-#define CH32V_PFIC_IPRIOR114              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR114_OFFSET)
+#define CH32V_PFIC_IPRIOR114              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR114_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR115_OFFSET       0x0473
-#define CH32V_PFIC_IPRIOR115              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR115_OFFSET)
+#define CH32V_PFIC_IPRIOR115              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR115_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR116_OFFSET       0x0474
-#define CH32V_PFIC_IPRIOR116              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR116_OFFSET)
+#define CH32V_PFIC_IPRIOR116              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR116_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR117_OFFSET       0x0475
-#define CH32V_PFIC_IPRIOR117              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR117_OFFSET)
+#define CH32V_PFIC_IPRIOR117              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR117_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR118_OFFSET       0x0476
-#define CH32V_PFIC_IPRIOR118              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR118_OFFSET)
+#define CH32V_PFIC_IPRIOR118              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR118_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR119_OFFSET       0x0477
-#define CH32V_PFIC_IPRIOR119              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR119_OFFSET)
+#define CH32V_PFIC_IPRIOR119              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR119_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR120_OFFSET       0x0478
-#define CH32V_PFIC_IPRIOR120              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR120_OFFSET)
+#define CH32V_PFIC_IPRIOR120              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR120_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR121_OFFSET       0x0479
-#define CH32V_PFIC_IPRIOR121              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR121_OFFSET)
+#define CH32V_PFIC_IPRIOR121              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR121_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR122_OFFSET       0x047a
-#define CH32V_PFIC_IPRIOR122              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR122_OFFSET)
+#define CH32V_PFIC_IPRIOR122              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR122_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR123_OFFSET       0x047b
-#define CH32V_PFIC_IPRIOR123              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR123_OFFSET)
+#define CH32V_PFIC_IPRIOR123              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR123_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR124_OFFSET       0x047c
-#define CH32V_PFIC_IPRIOR124              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR124_OFFSET)
+#define CH32V_PFIC_IPRIOR124              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR124_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR125_OFFSET       0x047d
-#define CH32V_PFIC_IPRIOR125              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR125_OFFSET)
+#define CH32V_PFIC_IPRIOR125              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR125_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR126_OFFSET       0x047e
-#define CH32V_PFIC_IPRIOR126              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR126_OFFSET)
+#define CH32V_PFIC_IPRIOR126              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR126_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR127_OFFSET       0x047f
-#define CH32V_PFIC_IPRIOR127              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR127_OFFSET)
+#define CH32V_PFIC_IPRIOR127              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR127_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR128_OFFSET       0x0480
-#define CH32V_PFIC_IPRIOR128              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR128_OFFSET)
+#define CH32V_PFIC_IPRIOR128              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR128_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR129_OFFSET       0x0481
-#define CH32V_PFIC_IPRIOR129              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR129_OFFSET)
+#define CH32V_PFIC_IPRIOR129              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR129_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR130_OFFSET       0x0482
-#define CH32V_PFIC_IPRIOR130              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR130_OFFSET)
+#define CH32V_PFIC_IPRIOR130              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR130_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR131_OFFSET       0x0483
-#define CH32V_PFIC_IPRIOR131              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR131_OFFSET)
+#define CH32V_PFIC_IPRIOR131              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR131_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR132_OFFSET       0x0484
-#define CH32V_PFIC_IPRIOR132              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR132_OFFSET)
+#define CH32V_PFIC_IPRIOR132              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR132_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR133_OFFSET       0x0485
-#define CH32V_PFIC_IPRIOR133              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR133_OFFSET)
+#define CH32V_PFIC_IPRIOR133              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR133_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR134_OFFSET       0x0486
-#define CH32V_PFIC_IPRIOR134              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR134_OFFSET)
+#define CH32V_PFIC_IPRIOR134              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR134_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR135_OFFSET       0x0487
-#define CH32V_PFIC_IPRIOR135              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR135_OFFSET)
+#define CH32V_PFIC_IPRIOR135              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR135_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR136_OFFSET       0x0488
-#define CH32V_PFIC_IPRIOR136              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR136_OFFSET)
+#define CH32V_PFIC_IPRIOR136              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR136_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR137_OFFSET       0x0489
-#define CH32V_PFIC_IPRIOR137              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR137_OFFSET)
+#define CH32V_PFIC_IPRIOR137              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR137_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR138_OFFSET       0x048a
-#define CH32V_PFIC_IPRIOR138              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR138_OFFSET)
+#define CH32V_PFIC_IPRIOR138              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR138_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR139_OFFSET       0x048b
-#define CH32V_PFIC_IPRIOR139              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR139_OFFSET)
+#define CH32V_PFIC_IPRIOR139              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR139_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR140_OFFSET       0x048c
-#define CH32V_PFIC_IPRIOR140              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR140_OFFSET)
+#define CH32V_PFIC_IPRIOR140              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR140_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR141_OFFSET       0x048d
-#define CH32V_PFIC_IPRIOR141              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR141_OFFSET)
+#define CH32V_PFIC_IPRIOR141              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR141_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR142_OFFSET       0x048e
-#define CH32V_PFIC_IPRIOR142              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR142_OFFSET)
+#define CH32V_PFIC_IPRIOR142              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR142_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR143_OFFSET       0x048f
-#define CH32V_PFIC_IPRIOR143              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR143_OFFSET)
+#define CH32V_PFIC_IPRIOR143              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR143_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR144_OFFSET       0x0490
-#define CH32V_PFIC_IPRIOR144              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR144_OFFSET)
+#define CH32V_PFIC_IPRIOR144              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR144_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR145_OFFSET       0x0491
-#define CH32V_PFIC_IPRIOR145              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR145_OFFSET)
+#define CH32V_PFIC_IPRIOR145              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR145_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR146_OFFSET       0x0492
-#define CH32V_PFIC_IPRIOR146              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR146_OFFSET)
+#define CH32V_PFIC_IPRIOR146              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR146_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR147_OFFSET       0x0493
-#define CH32V_PFIC_IPRIOR147              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR147_OFFSET)
+#define CH32V_PFIC_IPRIOR147              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR147_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR148_OFFSET       0x0494
-#define CH32V_PFIC_IPRIOR148              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR148_OFFSET)
+#define CH32V_PFIC_IPRIOR148              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR148_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR149_OFFSET       0x0495
-#define CH32V_PFIC_IPRIOR149              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR149_OFFSET)
+#define CH32V_PFIC_IPRIOR149              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR149_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR150_OFFSET       0x0496
-#define CH32V_PFIC_IPRIOR150              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR150_OFFSET)
+#define CH32V_PFIC_IPRIOR150              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR150_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR151_OFFSET       0x0497
-#define CH32V_PFIC_IPRIOR151              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR151_OFFSET)
+#define CH32V_PFIC_IPRIOR151              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR151_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR152_OFFSET       0x0498
-#define CH32V_PFIC_IPRIOR152              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR152_OFFSET)
+#define CH32V_PFIC_IPRIOR152              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR152_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR153_OFFSET       0x0499
-#define CH32V_PFIC_IPRIOR153              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR153_OFFSET)
+#define CH32V_PFIC_IPRIOR153              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR153_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR154_OFFSET       0x049a
-#define CH32V_PFIC_IPRIOR154              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR154_OFFSET)
+#define CH32V_PFIC_IPRIOR154              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR154_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR155_OFFSET       0x049b
-#define CH32V_PFIC_IPRIOR155              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR155_OFFSET)
+#define CH32V_PFIC_IPRIOR155              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR155_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR156_OFFSET       0x049c
-#define CH32V_PFIC_IPRIOR156              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR156_OFFSET)
+#define CH32V_PFIC_IPRIOR156              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR156_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR157_OFFSET       0x049d
-#define CH32V_PFIC_IPRIOR157              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR157_OFFSET)
+#define CH32V_PFIC_IPRIOR157              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR157_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR158_OFFSET       0x049e
-#define CH32V_PFIC_IPRIOR158              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR158_OFFSET)
+#define CH32V_PFIC_IPRIOR158              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR158_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR159_OFFSET       0x049f
-#define CH32V_PFIC_IPRIOR159              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR159_OFFSET)
+#define CH32V_PFIC_IPRIOR159              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR159_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR160_OFFSET       0x04a0
-#define CH32V_PFIC_IPRIOR160              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR160_OFFSET)
+#define CH32V_PFIC_IPRIOR160              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR160_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR161_OFFSET       0x04a1
-#define CH32V_PFIC_IPRIOR161              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR161_OFFSET)
+#define CH32V_PFIC_IPRIOR161              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR161_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR162_OFFSET       0x04a2
-#define CH32V_PFIC_IPRIOR162              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR162_OFFSET)
+#define CH32V_PFIC_IPRIOR162              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR162_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR163_OFFSET       0x04a3
-#define CH32V_PFIC_IPRIOR163              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR163_OFFSET)
+#define CH32V_PFIC_IPRIOR163              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR163_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR164_OFFSET       0x04a4
-#define CH32V_PFIC_IPRIOR164              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR164_OFFSET)
+#define CH32V_PFIC_IPRIOR164              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR164_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR165_OFFSET       0x04a5
-#define CH32V_PFIC_IPRIOR165              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR165_OFFSET)
+#define CH32V_PFIC_IPRIOR165              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR165_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR166_OFFSET       0x04a6
-#define CH32V_PFIC_IPRIOR166              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR166_OFFSET)
+#define CH32V_PFIC_IPRIOR166              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR166_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR167_OFFSET       0x04a7
-#define CH32V_PFIC_IPRIOR167              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR167_OFFSET)
+#define CH32V_PFIC_IPRIOR167              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR167_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR168_OFFSET       0x04a8
-#define CH32V_PFIC_IPRIOR168              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR168_OFFSET)
+#define CH32V_PFIC_IPRIOR168              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR168_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR169_OFFSET       0x04a9
-#define CH32V_PFIC_IPRIOR169              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR169_OFFSET)
+#define CH32V_PFIC_IPRIOR169              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR169_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR170_OFFSET       0x04aa
-#define CH32V_PFIC_IPRIOR170              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR170_OFFSET)
+#define CH32V_PFIC_IPRIOR170              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR170_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR171_OFFSET       0x04ab
-#define CH32V_PFIC_IPRIOR171              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR171_OFFSET)
+#define CH32V_PFIC_IPRIOR171              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR171_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR172_OFFSET       0x04ac
-#define CH32V_PFIC_IPRIOR172              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR172_OFFSET)
+#define CH32V_PFIC_IPRIOR172              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR172_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR173_OFFSET       0x04ad
-#define CH32V_PFIC_IPRIOR173              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR173_OFFSET)
+#define CH32V_PFIC_IPRIOR173              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR173_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR174_OFFSET       0x04ae
-#define CH32V_PFIC_IPRIOR174              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR174_OFFSET)
+#define CH32V_PFIC_IPRIOR174              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR174_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR175_OFFSET       0x04af
-#define CH32V_PFIC_IPRIOR175              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR175_OFFSET)
+#define CH32V_PFIC_IPRIOR175              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR175_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR176_OFFSET       0x04b0
-#define CH32V_PFIC_IPRIOR176              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR176_OFFSET)
+#define CH32V_PFIC_IPRIOR176              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR176_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR177_OFFSET       0x04b1
-#define CH32V_PFIC_IPRIOR177              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR177_OFFSET)
+#define CH32V_PFIC_IPRIOR177              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR177_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR178_OFFSET       0x04b2
-#define CH32V_PFIC_IPRIOR178              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR178_OFFSET)
+#define CH32V_PFIC_IPRIOR178              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR178_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR179_OFFSET       0x04b3
-#define CH32V_PFIC_IPRIOR179              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR179_OFFSET)
+#define CH32V_PFIC_IPRIOR179              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR179_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR180_OFFSET       0x04b4
-#define CH32V_PFIC_IPRIOR180              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR180_OFFSET)
+#define CH32V_PFIC_IPRIOR180              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR180_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR181_OFFSET       0x04b5
-#define CH32V_PFIC_IPRIOR181              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR181_OFFSET)
+#define CH32V_PFIC_IPRIOR181              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR181_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR182_OFFSET       0x04b6
-#define CH32V_PFIC_IPRIOR182              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR182_OFFSET)
+#define CH32V_PFIC_IPRIOR182              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR182_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR183_OFFSET       0x04b7
-#define CH32V_PFIC_IPRIOR183              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR183_OFFSET)
+#define CH32V_PFIC_IPRIOR183              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR183_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR184_OFFSET       0x04b8
-#define CH32V_PFIC_IPRIOR184              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR184_OFFSET)
+#define CH32V_PFIC_IPRIOR184              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR184_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR185_OFFSET       0x04b9
-#define CH32V_PFIC_IPRIOR185              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR185_OFFSET)
+#define CH32V_PFIC_IPRIOR185              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR185_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR186_OFFSET       0x04ba
-#define CH32V_PFIC_IPRIOR186              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR186_OFFSET)
+#define CH32V_PFIC_IPRIOR186              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR186_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR187_OFFSET       0x04bb
-#define CH32V_PFIC_IPRIOR187              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR187_OFFSET)
+#define CH32V_PFIC_IPRIOR187              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR187_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR188_OFFSET       0x04bc
-#define CH32V_PFIC_IPRIOR188              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR188_OFFSET)
+#define CH32V_PFIC_IPRIOR188              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR188_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR189_OFFSET       0x04bd
-#define CH32V_PFIC_IPRIOR189              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR189_OFFSET)
+#define CH32V_PFIC_IPRIOR189              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR189_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR190_OFFSET       0x04be
-#define CH32V_PFIC_IPRIOR190              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR190_OFFSET)
+#define CH32V_PFIC_IPRIOR190              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR190_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR191_OFFSET       0x04bf
-#define CH32V_PFIC_IPRIOR191              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR191_OFFSET)
+#define CH32V_PFIC_IPRIOR191              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR191_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR192_OFFSET       0x04c0
-#define CH32V_PFIC_IPRIOR192              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR192_OFFSET)
+#define CH32V_PFIC_IPRIOR192              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR192_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR193_OFFSET       0x04c1
-#define CH32V_PFIC_IPRIOR193              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR193_OFFSET)
+#define CH32V_PFIC_IPRIOR193              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR193_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR194_OFFSET       0x04c2
-#define CH32V_PFIC_IPRIOR194              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR194_OFFSET)
+#define CH32V_PFIC_IPRIOR194              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR194_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR195_OFFSET       0x04c3
-#define CH32V_PFIC_IPRIOR195              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR195_OFFSET)
+#define CH32V_PFIC_IPRIOR195              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR195_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR196_OFFSET       0x04c4
-#define CH32V_PFIC_IPRIOR196              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR196_OFFSET)
+#define CH32V_PFIC_IPRIOR196              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR196_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR197_OFFSET       0x04c5
-#define CH32V_PFIC_IPRIOR197              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR197_OFFSET)
+#define CH32V_PFIC_IPRIOR197              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR197_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR198_OFFSET       0x04c6
-#define CH32V_PFIC_IPRIOR198              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR198_OFFSET)
+#define CH32V_PFIC_IPRIOR198              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR198_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR199_OFFSET       0x04c7
-#define CH32V_PFIC_IPRIOR199              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR199_OFFSET)
+#define CH32V_PFIC_IPRIOR199              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR199_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR200_OFFSET       0x04c8
-#define CH32V_PFIC_IPRIOR200              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR200_OFFSET)
+#define CH32V_PFIC_IPRIOR200              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR200_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR201_OFFSET       0x04c9
-#define CH32V_PFIC_IPRIOR201              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR201_OFFSET)
+#define CH32V_PFIC_IPRIOR201              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR201_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR202_OFFSET       0x04ca
-#define CH32V_PFIC_IPRIOR202              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR202_OFFSET)
+#define CH32V_PFIC_IPRIOR202              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR202_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR203_OFFSET       0x04cb
-#define CH32V_PFIC_IPRIOR203              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR203_OFFSET)
+#define CH32V_PFIC_IPRIOR203              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR203_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR204_OFFSET       0x04cc
-#define CH32V_PFIC_IPRIOR204              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR204_OFFSET)
+#define CH32V_PFIC_IPRIOR204              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR204_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR205_OFFSET       0x04cd
-#define CH32V_PFIC_IPRIOR205              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR205_OFFSET)
+#define CH32V_PFIC_IPRIOR205              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR205_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR206_OFFSET       0x04ce
-#define CH32V_PFIC_IPRIOR206              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR206_OFFSET)
+#define CH32V_PFIC_IPRIOR206              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR206_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR207_OFFSET       0x04cf
-#define CH32V_PFIC_IPRIOR207              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR207_OFFSET)
+#define CH32V_PFIC_IPRIOR207              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR207_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR208_OFFSET       0x04d0
-#define CH32V_PFIC_IPRIOR208              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR208_OFFSET)
+#define CH32V_PFIC_IPRIOR208              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR208_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR209_OFFSET       0x04d1
-#define CH32V_PFIC_IPRIOR209              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR209_OFFSET)
+#define CH32V_PFIC_IPRIOR209              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR209_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR210_OFFSET       0x04d2
-#define CH32V_PFIC_IPRIOR210              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR210_OFFSET)
+#define CH32V_PFIC_IPRIOR210              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR210_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR211_OFFSET       0x04d3
-#define CH32V_PFIC_IPRIOR211              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR211_OFFSET)
+#define CH32V_PFIC_IPRIOR211              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR211_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR212_OFFSET       0x04d4
-#define CH32V_PFIC_IPRIOR212              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR212_OFFSET)
+#define CH32V_PFIC_IPRIOR212              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR212_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR213_OFFSET       0x04d5
-#define CH32V_PFIC_IPRIOR213              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR213_OFFSET)
+#define CH32V_PFIC_IPRIOR213              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR213_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR214_OFFSET       0x04d6
-#define CH32V_PFIC_IPRIOR214              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR214_OFFSET)
+#define CH32V_PFIC_IPRIOR214              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR214_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR215_OFFSET       0x04d7
-#define CH32V_PFIC_IPRIOR215              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR215_OFFSET)
+#define CH32V_PFIC_IPRIOR215              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR215_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR216_OFFSET       0x04d8
-#define CH32V_PFIC_IPRIOR216              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR216_OFFSET)
+#define CH32V_PFIC_IPRIOR216              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR216_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR217_OFFSET       0x04d9
-#define CH32V_PFIC_IPRIOR217              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR217_OFFSET)
+#define CH32V_PFIC_IPRIOR217              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR217_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR218_OFFSET       0x04da
-#define CH32V_PFIC_IPRIOR218              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR218_OFFSET)
+#define CH32V_PFIC_IPRIOR218              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR218_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR219_OFFSET       0x04db
-#define CH32V_PFIC_IPRIOR219              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR219_OFFSET)
+#define CH32V_PFIC_IPRIOR219              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR219_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR220_OFFSET       0x04dc
-#define CH32V_PFIC_IPRIOR220              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR220_OFFSET)
+#define CH32V_PFIC_IPRIOR220              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR220_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR221_OFFSET       0x04dd
-#define CH32V_PFIC_IPRIOR221              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR221_OFFSET)
+#define CH32V_PFIC_IPRIOR221              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR221_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR222_OFFSET       0x04de
-#define CH32V_PFIC_IPRIOR222              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR222_OFFSET)
+#define CH32V_PFIC_IPRIOR222              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR222_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR223_OFFSET       0x04df
-#define CH32V_PFIC_IPRIOR223              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR223_OFFSET)
+#define CH32V_PFIC_IPRIOR223              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR223_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR224_OFFSET       0x04e0
-#define CH32V_PFIC_IPRIOR224              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR224_OFFSET)
+#define CH32V_PFIC_IPRIOR224              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR224_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR225_OFFSET       0x04e1
-#define CH32V_PFIC_IPRIOR225              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR225_OFFSET)
+#define CH32V_PFIC_IPRIOR225              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR225_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR226_OFFSET       0x04e2
-#define CH32V_PFIC_IPRIOR226              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR226_OFFSET)
+#define CH32V_PFIC_IPRIOR226              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR226_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR227_OFFSET       0x04e3
-#define CH32V_PFIC_IPRIOR227              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR227_OFFSET)
+#define CH32V_PFIC_IPRIOR227              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR227_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR228_OFFSET       0x04e4
-#define CH32V_PFIC_IPRIOR228              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR228_OFFSET)
+#define CH32V_PFIC_IPRIOR228              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR228_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR229_OFFSET       0x04e5
-#define CH32V_PFIC_IPRIOR229              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR229_OFFSET)
+#define CH32V_PFIC_IPRIOR229              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR229_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR230_OFFSET       0x04e6
-#define CH32V_PFIC_IPRIOR230              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR230_OFFSET)
+#define CH32V_PFIC_IPRIOR230              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR230_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR231_OFFSET       0x04e7
-#define CH32V_PFIC_IPRIOR231              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR231_OFFSET)
+#define CH32V_PFIC_IPRIOR231              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR231_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR232_OFFSET       0x04e8
-#define CH32V_PFIC_IPRIOR232              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR232_OFFSET)
+#define CH32V_PFIC_IPRIOR232              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR232_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR233_OFFSET       0x04e9
-#define CH32V_PFIC_IPRIOR233              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR233_OFFSET)
+#define CH32V_PFIC_IPRIOR233              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR233_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR234_OFFSET       0x04ea
-#define CH32V_PFIC_IPRIOR234              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR234_OFFSET)
+#define CH32V_PFIC_IPRIOR234              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR234_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR235_OFFSET       0x04eb
-#define CH32V_PFIC_IPRIOR235              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR235_OFFSET)
+#define CH32V_PFIC_IPRIOR235              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR235_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR236_OFFSET       0x04ec
-#define CH32V_PFIC_IPRIOR236              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR236_OFFSET)
+#define CH32V_PFIC_IPRIOR236              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR236_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR237_OFFSET       0x04ed
-#define CH32V_PFIC_IPRIOR237              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR237_OFFSET)
+#define CH32V_PFIC_IPRIOR237              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR237_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR238_OFFSET       0x04ee
-#define CH32V_PFIC_IPRIOR238              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR238_OFFSET)
+#define CH32V_PFIC_IPRIOR238              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR238_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR239_OFFSET       0x04ef
-#define CH32V_PFIC_IPRIOR239              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR239_OFFSET)
+#define CH32V_PFIC_IPRIOR239              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR239_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR240_OFFSET       0x04f0
-#define CH32V_PFIC_IPRIOR240              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR240_OFFSET)
+#define CH32V_PFIC_IPRIOR240              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR240_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR241_OFFSET       0x04f1
-#define CH32V_PFIC_IPRIOR241              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR241_OFFSET)
+#define CH32V_PFIC_IPRIOR241              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR241_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR242_OFFSET       0x04f2
-#define CH32V_PFIC_IPRIOR242              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR242_OFFSET)
+#define CH32V_PFIC_IPRIOR242              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR242_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR243_OFFSET       0x04f3
-#define CH32V_PFIC_IPRIOR243              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR243_OFFSET)
+#define CH32V_PFIC_IPRIOR243              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR243_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR244_OFFSET       0x04f4
-#define CH32V_PFIC_IPRIOR244              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR244_OFFSET)
+#define CH32V_PFIC_IPRIOR244              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR244_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR245_OFFSET       0x04f5
-#define CH32V_PFIC_IPRIOR245              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR245_OFFSET)
+#define CH32V_PFIC_IPRIOR245              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR245_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR246_OFFSET       0x04f6
-#define CH32V_PFIC_IPRIOR246              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR246_OFFSET)
+#define CH32V_PFIC_IPRIOR246              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR246_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR247_OFFSET       0x04f7
-#define CH32V_PFIC_IPRIOR247              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR247_OFFSET)
+#define CH32V_PFIC_IPRIOR247              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR247_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR248_OFFSET       0x04f8
-#define CH32V_PFIC_IPRIOR248              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR248_OFFSET)
+#define CH32V_PFIC_IPRIOR248              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR248_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR249_OFFSET       0x04f9
-#define CH32V_PFIC_IPRIOR249              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR249_OFFSET)
+#define CH32V_PFIC_IPRIOR249              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR249_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR250_OFFSET       0x04fa
-#define CH32V_PFIC_IPRIOR250              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR250_OFFSET)
+#define CH32V_PFIC_IPRIOR250              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR250_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR251_OFFSET       0x04fb
-#define CH32V_PFIC_IPRIOR251              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR251_OFFSET)
+#define CH32V_PFIC_IPRIOR251              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR251_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR252_OFFSET       0x04fc
-#define CH32V_PFIC_IPRIOR252              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR252_OFFSET)
+#define CH32V_PFIC_IPRIOR252              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR252_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR253_OFFSET       0x04fd
-#define CH32V_PFIC_IPRIOR253              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR253_OFFSET)
+#define CH32V_PFIC_IPRIOR253              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR253_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR254_OFFSET       0x04fe
-#define CH32V_PFIC_IPRIOR254              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR254_OFFSET)
+#define CH32V_PFIC_IPRIOR254              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR254_OFFSET) /* read-write */
 #define CH32V_PFIC_IPRIOR255_OFFSET       0x04ff
-#define CH32V_PFIC_IPRIOR255              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR255_OFFSET)
+#define CH32V_PFIC_IPRIOR255              (CH32V_PFIC_BASE + CH32V_PFIC_IPRIOR255_OFFSET) /* read-write */
 #define CH32V_PFIC_SCTLR_OFFSET           0x0d10
-#define CH32V_PFIC_SCTLR                  (CH32V_PFIC_BASE + CH32V_PFIC_SCTLR_OFFSET)
+#define CH32V_PFIC_SCTLR                  (CH32V_PFIC_BASE + CH32V_PFIC_SCTLR_OFFSET) /* read-write */
 #define CH32V_PFIC_SCTLR_SLEEPONEXIT      (1 <<  1) /* 00000002: SLEEPONEXIT */
 #define CH32V_PFIC_SCTLR_SLEEPDEEP        (1 <<  2) /* 00000004: SLEEPDEEP */
 #define CH32V_PFIC_SCTLR_WFITOWFE         (1 <<  3) /* 00000008: WFITOWFE */
@@ -7099,22 +7099,22 @@
 #define CH32V_PFIC_STK_CTLR_INIT          (1 <<  5) /* 00000020: System Initialization update */
 #define CH32V_PFIC_STK_CTLR_SWIE          (1 << 31) /* 80000000: System software triggered interrupts enable */
 #define CH32V_PFIC_STK_SR_OFFSET          0x1004
-#define CH32V_PFIC_STK_SR                 (CH32V_PFIC_BASE + CH32V_PFIC_STK_SR_OFFSET)
+#define CH32V_PFIC_STK_SR                 (CH32V_PFIC_BASE + CH32V_PFIC_STK_SR_OFFSET) /* read-write */
 #define CH32V_PFIC_STK_SR_CNTIF           (1 <<  0) /* 00000001: CNTIF */
 #define CH32V_PFIC_STK_CNTL_OFFSET        0x1008
-#define CH32V_PFIC_STK_CNTL               (CH32V_PFIC_BASE + CH32V_PFIC_STK_CNTL_OFFSET)
+#define CH32V_PFIC_STK_CNTL               (CH32V_PFIC_BASE + CH32V_PFIC_STK_CNTL_OFFSET) /* read-write */
 #define CH32V_PFIC_STK_CNTL_CNTL          (0xffffffff << 0) /* ffffffff: CNTL */
 #define CH32V_PFIC_STK_CNTL_CNTL_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_STK_CNTH_OFFSET        0x100c
-#define CH32V_PFIC_STK_CNTH               (CH32V_PFIC_BASE + CH32V_PFIC_STK_CNTH_OFFSET)
+#define CH32V_PFIC_STK_CNTH               (CH32V_PFIC_BASE + CH32V_PFIC_STK_CNTH_OFFSET) /* read-write */
 #define CH32V_PFIC_STK_CNTH_CNTH          (0xffffffff << 0) /* ffffffff: CNTH */
 #define CH32V_PFIC_STK_CNTH_CNTH_MASK     (0xffffffff << 0)
 #define CH32V_PFIC_STK_CMPLR_OFFSET       0x1010
-#define CH32V_PFIC_STK_CMPLR              (CH32V_PFIC_BASE + CH32V_PFIC_STK_CMPLR_OFFSET)
+#define CH32V_PFIC_STK_CMPLR              (CH32V_PFIC_BASE + CH32V_PFIC_STK_CMPLR_OFFSET) /* read-write */
 #define CH32V_PFIC_STK_CMPLR_CMPL         (0xffffffff << 0) /* ffffffff: CMPL */
 #define CH32V_PFIC_STK_CMPLR_CMPL_MASK    (0xffffffff << 0)
 #define CH32V_PFIC_STK_CMPHR_OFFSET       0x1014
-#define CH32V_PFIC_STK_CMPHR              (CH32V_PFIC_BASE + CH32V_PFIC_STK_CMPHR_OFFSET)
+#define CH32V_PFIC_STK_CMPHR              (CH32V_PFIC_BASE + CH32V_PFIC_STK_CMPHR_OFFSET) /* read-write */
 #define CH32V_PFIC_STK_CMPHR_CMPH         (0xffffffff << 0) /* ffffffff: CMPH */
 #define CH32V_PFIC_STK_CMPHR_CMPH_MASK    (0xffffffff << 0)
 
