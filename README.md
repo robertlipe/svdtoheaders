@@ -33,6 +33,12 @@ Options
 FILES
 =====
 
+### Project Structure
+
+- `svdtoheaders`: The main source code for the SVD to headers conversion tool.
+- `demo/`: Contains example SVD files and generated headers for demonstration purposes.
+- `tests/`: Unit tests and their associated SVD files. Refer to [`tests/README.md`](tests/README.md) for details on running and understanding the tests.
+
 BUGS
 ====
 
