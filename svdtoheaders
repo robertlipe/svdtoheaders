@@ -11,12 +11,16 @@ class SVDError(Exception):
     """Base exception for SVD processing errors."""
     pass
 
-class SVDFileNotFoundError(SVDError):
-    """Raised when the SVD file is not found."""
+class SVDFileError(SVDError):
+    """Raised when there's an issue with the SVD file (e.g., not found)."""
     pass
 
 class SVDParseError(SVDError):
     """Raised when there's an XML parsing error."""
+    pass
+
+class SVDContentError(SVDError):
+    """Raised when mandatory SVD content is missing or malformed."""
     pass
 
 class ClobberError(SVDError):
@@ -37,7 +41,7 @@ def read_svd(svdfile: str) -> Dict[str, Any]:
     A dictionary representing the parsed SVD XML content.
 
   Raises:
-    SVDFileNotFoundError: If the specified SVD file does not exist.
+    SVDFileError: If the specified SVD file does not exist.
     SVDParseError: If there's an XML parsing error.
     SVDError: For any other unexpected errors during file reading or parsing.
   """
@@ -47,7 +51,7 @@ def read_svd(svdfile: str) -> Dict[str, Any]:
       doc = xmltodict.parse(xml)
     return doc
   except FileNotFoundError as e:
-    raise SVDFileNotFoundError(f'SVD file not found at "{svdfile}"') from e
+    raise SVDFileError(f'SVD file not found at "{svdfile}"') from e
   except xmltodict.expat.ExpatError as e:
     raise SVDParseError(f'XML parsing failed for "{svdfile}". Reason: {e}') from e
   except Exception as e:
