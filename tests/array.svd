@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd" >
+  <vendor>TestVendor</vendor>
+  <vendorID>TV</vendorID>
+  <name>TestDevice</name>
+  <series>TestSeries</series>
+  <version>1.0</version>
+  <description>Test device for svdtoheaders.</description>
+  <cpu>
+    <name>CM4</name>
+    <revision>r0p1</revision>
+    <endian>little</endian>
+    <mpuPresent>false</mpuPresent>
+    <fpuPresent>true</fpuPresent>
+    <nvicPrioBits>4</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
+  <addressUnitBits>8</addressUnitBits>
+  <width>32</width>
+  <size>32</size>
+  <access>read-write</access>
+  <resetValue>0x00000000</resetValue>
+  <resetMask>0xFFFFFFFF</resetMask>
+
+  <peripherals>
+    <peripheral>
+      <name>ARRAY_PERIPH</name>
+      <description>A test peripheral with a register array.</description>
+      <groupName>TestGroup</groupName>
+      <baseAddress>0x40003000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>CHANNEL[%s]</name>
+          <description>Channel %s registers</description>
+          <addressOffset>0x10</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CONFIG</name>
+              <description>Channel configuration</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+  </peripherals>
+</device>

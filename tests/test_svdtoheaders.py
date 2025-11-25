@@ -48,3 +48,38 @@ def test_derived_generation():
             assert '#define DERIVED_TEST_PERIPH_CTRL_SINGLE   (1 <<  1) /* 00000002: A single bit field. */' in lines
             assert '#define DERIVED_TEST_PERIPH_CTRL_MULTI    (0xf << 8) /* 00000f00: A multi-bit field. */' in lines
             assert '#define DERIVED_TEST_PERIPH_CTRL_MULTI_MASK (0xf << 8)' in lines
+
+def test_array_generation():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        reg_file = os.path.join(tmpdir, 'array_reg.h')
+
+        args = ['-s', 'tests/array.svd', '-p', 'TEST_', '-r', reg_file, '-o']
+        result = run_svdtoheaders(args)
+
+        assert result.returncode == 0
+
+        with open(reg_file, 'r') as f:
+            content = f.read()
+            lines = content.splitlines()
+            print(lines)
+            
+            # Helper to check for defines, ignoring whitespace
+            def check_define(name, value):
+                for line in lines:
+                    if name in line and value in line:
+                        return True
+                return False
+
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL0_OFFSET', '0x0010')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL0', '(TEST_ARRAY_PERIPH_BASE + TEST_ARRAY_PERIPH_CHANNEL0_OFFSET)')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL1_OFFSET', '0x0014')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL1', '(TEST_ARRAY_PERIPH_BASE + TEST_ARRAY_PERIPH_CHANNEL1_OFFSET)')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL2_OFFSET', '0x0018')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL2', '(TEST_ARRAY_PERIPH_BASE + TEST_ARRAY_PERIPH_CHANNEL2_OFFSET)')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL3_OFFSET', '0x001c')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL3', '(TEST_ARRAY_PERIPH_BASE + TEST_ARRAY_PERIPH_CHANNEL3_OFFSET)')
+
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL0_CONFIG', '(0xff << 0)')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL1_CONFIG', '(0xff << 0)')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL2_CONFIG', '(0xff << 0)')
+            assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL3_CONFIG', '(0xff << 0)')
