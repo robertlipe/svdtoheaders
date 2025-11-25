@@ -231,6 +231,25 @@ def test_non_existent_svd_file():
         assert result.returncode != 0
         assert f"Error: SVDFileError: SVD file not found at \"{non_existent_svd}\"" in result.stderr
 
+
+def test_clobber_integration_error():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        reg_file = os.path.join(tmpdir, 'clobber_test.h')
+        svd_file = os.path.join('tests', 'simple.svd')
+
+        # First, successfully write the file
+        args_initial = ['-s', svd_file, '-p', 'TEST_', '-r', reg_file, '-o']
+        result_initial = run_svdtoheaders(args_initial)
+        assert result_initial.returncode == 0
+        assert os.path.exists(reg_file)
+
+        # Then, attempt to overwrite without -o flag, expecting ClobberError
+        args_clobber = ['-s', svd_file, '-p', 'TEST_', '-r', reg_file] # No -o flag
+        result_clobber = run_svdtoheaders(args_clobber)
+
+        assert result_clobber.returncode != 0
+        assert f"Error: ClobberError: Unable to overwrite existing file \"{reg_file}\"" in result_clobber.stderr
+
 def test_baseline_comparison():
     # List of (svd_file, prefix, output_type, output_filename_base) tuples
     # output_type can be 'reg' or 'map'
