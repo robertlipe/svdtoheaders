@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env venv/bin/python
 
 import argparse
 import os.path
@@ -8,13 +8,18 @@ from pprint import pprint
 
 def read_svd(svdfile):
   try:
-    fp = open(svdfile)
-    xml = fp.read()
-
-    doc = xmltodict.parse(xml)
+    with open(svdfile, 'r') as fp:
+      xml = fp.read()
+      doc = xmltodict.parse(xml)
     return doc
-  except IOError:
-    print(f'Unable to open svd file "{svdfile}" for reading.')
+  except FileNotFoundError:
+    print(f'Error: SVD file not found at "{svdfile}"')
+    exit(1)
+  except xmltodict.expat.ExpatError as e:
+    print(f'Error: XML parsing failed for "{svdfile}". Reason: {e}')
+    exit(1)
+  except Exception as e:
+    print(f'An unexpected error occurred while reading the SVD file: {e}')
     exit(1)
 
 def humanBytes(bytes):
@@ -31,7 +36,7 @@ def cleanse(string):
 # Example from old:
 #define STM32_USART1_BASE    0x40011000     /* 0x40011000-0x400113ff: USART1 */
 
-def peripherals(doc):
+def peripherals(doc, prefix):
   """
   Returns a list of peripherals extracted from the JSON file.
 
@@ -53,7 +58,6 @@ def peripherals(doc):
 
     address_block = p.get('addressBlock', {})
     size = int(address_block.get('size', "0"), 0)
-    #end_address = base_address
 
     if '@derivedFrom' in p:
       derived_from = p['@derivedFrom']
@@ -75,47 +79,46 @@ def peripherals(doc):
 
 
   defines.sort()
-  #defines.sort(key=lambda x: x[0])
   return defines
 
 
-def registers(doc):
+def registers(doc, prefix):
   rv = []
-  pperiphs = {}
-  pdefines = {}
   # The heirarchy in the SVD is DEVICE->Peripherals->Registers->Fields
-  peripherals = doc['device'].get('peripherals', {}).get('peripheral', [])
-  for peripheral in peripherals:
+  all_peripherals = doc['device'].get('peripherals', {}).get('peripheral', [])
+  
+  # Create a lookup for all peripherals by name
+  peripheral_map = {p['name']: p for p in all_peripherals}
+
+  # First pass: process base peripherals
+  for p_name, peripheral in peripheral_map.items():
+    if '@derivedFrom' in peripheral:
+      continue
+
     registers = peripheral.get('registers', {}).get('register', [])
     baseAddress = int(peripheral['baseAddress'], 0)
-    # rv.{append(baseAddress)
     if isinstance(registers, dict):
       registers = [registers]
-    p_name = cleanse(peripheral['name'])
-    # You could be clever and dynamically size this. This isn't a bad default.
+    p_name_clean = cleanse(p_name)
     column = 33
     if registers:
-        p_name = cleanse(peripheral['name'])
-        p_descr = cleanse(peripheral['description'])
-        rv.append(f'\n/* {p_name} - {p_descr} */')
+        p_descr = cleanse(peripheral.get('description', ''))
+        rv.append(f'\n/* {p_name_clean} - {p_descr} */')
 
-        reg_base = f"{prefix}{p_name}_BASE"
+        reg_base = f"{prefix}{p_name_clean}_BASE"
         rv.append(f'#define {reg_base:<{column}} 0x{baseAddress:x}')
-        pdefines[reg_base] = hex(baseAddress)
 
         for register in registers:
           r_name = register['name']
           r_descr = cleanse(register.get('description', 'N/A'))
           r_base = int(register['addressOffset'], 0)
-          regname = f"{prefix}{p_name}_{r_name}"
+          regname = f"{prefix}{p_name_clean}_{r_name}"
           offsetname = f"{regname}_OFFSET"
 
           rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
-          pdefines[offsetname] = r_base
           rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
-          pdefines[regname] = offsetname
 
-          fields = register.get('fields', {}).get('field', [])
+          fields = (register.get('fields') or {}).get('field', [])
           if isinstance(fields, dict):
             fields = [fields]
           if fields:
@@ -127,59 +130,76 @@ def registers(doc):
                 bit_width = int(field.get('bitWidth', 1))
                 mask = (1 << bit_width) - 1
 
-                b_name = prefix +  p_name + '_' + r_name + '_' + f_name
-                rv.append(f'#define {b_name:<{column}} ({bit_width} << {bit_offset:>2})'
-                          + f' /* {1<<bit_offset:02x}: {f_descr} */')
-                pdefines[b_name] = None
+                b_name = prefix +  p_name_clean + '_' + r_name + '_' + f_name
+                rv.append(f'#define {b_name:<{column}} (1 << {bit_offset:>2})'
+                          + f' /* {1<<bit_offset:08x}: {f_descr} */')
 
                 if(bit_width > 1):
                   maskname = b_name + "_MASK"
-                  rv.append(f'#define {maskname:<{column + 5}} (0x{mask:02x})')
-                  pdefines[maskname] = None
-          pperiphs[p_name] = pdefines
-        pdefines = {}
-    else:
-        d_name = peripheral['@derivedFrom']
-        rv.append(f'\n/* No registers defined for peripheral {p_name}. Using those of {d_name}. */')
-        registers = peripheral.get('registers', {}).get('register', [])
-        reg_base = f"{prefix}{p_name}_BASE"
-        rv.append(f'#define {reg_base:<{column}} 0x{baseAddress:x}')
+                  rv.append(f'#define {maskname:<{column}} (0x{mask:x} << {bit_offset})')
 
-        # Iterate over the original peripheral's defines and substitute the names and base address
-        for original_name, original_value in pperiphs[d_name].items():
-          # Skip the original base address; it was emitted long ago.
-          if original_name == f"{prefix}{d_name}_BASE":
-            continue
+  # Second pass: process derived peripherals
+  for p_name, peripheral in peripheral_map.items():
+    if '@derivedFrom' not in peripheral:
+      continue
 
-          # Replace the original peripheral's name with the current peripheral's name
-          # So, for CH32V_SPI2_CTLR1_OFFSET  replace SPI2 with SPI1
-          replaced_name = original_name.replace(d_name, p_name)
-          replaced_value = original_name
-          rv.append(f"#define {replaced_name:<{column}} {replaced_value}")
+    d_name = peripheral['@derivedFrom']
+    if d_name not in peripheral_map:
+      rv.append(f'\n/* WARNING: Base peripheral "{d_name}" not found for derived peripheral "{p_name}" */')
+      continue
+    
+    base_peripheral = peripheral_map[d_name]
+    p_name_clean = cleanse(p_name)
+    d_name_clean = cleanse(d_name)
+    baseAddress = int(peripheral['baseAddress'], 0)
+    column = 33
+
+    rv.append(f'\n/* {p_name_clean} is derived from {d_name_clean}. */')
+    reg_base = f"{prefix}{p_name_clean}_BASE"
+    rv.append(f'#define {reg_base:<{column}} 0x{baseAddress:x}')
+
+    registers = base_peripheral.get('registers', {}).get('register', [])
+    if isinstance(registers, dict):
+      registers = [registers]
+
+    for register in registers:
+      r_name = register['name']
+      r_base = int(register['addressOffset'], 0)
+      regname = f"{prefix}{p_name_clean}_{r_name}"
+      offsetname = f"{regname}_OFFSET"
+
+      rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
+      rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+      
+      fields = (register.get('fields') or {}).get('field', [])
+      if isinstance(fields, dict):
+        fields = [fields]
+      if fields:
+        for field in fields:
+          f_name = field.get('name')
+          if 'bitOffset' in field and 'bitWidth' in field:
+            bit_offset = int(field.get('bitOffset', 0))
+            bit_width = int(field.get('bitWidth', 1))
+            mask = (1 << bit_width) - 1
+            b_name = prefix +  p_name_clean + '_' + r_name + '_' + f_name
+            f_descr = cleanse(field.get('description', 'N/A'))
+            rv.append(f'#define {b_name:<{column}} (1 << {bit_offset:>2})'
+                      + f' /* {1<<bit_offset:08x}: {f_descr} */')
+            if(bit_width > 1):
+              maskname = b_name + "_MASK"
+              rv.append(f'#define {maskname:<{column}} (0x{mask:x} << {bit_offset})')
 
   return rv
 
 # Command line args
-mapfile = None
-regfile = None
-overwrite = None
-svdfile = "ch32v30x.svd"
-prefix = "CH32V_"
-verbose = None
 
-def clobberOk(file):
+def clobberOk(file, overwrite):
   if overwrite or not(os.path.isfile(file)):
     return True
   print (f'Unable to overwrite existing file "{file}".')
   exit(1)
 
 def doParseArgs():
-  global overwrite
-  global regfile
-  global mapfile
-  global svdfile
-  global prefix
-  global verbose
   parser = argparse.ArgumentParser(description='Converts CMSSIS SVD to C headers.')
   parser.add_argument('-m', '--memorymap', action='store',
     help='Create file "memorymap" with mempory map of device.')
@@ -194,46 +214,42 @@ def doParseArgs():
   parser.add_argument('-o', '--overwrite', action='store_true',
     help="Allow overwrite")
   args = parser.parse_args()
-  overwrite = args.overwrite
-  regfile = args.registers
-  mapfile = args.memorymap
-  svdfile = args.svdfile
-  prefix = args.prefix
-  verbose = args.verbose
 
-  if verbose:
-    print(f"register file: {regfile}")
-    print(f"memory map file: {mapfile}")
-    print(f"svd file:  {svdfile}")
-    print(f"prefix: {prefix}")
-    print(f"Overwrite output files? {overwrite}")
+  if args.verbose:
+    print(f"register file: {args.registers}")
+    print(f"memory map file: {args.memorymap}")
+    print(f"svd file:  {args.svdfile}")
+    print(f"prefix: {args.prefix}")
+    print(f"Overwrite output files? {args.overwrite}")
+  return args
 
 def main():
-  doParseArgs()
-  if verbose:
-    print(f"Reading {svdfile}")
+  args = doParseArgs()
+  if args.verbose:
+    print(f"Reading {args.svdfile}")
 
-  doc = read_svd(svdfile)
+  doc = read_svd(args.svdfile)
 
-  if not mapfile and not regfile:
+  if not args.memorymap and not args.registers:
     print("Nothing to do You should probably specify either -p or -r.")
     exit(1)
 
-  if mapfile and clobberOk(mapfile):
-    if verbose:
-      print(f"Writing memory map file {mapfile}")
-    with open(mapfile, "w") as f:
-      for p in (peripherals(doc)):
+  if args.memorymap and clobberOk(args.memorymap, args.overwrite):
+    if args.verbose:
+      print(f"Writing memory map file {args.memorymap}")
+    with open(args.memorymap, "w") as f:
+      for p in (peripherals(doc, args.prefix)):
         print(p, file=f)
     f.close()
 
-  if regfile and clobberOk(regfile):
-    if verbose:
-      print(f"Writing register file {regfile}")
-    with open(regfile, "w") as f:
-      for r in (registers(doc)):
+  if args.registers and clobberOk(args.registers, args.overwrite):
+    if args.verbose:
+      print(f"Writing register file {args.registers}")
+    with open(args.registers, "w") as f:
+      for r in (registers(doc, args.prefix)):
         print(r, file=f)
     f.close()
 
-main()
-exit(0)
+if __name__ == "__main__":
+  main()
+  exit(0)
