@@ -345,6 +345,105 @@ def test_process_peripheral_registers_list_missing_addressOffset(mocker):
     mock_process_register_block.assert_not_called()
 
 
+def test_process_cluster_single_cluster(mocker):
+    mock_process_peripheral_registers_list = mocker.patch('svdtoheaders_helpers._process_peripheral_registers_list')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    cluster_data = {
+        "name": "CLUSTER_SINGLE",
+        "addressOffset": "0x0",
+        "register": {
+            "name": "REG_IN_CLUSTER",
+            "addressOffset": "0x0",
+            "access": "read-write"
+        }
+    }
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+
+    _process_cluster(rv, prefix, p_name_clean, cluster_data, column, reg_base_sym)
+
+    mock_process_peripheral_registers_list.assert_called_once_with(
+        rv, prefix, f"{p_name_clean}_{cluster_data['name']}", cluster_data['register'], column, reg_base_sym, int(cluster_data['addressOffset'], 0)
+    )
+
+def test_process_cluster_array_cluster(mocker):
+    mock_process_peripheral_registers_list = mocker.patch('svdtoheaders_helpers._process_peripheral_registers_list')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    cluster_data = {
+        "dim": "2",
+        "dimIncrement": "0x10",
+        "name": "CLUSTER_ARRAY[%s]",
+        "addressOffset": "0x0",
+        "register": {
+            "name": "REG_IN_CLUSTER",
+            "addressOffset": "0x0",
+            "access": "read-write"
+        }
+    }
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+
+    _process_cluster(rv, prefix, p_name_clean, cluster_data, column, reg_base_sym)
+
+    assert mock_process_peripheral_registers_list.call_count == 2
+    mock_process_peripheral_registers_list.assert_any_call(
+        rv, prefix, f"{p_name_clean}_CLUSTER_ARRAY0", cluster_data['register'], column, reg_base_sym, 0x0
+    )
+    mock_process_peripheral_registers_list.assert_any_call(
+        rv, prefix, f"{p_name_clean}_CLUSTER_ARRAY1", cluster_data['register'], column, reg_base_sym, 0x10
+    )
+
+def test_process_cluster_missing_name(mocker):
+    mock_process_peripheral_registers_list = mocker.patch('svdtoheaders_helpers._process_peripheral_registers_list')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    cluster_data = {
+        "addressOffset": "0x0",
+        "register": {
+            "name": "REG_IN_CLUSTER",
+            "addressOffset": "0x0",
+            "access": "read-write"
+        }
+    } # Missing 'name'
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+
+    with pytest.raises(SVDContentError) as excinfo:
+        _process_cluster(rv, prefix, p_name_clean, cluster_data, column, reg_base_sym)
+    assert "Missing mandatory 'name' element in a cluster within peripheral 'PERIPH'." in str(excinfo.value)
+    mock_process_peripheral_registers_list.assert_not_called()
+
+def test_process_cluster_missing_addressOffset(mocker):
+    mock_process_peripheral_registers_list = mocker.patch('svdtoheaders_helpers._process_peripheral_registers_list')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    cluster_data = {
+        "name": "CLUSTER_MISSING_ADDR",
+        "register": {
+            "name": "REG_IN_CLUSTER",
+            "addressOffset": "0x0",
+            "access": "read-write"
+        }
+    } # Missing 'addressOffset'
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+
+    with pytest.raises(SVDContentError) as excinfo:
+        _process_cluster(rv, prefix, p_name_clean, cluster_data, column, reg_base_sym)
+    assert "Missing mandatory 'addressOffset' element in cluster 'CLUSTER_MISSING_ADDR' within peripheral 'PERIPH'." in str(excinfo.value)
+    mock_process_peripheral_registers_list.assert_not_called()
+
+
 def test_non_existent_svd_file():
     with tempfile.TemporaryDirectory() as tmpdir:
         reg_file = os.path.join(tmpdir, 'output.h')
