@@ -83,3 +83,33 @@ def test_array_generation():
             assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL1_CONFIG', '(0xff << 0)')
             assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL2_CONFIG', '(0xff << 0)')
             assert check_define('#define TEST_ARRAY_PERIPH_CHANNEL3_CONFIG', '(0xff << 0)')
+
+def test_cluster_generation():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        reg_file = os.path.join(tmpdir, 'cluster_reg.h')
+
+        args = ['-s', 'tests/cluster.svd', '-p', 'TEST_', '-r', reg_file, '-o']
+        result = run_svdtoheaders(args)
+
+        assert result.returncode == 0
+
+        with open(reg_file, 'r') as f:
+            content = f.read()
+            lines = content.splitlines()
+            print(lines)
+            
+            # Helper to check for defines, ignoring whitespace
+            def check_define(name, value):
+                for line in lines:
+                    if name in line and value in line:
+                        return True
+                return False
+
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER0_CONTROL_OFFSET', '0x0000')
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER0_CONTROL', '(TEST_CLUSTER_PERIPH_BASE + TEST_CLUSTER_PERIPH_TIMER0_CONTROL_OFFSET)')
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER0_DATA_OFFSET', '0x0004')
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER0_DATA', '(TEST_CLUSTER_PERIPH_BASE + TEST_CLUSTER_PERIPH_TIMER0_DATA_OFFSET)')
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER1_CONTROL_OFFSET', '0x0010')
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER1_CONTROL', '(TEST_CLUSTER_PERIPH_BASE + TEST_CLUSTER_PERIPH_TIMER1_CONTROL_OFFSET)')
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER1_DATA_OFFSET', '0x0014')
+            assert check_define('#define TEST_CLUSTER_PERIPH_TIMER1_DATA', '(TEST_CLUSTER_PERIPH_BASE + TEST_CLUSTER_PERIPH_TIMER1_DATA_OFFSET)')

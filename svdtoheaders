@@ -97,18 +97,62 @@ def registers(doc, prefix):
     if '@derivedFrom' in peripheral:
       continue
 
-    registers = peripheral.get('registers', {}).get('register', [])
-    baseAddress = int(peripheral['baseAddress'], 0)
+    registers_in_peripheral = peripheral.get('registers', {})
+    registers = registers_in_peripheral.get('register', [])
+    clusters = registers_in_peripheral.get('cluster', [])
     if isinstance(registers, dict):
       registers = [registers]
+    if isinstance(clusters, dict):
+        clusters = [clusters]
+
+    baseAddress = int(peripheral['baseAddress'], 0)
     p_name_clean = cleanse(p_name)
     column = 33
-    if registers:
+    if registers or clusters:
         p_descr = cleanse(peripheral.get('description', ''))
         rv.append(f'\n/* {p_name_clean} - {p_descr} */')
 
         reg_base = f"{prefix}{p_name_clean}_BASE"
         rv.append(f'#define {reg_base:<{column}} 0x{baseAddress:x}')
+
+        for cluster in clusters:
+            if 'dim' in cluster:
+                dim = int(cluster['dim'])
+                dim_increment = int(cluster['dimIncrement'], 0)
+                name_template = cluster['name']
+                base_offset = int(cluster['addressOffset'], 0)
+
+                for i in range(dim):
+                    c_name = name_template.replace('[%s]', str(i)).replace('%s', str(i))
+                    c_base = base_offset + i * dim_increment
+                    
+                    cluster_registers = cluster.get('register', [])
+                    if isinstance(cluster_registers, dict):
+                        cluster_registers = [cluster_registers]
+
+                    for register in cluster_registers:
+                        r_name = register['name']
+                        r_base = c_base + int(register['addressOffset'], 0)
+                        regname = f"{prefix}{p_name_clean}_{c_name}_{r_name}"
+                        offsetname = f"{regname}_OFFSET"
+                        
+                        rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
+                        rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+            else:
+                c_name = cluster['name']
+                c_base = int(cluster['addressOffset'], 0)
+                cluster_registers = cluster.get('register', [])
+                if isinstance(cluster_registers, dict):
+                    cluster_registers = [cluster_registers]
+
+                for register in cluster_registers:
+                    r_name = register['name']
+                    r_base = c_base + int(register['addressOffset'], 0)
+                    regname = f"{prefix}{p_name_clean}_{c_name}_{r_name}"
+                    offsetname = f"{regname}_OFFSET"
+
+                    rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
+                    rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
 
         for register in registers:
           if 'dim' in register:
@@ -185,6 +229,7 @@ def registers(doc, prefix):
                     maskname = b_name + "_MASK"
                     rv.append(f'#define {maskname:<{column}} (0x{mask:x} << {bit_offset})')
 
+
   # Second pass: process derived peripherals
   for p_name, peripheral in peripheral_map.items():
     if '@derivedFrom' not in peripheral:
@@ -205,9 +250,52 @@ def registers(doc, prefix):
     reg_base = f"{prefix}{p_name_clean}_BASE"
     rv.append(f'#define {reg_base:<{column}} 0x{baseAddress:x}')
 
-    registers = base_peripheral.get('registers', {}).get('register', [])
+    registers_in_peripheral = base_peripheral.get('registers', {})
+    registers = registers_in_peripheral.get('register', [])
+    clusters = registers_in_peripheral.get('cluster', [])
     if isinstance(registers, dict):
       registers = [registers]
+    if isinstance(clusters, dict):
+        clusters = [clusters]
+
+    for cluster in clusters:
+        if 'dim' in cluster:
+            dim = int(cluster['dim'])
+            dim_increment = int(cluster['dimIncrement'], 0)
+            name_template = cluster['name']
+            base_offset = int(cluster['addressOffset'], 0)
+
+            for i in range(dim):
+                c_name = name_template.replace('[%s]', str(i)).replace('%s', str(i))
+                c_base = base_offset + i * dim_increment
+                
+                cluster_registers = cluster.get('register', [])
+                if isinstance(cluster_registers, dict):
+                    cluster_registers = [cluster_registers]
+
+                for register in cluster_registers:
+                    r_name = register['name']
+                    r_base = c_base + int(register['addressOffset'], 0)
+                    regname = f"{prefix}{p_name_clean}_{c_name}_{r_name}"
+                    offsetname = f"{regname}_OFFSET"
+                    
+                    rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
+                    rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
+        else:
+            c_name = cluster['name']
+            c_base = int(cluster['addressOffset'], 0)
+            cluster_registers = cluster.get('register', [])
+            if isinstance(cluster_registers, dict):
+                cluster_registers = [cluster_registers]
+
+            for register in cluster_registers:
+                r_name = register['name']
+                r_base = c_base + int(register['addressOffset'], 0)
+                regname = f"{prefix}{p_name_clean}_{c_name}_{r_name}"
+                offsetname = f"{regname}_OFFSET"
+
+                rv.append(f'#define {offsetname:<{column}} 0x{r_base:04x}')
+                rv.append(f'#define {regname:<{column}} ({reg_base} + {offsetname})')
 
     for register in registers:
       if 'dim' in register:
