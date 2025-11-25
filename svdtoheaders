@@ -3,7 +3,25 @@
 import argparse
 import os.path
 import xmltodict
+import sys # Import sys for sys.stderr
 from typing import Dict, Any, List, Union, Optional
+
+# Custom Exceptions
+class SVDError(Exception):
+    """Base exception for SVD processing errors."""
+    pass
+
+class SVDFileNotFoundError(SVDError):
+    """Raised when the SVD file is not found."""
+    pass
+
+class SVDParseError(SVDError):
+    """Raised when there's an XML parsing error."""
+    pass
+
+class ClobberError(SVDError):
+    """Raised when a file cannot be overwritten."""
+    pass
 
 # Define module-level constants for formatting
 DEFINE_BASE_NAME_WIDTH = 20
@@ -19,24 +37,21 @@ def read_svd(svdfile: str) -> Dict[str, Any]:
     A dictionary representing the parsed SVD XML content.
 
   Raises:
-    FileNotFoundError: If the specified SVD file does not exist.
-    xmltodict.expat.ExpatError: If there's an XML parsing error.
-    Exception: For any other unexpected errors during file reading or parsing.
+    SVDFileNotFoundError: If the specified SVD file does not exist.
+    SVDParseError: If there's an XML parsing error.
+    SVDError: For any other unexpected errors during file reading or parsing.
   """
   try:
     with open(svdfile, 'r') as fp:
       xml = fp.read()
       doc = xmltodict.parse(xml)
     return doc
-  except FileNotFoundError:
-    print(f'Error: SVD file not found at "{svdfile}"')
-    exit(1)
+  except FileNotFoundError as e:
+    raise SVDFileNotFoundError(f'SVD file not found at "{svdfile}"') from e
   except xmltodict.expat.ExpatError as e:
-    print(f'Error: XML parsing failed for "{svdfile}". Reason: {e}')
-    exit(1)
+    raise SVDParseError(f'XML parsing failed for "{svdfile}". Reason: {e}') from e
   except Exception as e:
-    print(f'An unexpected error occurred while reading the SVD file: {e}')
-    exit(1)
+    raise SVDError(f'An unexpected error occurred while reading the SVD file: {e}') from e
 
 def humanBytes(bytes: int) -> str:
   """Converts a byte count into a human-readable string (e.g., 1KB, 1MB).
@@ -514,8 +529,7 @@ def registers(doc: Dict[str, Any], prefix: str) -> List[str]:
 def clobberOk(file, overwrite):
   if overwrite or not(os.path.isfile(file)):
     return True
-  print (f'Unable to overwrite existing file "{file}".')
-  exit(1)
+  raise ClobberError(f'Unable to overwrite existing file "{file}".')
 
 def doParseArgs():
   parser = argparse.ArgumentParser(description='Converts CMSSIS SVD to C headers.')
@@ -546,25 +560,35 @@ def main():
   if args.verbose:
     print(f"Reading {args.svdfile}")
 
-  doc = read_svd(args.svdfile)
+  try:
+    doc = read_svd(args.svdfile)
 
-  if not args.memorymap and not args.registers:
-    print("Nothing to do You should probably specify either -p or -r.")
+    if not args.memorymap and not args.registers:
+      print("Nothing to do You should probably specify either -p or -r.")
+      exit(1)
+
+    if args.memorymap: # clobberOk now raises exception
+      if args.verbose:
+        print(f"Writing memory map file {args.memorymap}")
+      clobberOk(args.memorymap, args.overwrite) # Call clobberOk outside open to catch exception
+      with open(args.memorymap, "w") as f:
+        for p in (peripherals(doc, args.prefix)):
+          print(p, file=f)
+
+    if args.registers: # clobberOk now raises exception
+      if args.verbose:
+        print(f"Writing register file {args.registers}")
+      clobberOk(args.registers, args.overwrite) # Call clobberOk outside open to catch exception
+      with open(args.registers, "w") as f:
+        for r in (registers(doc, args.prefix)):
+          print(r, file=f)
+
+  except SVDError as e:
+    print(f"Error: {e}", file=sys.stderr)
     exit(1)
-
-  if args.memorymap and clobberOk(args.memorymap, args.overwrite):
-    if args.verbose:
-      print(f"Writing memory map file {args.memorymap}")
-    with open(args.memorymap, "w") as f:
-      for p in (peripherals(doc, args.prefix)):
-        print(p, file=f)
-
-  if args.registers and clobberOk(args.registers, args.overwrite):
-    if args.verbose:
-      print(f"Writing register file {args.registers}")
-    with open(args.registers, "w") as f:
-      for r in (registers(doc, args.prefix)):
-        print(r, file=f)
+  except Exception as e:
+    print(f"An unexpected error occurred: {e}", file=sys.stderr)
+    exit(1)
 
 if __name__ == "__main__":
   main()
