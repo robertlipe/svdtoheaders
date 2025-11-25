@@ -216,7 +216,7 @@ def doParseArgs():
     help='Create file "memorymap" with mempory map of device.')
   parser.add_argument('-r', '--registers', action='store',
     help='Create file "registers" with registerss of device.')
-  parser.add_argument('-p', '--prefix', action='store', default='CH32V_',
+  parser.add_argument('-p', '--prefix', action='store', default='',
     help='Prefix C symbols with "prefix".')
   parser.add_argument('-s', '--svdfile', action='store' ,default='ch32v30x.svd',
     help='Read SVD source "file".')
