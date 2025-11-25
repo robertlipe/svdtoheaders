@@ -178,7 +178,7 @@ def test_svd_content_error():
         # Assert that the specific error message for missing 'name' is present
         assert "Error: SVDContentError: Missing mandatory 'name' element" in result.stderr
 
-from svdtoheaders_helpers import humanBytes, cleanse, clobberOk, ClobberError, _process_register_block
+from svdtoheaders_helpers import humanBytes, cleanse, clobberOk, ClobberError, _process_register_block, _process_peripheral_registers_list, _process_cluster, DEFINE_NAME_COLUMN_WIDTH, SVDContentError
 
 def test_humanBytes():
     assert humanBytes(0) == "1kB"
@@ -229,7 +229,7 @@ def test_process_register_block(mocker):
     r_base = 0x100
     access = "read-write"
     fields_data = [{"name": "FIELD0", "bitOffset": 0, "bitWidth": 1}]
-    column = 33
+    column = DEFINE_NAME_COLUMN_WIDTH
     reg_base_sym = "TEST_PERIPH_BASE"
     cluster_offset = 0x10
 
@@ -242,6 +242,108 @@ def test_process_register_block(mocker):
 
     assert rv == expected_rv
     mock_process_fields.assert_called_once_with(rv, prefix, p_name_clean, r_name, fields_data, column)
+
+
+def test_process_peripheral_registers_list_single_register(mocker):
+    mock_process_register_block = mocker.patch('svdtoheaders_helpers._process_register_block')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    registers_list = {
+        "name": "REG_SINGLE",
+        "addressOffset": "0x0",
+        "access": "read-write",
+        "fields": {
+            "field": {
+                "name": "FIELD0",
+                "bitOffset": "0",
+                "bitWidth": "1"
+            }
+        }
+    }
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+    cluster_offset = 0x0
+
+    _process_peripheral_registers_list(rv, prefix, p_name_clean, registers_list, column, reg_base_sym, cluster_offset)
+
+    mock_process_register_block.assert_called_once_with(
+        rv, prefix, p_name_clean, "REG_SINGLE", 0x0, "read-write", registers_list['fields']['field'], column, reg_base_sym, cluster_offset
+    )
+
+def test_process_peripheral_registers_list_array_register(mocker):
+    mock_process_register_block = mocker.patch('svdtoheaders_helpers._process_register_block')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    registers_list = {
+        "dim": "2",
+        "dimIncrement": "0x4",
+        "name": "REG_ARRAY[%s]",
+        "addressOffset": "0x10",
+        "access": "read-only",
+        "fields": {
+            "field": {
+                "name": "FIELD0",
+                "bitOffset": "0",
+                "bitWidth": "1"
+            }
+        }
+    }
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+    cluster_offset = 0x0
+
+    _process_peripheral_registers_list(rv, prefix, p_name_clean, registers_list, column, reg_base_sym, cluster_offset)
+
+    assert mock_process_register_block.call_count == 2
+    mock_process_register_block.assert_any_call(
+        rv, prefix, p_name_clean, "REG_ARRAY0", 0x10, "read-only", registers_list['fields']['field'], column, reg_base_sym, cluster_offset
+    )
+    mock_process_register_block.assert_any_call(
+        rv, prefix, p_name_clean, "REG_ARRAY1", 0x14, "read-only", registers_list['fields']['field'], column, reg_base_sym, cluster_offset
+    )
+
+def test_process_peripheral_registers_list_missing_name(mocker):
+    mock_process_register_block = mocker.patch('svdtoheaders_helpers._process_register_block')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    registers_list = {
+        "addressOffset": "0x0",
+        "access": "read-write"
+    } # Missing 'name'
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+    cluster_offset = 0x0
+
+    with pytest.raises(SVDContentError) as excinfo:
+        _process_peripheral_registers_list(rv, prefix, p_name_clean, registers_list, column, reg_base_sym, cluster_offset)
+    assert "Missing mandatory 'name' element in a register within peripheral 'PERIPH'." in str(excinfo.value)
+    mock_process_register_block.assert_not_called()
+
+def test_process_peripheral_registers_list_missing_addressOffset(mocker):
+    mock_process_register_block = mocker.patch('svdtoheaders_helpers._process_register_block')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    registers_list = {
+        "name": "REG_MISSING_ADDR",
+        "access": "read-write"
+    } # Missing 'addressOffset'
+    column = DEFINE_NAME_COLUMN_WIDTH
+    reg_base_sym = "TEST_PERIPH_BASE"
+    cluster_offset = 0x0
+
+    with pytest.raises(SVDContentError) as excinfo:
+        _process_peripheral_registers_list(rv, prefix, p_name_clean, registers_list, column, reg_base_sym, cluster_offset)
+    assert "Missing mandatory 'addressOffset' element in register 'REG_MISSING_ADDR' within peripheral 'PERIPH'." in str(excinfo.value)
+    mock_process_register_block.assert_not_called()
+
 
 def test_non_existent_svd_file():
     with tempfile.TemporaryDirectory() as tmpdir:
