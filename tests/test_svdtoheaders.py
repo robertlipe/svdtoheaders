@@ -178,7 +178,7 @@ def test_svd_content_error():
         # Assert that the specific error message for missing 'name' is present
         assert "Error: SVDContentError: Missing mandatory 'name' element" in result.stderr
 
-from svdtoheaders_helpers import humanBytes, cleanse, clobberOk, ClobberError
+from svdtoheaders_helpers import humanBytes, cleanse, clobberOk, ClobberError, _process_register_block
 
 def test_humanBytes():
     assert humanBytes(0) == "1kB"
@@ -219,6 +219,29 @@ def test_clobberOk_no_overwrite_file_exists(mocker):
         clobberOk("existing_file.txt", False)
     assert 'Unable to overwrite existing file' in str(excinfo.value)
 
+def test_process_register_block(mocker):
+    mock_process_fields = mocker.patch('svdtoheaders_helpers._process_fields')
+
+    rv = []
+    prefix = "TEST_"
+    p_name_clean = "PERIPH"
+    r_name = "REG"
+    r_base = 0x100
+    access = "read-write"
+    fields_data = [{"name": "FIELD0", "bitOffset": 0, "bitWidth": 1}]
+    column = 33
+    reg_base_sym = "TEST_PERIPH_BASE"
+    cluster_offset = 0x10
+
+    _process_register_block(rv, prefix, p_name_clean, r_name, r_base, access, fields_data, column, reg_base_sym, cluster_offset)
+
+    expected_rv = [
+        '#define TEST_PERIPH_REG_OFFSET            0x0110',
+        '#define TEST_PERIPH_REG                   (TEST_PERIPH_BASE + TEST_PERIPH_REG_OFFSET) /* read-write */'
+    ]
+
+    assert rv == expected_rv
+    mock_process_fields.assert_called_once_with(rv, prefix, p_name_clean, r_name, fields_data, column)
 
 def test_non_existent_svd_file():
     with tempfile.TemporaryDirectory() as tmpdir:
