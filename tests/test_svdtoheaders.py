@@ -178,6 +178,21 @@ def test_svd_content_error():
         # Assert that the specific error message for missing 'name' is present
         assert "Error: SVDContentError: Missing mandatory 'name' element" in result.stderr
 
+from svdtoheaders_helpers import humanBytes # Assuming svdtoheaders is importable
+
+def test_humanBytes():
+    assert humanBytes(0) == "1kB"
+    assert humanBytes(1) == "1kB"
+    assert humanBytes(1023) == "1kB"
+    assert humanBytes(1024) == "1kB" # Based on current implementation (int(bytes / 1024))
+    assert humanBytes(1025) == "1kB"
+    assert humanBytes(2047) == "1kB"
+    assert humanBytes(2048) == "2kB"
+    assert humanBytes(1024 * 1024 - 1) == "1023kB"
+    assert humanBytes(1024 * 1024) == "1mB"
+    assert humanBytes(1024 * 1024 + 1) == "1mB"
+    assert humanBytes(2 * 1024 * 1024) == "2mB"
+
 def test_baseline_comparison():
     # List of (svd_file, prefix, output_type, output_filename_base) tuples
     # output_type can be 'reg' or 'map'
