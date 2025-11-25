@@ -178,7 +178,7 @@ def test_svd_content_error():
         # Assert that the specific error message for missing 'name' is present
         assert "Error: SVDContentError: Missing mandatory 'name' element" in result.stderr
 
-from svdtoheaders_helpers import humanBytes # Assuming svdtoheaders is importable
+from svdtoheaders_helpers import humanBytes, cleanse, clobberOk, ClobberError
 
 def test_humanBytes():
     assert humanBytes(0) == "1kB"
@@ -192,6 +192,32 @@ def test_humanBytes():
     assert humanBytes(1024 * 1024) == "1mB"
     assert humanBytes(1024 * 1024 + 1) == "1mB"
     assert humanBytes(2 * 1024 * 1024) == "2mB"
+
+def test_cleanse():
+    assert cleanse("  hello world  ") == "hello world"
+    assert cleanse("hello   world") == "hello world"
+    assert cleanse("  hello\nworld  ") == "hello world"
+    assert cleanse("hello") == "hello"
+    assert cleanse("") == ""
+    assert cleanse("   ") == ""
+
+def test_clobberOk_no_overwrite_no_file(mocker):
+    mocker.patch('os.path.isfile', return_value=False)
+    assert clobberOk("non_existent_file.txt", False) == True
+
+def test_clobberOk_overwrite_no_file(mocker):
+    mocker.patch('os.path.isfile', return_value=False)
+    assert clobberOk("non_existent_file.txt", True) == True
+
+def test_clobberOk_overwrite_file_exists(mocker):
+    mocker.patch('os.path.isfile', return_value=True)
+    assert clobberOk("existing_file.txt", True) == True
+
+def test_clobberOk_no_overwrite_file_exists(mocker):
+    mocker.patch('os.path.isfile', return_value=True)
+    with pytest.raises(ClobberError) as excinfo:
+        clobberOk("existing_file.txt", False)
+    assert 'Unable to overwrite existing file' in str(excinfo.value)
 
 def test_baseline_comparison():
     # List of (svd_file, prefix, output_type, output_filename_base) tuples
