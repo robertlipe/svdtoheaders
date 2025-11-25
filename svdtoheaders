@@ -131,10 +131,15 @@ def registers(doc, prefix):
                 mask = (1 << bit_width) - 1
 
                 b_name = prefix +  p_name_clean + '_' + r_name + '_' + f_name
-                rv.append(f'#define {b_name:<{column}} (1 << {bit_offset:>2})'
-                          + f' /* {1<<bit_offset:08x}: {f_descr} */')
-
-                if(bit_width > 1):
+                f_descr = cleanse(field.get('description', 'N/A'))
+                if bit_width == 1:
+                  val = 1 << bit_offset
+                  rv.append(f'#define {b_name:<{column}} (1 << {bit_offset:>2})'
+                            + f' /* {val:08x}: {f_descr} */')
+                else:
+                  val = mask << bit_offset
+                  rv.append(f'#define {b_name:<{column}} (0x{mask:x} << {bit_offset})'
+                            + f' /* {val:08x}: {f_descr} */')
                   maskname = b_name + "_MASK"
                   rv.append(f'#define {maskname:<{column}} (0x{mask:x} << {bit_offset})')
 
@@ -183,9 +188,15 @@ def registers(doc, prefix):
             mask = (1 << bit_width) - 1
             b_name = prefix +  p_name_clean + '_' + r_name + '_' + f_name
             f_descr = cleanse(field.get('description', 'N/A'))
-            rv.append(f'#define {b_name:<{column}} (1 << {bit_offset:>2})'
-                      + f' /* {1<<bit_offset:08x}: {f_descr} */')
-            if(bit_width > 1):
+
+            if bit_width == 1:
+              val = 1 << bit_offset
+              rv.append(f'#define {b_name:<{column}} (1 << {bit_offset:>2})'
+                        + f' /* {val:08x}: {f_descr} */')
+            else:
+              val = mask << bit_offset
+              rv.append(f'#define {b_name:<{column}} (0x{mask:x} << {bit_offset})'
+                        + f' /* {val:08x}: {f_descr} */')
               maskname = b_name + "_MASK"
               rv.append(f'#define {maskname:<{column}} (0x{mask:x} << {bit_offset})')
 
