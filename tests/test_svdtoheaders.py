@@ -113,3 +113,27 @@ def test_cluster_generation():
             assert check_define('#define TEST_CLUSTER_PERIPH_TIMER1_CONTROL', '(TEST_CLUSTER_PERIPH_BASE + TEST_CLUSTER_PERIPH_TIMER1_CONTROL_OFFSET)')
             assert check_define('#define TEST_CLUSTER_PERIPH_TIMER1_DATA_OFFSET', '0x0014')
             assert check_define('#define TEST_CLUSTER_PERIPH_TIMER1_DATA', '(TEST_CLUSTER_PERIPH_BASE + TEST_CLUSTER_PERIPH_TIMER1_DATA_OFFSET)')
+
+def test_enum_generation():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        reg_file = os.path.join(tmpdir, 'enum_reg.h')
+
+        args = ['-s', 'tests/enum.svd', '-p', 'TEST_', '-r', reg_file, '-o']
+        result = run_svdtoheaders(args)
+
+        assert result.returncode == 0
+
+        with open(reg_file, 'r') as f:
+            content = f.read()
+            lines = content.splitlines()
+            print(lines)
+            
+            # Helper to check for defines, ignoring whitespace
+            def check_define(name, value):
+                for line in lines:
+                    if name in line and value in line:
+                        return True
+                return False
+
+            assert check_define('#define TEST_ENUM_PERIPH_CONFIG_MODE_DISABLED', '0')
+            assert check_define('#define TEST_ENUM_PERIPH_CONFIG_MODE_ENABLED', '1')
