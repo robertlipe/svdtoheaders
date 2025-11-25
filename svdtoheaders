@@ -97,9 +97,24 @@ def peripherals(doc: Dict[str, Any], prefix: str) -> List[str]:
   defines = []
   base_addresses = {}
   sizes = {}
-  for p in doc['device']['peripherals']['peripheral']:
-    name = p['name']
-    base_address = int(p['baseAddress'], 0)
+  # Check for the existence of the top-level 'device' and 'peripherals' keys
+  if 'device' not in doc or 'peripherals' not in doc['device'] or 'peripheral' not in doc['device']['peripherals']:
+    raise SVDContentError("Missing mandatory 'device' or 'peripherals' element in SVD file.")
+
+  all_peripherals_data = doc['device']['peripherals']['peripheral']
+  if not isinstance(all_peripherals_data, list):
+    all_peripherals_data = [all_peripherals_data]
+
+  for p in all_peripherals_data:
+    try:
+      name = p['name']
+    except KeyError as e:
+      raise SVDContentError("Missing mandatory 'name' element in a peripheral.") from e
+    
+    try:
+      base_address = int(p['baseAddress'], 0)
+    except KeyError as e:
+      raise SVDContentError(f"Missing mandatory 'baseAddress' element in peripheral '{name}'.") from e
 
     address_block = p.get('addressBlock', {})
     size = int(address_block.get('size', "0"), 0)
@@ -144,35 +159,43 @@ def _process_fields(rv: List[str], prefix: str, p_name_clean: str, r_name: str, 
     fields = [fields]
   if fields:
     for field in fields:
-      f_name = field.get('name')
+      try:
+          f_name = field['name']
+      except KeyError as e:
+          raise SVDContentError(f"Missing mandatory 'name' element in a field within register '{r_name}' of peripheral '{p_name_clean}'.") from e
       f_descr = cleanse(field.get('description', 'N/A'))
-      if 'bitOffset' in field and 'bitWidth' in field:
-        bit_offset = int(field.get('bitOffset', 0))
-        bit_width = int(field.get('bitWidth', 1))
-        mask = (1 << bit_width) - 1
+      try:
+          bit_offset = int(field['bitOffset'])
+          bit_width = int(field['bitWidth'])
+      except KeyError as e:
+          raise SVDContentError(f"Missing mandatory 'bitOffset' or 'bitWidth' element in field '{f_name}' within register '{r_name}' of peripheral '{p_name_clean}'.") from e
+      mask = (1 << bit_width) - 1
 
-        b_name = prefix +  p_name_clean + '_' + r_name + '_' + f_name
-        f_descr = cleanse(field.get('description', 'N/A'))
-        if bit_width == 1:
-          val = 1 << bit_offset
-          rv.append(f'#define {b_name:<{DEFINE_NAME_COLUMN_WIDTH}} (1 << {bit_offset:>2})'
-                    + f' /* {val:08x}: {f_descr} */')
-        else:
-          val = mask << bit_offset
-          rv.append(f'#define {b_name:<{DEFINE_NAME_COLUMN_WIDTH}} (0x{mask:x} << {bit_offset})'
-                    + f' /* {val:08x}: {f_descr} */')
-          maskname = b_name + "_MASK"
-          rv.append(f'#define {maskname:<{DEFINE_NAME_COLUMN_WIDTH}} (0x{mask:x} << {bit_offset})')
+      b_name = prefix +  p_name_clean + '_' + r_name + '_' + f_name
+      f_descr = cleanse(field.get('description', 'N/A'))
+      if bit_width == 1:
+        val = 1 << bit_offset
+        rv.append(f'#define {b_name:<{DEFINE_NAME_COLUMN_WIDTH}} (1 << {bit_offset:>2})'
+                  + f' /* {val:08x}: {f_descr} */')
+      else:
+        val = mask << bit_offset
+        rv.append(f'#define {b_name:<{DEFINE_NAME_COLUMN_WIDTH}} (0x{mask:x} << {bit_offset})'
+                  + f' /* {val:08x}: {f_descr} */')
+        maskname = b_name + "_MASK"
+        rv.append(f'#define {maskname:<{DEFINE_NAME_COLUMN_WIDTH}} (0x{mask:x} << {bit_offset})')
 
-        if 'enumeratedValues' in field:
-          enumerated_values = field['enumeratedValues'].get('enumeratedValue', [])
-          if not isinstance(enumerated_values, list):
-            enumerated_values = [enumerated_values]
-          for ev in enumerated_values:
-            ev_name = ev['name']
-            ev_value = ev['value']
-            ev_define_name = f"{b_name}_{ev_name}"
-            rv.append(f'#define {ev_define_name:<{DEFINE_NAME_COLUMN_WIDTH}} {ev_value}')
+      if 'enumeratedValues' in field:
+        enumerated_values = field['enumeratedValues'].get('enumeratedValue', [])
+        if not isinstance(enumerated_values, list):
+          enumerated_values = [enumerated_values]
+        for ev in enumerated_values:
+          try:
+              ev_name = ev['name']
+              ev_value = ev['value']
+          except KeyError as e:
+              raise SVDContentError(f"Missing mandatory 'name' or 'value' element in an enumeratedValue within field '{f_name}' of register '{r_name}' of peripheral '{p_name_clean}'.") from e
+          ev_define_name = f"{b_name}_{ev_name}"
+          rv.append(f'#define {ev_define_name:<{DEFINE_NAME_COLUMN_WIDTH}} {ev_value}')
 
 
 def _process_register_block(
@@ -245,7 +268,6 @@ def _process_peripheral_registers_list(
     """Helper to process a list of registers directly under a peripheral.
 
 
-
     Args:
 
       rv: The list of C #define strings to append to.
@@ -271,41 +293,31 @@ def _process_peripheral_registers_list(
 
 
     for register in registers_list:
-
+        try:
+            r_name = register['name']
+        except KeyError as e:
+            raise SVDContentError(f"Missing mandatory 'name' element in a register within peripheral '{p_name_clean}'.") from e
+        try:
+            r_base = int(register['addressOffset'], 0)
+        except KeyError as e:
+            raise SVDContentError(f"Missing mandatory 'addressOffset' element in register '{r_name}' within peripheral '{p_name_clean}'.") from e
         if 'dim' in register:
-
             dim = int(register['dim'])
-
             dim_increment = int(register['dimIncrement'], 0)
-
             name_template = register['name']
-
             base_offset = int(register['addressOffset'], 0)
 
 
-
             for i in range(dim):
-
                 r_name = name_template.replace('[%s]', str(i)).replace('%s', str(i))
-
                 r_base = base_offset + i * dim_increment
-
                 access = register.get('access')
-
                 fields = (register.get('fields') or {}).get('field', [])
-
                 _process_register_block(rv, prefix, p_name_clean, r_name, r_base, access, fields, column, reg_base_sym, cluster_offset)
 
         else:
-
-            r_name = register['name']
-
-            r_base = int(register['addressOffset'], 0)
-
             access = register.get('access')
-
             fields = (register.get('fields') or {}).get('field', [])
-
             _process_register_block(rv, prefix, p_name_clean, r_name, r_base, access, fields, column, reg_base_sym, cluster_offset)
 
 def _process_cluster(
@@ -325,17 +337,20 @@ def _process_cluster(
 ) -> None:
 
     """Helper to process a single cluster and its registers."""
-
+    try:
+        c_name = cluster_data['name']
+    except KeyError as e:
+        raise SVDContentError(f"Missing mandatory 'name' element in a cluster within peripheral '{p_name_clean}'.") from e
+    try:
+        c_base = int(cluster_data['addressOffset'], 0)
+    except KeyError as e:
+        raise SVDContentError(f"Missing mandatory 'addressOffset' element in cluster '{c_name}' within peripheral '{p_name_clean}'.") from e
     if 'dim' in cluster_data:
 
         dim = int(cluster_data['dim'])
-
         dim_increment = int(cluster_data['dimIncrement'], 0)
-
         name_template = cluster_data['name']
-
         base_offset = int(cluster_data['addressOffset'], 0)
-
 
 
         for i in range(dim):
@@ -350,10 +365,6 @@ def _process_cluster(
             _process_peripheral_registers_list(rv, prefix, f"{p_name_clean}_{c_name}", cluster_registers, column, reg_base_sym, c_base)
 
     else:
-
-        c_name = cluster_data['name']
-
-        c_base = int(cluster_data['addressOffset'], 0) # This is the base offset for the single cluster instance
 
         cluster_registers = cluster_data.get('register', [])
 
@@ -398,11 +409,17 @@ def registers(doc: Dict[str, Any], prefix: str) -> List[str]:
     all_peripherals = [all_peripherals]
 
   
-
+  # Check for mandatory elements before iteration if possible
+  # For now, relying on checks within _process_cluster and _process_peripheral_registers_list
   # Create a lookup for all peripherals by name
 
-  peripheral_map = {p['name']: p for p in all_peripherals}
-
+  peripheral_map = {}
+  for p in all_peripherals:
+      try:
+          name = p['name']
+      except KeyError as e:
+          raise SVDContentError("Missing mandatory 'name' element in a peripheral.") from e
+      peripheral_map[name] = p
 
 
   # First pass: process base peripherals
@@ -430,9 +447,10 @@ def registers(doc: Dict[str, Any], prefix: str) -> List[str]:
         clusters_list = [clusters_list]
 
 
-
-    baseAddress = int(peripheral['baseAddress'], 0)
-
+    try:
+        baseAddress = int(peripheral['baseAddress'], 0)
+    except KeyError as e:
+        raise SVDContentError(f"Missing mandatory 'baseAddress' element in peripheral '{p_name}'.") from e
     p_name_clean = cleanse(p_name)
 
     column = DEFINE_NAME_COLUMN_WIDTH
@@ -488,8 +506,10 @@ def registers(doc: Dict[str, Any], prefix: str) -> List[str]:
     p_name_clean = cleanse(p_name)
 
     d_name_clean = cleanse(d_name)
-
-    baseAddress = int(peripheral['baseAddress'], 0)
+    try:
+        baseAddress = int(peripheral['baseAddress'], 0)
+    except KeyError as e:
+        raise SVDContentError(f"Missing mandatory 'baseAddress' element in derived peripheral '{p_name}'.") from e
 
     column = DEFINE_NAME_COLUMN_WIDTH
 
@@ -588,10 +608,10 @@ def main():
           print(r, file=f)
 
   except SVDError as e:
-    print(f"Error: {e}", file=sys.stderr)
+    print(f"Error: {type(e).__name__}: {e}", file=sys.stderr) # Print exception type
     exit(1)
   except Exception as e:
-    print(f"An unexpected error occurred: {e}", file=sys.stderr)
+    print(f"An unexpected error occurred: {type(e).__name__}: {e}", file=sys.stderr) # Print exception type
     exit(1)
 
 if __name__ == "__main__":

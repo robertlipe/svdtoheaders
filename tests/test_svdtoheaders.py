@@ -162,3 +162,52 @@ def test_access_generation():
             assert check_define('#define TEST_ACCESS_PERIPH_RO_REG', '/* read-only */')
             assert check_define('#define TEST_ACCESS_PERIPH_WO_REG', '/* write-only */')
             assert check_define('#define TEST_ACCESS_PERIPH_RW_REG', '/* read-write */')
+
+
+
+def test_svd_content_error():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        reg_file = os.path.join(tmpdir, 'malformed_reg.h')
+
+        args = ['-s', 'tests/malformed.svd', '-p', 'MALFORMED_', '-r', reg_file, '-o']
+        result = run_svdtoheaders(args)
+
+        # Assert that the script failed with a non-zero exit code
+        assert result.returncode != 0
+
+        # Assert that the specific error message for missing 'name' is present
+        assert "Error: SVDContentError: Missing mandatory 'name' element" in result.stderr
+
+def test_baseline_comparison():
+    # List of (svd_file, prefix, output_type, output_filename_base) tuples
+    # output_type can be 'reg' or 'map'
+    test_cases = [
+        ('simple.svd', 'TEST_', 'reg', 'simple_reg.h'),
+        ('simple.svd', 'TEST_', 'map', 'simple_map.h'),
+        ('simple.svd', 'DERIVED_', 'reg', 'derived_reg.h'),
+        ('array.svd', 'TEST_', 'reg', 'array_reg.h'),
+        ('cluster.svd', 'TEST_', 'reg', 'cluster_reg.h'),
+        ('enum.svd', 'TEST_', 'reg', 'enum_reg.h'),
+        ('access.svd', 'TEST_', 'reg', 'access_reg.h'),
+    ]
+
+    for svd_file, prefix, output_type, output_filename_base in test_cases:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            generated_file_path = os.path.join(tmpdir, output_filename_base)
+            baseline_file_path = os.path.join('tests', 'baseline_output', output_filename_base)
+
+            args = ['-s', os.path.join('tests', svd_file), '-p', prefix]
+            if output_type == 'reg':
+                args.extend(['-r', generated_file_path])
+            elif output_type == 'map':
+                args.extend(['-m', generated_file_path])
+            args.append('-o') # Allow overwrite in temp directory
+
+            result = run_svdtoheaders(args)
+            assert result.returncode == 0, f"svdtoheaders failed for {svd_file} with prefix {prefix}: {result.stderr}"
+
+            with open(generated_file_path, 'r') as f_gen, open(baseline_file_path, 'r') as f_base:
+                generated_content = f_gen.read()
+                baseline_content = f_base.read()
+                assert generated_content == baseline_content, f"Output mismatch for {output_filename_base} from {svd_file} with prefix {prefix}"
+
