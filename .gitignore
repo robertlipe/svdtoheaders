@@ -1,2 +1,6 @@
 *.o
 __pycache__/
+.gemini/
+letter.txt
+svdtoheaders.wip
+tests/baseline_output/
