@@ -140,16 +140,13 @@ def peripherals(doc: Dict[str, Any], prefix: str) -> List[str]:
             size = sizes[derived_from]
 
         end_address = base_address + size - 1
-
         base_addresses[name] = base_address
         sizes[name] = size
 
         symname = f"{prefix}{name.upper()}_BASE"
         define = (f"#define {symname:<{DEFINE_BASE_NAME_WIDTH}} "
                   f"{hex(base_address)}")
-
         lname = cleanse(p.get('description', name))
-
         cmt = (f" /* {base_address:#x}-{end_address:#x}: {humanBytes(size)} "
                f"{lname} */")
 
@@ -233,11 +230,11 @@ def _process_fields(rv: List[str], prefix: str, p_name_clean: str,
                           f' /* {val:08x}: {f_descr} */')
             else:
                 val = mask << bit_offset
-                rv.append(f'#define {b_name:<{column}} (0x{mask:x} << ' 
-                          f'{bit_offset})' 
+                rv.append(f'#define {b_name:<{column}} (0x{mask:x} << '
+                          f'{bit_offset})'
                           f' /* {val:08x}: {f_descr} */')
                 maskname = b_name + "_MASK"
-                rv.append(f'#define {maskname:<{column}} (0x{mask:x} << ' 
+                rv.append(f'#define {maskname:<{column}} (0x{mask:x} << '
                           f'{bit_offset})')
 
             if 'enumeratedValues' in field:
@@ -274,20 +271,16 @@ def _process_register_block(
 
     # Apply cluster_offset to r_base for the final offset calculation
     effective_r_base = r_base + cluster_offset
-
     offsetname = f"{regname}_OFFSET"
-
     rv.append(f'#define {offsetname:<{column}} 0x{effective_r_base:04x}')
-
     define_line = (
-        f'#define {regname:<{column}} ({reg_base_sym} + ' 
+        f'#define {regname:<{column}} ({reg_base_sym} + '
         f'{offsetname})')
 
     if access:
         define_line += f' /* {access} */'
 
     rv.append(define_line)
-
     _process_fields(rv, prefix, p_name_clean, r_name, fields_data, column)
 
 
@@ -376,7 +369,6 @@ def _process_cluster(
             "Missing mandatory 'addressOffset' element in cluster '" + c_name +
             "' within peripheral '" + p_name_clean + "'.") from e
     if 'dim' in cluster_data:
-
         dim = int(cluster_data['dim'])
         dim_increment = int(cluster_data['dimIncrement'], 0)
         name_template = cluster_data['name']
@@ -390,16 +382,13 @@ def _process_cluster(
             c_base = base_offset + i * dim_increment
 
             cluster_registers = cluster_data.get('register', [])
-
             _process_peripheral_registers_list(rv, prefix,
                                                f"{p_name_clean}_{c_name}",
                                                cluster_registers, column,
                                                reg_base_sym, c_base)
 
     else:
-
         cluster_registers = cluster_data.get('register', [])
-
         _process_peripheral_registers_list(rv, prefix,
                                            f"{p_name_clean}_{c_name}",
                                            cluster_registers, column,
@@ -454,9 +443,7 @@ def registers(doc: Dict[str, Any], prefix: str) -> List[str]:
             continue
 
         registers_in_peripheral = peripheral.get('registers', {})
-
         registers_list = registers_in_peripheral.get('register', [])
-
         clusters_list = registers_in_peripheral.get('cluster', [])
 
         if isinstance(registers_list, dict):
@@ -474,40 +461,30 @@ def registers(doc: Dict[str, Any], prefix: str) -> List[str]:
         column = DEFINE_NAME_COLUMN_WIDTH
 
         if registers_list or clusters_list:
-
             p_descr = cleanse(peripheral.get('description', ''))
-
             rv.append(f'\n/* {p_name_clean} - {p_descr} */')
-
             reg_base = f"{prefix}{p_name_clean}_BASE"
-
             rv.append(f'#define {reg_base:<{column}} 0x{baseAddress:x}')
-
             for cluster in clusters_list:
                 _process_cluster(rv, prefix, p_name_clean, cluster, column,
                                  reg_base)
-
             _process_peripheral_registers_list(rv, prefix, p_name_clean,
                                                registers_list, column,
                                                reg_base)
 
     # Second pass: process derived peripherals
     for p_name, peripheral in peripheral_map.items():
-
         if '@derivedFrom' not in peripheral:
             continue
 
         d_name = peripheral['@derivedFrom']
-
         if d_name not in peripheral_map:
             rv.append(f'\n/* WARNING: Base peripheral "{d_name}" not found '
                       f'for derived peripheral "{p_name}" */')
             continue
 
         base_peripheral = peripheral_map[d_name]
-
         p_name_clean = cleanse(p_name)
-
         d_name_clean = cleanse(d_name)
         try:
             baseAddress = int(peripheral['baseAddress'], 0)
@@ -518,17 +495,11 @@ def registers(doc: Dict[str, Any], prefix: str) -> List[str]:
                 p_name + "'.") from e
 
         column = DEFINE_NAME_COLUMN_WIDTH
-
         rv.append(f'\n/* {p_name_clean} is derived from {d_name_clean}. */')
-
         reg_base = f"{prefix}{p_name_clean}_BASE"
-
         rv.append(f'#define {reg_base:<{column}} 0x{baseAddress:x}')
-
         registers_in_peripheral = base_peripheral.get('registers', {})
-
         registers_list = registers_in_peripheral.get('register', [])
-
         clusters_list = registers_in_peripheral.get('cluster', [])
 
         if isinstance(registers_list, dict):
