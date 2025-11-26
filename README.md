@@ -39,19 +39,24 @@ FILES
 - `demo/`: Contains example SVD files and generated headers for demonstration purposes.
 - `tests/`: Unit tests and their associated SVD files. Refer to [`tests/README.md`](tests/README.md) for details on running and understanding the tests.
 
-BUGS
-====
+CONTRIBUTING
+============
 
-Almost certainly. After you fix them, please submit a [pull request](https://github.com/robertlipe/svdtoheaders) to repair them. 😉
+Contributions are welcome! If you find issues or have suggestions for improvements,
+please submit a [pull request](https://github.com/robertlipe/svdtoheaders).
+We strive for clean, readable code and maintain a comprehensive test suite.
+Before submitting, please ensure your changes adhere to PEP8 guidelines and
+all tests pass.
 
-More seriously, there are many opportunities for progrmas like this to jump
-the rails when facing different input. This program was created to parse
-three specific SVD files from one company and has not been exposed to all
-the potential opportunities for creative expression within the SVD vocabulary.
+More seriously, while the tool has been refined, programs like this always
+have opportunities to improve when facing different SVD input. This program
+was initially created to parse a few specific SVD files and may not have
+been exposed to all potential expressions within the SVD vocabulary.
 
-I'll also confess to not being a very good Python developer, so I'm sure to have
-violated some community conventions. I'm teachable, so please just send a
-(polite) pull request to help fix it.
+Recent development has focused on improving code quality and robustness.
+PEP8 compliance has been addressed, and a custom exception hierarchy
+(`SVDError`, `SVDFileError`, `SVDParseError`, `SVDContentError`, `ClobberError`)
+is now in place to provide more specific and helpful error messages.
 
 
 AUTHOR
@@ -109,7 +114,29 @@ on the SoC and the addresses they respond to. That data is in the [Common Microc
 Our two types of output  are ISO-C89 (***I know...I know***) files.
 The first explains the SoC and where the resident peripherals show in the address space of the device.   As we support similar devices (CH32V203, CH32V205, CH32V307, etc.) that may or may not peripherals are similar or even identical, we'd like an identifier to have optional prefixes as c89 dosdfsfsf have namespaces in C89.
 
-Most modern languages have lovely handling of strings and can reduce XML to DOM with have good tools to traverse nodes and such. Python3 was chosen. WORDS ABOUT NOT KNOWING PYTHON WELL GO HERE
+Most modern languages have lovely handling of strings and can reduce XML to DOM with have good tools to traverse nodes and such. Python3 was chosen.
+
+### RECENT IMPROVEMENTS
+
+This project has undergone significant refactoring to enhance its robustness,
+maintainability, and testability. Key improvements include:
+
+*   **Modularization**: The core logic has been separated into `svdtoheaders_helpers.py`,
+    promoting cleaner code organization and easier management.
+*   **Custom Exception Hierarchy**: A dedicated hierarchy of exceptions
+    (`SVDError`, `SVDFileError`, `SVDParseError`, `SVDContentError`, `ClobberError`)
+    has been implemented to provide more precise and actionable error reporting.
+*   **Improved Bit Range Parsing**: The parsing logic for SVD `bitRange` elements has been
+    made more robust and accurate, ensuring correct interpretation of bitfield definitions.
+
+### TESTING
+
+The project now includes a comprehensive testing suite to ensure reliability and correctness:
+
+*   **Unit Tests**: Granular tests cover individual helper functions like `humanBytes`, `cleanse`, `clobberOk`, `_process_register_block`, `_process_peripheral_registers_list`, and `_process_cluster`.
+*   **Integration Tests**: These validate end-to-end scenarios, including handling non-existent SVD files, preventing accidental overwrites, and ensuring correct output for various SVD structures (e.g., arrays, clusters, enums, access types).
+*   **SVD Diversity**: Tests utilize a diverse set of SVD files (e.g., `simple.svd`, `array.svd`, `cluster.svd`, `enum.svd`, `access.svd`, `ch32v30x.svd`) to ensure broad compatibility and correct parsing across different SVD patterns.
+*   **Tools**: `pytest` is used as the testing framework, with `pytest-mock` facilitating isolated unit testing.
 
 ### TYPICAL USAGE
 

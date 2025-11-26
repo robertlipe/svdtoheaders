@@ -3,70 +3,111 @@
 import argparse
 import sys
 from svdtoheaders_helpers import (
-    SVDError, SVDFileError, SVDParseError, SVDContentError, ClobberError,
-    read_svd, peripherals, registers, clobberOk
+    SVDError,
+    read_svd,
+    peripherals,
+    registers,
+    clobberOk
 )
 
 
-def doParseArgs():
-  parser = argparse.ArgumentParser(description='Converts CMSSIS SVD to C headers.')
-  parser.add_argument('-m', '--memorymap', action='store',
-    help='Create file "memorymap" with mempory map of device.')
-  parser.add_argument('-r', '--registers', action='store',
-    help='Create file "registers" with registerss of device.')
-  parser.add_argument('-p', '--prefix', action='store', default='CH32V_',
-    help='Prefix C symbols with "prefix".')
-  parser.add_argument('-s', '--svdfile', action='store' ,default='ch32v30x.svd',
-    help='Read SVD source "file".')
-  parser.add_argument('-v', '--verbose', action='store_true',
-    help="Be vefbose about actions taken.")
-  parser.add_argument('-o', '--overwrite', action='store_true',
-    help="Allow overwrite")
-  args = parser.parse_args()
+def doParseArgs() -> argparse.Namespace:
+    """Parses command-line arguments for the SVD to C header conversion tool.
 
-  if args.verbose:
-    print(f"register file: {args.registers}")
-    print(f"memory map file: {args.memorymap}")
-    print(f"svd file:  {args.svdfile}")
-    print(f"prefix: {args.prefix}")
-    print(f"Overwrite output files? {args.overwrite}")
-  return args
+    This function sets up an ArgumentParser to handle various command-line
+    options such as input SVD file, output memory map and register files,
+    C symbol prefix, verbosity, and overwrite flag. It also prints
+    verbose output if the -v/--verbose flag is set.
 
-def main():
-  args = doParseArgs()
-  if args.verbose:
-    print(f"Reading {args.svdfile}")
+    Returns:
+      An argparse.Namespace object containing the parsed arguments.
+    """
+    parser = argparse.ArgumentParser(
+        description='Converts CMSSIS SVD to C headers.')
+    parser.add_argument(
+        '-m', '--memorymap', action='store', type=str,
+        help='Create "memorymap" file with device map.'
+    )
+    parser.add_argument(
+        '-r', '--registers', action='store', type=str,
+        help='Create "registers" file with device registers.'
+    )
+    parser.add_argument(
+        '-p', '--prefix', action='store', default='CH32V_',
+        help='Prefix C symbols with "prefix".'
+    )
+    parser.add_argument(
+        '-s', '--svdfile', action='store', type=str,
+        default='ch32v30x.svd',
+        help='Read SVD source "file".'
+    )
+    parser.add_argument(
+        '-v', '--verbose', action='store_true',
+        help="Be vefbose about actions taken."
+    )
+    parser.add_argument(
+        '-o', '--overwrite', action='store_true',
+        help="Allow overwrite"
+    )
+    args = parser.parse_args()
 
-  try:
-    doc = read_svd(args.svdfile)
+    if args.verbose:
+        print(f"register file: {args.registers}")
+        print(f"memory map file: {args.memorymap}")
+        print(f"svd file:  {args.svdfile}")
+        print(f"prefix: {args.prefix}")
+        print(f"Overwrite output files? {args.overwrite}")
+    return args
 
-    if not args.memorymap and not args.registers:
-      print("Nothing to do You should probably specify either -p or -r.")
-      exit(1)
 
-    if args.memorymap: # clobberOk now raises exception
-      if args.verbose:
-        print(f"Writing memory map file {args.memorymap}")
-      clobberOk(args.memorymap, args.overwrite) # Call clobberOk outside open to catch exception
-      with open(args.memorymap, "w") as f:
-        for p in (peripherals(doc, args.prefix)):
-          print(p, file=f)
+def main() -> None:
+    """Main entry point for the SVD to C header conversion tool.
 
-    if args.registers: # clobberOk now raises exception
-      if args.verbose:
-        print(f"Writing register file {args.registers}")
-      clobberOk(args.registers, args.overwrite) # Call clobberOk outside open to catch exception
-      with open(args.registers, "w") as f:
-        for r in (registers(doc, args.prefix)):
-          print(r, file=f)
+    This function orchestrates the argument parsing, SVD file reading,
+    and C header file generation (memory map and registers).
+    It handles various custom exceptions (SVDError, SVDFileError, etc.)
+    and provides informative error messages to the user.
+    """
+    args = doParseArgs()
+    if args.verbose:
+        print(f"Reading {args.svdfile}")
 
-  except SVDError as e:
-    print(f"Error: {type(e).__name__}: {e}", file=sys.stderr) # Print exception type
-    exit(1)
-  except Exception as e:
-    print(f"An unexpected error occurred: {type(e).__name__}: {e}", file=sys.stderr) # Print exception type
-    exit(1)
+    try:
+        doc = read_svd(args.svdfile)
+
+        if not args.memorymap and not args.registers:
+            print("Nothing to do You should probably specify either -p or -r.")
+            exit(1)
+
+        if args.memorymap:  # clobberOk now raises exception
+            if args.verbose:
+                print(f"Writing memory map file {args.memorymap}")
+            # Call clobberOk outside open to catch exception
+            clobberOk(args.memorymap, args.overwrite)
+            with open(args.memorymap, "w") as f:
+                for p in (peripherals(doc, args.prefix)):
+                    print(p, file=f)
+
+        if args.registers:  # clobberOk now raises exception
+            if args.verbose:
+                print(f"Writing register file {args.registers}")
+            # Call clobberOk outside open to catch exception
+            clobberOk(args.registers, args.overwrite)
+            with open(args.registers, "w") as f:
+                for r in (registers(doc, args.prefix)):
+                    print(r, file=f)
+
+    except SVDError as e:
+        # Print exception type
+        print(f"Error: {type(e).__name__}: {e}", file=sys.stderr)
+        exit(1)
+    except Exception as e:
+        # Print exception type
+        print(f"An unexpected error occurred: {type(e).__name__}: {e}",
+              file=sys.stderr)
+        exit(1)
+
 
 if __name__ == "__main__":
-  main()
-  exit(0)
+    main()
+    exit(0)
